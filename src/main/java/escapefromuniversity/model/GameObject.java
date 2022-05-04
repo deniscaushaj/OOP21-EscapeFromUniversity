@@ -8,4 +8,6 @@ public interface GameObject {
 	
 	void setID(int ID);
 	
+	GameObjectType getType();
+	
 }
