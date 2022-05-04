@@ -11,8 +11,8 @@ public class Point2D {
 	 }
 	 
 	 public Point2D(Point2D point) {
-		 this.x = point.x;
-		 this.y = point.y;
+		 this.x = point.getX();
+		 this.y = point.getY();
 	 }
 	
 	public double getX() {

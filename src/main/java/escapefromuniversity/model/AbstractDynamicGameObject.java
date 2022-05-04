@@ -35,8 +35,7 @@ public abstract class AbstractDynamicGameObject implements DynamicGameObject {
 
 	@Override
 	public void setDyrectino(final Vector2D newDyrection) {
-		this.direction = newDyrection;
-		
+		this.direction = newDyrection;	
 	}
 
 }
