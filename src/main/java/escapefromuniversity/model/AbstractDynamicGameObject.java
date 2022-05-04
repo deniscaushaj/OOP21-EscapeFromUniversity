@@ -1,26 +1,14 @@
 package escapefromuniversity.model;
 
-public abstract class AbstractDynamicGameObject implements DynamicGameObject {
-	
-	private int id;
-	private int speed;
-	private GameObjectType type;
-	private Point2D position;
+public abstract class AbstractDynamicGameObject extends AbstractStaticGameObject implements DynamicGameObject {
+
+	private final int speed;
 	private Vector2D direction;
 
-	@Override
-	public Point2D getObjectPosition() {
-		return new Point2D(position);
-	}
-
-	@Override
-	public int getID() {
-		return this.id;
-	}
-
-	@Override
-	public void setID(final int ID) {
-		this.id = ID;		
+	public AbstractDynamicGameObject(final GameObjectType type, final Point2D position, final int speed, final Vector2D direction) {
+		super(type, position);
+		this.speed = speed;
+		this.direction = direction;
 	}
 
 	@Override
@@ -29,13 +17,13 @@ public abstract class AbstractDynamicGameObject implements DynamicGameObject {
 	}
 
 	@Override
-	public Vector2D getDyrection() {
+	public Vector2D getDirection() {
 		return new Vector2D(this.direction);
 	}
 
 	@Override
-	public void setDyrectino(final Vector2D newDyrection) {
-		this.direction = newDyrection;	
+	public void setDirection(final Vector2D newDirection) {
+		this.direction = newDirection;	
 	}
 
 }

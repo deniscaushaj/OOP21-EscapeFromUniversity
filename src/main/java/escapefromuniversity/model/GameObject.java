@@ -6,7 +6,7 @@ public interface GameObject {
 	
 	int getID();
 	
-	void setID(int ID);
+	void setID(int id);
 	
 	GameObjectType getType();
 	

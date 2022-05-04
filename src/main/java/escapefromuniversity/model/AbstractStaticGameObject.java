@@ -3,8 +3,13 @@ package escapefromuniversity.model;
 public class AbstractStaticGameObject implements StaticGameObject{
 	
 	private int id;
-	private GameObjectType type;
-	private Point2D position;
+	private final GameObjectType type;
+	private final Point2D position;
+	
+	public AbstractStaticGameObject(GameObjectType type, Point2D position) {
+		this.type = type;
+		this.position = position;
+	}
 	
 	@Override
 	public Point2D getObjectPosition() {
@@ -17,8 +22,8 @@ public class AbstractStaticGameObject implements StaticGameObject{
 	}
 
 	@Override
-	public void setID(final int ID) {
-		this.id = ID;
+	public void setID(final int id) {
+		this.id = id;
 		
 	}
 

@@ -1,11 +1,11 @@
 package escapefromuniversity.model;
 
-public interface DynamicGameObject extends GameObject{
+public interface DynamicGameObject extends StaticGameObject{
 	
 	int getSpeed();
 	
-	Vector2D getDyrection();
+	Vector2D getDirection();
 	
-	void setDyrectino(Vector2D newDyrection);
+	void setDirection(Vector2D newDirection);
 
 }
