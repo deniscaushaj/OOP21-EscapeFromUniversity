@@ -31,7 +31,7 @@ public class BulletImp extends AbstractDynamicGameObject implements Bullet{
 
 	@Override
 	public void update(double deltaTime) {
-		// TODO Auto-generated method stub
+		this.move(deltaTime);
 		
 	}
 
