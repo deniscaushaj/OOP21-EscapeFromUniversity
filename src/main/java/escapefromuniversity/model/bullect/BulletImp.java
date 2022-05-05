@@ -7,16 +7,20 @@ import escapefromuniversity.model.Point2D;
 import escapefromuniversity.model.Vector2D;
 
 public class BulletImp extends AbstractDynamicGameObject implements Bullet{
+	
+	private final int damage;
 
-	public BulletImp(GameObjectType type, Point2D position, int speed, Vector2D direction) {
+	public BulletImp(GameObjectType type, Point2D position, int speed, Vector2D direction, int damage) {
 		super(type, position, speed, direction);
-		// TODO Auto-generated constructor stub
+		this.damage = damage;
 	}
-
+    
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int getDamage() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.damage;
 	}
 
 	@Override
