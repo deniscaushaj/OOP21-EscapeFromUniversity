@@ -25,5 +25,7 @@ public abstract class AbstractDynamicGameObject extends AbstractStaticGameObject
 	public void setDirection(final Vector2D newDirection) {
 		this.direction = newDirection;	
 	}
+	
+	public abstract void update(double deltaTime);
 
 }

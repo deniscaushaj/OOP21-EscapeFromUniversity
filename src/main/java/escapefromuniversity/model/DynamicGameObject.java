@@ -7,5 +7,7 @@ public interface DynamicGameObject extends StaticGameObject{
 	Vector2D getDirection();
 	
 	void setDirection(Vector2D newDirection);
+	
+	void update(double deltaTime);
 
 }
