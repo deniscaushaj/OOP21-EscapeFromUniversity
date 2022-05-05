@@ -58,7 +58,7 @@ public abstract class AbstractDynamicGameObject implements DynamicGameObject {
 	public abstract void update(double deltaTime);
 	
 	public void move(final double deltaTime) {
-		
+		this.setPosition(this.getObjectPosition().sum(getDirection().multiplication(this.speed).multiplication(deltaTime)));
 	}
 
 }
