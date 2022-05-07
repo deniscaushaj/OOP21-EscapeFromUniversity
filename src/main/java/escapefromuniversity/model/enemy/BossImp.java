@@ -1,0 +1,50 @@
+package escapefromuniversity.model.enemy;
+
+import escapefromuniversity.model.AbstractDynamicGameObject;
+import escapefromuniversity.model.GameObject;
+import escapefromuniversity.model.GameObjectType;
+import escapefromuniversity.model.Point2D;
+import escapefromuniversity.model.Vector2D;
+
+public class BossImp extends AbstractDynamicGameObject implements Boss{
+	
+	private int life;
+	private final double shootDelay;
+	
+	public BossImp(final int speed, final Point2D position, final Vector2D direction, final GameObjectType type, final int life, final double shootDelay) {
+		super(type, position, speed, direction);
+		this.life = life;
+		this.shootDelay = shootDelay;
+	}
+
+	@Override
+	public void maybeShoot() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getLife() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void takeDamage(int damage) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void collisionWith(GameObject gObj2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(double deltaTime) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
