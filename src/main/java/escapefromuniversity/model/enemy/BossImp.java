@@ -25,13 +25,12 @@ public class BossImp extends AbstractDynamicGameObject implements Boss{
 
 	@Override
 	public int getLife() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.life;
 	}
 
 	@Override
 	public void takeDamage(int damage) {
-		// TODO Auto-generated method stub
+		this.life = this.life - damage;
 		
 	}
 
