@@ -10,10 +10,11 @@ import javafx.stage.Stage;
 public final class LauncherView extends Application{
 
 	static Stage launcherWindow;
+	static Scene launcher;
 	
 	public final void start(Stage stage) throws Exception {
         Parent startRoot = FXMLLoader.load(getClass().getResource("/layouts/Launcher.fxml"));
-        Scene launcher = new Scene(startRoot);
+        launcher = new Scene(startRoot);
         stage.setTitle("Escape From University");
         stage.setScene(launcher);
         stage.setResizable(false);
