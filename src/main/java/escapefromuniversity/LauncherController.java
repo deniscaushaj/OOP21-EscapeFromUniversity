@@ -35,9 +35,7 @@ public class LauncherController {
     
     @FXML	
     void credits(ActionEvent event) { //creditsButton
-		
     	try {
-			// add credits view & credits controller
     		Parent creditsRoot = FXMLLoader.load(getClass().getResource("/layouts/Credits.fxml"));
 	        Scene credits = new Scene(creditsRoot);
 	        LauncherView.launcherWindow.setScene(credits);
