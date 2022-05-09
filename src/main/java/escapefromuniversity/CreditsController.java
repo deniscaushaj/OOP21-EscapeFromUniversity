@@ -34,13 +34,13 @@ public class CreditsController {
     
     @FXML
     void openLink(ActionEvent event) throws URISyntaxException, IOException {
-    	if(event.getSource().equals(daniel)) {
+    	if (event.getSource().equals(daniel)) {
     		Desktop.getDesktop().browse(new URI("https://github.com/DanielCapannini"));
-    	} else if(event.getSource().equals(denis)) {
+    	} else if (event.getSource().equals(denis)) {
     		Desktop.getDesktop().browse(new URI("https://github.com/deniscaushaj"));
-    	} else if(event.getSource().equals(emanuele)) {
+    	} else if (event.getSource().equals(emanuele)) {
     		Desktop.getDesktop().browse(new URI("https://github.com/brtmnl"));
-    	} else if(event.getSource().equals(marco)) {
+    	} else if (event.getSource().equals(marco)) {
     		Desktop.getDesktop().browse(new URI("https://github.com/MarcoAntolini"));
     	}
     }
