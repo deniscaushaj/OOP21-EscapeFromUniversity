@@ -1,4 +1,4 @@
-package escapefromuniversity.model.bullect;
+package escapefromuniversity.model.bullet;
 
 public class BulletCostant {
 	
