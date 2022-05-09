@@ -13,7 +13,7 @@ public final class LauncherView extends Application{
 	static Scene launcher;
 	
 	public final void start(Stage stage) throws Exception {
-        Parent startRoot = FXMLLoader.load(getClass().getResource("/layouts/Launcher.fxml"));
+		Parent startRoot = FXMLLoader.load(getClass().getResource("/layouts/Launcher.fxml"));
         launcher = new Scene(startRoot);
         stage.setTitle("Escape From University");
         stage.setScene(launcher);

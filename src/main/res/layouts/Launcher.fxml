@@ -2,18 +2,31 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane style="-fx-background-color: blue;" stylesheets="@../Style.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="escapefromuniversity.LauncherController">
+<Pane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: blue;" stylesheets="@../Style.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/" fx:controller="escapefromuniversity.LauncherController">
    <children>
-      <VBox alignment="CENTER" layoutX="177.0" layoutY="152.0">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
          <children>
-            <Button id="newGame" fx:id="newGameButton" alignment="CENTER" mnemonicParsing="false" onAction="#newGame" style="-fx-background-color: blue;" styleClass="launcherItem" text="New Game">
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Escape From University" textAlignment="CENTER" wrappingWidth="600.0" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Bodoni MT Black" size="45.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <VBox alignment="CENTER" layoutX="206.0" layoutY="112.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0">
+         <children>
+            <Button id="newGame" fx:id="newGameButton" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#newGame" style="-fx-background-color: blue;" styleClass="launcherItem" text="New Game" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="Bodoni MT Black" size="24.0" />
                </font>
@@ -24,36 +37,22 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </Button>
-            <Button id="leaderboard" fx:id="leaderboardButton" alignment="CENTER" mnemonicParsing="false" onAction="#leaderboard" style="-fx-background-color: blue;" styleClass="launcherItem" text="Leaderboard">
+            <Button id="leaderboard" fx:id="leaderboardButton" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#leaderboard" style="-fx-background-color: blue;" styleClass="launcherItem" text="Leaderboard" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font name="Bodoni MT Black" size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="creditsButton" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#credits" style="-fx-background-color: blue;" styleClass="launcherItem" text="Credits" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font name="Bodoni MT Black" size="24.0" />
+               </font>
+            </Button>
+            <Button id="exit" fx:id="exitButton" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onMouseClicked="#exit" style="-fx-background-color: blue;" styleClass="launcherItem" text="Exit" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="Bodoni MT Black" size="24.0" />
                </font>
             </Button>
          </children>
       </VBox>
-      <Group layoutX="24.0" layoutY="73.0">
-         <children>
-            <Text layoutX="2.0" layoutY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Escape From University" textAlignment="CENTER" wrappingWidth="484.52117919921875">
-               <font>
-                  <Font name="Bodoni MT Black" size="45.0" />
-               </font>
-            </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Escape From University" textAlignment="CENTER" wrappingWidth="484.52117919921875">
-               <font>
-                  <Font name="Bodoni MT Black" size="45.0" />
-               </font>
-            </Text>
-         </children>
-      </Group>
-      <Button fx:id="creditsButton" alignment="CENTER" layoutX="1.0" layoutY="337.0" mnemonicParsing="false" onAction="#credits" style="-fx-background-color: blue;" styleClass="launcherItem" text="Credits">
-         <font>
-            <Font name="Bodoni MT Black" size="20.0" />
-         </font>
-      </Button>
-      <Button id="exit" fx:id="exitButton" alignment="CENTER" layoutX="466.0" layoutY="337.0" mnemonicParsing="false" onMouseClicked="#exit" style="-fx-background-color: blue;" styleClass="launcherItem" text="Exit">
-         <font>
-            <Font name="Bodoni MT Black" size="20.0" />
-         </font>
-      </Button>
    </children>
 </Pane>
