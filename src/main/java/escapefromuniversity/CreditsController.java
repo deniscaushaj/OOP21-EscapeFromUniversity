@@ -28,6 +28,9 @@ public class CreditsController {
     private Hyperlink marco;
 
     @FXML
+    private Hyperlink tileset;
+
+    @FXML
     void back(ActionEvent event) {
     	LauncherView.launcherWindow.setScene(LauncherView.launcher);
     }
@@ -42,7 +45,9 @@ public class CreditsController {
     		Desktop.getDesktop().browse(new URI("https://github.com/brtmnl"));
     	} else if(event.getSource().equals(marco)) {
     		Desktop.getDesktop().browse(new URI("https://github.com/MarcoAntolini"));
-    	}
+    	} else if(event.getSource().equals(tileset)) {
+            Desktop.getDesktop().browse(new URI("https://limezu.itch.io/"));
+        }
     }
 
 }
