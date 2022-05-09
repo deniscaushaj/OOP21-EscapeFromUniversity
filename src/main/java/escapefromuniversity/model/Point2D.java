@@ -23,4 +23,14 @@ public class Point2D {
 		return y;
 	}
 	
+	public Point2D multiplication(final double mul) {
+		return new Point2D(this.x*mul, this.y*mul);
+	}
+	
+	public Point2D sum(final Vector2D vet) {
+		return new Point2D(this.x + vet.getX(), this.y + vet.getY());
+	}
+	
+	
+	
 }

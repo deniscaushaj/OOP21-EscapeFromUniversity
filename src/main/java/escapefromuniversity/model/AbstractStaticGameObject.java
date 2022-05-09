@@ -1,6 +1,6 @@
 package escapefromuniversity.model;
 
-public class AbstractStaticGameObject implements StaticGameObject{
+public abstract class AbstractStaticGameObject implements StaticGameObject{
 	
 	private int id;
 	private final GameObjectType type;
@@ -31,5 +31,13 @@ public class AbstractStaticGameObject implements StaticGameObject{
 	public GameObjectType getType() {
 		return this.type;
 	}
+    
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public abstract void collisionWith(GameObject gObj2);
+
+	
 
 }

@@ -10,4 +10,6 @@ public interface GameObject {
 	
 	GameObjectType getType();
 	
+	void collisionWith(GameObject gObj2);
+	
 }
