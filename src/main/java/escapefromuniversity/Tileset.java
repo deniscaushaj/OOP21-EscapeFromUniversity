@@ -28,4 +28,14 @@ public class Tileset {
     public int getRows() {
         return this.rows;
     }
+
+    @Override
+    public String toString() {
+        return "Tileset{" +
+                "fileName='" + fileName + '\'' +
+                ", tilesCount=" + tilesCount +
+                ", columns=" + columns +
+                ", rows=" + rows +
+                '}';
+    }
 }
