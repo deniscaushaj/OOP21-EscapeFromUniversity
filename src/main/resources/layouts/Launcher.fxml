@@ -1,34 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<Pane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: blue;" stylesheets="@../Style.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/" fx:controller="escapefromuniversity.LauncherController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: beige;" styleClass="anchor" stylesheets="@../Style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="escapefromuniversity.LauncherController">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+      <VBox alignment="CENTER" cacheShape="false" centerShape="false" prefHeight="400.0" prefWidth="600.0" spacing="15.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Escape From University" textAlignment="CENTER" wrappingWidth="600.0" VBox.vgrow="ALWAYS">
-                     <font>
-                        <Font name="Bodoni MT Black" size="45.0" />
-                     </font>
-                  </Text>
-               </children>
-            </VBox>
-         </children>
-      </AnchorPane>
-      <VBox alignment="CENTER" layoutX="206.0" layoutY="112.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0">
-         <children>
-            <Button id="newGame" fx:id="newGameButton" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#newGame" style="-fx-background-color: blue;" styleClass="launcherItem" text="New Game" VBox.vgrow="ALWAYS">
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="600.0" style="-fx-background-color: transparent;" text="Escape From University">
                <font>
-                  <Font name="Bodoni MT Black" size="24.0" />
+                  <Font name="OCR A Extended" size="40.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+            </Button>
+            <Button id="newGame" fx:id="newGameButton1" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#newGame" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="New Game" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font name="OCR A Extended" size="24.0" />
                </font>
                <opaqueInsets>
                   <Insets />
@@ -36,23 +30,39 @@
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
+               <styleClass>
+                  <String fx:value="launcherItem" />
+                  <String fx:value="bt" />
+               </styleClass>
             </Button>
-            <Button id="leaderboard" fx:id="leaderboardButton" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#leaderboard" style="-fx-background-color: blue;" styleClass="launcherItem" text="Leaderboard" VBox.vgrow="ALWAYS">
+            <Button id="leaderboard" fx:id="leaderboardButton1" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#leaderboard" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="Leaderboard" textAlignment="CENTER" VBox.vgrow="ALWAYS">
                <font>
-                  <Font name="Bodoni MT Black" size="24.0" />
+                  <Font name="OCR A Extended" size="24.0" />
                </font>
+               <styleClass>
+                  <String fx:value="launcherItem" />
+                  <String fx:value="bt" />
+               </styleClass>
             </Button>
-            <Button fx:id="creditsButton" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#credits" style="-fx-background-color: blue;" styleClass="launcherItem" text="Credits" VBox.vgrow="ALWAYS">
+            <Button fx:id="creditsButton1" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#credits" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="Credits" textAlignment="CENTER" VBox.vgrow="ALWAYS">
                <font>
-                  <Font name="Bodoni MT Black" size="24.0" />
+                  <Font name="OCR A Extended" size="24.0" />
                </font>
+               <styleClass>
+                  <String fx:value="launcherItem" />
+                  <String fx:value="bt" />
+               </styleClass>
             </Button>
-            <Button id="exit" fx:id="exitButton" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onMouseClicked="#exit" style="-fx-background-color: blue;" styleClass="launcherItem" text="Exit" VBox.vgrow="ALWAYS">
+            <Button id="exit" fx:id="exitButton1" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onMouseClicked="#exit" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="Exit" textAlignment="CENTER" VBox.vgrow="ALWAYS">
                <font>
-                  <Font name="Bodoni MT Black" size="24.0" />
+                  <Font name="OCR A Extended" size="24.0" />
                </font>
+               <styleClass>
+                  <String fx:value="launcherItem" />
+                  <String fx:value="bt" />
+               </styleClass>
             </Button>
          </children>
       </VBox>
    </children>
-</Pane>
+</AnchorPane>

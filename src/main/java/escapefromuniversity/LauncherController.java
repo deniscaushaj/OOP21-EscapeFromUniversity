@@ -1,5 +1,6 @@
 package escapefromuniversity;
 
+import escapefromuniversity.model.LauncherResizer;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,7 +38,7 @@ public class LauncherController {
     void credits(ActionEvent event) { //creditsButton
     	try {
     		Parent creditsRoot = FXMLLoader.load(getClass().getResource("/layouts/Credits.fxml"));
-	        Scene credits = new Scene(creditsRoot);
+	        Scene credits = new Scene(creditsRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
 	        LauncherView.launcherWindow.setScene(credits);
     	} catch (Exception e) {
     		System.out.println(e);
