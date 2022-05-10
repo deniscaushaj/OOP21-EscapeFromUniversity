@@ -27,5 +27,13 @@ public class Layer {
     public String getName() {
         return this.name;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Layer{" +
+                "properties=" + properties +
+                ", name='" + name + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }
