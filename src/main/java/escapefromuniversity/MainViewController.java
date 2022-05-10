@@ -24,12 +24,12 @@ public class MainViewController {
         Image image = new Image(getClass().getResourceAsStream("/images/map.png"));
         gc.drawImage(image, 0, 0, 400, 400);*/
         
-        final var prova = new TMXMapParser(getClass().getResourceAsStream("/map/map2.tmx"));
+        /*final var prova = new TMXMapParser(getClass().getResourceAsStream("/map/map2.tmx"));
         try {
             System.out.println(prova.parse());
         } catch (ParserConfigurationException | SAXException | IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
+        }*/
     }
 }
