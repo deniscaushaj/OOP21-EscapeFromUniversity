@@ -8,11 +8,11 @@ public class MapProperties {
     private final int height;
     private final int tilewidth;
     private final int tileheight;
-    private final List<List<Integer>> layers;
-    private final List<String> tilesets;
+    private final List<Layer> layers;
+    private final List<Tileset> tilesets;
 
     public MapProperties(final int width, final int height, final int tilewidth, final int tileheight,
-                         final List<List<Integer>> layers, final List<String> tilesets) {
+                         final List<Layer> layers, final List<Tileset> tilesets) {
         this.width = width;
         this.height = height;
         this.tilewidth = tilewidth;
@@ -37,11 +37,11 @@ public class MapProperties {
         return this.tileheight;
     }
 
-    public List<List<Integer>> getLayers() {
+    public List<Layer> getLayers() {
         return this.layers;
     }
 
-    public List<String> getTilesets() {
+    public List<Tileset> getTilesets() {
         return this.tilesets;
     }
 
