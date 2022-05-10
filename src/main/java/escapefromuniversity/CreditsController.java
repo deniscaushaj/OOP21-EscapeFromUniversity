@@ -1,10 +1,9 @@
 package escapefromuniversity;
 
-import java.awt.Desktop;
 import java.io.IOException;
-import java.net.URI;
 import java.net.URISyntaxException;
 
+import escapefromuniversity.model.OSFixes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -37,16 +36,17 @@ public class CreditsController {
     
     @FXML
     void openLink(ActionEvent event) throws URISyntaxException, IOException {
+    	OSFixes osFixes = new OSFixes();
     	if (event.getSource().equals(daniel)) {
-    		Desktop.getDesktop().browse(new URI("https://github.com/DanielCapannini"));
+    		osFixes.openUrl("https://github.com/DanielCapannini");
     	} else if (event.getSource().equals(denis)) {
-    		Desktop.getDesktop().browse(new URI("https://github.com/deniscaushaj"));
+    		osFixes.openUrl("https://github.com/deniscaushaj");
     	} else if (event.getSource().equals(emanuele)) {
-    		Desktop.getDesktop().browse(new URI("https://github.com/brtmnl"));
+    		osFixes.openUrl("https://github.com/brtmnl");
     	} else if (event.getSource().equals(marco)) {
-    		Desktop.getDesktop().browse(new URI("https://github.com/MarcoAntolini"));
+    		osFixes.openUrl("https://github.com/MarcoAntolini");
     	} else if(event.getSource().equals(tileset)) {
-            Desktop.getDesktop().browse(new URI("https://limezu.itch.io/"));
+    		osFixes.openUrl("https://limezu.itch.io/");
         }
     }
 
