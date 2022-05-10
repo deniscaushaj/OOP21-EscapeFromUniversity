@@ -1,8 +1,6 @@
 package escapefromuniversity;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -16,17 +14,17 @@ import org.xml.sax.SAXException;
 
 public class TMXMapParser {
     
-    private final InputStream mapFile;
-    
-    public TMXMapParser(final InputStream mapFile) {
-        this.mapFile = mapFile;
+    private final String mapName;
+
+    public TMXMapParser(final String mapName) {
+        this.mapName = mapName;
     }
     
     public MapProperties parse() throws ParserConfigurationException, SAXException, IOException {
         final var factory = DocumentBuilderFactory.newInstance();
         final var builder = factory.newDocumentBuilder();
         
-        final var doc = builder.parse(this.mapFile);
+        final var doc = builder.parse(ClassLoader.getSystemResourceAsStream(mapName));
         final var mapNode = doc.getElementsByTagName("map").item(0);
         
         final var attributes = mapNode.getAttributes();
@@ -35,16 +33,45 @@ public class TMXMapParser {
         final var h = Integer.parseInt(attributes.getNamedItem("height").getTextContent());
         final var tw = Integer.parseInt(attributes.getNamedItem("tilewidth").getTextContent());
         final var th = Integer.parseInt(attributes.getNamedItem("tileheight").getTextContent());
+
         final var layerNodes = doc.getElementsByTagName("layer");
         final var layerStream = streamParse(layerNodes);
 
         final var tilesets = doc.getElementsByTagName("tileset");
+        final var tilesetsStream = streamParse(tilesets);
 
-        return new MapProperties(w, h, tw, th, null, null);
+        final var ti = tilesetsStream.map(t -> tilesetNodeFromName(
+                t.getAttributes().getNamedItem("source").getTextContent()));
+
+        return new MapProperties(w, h, tw, th,
+                layerStream.map(this::parseLayer).collect(Collectors.toList()),
+                ti.map(this::parseTileset).collect(Collectors.toList()));
     }
-    
+
+    private Node tilesetNodeFromName(String tilesetName) {
+        try {
+            final var factory = DocumentBuilderFactory.newInstance();
+            final var builder = factory.newDocumentBuilder();
+            final var tName = builder.parse(ClassLoader.getSystemResourceAsStream(tilesetName));
+
+            return tName.getElementsByTagName("tileset").item(0);
+        } catch (ParserConfigurationException | IOException | SAXException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private Tileset parseTileset(final Node tileset) {
+        final var children = streamParse(tileset.getChildNodes());
+        final var path = children.filter(p -> "image source".equals(p.getNodeName())).findFirst().get().getTextContent();
+        final var tilesCount = Integer.parseInt(tileset.getAttributes().getNamedItem("tilecount").getTextContent());
+        final var cols = Integer.parseInt(tileset.getAttributes().getNamedItem("columns").getTextContent());
+
+        return new Tileset(path, tilesCount, cols);
+    }
+
     private Layer parseLayer(final Node node) {
         final var children = streamParse(node.getChildNodes());
+        // TODO (Denis): Check if there's a value for properties and data
         final var propsNode = children.filter(e -> "properties".equals(e.getNodeName())).findFirst().get();
         final var data = children.filter(e -> "data".equals(e.getNodeName())).findFirst().get();
         final var name = node.getAttributes().getNamedItem("name").getTextContent();
