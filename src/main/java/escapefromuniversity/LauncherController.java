@@ -8,6 +8,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 
 public class LauncherController {
     
@@ -25,7 +29,13 @@ public class LauncherController {
 
     @FXML
     void newGame(ActionEvent event) {
-
+        final var prova = new TMXMapParser("final-map.tmx");
+        try {
+            System.out.println(prova.parse());
+        } catch (ParserConfigurationException | SAXException | IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
     
     @FXML
