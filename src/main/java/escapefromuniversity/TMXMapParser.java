@@ -1,7 +1,9 @@
 package escapefromuniversity;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -62,7 +64,12 @@ public class TMXMapParser {
 
     private Tileset parseTileset(final Node tileset) {
         final var children = streamParse(tileset.getChildNodes());
-        final var path = children.filter(p -> "image source".equals(p.getNodeName())).findFirst().get().getTextContent();
+        final var path = children.filter(p -> "image".equals(p.getNodeName()))
+                .findFirst()
+                .get()
+                .getAttributes()
+                .getNamedItem("source")
+                .getTextContent();
         final var tilesCount = Integer.parseInt(tileset.getAttributes().getNamedItem("tilecount").getTextContent());
         final var cols = Integer.parseInt(tileset.getAttributes().getNamedItem("columns").getTextContent());
 
@@ -70,18 +77,23 @@ public class TMXMapParser {
     }
 
     private Layer parseLayer(final Node node) {
-        final var children = streamParse(node.getChildNodes());
-        // TODO (Denis): Check if there's a value for properties and data
-        final var propsNode = children.filter(e -> "properties".equals(e.getNodeName())).findFirst().get();
-        final var data = children.filter(e -> "data".equals(e.getNodeName())).findFirst().get();
+        final var children = streamParse(node.getChildNodes()).collect(Collectors.toList());
+        final var data = children.stream().filter(e -> "data".equals(e.getNodeName())).findFirst().get();
         final var name = node.getAttributes().getNamedItem("name").getTextContent();
-        //All the layers have the same width and weight of the map, so I don't need to get their sizes
-        final var list = streamParse(propsNode.getChildNodes())
+
+        List<String> list = new ArrayList<>();
+        final var control = children.stream().filter(e -> "properties".equals(e.getNodeName())).findFirst();
+        if(control.isPresent()){
+            final var propsNode = control.get();
+            list = streamParse(propsNode.getChildNodes())
+                    .filter(p -> "property".equals(p.getNodeName()))
                 .filter(e -> "true".equals(e.getAttributes().getNamedItem("value").getTextContent()))
                 .map(e -> e.getAttributes().getNamedItem("name").getTextContent())
                 .collect(Collectors.toList());
+        }
         final var rows = data.getTextContent().split("\n");
         final var columns = Arrays.stream(rows)
+                .filter(e -> !e.equals(""))
                 .map(r -> r.split(","))
                 .map(p -> Arrays.stream(p)
                         .map(Integer::parseInt)
