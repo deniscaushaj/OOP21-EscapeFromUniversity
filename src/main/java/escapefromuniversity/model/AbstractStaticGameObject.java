@@ -5,10 +5,12 @@ public abstract class AbstractStaticGameObject implements StaticGameObject{
 	private int id;
 	private final GameObjectType type;
 	private final Point2D position;
+	private final HitBoxImpl box;
 	
-	public AbstractStaticGameObject(GameObjectType type, Point2D position) {
+	public AbstractStaticGameObject(GameObjectType type, Point2D position, Point2D upperCorner) {
 		this.type = type;
 		this.position = position;
+		this.box = new HitBoxImpl(position, upperCorner);
 	}
 	
 	@Override
@@ -32,11 +34,15 @@ public abstract class AbstractStaticGameObject implements StaticGameObject{
 		return this.type;
 	}
     
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
-	public abstract void collisionWith(GameObject gObj2);
+	public boolean collisionWith(final GameObject gObj2) {
+		return this.getObjectHitBox().isColliding(gObj2.getObjectHitBox());
+	}
+	
+	@Override
+	public HitBox getObjectHitBox() {
+		return new HitBoxImpl(this.box);
+	}
 
 	
 

@@ -7,12 +7,14 @@ public abstract class AbstractDynamicGameObject implements DynamicGameObject {
 	private final int speed;
 	private Vector2D direction;
 	private Point2D position;
+	private final HitBoxImpl box;
 
-	public AbstractDynamicGameObject(final GameObjectType type, final Point2D position, final int speed, final Vector2D direction) {
+	public AbstractDynamicGameObject(final GameObjectType type, final Point2D position, Point2D upperCorner, final int speed, final Vector2D direction) {
 		this.type = type;
 		this.position = position;
 		this.speed = speed;
 		this.direction = direction;
+		this.box = new HitBoxImpl(position, upperCorner);
 	}
 	
 	public Point2D getObjectPosition() {
@@ -27,7 +29,6 @@ public abstract class AbstractDynamicGameObject implements DynamicGameObject {
 	@Override
 	public void setID(final int id) {
 		this.id = id;
-		
 	}
 
 	@Override
@@ -59,6 +60,16 @@ public abstract class AbstractDynamicGameObject implements DynamicGameObject {
 	
 	public void move(final double deltaTime) {
 		this.setPosition(this.getObjectPosition().sum(getDirection().multiplication(this.speed).multiplication(deltaTime)));
+	}
+	
+	@Override
+	public boolean collisionWith(final GameObject gObj2) {
+		return this.getObjectHitBox().isColliding(gObj2.getObjectHitBox());
+	}
+	
+	@Override
+	public HitBox getObjectHitBox() {
+		return new HitBoxImpl(this.box);
 	}
 
 }

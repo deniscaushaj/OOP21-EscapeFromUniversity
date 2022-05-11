@@ -9,5 +9,7 @@ public interface HitBox {
 	public double getHeight();
 	
 	public double getWidth();
+	
+	public boolean isColliding(HitBox box);
 
 }

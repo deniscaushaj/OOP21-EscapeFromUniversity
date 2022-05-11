@@ -2,6 +2,8 @@ package escapefromuniversity.model;
 
 public interface GameObject {
 	
+	HitBox getObjectHitBox();
+	
 	Point2D getObjectPosition();
 	
 	int getID();
@@ -10,6 +12,7 @@ public interface GameObject {
 	
 	GameObjectType getType();
 	
-	void collisionWith(GameObject gObj2);
+	boolean collisionWith(GameObject gObj2);
+	
 	
 }

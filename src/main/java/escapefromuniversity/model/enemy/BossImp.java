@@ -11,8 +11,8 @@ public class BossImp extends AbstractDynamicGameObject implements Boss{
 	private int life;
 	private final double shootDelay;
 	
-	public BossImp(final int speed, final Point2D position, final Vector2D direction, final GameObjectType type, final int life, final double shootDelay) {
-		super(type, position, speed, direction);
+	public BossImp(final int speed, final Point2D position, final Point2D upperCorner, final Vector2D direction, final GameObjectType type, final int life, final double shootDelay) {
+		super(type, position, upperCorner, speed, direction);
 		this.life = life;
 		this.shootDelay = shootDelay;
 	}
@@ -31,12 +31,6 @@ public class BossImp extends AbstractDynamicGameObject implements Boss{
 	@Override
 	public void takeDamage(int damage) {
 		this.life = this.life - damage;
-		
-	}
-
-	@Override
-	public void collisionWith(GameObject gObj2) {
-		// TODO Auto-generated method stub
 		
 	}
 

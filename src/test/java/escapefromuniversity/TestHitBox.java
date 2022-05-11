@@ -3,6 +3,7 @@ package escapefromuniversity;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -39,6 +40,14 @@ public class TestHitBox {
 		HitBoxImpl box = new HitBoxImpl(new Point2D(0.568,0.5), new Point2D(6.74, 7.89));
 		assertEquals(new Double(7.39), box.getHeight());
 		assertEquals(new Double(6.172), box.getWidth());
+	}
+	
+	@Test
+	public void testCollisions() {
+		HitBoxImpl box1 = new HitBoxImpl(new Point2D(1.5,1), new Point2D(5, 4.5));
+		HitBoxImpl box2 = new HitBoxImpl(new Point2D(2.5,2), new Point2D(4, 4));
+		assertTrue(box1.isColliding(box2));
+		
 	}
 	
 
