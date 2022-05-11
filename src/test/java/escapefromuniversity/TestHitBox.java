@@ -44,8 +44,8 @@ public class TestHitBox {
 	
 	@Test
 	public void testCollisions() {
-		HitBoxImpl box1 = new HitBoxImpl(new Point2D(1.5,1), new Point2D(5, 4.5));
-		HitBoxImpl box2 = new HitBoxImpl(new Point2D(2.5,2), new Point2D(4, 4));
+		HitBoxImpl box1 = new HitBoxImpl(new Point2D(2,1), new Point2D(5, 5));
+		HitBoxImpl box2 = new HitBoxImpl(new Point2D(6,3), new Point2D(7, 4));
 		assertTrue(box1.isColliding(box2));
 		
 	}

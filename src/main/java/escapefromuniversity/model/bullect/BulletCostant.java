@@ -1,7 +1,10 @@
 package escapefromuniversity.model.bullect;
 
+import escapefromuniversity.model.Point2D;
+
 public class BulletCostant {
 	
+	protected final static Point2D BULLET_BOX_OCCUPATION = new Point2D(3,1);
 	
 	protected static final int PROTAGONIST_BULLET_SPEED = 0;
 	protected static final int BOSS_1_BULLET_SPEED = 0;
