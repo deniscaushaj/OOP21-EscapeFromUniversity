@@ -1,43 +1,31 @@
 package escapefromuniversity.model;
 
-import java.awt.Desktop;
-import java.awt.Desktop.Action;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 public class OSFixes {
 	
-	public static String os = System.getProperty("os.name").toLowerCase();
+	public final static String FS = System.getProperty("file.separator");
+	public final static String UD = System.getProperty("user.dir");
+	private final static String OS = System.getProperty("os.name").toLowerCase();
 	
 	public void openUrl(String url) {
-		
-		if(Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Action.BROWSE)) {
+		if (OSFixes.OS.contains("win")) { // Windows
 			try {
-				Desktop.getDesktop().browse(new URI(url));
-			} catch (IOException | URISyntaxException e) {
+				new ProcessBuilder("rundll32 url.dll,FileProtocolHandler ", url).start();
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		} else { 
-			Runtime runtime = Runtime.getRuntime();
-			if (OSFixes.os.indexOf("win") >= 0) { // Windows
-				try {
-					runtime.exec("rundll32 url.dll,FileProtocolHandler " + url);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			} else if (OSFixes.os.indexOf("mac") >= 0) { // MacOs
-				try {
-					runtime.exec("open" + url);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			} else if (OSFixes.os.indexOf("nix") >= 0 || OSFixes.os.indexOf("nux") >= 0) { // Linux
-				try {
-					runtime.exec("xdg-open" + url);
-				} catch (IOException e){
-					e.printStackTrace();
-				}
+		} else if (OSFixes.OS.contains("mac")) { // MacOs
+			try {
+				new ProcessBuilder("open ", url).start();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else if (OSFixes.OS.contains("nix") || OSFixes.OS.contains("nux")) { // Linux
+			try {
+				new ProcessBuilder("xdg-open ", url).start();
+			} catch (IOException e){
+				e.printStackTrace();
 			}
 		}
 	}
