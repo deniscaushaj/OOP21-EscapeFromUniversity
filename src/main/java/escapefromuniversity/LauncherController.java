@@ -1,6 +1,11 @@
 package escapefromuniversity;
 
 import escapefromuniversity.model.LauncherResizer;
+import escapefromuniversity.model.OSFixes;
+
+import java.io.File;
+import java.net.URL;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,16 +18,7 @@ import javafx.scene.input.MouseEvent;
 public class LauncherController {
     
 	@FXML
-    private Button creditsButton;
-
-    @FXML
-    private Button exitButton;
-
-    @FXML
-    private Button leaderboardButton;
-
-    @FXML
-    private Button newGameButton;
+    private Button creditsButton, exitButton, leaderboardButton, newGameButton;
 
     @FXML
     void newGame(ActionEvent event) {
@@ -37,7 +33,10 @@ public class LauncherController {
     @FXML	
     void credits(ActionEvent event) { //creditsButton
     	try {
-    		Parent creditsRoot = FXMLLoader.load(getClass().getResource("/layouts/Credits.fxml"));
+    		FXMLLoader loader = new FXMLLoader();
+    		URL fileLocation = new File(OSFixes.getLocation("layouts","Credits.fxml")).toURI().toURL();
+    		loader.setLocation(fileLocation);
+    		Parent creditsRoot = loader.load();
 	        Scene credits = new Scene(creditsRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
 	        LauncherView.launcherWindow.setScene(credits);
     	} catch (Exception e) {

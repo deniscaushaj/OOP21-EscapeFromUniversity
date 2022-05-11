@@ -9,25 +9,33 @@ public class OSFixes {
 	private final static String OS = System.getProperty("os.name").toLowerCase();
 	
 	public void openUrl(String url) {
-		if (OSFixes.OS.contains("win")) { // Windows
+		// Windows:
+		if (OS.contains("win")) {
 			try {
 				new ProcessBuilder("rundll32 url.dll,FileProtocolHandler ", url).start();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		} else if (OSFixes.OS.contains("mac")) { // MacOs
+		// MacOs:
+		} else if (OS.contains("mac")) {
 			try {
 				new ProcessBuilder("open ", url).start();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		} else if (OSFixes.OS.contains("nix") || OSFixes.OS.contains("nux")) { // Linux
+		// Linux:
+		} else if (OS.contains("nix") || OS.contains("nux")) {
 			try {
 				new ProcessBuilder("xdg-open ", url).start();
 			} catch (IOException e){
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public static String getLocation(String folderName, String fileName) {
+		String resLocation = new String(UD + FS + "src" + FS + "main" + FS + "resources" + FS + folderName + FS + fileName);
+		return resLocation;
 	}
 	
 }
