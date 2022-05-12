@@ -18,17 +18,26 @@ public class BulletImp extends AbstractDynamicGameObject implements Bullet{
 		this.damage = damage;
 	}
     
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int getDamage() {
 		return this.damage;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void update(double deltaTime) {
 		this.move(deltaTime);
 		
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void collisionWith(GameObject gObj2) {
 		if(this.collisionWithCheck(gObj2)) {
