@@ -14,5 +14,7 @@ public interface GameObject {
 	
 	void collisionWith(GameObject gObj2);
 	
+	public boolean collisionWithCheck(final GameObject gObj2);
+	
 	
 }

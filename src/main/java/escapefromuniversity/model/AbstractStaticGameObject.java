@@ -35,9 +35,12 @@ public abstract class AbstractStaticGameObject implements StaticGameObject{
 	}
     
 	@Override
-	public boolean collisionWith(final GameObject gObj2) {
+	public boolean collisionWithCheck(final GameObject gObj2) {
 		return this.getObjectHitBox().isColliding(gObj2.getObjectHitBox());
 	}
+	
+	@Override
+	public abstract void collisionWith(final GameObject gObj2);
 	
 	@Override
 	public HitBox getObjectHitBox() {

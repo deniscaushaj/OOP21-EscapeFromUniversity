@@ -62,10 +62,11 @@ public abstract class AbstractDynamicGameObject implements DynamicGameObject {
 		this.setPosition(this.getObjectPosition().sum(getDirection().multiplication(this.speed).multiplication(deltaTime)));
 	}
 	
-	public boolean collisionWithCont(final GameObject gObj2) {
+	public boolean collisionWithCheck(final GameObject gObj2) {
 		return this.getObjectHitBox().isColliding(gObj2.getObjectHitBox());
 	}
 	
+	@Override
 	public abstract void collisionWith(final GameObject gObj2);
 	
 	@Override

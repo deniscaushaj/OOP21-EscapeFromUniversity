@@ -40,4 +40,10 @@ public class BossImp extends AbstractDynamicGameObject implements Boss{
 		
 	}
 
+	@Override
+	public void collisionWith(GameObject gObj2) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -31,7 +31,7 @@ public class BulletImp extends AbstractDynamicGameObject implements Bullet{
 
 	@Override
 	public void collisionWith(GameObject gObj2) {
-		if(this.collisionWithCont(gObj2)) {
+		if(this.collisionWithCheck(gObj2)) {
 			return;
 		}
 		switch(gObj2.getType().getCollisionType()) {
