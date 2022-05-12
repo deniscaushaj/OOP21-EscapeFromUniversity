@@ -1,16 +1,30 @@
 package escapefromuniversity.model;
 
 public enum GameObjectType {
-	PLAYER,
-	TEACHER,
-	WALL,
-	DOOR,
-	COIN,
-	BULLET_PROTAGINIST,
-	BULLET_BOSS_1,
-	BULLET_BOSS_2,
-	BULLET_BOSS_3,
-	BULLET_BOSS_4,
-	BULLET_BOSS_5,
-	BULLET_BOSS_6;
+	PLAYER(GameCollisionType.ENTITY),
+	TEACHER(GameCollisionType.ENTITY),
+	WALL(GameCollisionType.OBSTACLE),
+	DOOR(GameCollisionType.OBSTACLE),
+	COIN(GameCollisionType.OBSTACLE),
+	BULLET_PROTAGINIST(GameCollisionType.BULLET),
+	BULLET_BOSS_1(GameCollisionType.BULLET),
+	BULLET_BOSS_2(GameCollisionType.BULLET),
+	BULLET_BOSS_3(GameCollisionType.BULLET),
+	BULLET_BOSS_4(GameCollisionType.BULLET),
+	BULLET_BOSS_5(GameCollisionType.BULLET),
+	BULLET_BOSS_6(GameCollisionType.BULLET);
+	
+	private GameCollisionType collisionType;
+
+	GameObjectType(GameCollisionType collisionType) {
+		this.setCollisionType(collisionType);
+	}
+
+	public GameCollisionType getCollisionType() {
+		return collisionType;
+	}
+
+	public void setCollisionType(GameCollisionType collisionType) {
+		this.collisionType = collisionType;
+	}
 }
