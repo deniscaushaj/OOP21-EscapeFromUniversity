@@ -12,7 +12,7 @@ public interface GameObject {
 	
 	GameObjectType getType();
 	
-	boolean collisionWith(GameObject gObj2);
+	void collisionWith(GameObject gObj2);
 	
 	
 }
