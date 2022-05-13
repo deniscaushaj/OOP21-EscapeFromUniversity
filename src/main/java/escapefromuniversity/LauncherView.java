@@ -36,7 +36,7 @@ public final class LauncherView extends Application{
         Image logo = new Image("file:src/main/resources/images/logo.png");
         stage.getIcons().add(logo);
         stage.show();
-        LauncherView.launcherWindow = stage;
+        launcherWindow = stage;
 	}
 	
 	public static void createLauncher(final String[] args) {
