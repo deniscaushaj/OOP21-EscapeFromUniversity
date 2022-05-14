@@ -12,12 +12,14 @@ public class BossImp extends AbstractDynamicGameObject implements Boss{
 	private final long shootDelay;
 	private long shootLastTime;
 	private BossState state;
+	private int impatDamage;
 	
-	public BossImp(final int speed, final Point2D position, final Point2D upperCorner, final Vector2D direction, final GameObjectType type, final int life, final long shootDelay) {
+	public BossImp(final int speed, final Point2D position, final Point2D upperCorner, final Vector2D direction, final GameObjectType type, final int life, final long shootDelay, final int impatDamage) {
 		super(type, position, upperCorner, speed, direction);
 		this.life = life;
 		this.shootDelay = shootDelay;
 		this.state = BossState.QUIZ;
+		this.impatDamage = impatDamage;
 	}
 
 	@Override
@@ -57,6 +59,7 @@ public class BossImp extends AbstractDynamicGameObject implements Boss{
 		if(this.state.equals(BossState.FIGHT)) {
 			this.maybeShoot();
 			this.move(deltaTime);
+			//modificare direzione in base al protagonista
 		}
 	}
 
@@ -64,6 +67,11 @@ public class BossImp extends AbstractDynamicGameObject implements Boss{
 	public void collisionWith(GameObject gObj2) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public int getDamage() {
+		return this.impatDamage;
 	}
 
 }
