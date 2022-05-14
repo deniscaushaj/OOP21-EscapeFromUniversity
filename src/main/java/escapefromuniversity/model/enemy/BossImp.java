@@ -65,8 +65,21 @@ public class BossImp extends AbstractDynamicGameObject implements Boss{
 
 	@Override
 	public void collisionWith(GameObject gObj2) {
-		// TODO Auto-generated method stub
-		
+		if(this.collisionWithCheck(gObj2)) {
+			switch(gObj2.getType().getCollisionType()) {
+			case OBSTACLE:
+				//torno alla posizione precedente
+				break;
+			case ENTITY:
+				if(gObj2.getType().equals(GameObjectType.PLAYER)) {
+					//fare danno al protagonista
+				}
+				//torno alla posizione precedente
+				break;
+			default:
+				break;
+			}
+		}
 	}
 
 	@Override
