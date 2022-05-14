@@ -11,11 +11,13 @@ public class BossImp extends AbstractDynamicGameObject implements Boss{
 	private int life;
 	private final long shootDelay;
 	private long shootLastTime;
+	private BossState state;
 	
 	public BossImp(final int speed, final Point2D position, final Point2D upperCorner, final Vector2D direction, final GameObjectType type, final int life, final long shootDelay) {
 		super(type, position, upperCorner, speed, direction);
 		this.life = life;
 		this.shootDelay = shootDelay;
+		this.state = BossState.QUIZ;
 	}
 
 	@Override
@@ -52,8 +54,10 @@ public class BossImp extends AbstractDynamicGameObject implements Boss{
 
 	@Override
 	public void update(double deltaTime) {
-		// TODO Auto-generated method stub
-		
+		if(this.state.equals(BossState.FIGHT)) {
+			this.maybeShoot();
+			this.move(deltaTime);
+		}
 	}
 
 	@Override
