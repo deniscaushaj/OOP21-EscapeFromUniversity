@@ -6,17 +6,11 @@ import escapefromuniversity.model.Vector2D;
 
 public interface BossFactory {
 	
-	Enemy createBoss1(int speed, Point2D position, Point2D upperCorner, Vector2D direction, GameObjectType type, int life, long shootDelay, int impatDamage);
+	Enemy createBoss1(Point2D position, Vector2D direction);
 	
-	
-	Enemy createBoss2(int speed, Point2D position, Point2D upperCorner, Vector2D direction, GameObjectType type, int life, long shootDelay, int impatDamage);
-	
-	Enemy createBoss3(int speed, Point2D position, Point2D upperCorner, Vector2D direction, GameObjectType type, int life, long shootDelay, int impatDamage);
-	
-	Enemy createBoss4(int speed, Point2D position, Point2D upperCorner, Vector2D direction, GameObjectType type, int life, long shootDelay, int impatDamage);
-	
-	Enemy createBoss5(int speed, Point2D position, Point2D upperCorner, Vector2D direction, GameObjectType type, int life, long shootDelay, int impatDamage);
-	
-	Enemy createBoss6(int speed, Point2D position, Point2D upperCorner, Vector2D direction, GameObjectType type, int life, long shootDelay, int impatDamage);
-
+	Enemy createBoss2(Point2D position, Vector2D direction);
+	Enemy createBoss3(Point2D position, Vector2D direction);
+	Enemy createBoss4(Point2D position, Vector2D direction);
+	Enemy createBoss5(Point2D position, Vector2D direction);
+	Enemy createBoss6(Point2D position, Vector2D direction);
 }
