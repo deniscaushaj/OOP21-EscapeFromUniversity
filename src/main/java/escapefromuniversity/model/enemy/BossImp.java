@@ -6,7 +6,7 @@ import escapefromuniversity.model.GameObjectType;
 import escapefromuniversity.model.Point2D;
 import escapefromuniversity.model.Vector2D;
 
-public class BossImp extends AbstractDynamicGameObject implements Boss{
+public abstract class BossImp extends AbstractDynamicGameObject implements Boss{
 	
 	private int life;
 	private final long shootDelay;
@@ -39,9 +39,7 @@ public class BossImp extends AbstractDynamicGameObject implements Boss{
 		
 	}
 	
-	private void shoot() {
-		
-	}
+	abstract void shoot();
 
 	@Override
 	public int getLife() {
