@@ -2,7 +2,12 @@ package escapefromuniversity.model;
 
 public enum GameObjectType {
 	PLAYER(GameCollisionType.ENTITY),
-	TEACHER(GameCollisionType.ENTITY),
+	BOSS1(GameCollisionType.ENTITY),
+	BOSS2(GameCollisionType.ENTITY),
+	BOSS3(GameCollisionType.ENTITY),
+	BOSS4(GameCollisionType.ENTITY),
+	BOSS5(GameCollisionType.ENTITY),
+	BOSS6(GameCollisionType.ENTITY),
 	WALL(GameCollisionType.OBSTACLE),
 	DOOR(GameCollisionType.OBSTACLE),
 	COIN(GameCollisionType.OBSTACLE),
