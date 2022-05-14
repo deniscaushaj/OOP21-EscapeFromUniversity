@@ -31,6 +31,10 @@ public class Point2D {
 		return new Point2D(this.x + vet.getX(), this.y + vet.getY());
 	}
 	
+	public Point2D sum(final Point2D point) {
+		return new Point2D(this.x + point.getX(), this.y + point.getY());
+	}
+	
 	
 	
 }

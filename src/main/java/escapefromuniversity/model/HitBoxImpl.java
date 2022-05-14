@@ -11,6 +11,12 @@ public class HitBoxImpl implements HitBox{
 		this.bottomLeftCorner = new Point2D(bottomLeftCorner);
 	}
 	
+	public HitBoxImpl(final HitBox box){
+		cornerTest(box.getBottomLeftCorner(), box.getUpperRightCorner());
+		this.upperRightCorner = new Point2D(box.getUpperRightCorner());
+		this.bottomLeftCorner = new Point2D(box.getBottomLeftCorner());
+	}
+	
 	private void cornerTest(final Point2D bottomLeftCorner, final Point2D upperRightCorner) throws IllegalArgumentException{		
 		switch(Double.compare(upperRightCorner.getX(), bottomLeftCorner.getX())) {
 		  case 0:
@@ -46,5 +52,20 @@ public class HitBoxImpl implements HitBox{
 	public double getWidth() {
 		return this.upperRightCorner.getX() - this.bottomLeftCorner.getX();
 	}
+
+	@Override
+	public boolean isColliding(HitBox box) {
+		return (box.getUpperRightCorner().getX() >= (this.getUpperRightCorner().getX()-this.getWidth())
+				&& box.getUpperRightCorner().getX() <=  this.getUpperRightCorner().getX()) || 
+				(box.getUpperRightCorner().getY() >= (this.getUpperRightCorner().getY()-this.getHeight())
+				&& box.getUpperRightCorner().getY() <=  this.getUpperRightCorner().getY()) ||
+				(box.getBottomLeftCorner().getX() >= this.getBottomLeftCorner().getX() 
+				&& box.getBottomLeftCorner().getX() <= (this.getBottomLeftCorner().getX()+this.getWidth())) ||
+				(box.getBottomLeftCorner().getY() >= this.getBottomLeftCorner().getY() 
+				&& box.getBottomLeftCorner().getY() <= this.getBottomLeftCorner().getY()+this.getHeight());
+				
+	}
+	
+	
 
 }
