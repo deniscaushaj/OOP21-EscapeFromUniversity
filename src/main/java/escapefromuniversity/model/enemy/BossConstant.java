@@ -1,6 +1,10 @@
 package escapefromuniversity.model.enemy;
 
+import escapefromuniversity.model.Point2D;
+
 public class BossConstant {
+	
+	protected final static Point2D BOSS_BOX_OCCUPATION = new Point2D(3,1);
 	
 	protected static final int boss1_life = 0;
 	protected static final int boss2_life = 0;
@@ -16,12 +20,12 @@ public class BossConstant {
 	protected static final int boss5_damage = 0;
 	protected static final int boss6_damage = 0;
 	
-	protected static final int boss1_shootDelay = 0;
-	protected static final int boss2_shootDelay = 0;
-	protected static final int boss3_shootDelay = 0;
-	protected static final int boss4_shootDelay = 0;
-	protected static final int boss5_shootDelay = 0;
-	protected static final int boss6_shootDelay = 0;
+	protected static final long boss1_shootDelay = 0;
+	protected static final long boss2_shootDelay = 0;
+	protected static final long boss3_shootDelay = 0;
+	protected static final long boss4_shootDelay = 0;
+	protected static final long boss5_shootDelay = 0;
+	protected static final long boss6_shootDelay = 0;
 	
 	protected static final int boss1_speed = 0;
 	protected static final int boss2_speed = 0;

@@ -1,6 +1,5 @@
 package escapefromuniversity.model.enemy;
 
-import escapefromuniversity.model.GameObjectType;
 import escapefromuniversity.model.Point2D;
 import escapefromuniversity.model.Vector2D;
 
