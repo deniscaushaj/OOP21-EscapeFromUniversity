@@ -9,9 +9,10 @@ import escapefromuniversity.model.Vector2D;
 public class BossImp extends AbstractDynamicGameObject implements Boss{
 	
 	private int life;
-	private final double shootDelay;
+	private final long shootDelay;
+	private long shootLastTime;
 	
-	public BossImp(final int speed, final Point2D position, final Point2D upperCorner, final Vector2D direction, final GameObjectType type, final int life, final double shootDelay) {
+	public BossImp(final int speed, final Point2D position, final Point2D upperCorner, final Vector2D direction, final GameObjectType type, final int life, final long shootDelay) {
 		super(type, position, upperCorner, speed, direction);
 		this.life = life;
 		this.shootDelay = shootDelay;
@@ -19,7 +20,22 @@ public class BossImp extends AbstractDynamicGameObject implements Boss{
 
 	@Override
 	public void maybeShoot() {
-		// TODO Auto-generated method stub
+		if(this.canShoot()) {
+			this.shoot();
+		}
+		
+	}
+	
+	private boolean canShoot() {
+		if(System.currentTimeMillis() - this.shootLastTime > this.shootDelay) {
+			this.shootLastTime = System.currentTimeMillis();
+			return true;
+		}
+		return false;
+		
+	}
+	
+	private void shoot() {
 		
 	}
 
