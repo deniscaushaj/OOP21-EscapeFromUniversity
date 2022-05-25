@@ -7,6 +7,7 @@ import escapefromuniversity.model.GameObjectType;
 import escapefromuniversity.model.Point2D;
 import escapefromuniversity.model.Vector2D;
 import escapefromuniversity.model.enemy.Enemy;
+import model.player.Player;
 
 public class BulletImp extends AbstractDynamicGameObject implements Bullet{
 	
@@ -45,35 +46,36 @@ public class BulletImp extends AbstractDynamicGameObject implements Bullet{
 		}
 		switch(gObj2.getType().getCollisionType()) {
 		case OBSTACLE:
-			//delete this object
+			this.getRoom().deleteGameObject(this);
 			break;
 		case BULLET:
 			if(this.getType().getCollisionType().equals(GameCollisionType.IMMUNE_BULLET)) {
-				//delete gObj2
+				this.getRoom().deleteGameObject(gObj2);
 			}
 			break;
 		case IMMUNE_BULLET:
 			if(this.getType().getCollisionType().equals(GameCollisionType.BULLET)) {
-				//delete this object
+				this.getRoom().deleteGameObject(this);
 			}
 			break;
 		case ENTITY:
 			if(gObj2.getType().equals(GameObjectType.PLAYER) && !this.getType().equals(GameObjectType.BULLET_PROTAGINIST)) {
-				//fare danno al protagonista
-				//delete this object
+				final Player player = (Player) gObj2;
+				player.takeDamage(this.getDamage());
+				this.getRoom().deleteGameObject(this);
 			}else if(!gObj2.getType().equals(GameObjectType.PLAYER) && 
 					 this.getType().equals(GameObjectType.BULLET_PROTAGINIST)) {
 				final Enemy enemy = (Enemy) gObj2;
 				enemy.takeDamage(this.getDamage());
-				//delete this object
+				this.getRoom().deleteGameObject(this);
 			}
 			break;
 		case IMMUNE_ENTITY:
 			if(gObj2.getType().equals(GameObjectType.PLAYER) && !this.getType().equals(GameObjectType.BULLET_PROTAGINIST)) {
-				//delete this object
+				this.getRoom().deleteGameObject(this);
 			}else if(!gObj2.getType().equals(GameObjectType.PLAYER) && 
 					 this.getType().equals(GameObjectType.BULLET_PROTAGINIST)) {
-				//delete this object
+				this.getRoom().deleteGameObject(this);
 			}
 		default:
 			break;
