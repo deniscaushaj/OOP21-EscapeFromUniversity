@@ -24,6 +24,9 @@ public abstract class BossImp extends AbstractDynamicGameObject implements Boss{
 		this.impatDamage = impatDamage;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void maybeShoot() {
 		if(this.canShoot()) {
@@ -32,6 +35,9 @@ public abstract class BossImp extends AbstractDynamicGameObject implements Boss{
 		
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	private boolean canShoot() {
 		if(System.currentTimeMillis() - this.shootLastTime > this.shootDelay) {
 			this.shootLastTime = System.currentTimeMillis();
@@ -41,19 +47,31 @@ public abstract class BossImp extends AbstractDynamicGameObject implements Boss{
 		
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	abstract void shoot();
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int getLife() {
 		return this.life;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void takeDamage(int damage) {
 		this.life = this.life - damage;
 		
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void update(double deltaTime) {
 		if(this.state.equals(BossState.FIGHT)) {
@@ -64,6 +82,9 @@ public abstract class BossImp extends AbstractDynamicGameObject implements Boss{
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void collisionWith(GameObject gObj2) {
 		if(this.collisionWithCheck(gObj2)) {
@@ -84,21 +105,33 @@ public abstract class BossImp extends AbstractDynamicGameObject implements Boss{
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int getDamage() {
 		return this.impatDamage;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	protected Vector2D newDirection() {
 		Point2D playerPos = this.getRoom().getPlayerPosition();
 		return new Vector2D((this.getObjectPosition().getX() - playerPos.getX())/this.getObjectPosition().module(playerPos),
 				            (this.getObjectPosition().getY() - playerPos.getY())/this.getObjectPosition().module(playerPos));
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	protected Point2D getPreviousPosition() {
 		return previousPosition;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	private void setPreviousPosition(Point2D previousPosition) {
 		this.previousPosition = previousPosition;
 	}
