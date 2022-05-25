@@ -15,9 +15,10 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
 	private int credits;
 	private boolean dead;
 	private boolean graduated;
+	private final static Point2D HIT_BOX_PLAYER = new Point2D(0,0);
 
 	public PlayerImpl(GameObjectType type, Point2D position, int speed, Vector2D direction) {
-		super(type, position, speed, direction);
+		super(type, position, HIT_BOX_PLAYER, speed, direction);
 		this.life = MAX_LIFE;
 		this.credits = 0;
 		this.dead = false;
