@@ -35,6 +35,10 @@ public class Point2D {
 		return new Point2D(this.x + point.getX(), this.y + point.getY());
 	}
 	
+	public double module(final Point2D point) {
+		return Math.sqrt(Math.pow(getX() - point.getX(), 2) + Math.pow(getY() - point.getY(), 2));
+	}
+	
 	
 	
 }
