@@ -1,4 +1,4 @@
-package escapefromuniversity;
+package escapefromuniversity.model.map;
 
 public class Tileset {
     private final String fileName;

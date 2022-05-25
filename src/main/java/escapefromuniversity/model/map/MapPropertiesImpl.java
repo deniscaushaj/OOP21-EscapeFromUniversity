@@ -1,8 +1,8 @@
-package escapefromuniversity;
+package escapefromuniversity.model.map;
 
 import java.util.List;
 
-public class MapProperties {
+public class MapPropertiesImpl implements MapProperties {
 
     private final int width;
     private final int height;
@@ -11,8 +11,8 @@ public class MapProperties {
     private final List<Layer> layers;
     private final List<Tileset> tilesets;
 
-    public MapProperties(final int width, final int height, final int tilewidth, final int tileheight,
-                         final List<Layer> layers, final List<Tileset> tilesets) {
+    public MapPropertiesImpl(final int width, final int height, final int tilewidth, final int tileheight,
+                             final List<Layer> layers, final List<Tileset> tilesets) {
         this.width = width;
         this.height = height;
         this.tilewidth = tilewidth;

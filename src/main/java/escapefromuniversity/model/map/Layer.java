@@ -1,4 +1,4 @@
-package escapefromuniversity;
+package escapefromuniversity.model.map;
 
 import java.util.ArrayList;
 import java.util.Arrays;

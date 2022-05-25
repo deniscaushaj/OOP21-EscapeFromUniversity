@@ -1,4 +1,4 @@
-package escapefromuniversity;
+package escapefromuniversity.model.map;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,6 +10,7 @@ import java.util.stream.Stream;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
@@ -22,7 +23,7 @@ public class TMXMapParser {
         this.mapName = mapName;
     }
     
-    public MapProperties parse() throws ParserConfigurationException, SAXException, IOException {
+    public MapPropertiesImpl parse() throws ParserConfigurationException, SAXException, IOException {
         final var factory = DocumentBuilderFactory.newInstance();
         final var builder = factory.newDocumentBuilder();
         
@@ -45,7 +46,7 @@ public class TMXMapParser {
         final var ti = tilesetsStream.map(t -> tilesetNodeFromName(
                 t.getAttributes().getNamedItem("source").getTextContent()));
 
-        return new MapProperties(w, h, tw, th,
+        return new MapPropertiesImpl(w, h, tw, th,
                 layerStream.map(this::parseLayer).collect(Collectors.toList()),
                 ti.map(this::parseTileset).collect(Collectors.toList()));
     }
