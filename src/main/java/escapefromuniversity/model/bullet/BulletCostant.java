@@ -1,9 +1,6 @@
 package escapefromuniversity.model.bullet;
-<<<<<<< HEAD
 
 import escapefromuniversity.model.Point2D;
-=======
->>>>>>> marco
 
 public class BulletCostant {
 	
