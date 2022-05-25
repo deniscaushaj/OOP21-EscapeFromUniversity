@@ -3,8 +3,11 @@ package escapefromuniversity.model.enemy;
 import escapefromuniversity.model.GameObjectType;
 import escapefromuniversity.model.Point2D;
 import escapefromuniversity.model.Vector2D;
+import escapefromuniversity.model.bullet.BulletFactory;
+import escapefromuniversity.model.bullet.BulletFactoryImp;
 
 public class BossFactoryImp implements BossFactory{
+	private final BulletFactory bulletCre = new BulletFactoryImp();
 
 
 	@Override
@@ -13,7 +16,7 @@ public class BossFactoryImp implements BossFactory{
 
 			@Override
 			void shoot() {
-				// TODO Auto-generated method stub
+				
 				
 			}
 			

@@ -5,6 +5,8 @@ import escapefromuniversity.model.GameObject;
 import escapefromuniversity.model.GameObjectType;
 import escapefromuniversity.model.Point2D;
 import escapefromuniversity.model.Vector2D;
+import escapefromuniversity.model.bullet.BulletFactory;
+import escapefromuniversity.model.bullet.BulletFactoryImp;
 
 public abstract class BossImp extends AbstractDynamicGameObject implements Boss{
 	
