@@ -1,0 +1,13 @@
+.launcherItem:hover{
+	-fx-text-fill:green;
+	-fx-opacity: 0.8;
+}
+.anchor {
+    -fx-background-image:url('bg.jpeg');
+}
+.bt {
+	-fx-background-image:url('button.png');
+}
+.back {
+	-fx-background-image:url('back.png');
+}
