@@ -15,19 +15,7 @@ public class CreditsController {
     private Button backButton;
 	
 	@FXML
-    private Hyperlink daniel;
-
-    @FXML
-    private Hyperlink denis;
-
-    @FXML
-    private Hyperlink emanuele;
-
-    @FXML
-    private Hyperlink marco;
-
-    @FXML
-    private Hyperlink tileset;
+    private Hyperlink daniel, denis, emanuele, marco, tileset;
 
     @FXML
     void back(ActionEvent event) {
