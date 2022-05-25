@@ -1,4 +1,4 @@
-package model.player;
+package escapefromuniversity.model.player;
 
 import escapefromuniversity.model.AbstractDynamicGameObject;
 import escapefromuniversity.model.GameObject;
