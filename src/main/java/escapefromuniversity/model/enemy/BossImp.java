@@ -5,8 +5,6 @@ import escapefromuniversity.model.GameObject;
 import escapefromuniversity.model.GameObjectType;
 import escapefromuniversity.model.Point2D;
 import escapefromuniversity.model.Vector2D;
-import escapefromuniversity.model.bullet.BulletFactory;
-import escapefromuniversity.model.bullet.BulletFactoryImp;
 import model.player.Player;
 
 public abstract class BossImp extends AbstractDynamicGameObject implements Boss{
@@ -60,7 +58,7 @@ public abstract class BossImp extends AbstractDynamicGameObject implements Boss{
 	public void update(double deltaTime) {
 		if(this.state.equals(BossState.FIGHT)) {
 			this.maybeShoot();
-			this.previousPosition = this.getObjectPosition();
+			this.setPreviousPosition(this.getObjectPosition());
 			this.move(deltaTime);
 			this.setDirection(this.newDirection());
 		}
@@ -71,14 +69,14 @@ public abstract class BossImp extends AbstractDynamicGameObject implements Boss{
 		if(this.collisionWithCheck(gObj2)) {
 			switch(gObj2.getType().getCollisionType()) {
 			case OBSTACLE:
-				//torno alla posizione precedente
+				this.setPosition(this.getPreviousPosition());
 				break;
 			case ENTITY:
 				if(gObj2.getType().equals(GameObjectType.PLAYER)) {
 					final Player player = (Player) gObj2;
 					player.takeDamage(this.getDamage());
 				}
-				//torno alla posizione precedente
+				this.setPosition(this.getPreviousPosition());
 				break;
 			default:
 				break;
@@ -95,6 +93,14 @@ public abstract class BossImp extends AbstractDynamicGameObject implements Boss{
 		Point2D playerPos = this.getRoom().getPlayerPosition();
 		return new Vector2D((this.getObjectPosition().getX() - playerPos.getX())/this.getObjectPosition().module(playerPos),
 				            (this.getObjectPosition().getY() - playerPos.getY())/this.getObjectPosition().module(playerPos));
+	}
+
+	protected Point2D getPreviousPosition() {
+		return previousPosition;
+	}
+
+	private void setPreviousPosition(Point2D previousPosition) {
+		this.previousPosition = previousPosition;
 	}
 
 }
