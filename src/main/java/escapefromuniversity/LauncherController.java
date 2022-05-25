@@ -1,5 +1,6 @@
 package escapefromuniversity;
 
+import escapefromuniversity.model.map.TMXMapParser;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
