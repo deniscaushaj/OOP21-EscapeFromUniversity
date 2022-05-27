@@ -1,11 +1,11 @@
 package escapefromuniversity.model.map;
 
-import escapefromuniversity.model.DynamicGameObject;
-import escapefromuniversity.model.GameObject;
-import escapefromuniversity.model.Point2D;
-import escapefromuniversity.model.StaticGameObject;
-
 import java.util.List;
+
+import escapefromuniversity.model.Point2D;
+import escapefromuniversity.model.gameObject.DynamicGameObject;
+import escapefromuniversity.model.gameObject.GameObject;
+import escapefromuniversity.model.gameObject.StaticGameObject;
 
 public interface Room {
 

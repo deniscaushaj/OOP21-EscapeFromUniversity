@@ -1,11 +1,11 @@
 package escapefromuniversity.model.enemy;
 
-import escapefromuniversity.model.AbstractDynamicGameObject;
-import escapefromuniversity.model.GameObject;
-import escapefromuniversity.model.GameObjectType;
 import escapefromuniversity.model.Point2D;
 import escapefromuniversity.model.Vector2D;
-import model.player.Player;
+import escapefromuniversity.model.gameObject.AbstractDynamicGameObject;
+import escapefromuniversity.model.gameObject.GameObject;
+import escapefromuniversity.model.gameObject.GameObjectType;
+import escapefromuniversity.model.player.Player;
 
 public abstract class BossImp extends AbstractDynamicGameObject implements Boss{
 	
@@ -15,13 +15,14 @@ public abstract class BossImp extends AbstractDynamicGameObject implements Boss{
 	private BossState state;
 	private int impatDamage;
 	private Point2D previousPosition;
+	private int impactDamage;
 	
-	public BossImp(int speed, Point2D position, Point2D upperCorner, Vector2D direction, GameObjectType type, int life, long shootDelay, int impatDamage) {
+	public BossImp(int speed, Point2D position, Point2D upperCorner, Vector2D direction, GameObjectType type, int life, long shootDelay, int impactDamage) {
 		super(type, position, upperCorner, speed, direction);
 		this.life = life;
 		this.shootDelay = shootDelay;
 		this.state = BossState.QUIZ;
-		this.impatDamage = impatDamage;
+		this.impactDamage = impactDamage;
 	}
 
 	/**
@@ -95,7 +96,7 @@ public abstract class BossImp extends AbstractDynamicGameObject implements Boss{
 			case ENTITY:
 				if(gObj2.getType().equals(GameObjectType.PLAYER)) {
 					final Player player = (Player) gObj2;
-					player.takeDamage(this.getDamage());
+					player.takeDamage(this.getImpatDamage());
 				}
 				this.setPosition(this.getPreviousPosition());
 				break;
@@ -109,8 +110,8 @@ public abstract class BossImp extends AbstractDynamicGameObject implements Boss{
 	 * {@inheritDoc}
 	 */
 	@Override
-	public int getDamage() {
-		return this.impatDamage;
+	public int getImpatDamage() {
+		return this.impactDamage;
 	}
 	
 	/**

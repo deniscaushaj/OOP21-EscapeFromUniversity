@@ -1,4 +1,8 @@
-package escapefromuniversity.model;
+package escapefromuniversity.model.gameObject;
+
+import escapefromuniversity.model.HitBox;
+import escapefromuniversity.model.HitBoxImpl;
+import escapefromuniversity.model.Point2D;
 
 public abstract class AbstractStaticGameObject implements StaticGameObject{
 	

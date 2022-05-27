@@ -1,4 +1,7 @@
-package escapefromuniversity.model;
+package escapefromuniversity.model.gameObject;
+
+import escapefromuniversity.model.Point2D;
+import escapefromuniversity.model.Vector2D;
 
 import escapefromuniversity.model.map.Room;
 

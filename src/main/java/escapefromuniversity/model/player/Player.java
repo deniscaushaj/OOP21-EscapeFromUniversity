@@ -1,21 +1,21 @@
-package model.player;
+package escapefromuniversity.model.player;
 
-import escapefromuniversity.model.DynamicGameObject;
+import escapefromuniversity.model.gameObject.DynamicGameObject;
 
 public interface Player extends DynamicGameObject{
 	
 	/**
-	 * @return the max Life of the Player.
+	 * @return the max life of the Player.
 	 */
 	int getMaxLife();
 	
 	/**
-	 * @return the current Life of the Player.
+	 * @return the current life of the Player.
 	 */
 	int getLife();
 	
 	/**
-	 * @return the current Credits of the Player.
+	 * @return the current credits of the Player.
 	 */
 	int getCredits();
 	
@@ -30,19 +30,19 @@ public interface Player extends DynamicGameObject{
 	void setCredits(int credits);
 	
 	/**
-	 * @param damage to inflict to the Player's Life.
+	 * @param damage to inflict to the Player's life.
 	 */
 	void takeDamage(int damage);
 	
 //	void setNewBuff();
 	
 	/**
-	 * @return true if the Player is dead.
+	 * @return <code>true</code> if the Player is dead.
 	 */
 	boolean isDead();
 	
 	/**
-	 * @return true if the Player is graduated.
+	 * @return <code>true</code> if the Player is graduated.
 	 */
 	boolean isGraduated();
 

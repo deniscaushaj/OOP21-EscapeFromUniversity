@@ -1,11 +1,11 @@
 package escapefromuniversity.model.bullet;
 
-import escapefromuniversity.model.DynamicGameObject;
+import escapefromuniversity.model.gameObject.DynamicGameObject;
 
 
 /**
  * 
- * interface bullet as extension of DynamicGameObject.
+ * Interface Bullet as extension of DynamicGameObject.
  *
  */
 public interface Bullet extends DynamicGameObject{

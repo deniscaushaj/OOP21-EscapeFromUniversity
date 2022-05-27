@@ -7,51 +7,51 @@ public interface BulletFactory {
 	
 	/**
 	 * @param startPosition : initial position of the bullet
-	 * @param Diration : the direction the bullet will go
-	 * @return protagonist bullet
+	 * @param direction : the direction the bullet will go
+	 * @return player bullet.
 	 */
-	Bullet createProtagonistBullet(Point2D startPosition, Vector2D Diration);
+	Bullet createProtagonistBullet(Point2D startPosition, Vector2D direction);
 	
 	/**
 	 * @param startPosition : initial position of the bullet
-	 * @param Diration : the direction the bullet will go
-	 * @return boss1 bullet
+	 * @param direction : the direction the bullet will go
+	 * @return boss1 bullet.
 	 */
-	Bullet createBoss1Bullet(Point2D startPosition, Vector2D Diration);
+	Bullet createBoss1Bullet(Point2D startPosition, Vector2D direction);
 	
 	/**
 	 * @param startPosition : initial position of the bullet
-	 * @param Diration : the direction the bullet will go
-	 * @return boss2 bullet
+	 * @param direction : the direction the bullet will go
+	 * @return boss2 bullet.
 	 */
-	Bullet createBoss2Bullet(Point2D startPosition, Vector2D Diration);
+	Bullet createBoss2Bullet(Point2D startPosition, Vector2D direction);
 	
 	/**
 	 * @param startPosition : initial position of the bullet
-	 * @param Diration : the direction the bullet will go
-	 * @return boss3 bullet
+	 * @param direction : the direction the bullet will go
+	 * @return boss3 bullet.
 	 */
-	Bullet createBoss3Bullet(Point2D startPosition, Vector2D Diration);
+	Bullet createBoss3Bullet(Point2D startPosition, Vector2D direction);
 	
 	/**
 	 * @param startPosition : initial position of the bullet
-	 * @param Diration : the direction the bullet will go
-	 * @return boss4 bullet
+	 * @param direction : the direction the bullet will go
+	 * @return boss4 bullet.
 	 */
-	Bullet createBoss4Bullet(Point2D startPosition, Vector2D Diration);
+	Bullet createBoss4Bullet(Point2D startPosition, Vector2D direction);
 	
 	/**
 	 * @param startPosition : initial position of the bullet
-	 * @param Diration : the direction the bullet will go
-	 * @return boss5 bullet
+	 * @param direction : the direction the bullet will go
+	 * @return boss5 bullet.
 	 */
-	Bullet createBoss5Bullet(Point2D startPosition, Vector2D Diration);
+	Bullet createBoss5Bullet(Point2D startPosition, Vector2D direction);
 	
 	/**
 	 * @param startPosition : initial position of the bullet
-	 * @param Diration : the direction the bullet will go
-	 * @return boss6 bullet
+	 * @param direction : the direction the bullet will go
+	 * @return boss6 bullet.
 	 */
-	Bullet createBoss6Bullet(Point2D startPosition, Vector2D Diration);
+	Bullet createBoss6Bullet(Point2D startPosition, Vector2D direction);
 
 }
