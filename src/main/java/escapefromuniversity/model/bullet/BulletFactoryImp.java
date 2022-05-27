@@ -10,63 +10,63 @@ public class BulletFactoryImp implements BulletFactory{
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Bullet createProtagonistBullet(Point2D startPosition, Vector2D diraction) {
-		return new BulletImp(GameObjectType.BULLET_PROTAGINIST, startPosition,BulletCostant.PROTAGONIST_BULLET_SPEED,
-				             diraction, BulletCostant.PROTAGONIST_BULLET_DAMAGE);
+	public Bullet createProtagonistBullet(Point2D startPosition, Vector2D direction) {
+		return new BulletImp(GameObjectType.BULLET_PLAYER, startPosition,BulletConstant.PLAYER_BULLET_SPEED,
+				             direction, BulletConstant.PLAYER_BULLET_DAMAGE);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Bullet createBoss1Bullet(Point2D startPosition, Vector2D diraction) {
-		return new BulletImp(GameObjectType.BULLET_BOSS_1, startPosition,BulletCostant.BOSS_1_BULLET_SPEED,
-	                         diraction, BulletCostant.BOSS_1_BULLET_DAMAGE);
+	public Bullet createBoss1Bullet(Point2D startPosition, Vector2D direction) {
+		return new BulletImp(GameObjectType.BULLET_BOSS_1, startPosition,BulletConstant.BOSS_1_BULLET_SPEED,
+	                         direction, BulletConstant.BOSS_1_BULLET_DAMAGE);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Bullet createBoss2Bullet(Point2D startPosition, Vector2D diraction) {
-		return new BulletImp(GameObjectType.BULLET_BOSS_2, startPosition,BulletCostant.BOSS_2_BULLET_SPEED,
-                             diraction, BulletCostant.BOSS_2_BULLET_DAMAGE);
+	public Bullet createBoss2Bullet(Point2D startPosition, Vector2D direction) {
+		return new BulletImp(GameObjectType.BULLET_BOSS_2, startPosition,BulletConstant.BOSS_2_BULLET_SPEED,
+                             direction, BulletConstant.BOSS_2_BULLET_DAMAGE);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Bullet createBoss3Bullet(Point2D startPosition, Vector2D diraction) {
-		return new BulletImp(GameObjectType.BULLET_BOSS_3, startPosition,BulletCostant.BOSS_3_BULLET_SPEED,
-                             diraction, BulletCostant.BOSS_3_BULLET_DAMAGE);
+	public Bullet createBoss3Bullet(Point2D startPosition, Vector2D direction) {
+		return new BulletImp(GameObjectType.BULLET_BOSS_3, startPosition,BulletConstant.BOSS_3_BULLET_SPEED,
+                             direction, BulletConstant.BOSS_3_BULLET_DAMAGE);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Bullet createBoss4Bullet(Point2D startPosition, Vector2D diraction) {
-		return new BulletImp(GameObjectType.BULLET_BOSS_4, startPosition,BulletCostant.BOSS_4_BULLET_SPEED,
-                             diraction, BulletCostant.BOSS_4_BULLET_DAMAGE);
+	public Bullet createBoss4Bullet(Point2D startPosition, Vector2D direction) {
+		return new BulletImp(GameObjectType.BULLET_BOSS_4, startPosition,BulletConstant.BOSS_4_BULLET_SPEED,
+                             direction, BulletConstant.BOSS_4_BULLET_DAMAGE);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Bullet createBoss5Bullet(Point2D startPosition, Vector2D diraction) {
-		return new BulletImp(GameObjectType.BULLET_BOSS_5, startPosition,BulletCostant.BOSS_5_BULLET_SPEED,
-                             diraction, BulletCostant.BOSS_5_BULLET_DAMAGE);
+	public Bullet createBoss5Bullet(Point2D startPosition, Vector2D direction) {
+		return new BulletImp(GameObjectType.BULLET_BOSS_5, startPosition,BulletConstant.BOSS_5_BULLET_SPEED,
+                             direction, BulletConstant.BOSS_5_BULLET_DAMAGE);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Bullet createBoss6Bullet(Point2D startPosition, Vector2D diraction) {
-		return new BulletImp(GameObjectType.BULLET_BOSS_6, startPosition,BulletCostant.BOSS_6_BULLET_SPEED,
-                             diraction, BulletCostant.BOSS_6_BULLET_DAMAGE);
+	public Bullet createBoss6Bullet(Point2D startPosition, Vector2D direction) {
+		return new BulletImp(GameObjectType.BULLET_BOSS_6, startPosition,BulletConstant.BOSS_6_BULLET_SPEED,
+                             direction, BulletConstant.BOSS_6_BULLET_DAMAGE);
 	}
 
 }

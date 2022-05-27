@@ -3,23 +3,23 @@ package escapefromuniversity.model;
 public enum GameCollisionType {
 	
 	/**
-	 * identifies a obstacle object.
+	 * Identifies an obstacle object.
 	 */
 	OBSTACLE,
 	/**
-	 * identifies a boss or protagonist.
+	 * Identifies a boss or the player.
 	 */
 	ENTITY,
 	/**
-	 * identifies a immune boss or protagonist.
+	 * Identifies an immune boss or player.
 	 */
 	IMMUNE_ENTITY,
 	/**
-	 * identifies a bullet
+	 * Identifies a bullet.
 	 */
 	BULLET,
 	/**
-	 * identifies a immune bullet
+	 * Identifies an immune bullet.
 	 */
 	IMMUNE_BULLET;
 	

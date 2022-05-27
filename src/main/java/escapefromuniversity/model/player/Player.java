@@ -5,17 +5,17 @@ import escapefromuniversity.model.gameObject.DynamicGameObject;
 public interface Player extends DynamicGameObject{
 	
 	/**
-	 * @return the max Life of the Player.
+	 * @return the max life of the Player.
 	 */
 	int getMaxLife();
 	
 	/**
-	 * @return the current Life of the Player.
+	 * @return the current life of the Player.
 	 */
 	int getLife();
 	
 	/**
-	 * @return the current Credits of the Player.
+	 * @return the current credits of the Player.
 	 */
 	int getCredits();
 	
@@ -30,7 +30,7 @@ public interface Player extends DynamicGameObject{
 	void setCredits(int credits);
 	
 	/**
-	 * @param damage to inflict to the Player's Life.
+	 * @param damage to inflict to the Player's life.
 	 */
 	void takeDamage(int damage);
 	

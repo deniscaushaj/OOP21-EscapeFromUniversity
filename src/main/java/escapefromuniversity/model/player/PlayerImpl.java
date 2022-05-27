@@ -10,7 +10,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
 	
 	private static final int MAX_LIFE = 100;
 	private final static Point2D HIT_BOX_PLAYER = new Point2D(0,0); // values to be changed
-//	eventuali MAX_STATS
+//	eventual MAX_STATS
 	
 	private int life;
 	private int credits;

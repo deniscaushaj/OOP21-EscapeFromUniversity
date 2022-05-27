@@ -27,8 +27,8 @@ public class Point2D {
 		return new Point2D(this.x*mul, this.y*mul);
 	}
 	
-	public Point2D sum(final Vector2D vet) {
-		return new Point2D(this.x + vet.getX(), this.y + vet.getY());
+	public Point2D sum(final Vector2D vector) {
+		return new Point2D(this.x + vector.getX(), this.y + vector.getY());
 	}
 	
 	public Point2D sum(final Point2D point) {

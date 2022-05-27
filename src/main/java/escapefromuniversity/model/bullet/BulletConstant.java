@@ -2,14 +2,14 @@ package escapefromuniversity.model.bullet;
 
 import escapefromuniversity.model.Point2D;
 
-public class BulletCostant {
+public class BulletConstant {
 	
-	protected final static Point2D BULLET_BOX_OCCUPATION = new Point2D(3,1);
+	protected final static Point2D BULLET_BOX_SIZE = new Point2D(3,1);
 	
 	/**
-	 * constant speed of bullet
+	 * Constant of bullets speed.
 	 */
-	protected static final int PROTAGONIST_BULLET_SPEED = 0;
+	protected static final int PLAYER_BULLET_SPEED = 0;
 	protected static final int BOSS_1_BULLET_SPEED = 0;
 	protected static final int BOSS_2_BULLET_SPEED = 0;
 	protected static final int BOSS_3_BULLET_SPEED = 0;
@@ -19,9 +19,9 @@ public class BulletCostant {
 	
 	
 	/**
-	 * constant damage of bullet
+	 * Constants of bullets damage.
 	 */
-	protected static final int PROTAGONIST_BULLET_DAMAGE = 0;
+	protected static final int PLAYER_BULLET_DAMAGE = 0;
 	protected static final int BOSS_1_BULLET_DAMAGE = 0;
 	protected static final int BOSS_2_BULLET_DAMAGE = 0;
 	protected static final int BOSS_3_BULLET_DAMAGE = 0;
