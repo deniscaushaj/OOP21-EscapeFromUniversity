@@ -13,7 +13,6 @@ public abstract class BossImp extends AbstractDynamicGameObject implements Boss{
 	private final long shootDelay;
 	private long shootLastTime;
 	private BossState state;
-	private int impatDamage;
 	private Point2D previousPosition;
 	private int impactDamage;
 	
@@ -96,7 +95,7 @@ public abstract class BossImp extends AbstractDynamicGameObject implements Boss{
 			case ENTITY:
 				if(gObj2.getType().equals(GameObjectType.PLAYER)) {
 					final Player player = (Player) gObj2;
-					player.takeDamage(this.getImpatDamage());
+					player.takeDamage(this.getImpactDamage());
 				}
 				this.setPosition(this.getPreviousPosition());
 				break;
@@ -110,7 +109,7 @@ public abstract class BossImp extends AbstractDynamicGameObject implements Boss{
 	 * {@inheritDoc}
 	 */
 	@Override
-	public int getImpatDamage() {
+	public int getImpactDamage() {
 		return this.impactDamage;
 	}
 	

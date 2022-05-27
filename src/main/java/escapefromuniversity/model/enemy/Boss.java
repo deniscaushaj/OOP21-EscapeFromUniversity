@@ -7,7 +7,7 @@ public interface Boss extends Enemy{
 		FIGHT;
 	}
 	
-	int getImpatDamage();
+	int getImpactDamage();
 	
 	//getQuiz
 
