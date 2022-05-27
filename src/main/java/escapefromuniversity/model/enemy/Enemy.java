@@ -1,6 +1,6 @@
 package escapefromuniversity.model.enemy;
 
-import escapefromuniversity.model.DynamicGameObject;
+import escapefromuniversity.model.gameObject.DynamicGameObject;
 
 public interface Enemy extends DynamicGameObject{
 	

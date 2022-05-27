@@ -1,12 +1,12 @@
 package escapefromuniversity.model.bullet;
 
-import escapefromuniversity.model.AbstractDynamicGameObject;
 import escapefromuniversity.model.GameCollisionType;
-import escapefromuniversity.model.GameObject;
-import escapefromuniversity.model.GameObjectType;
 import escapefromuniversity.model.Point2D;
 import escapefromuniversity.model.Vector2D;
 import escapefromuniversity.model.enemy.Enemy;
+import escapefromuniversity.model.gameObject.AbstractDynamicGameObject;
+import escapefromuniversity.model.gameObject.GameObject;
+import escapefromuniversity.model.gameObject.GameObjectType;
 
 public class BulletImp extends AbstractDynamicGameObject implements Bullet{
 	
@@ -14,7 +14,7 @@ public class BulletImp extends AbstractDynamicGameObject implements Bullet{
 	
 
 	public BulletImp(GameObjectType type, Point2D position, int speed, Vector2D direction, int damage) {
-		super(type, position, position.sum(BulletCostant.BULLET_BOX_OCCUPATION), speed, direction);
+		super(type, position, position.sum(BulletConstant.BULLET_BOX_SIZE), speed, direction);
 		this.damage = damage;
 	}
     
@@ -58,21 +58,21 @@ public class BulletImp extends AbstractDynamicGameObject implements Bullet{
 			}
 			break;
 		case ENTITY:
-			if(gObj2.getType().equals(GameObjectType.PLAYER) && !this.getType().equals(GameObjectType.BULLET_PROTAGINIST)) {
+			if(gObj2.getType().equals(GameObjectType.PLAYER) && !this.getType().equals(GameObjectType.BULLET_PLAYER)) {
 				//fare danno al protagonista
 				//delete this object
 			}else if(!gObj2.getType().equals(GameObjectType.PLAYER) && 
-					 this.getType().equals(GameObjectType.BULLET_PROTAGINIST)) {
+					 this.getType().equals(GameObjectType.BULLET_PLAYER)) {
 				final Enemy enemy = (Enemy) gObj2;
 				enemy.takeDamage(this.getDamage());
 				//delete this object
 			}
 			break;
 		case IMMUNE_ENTITY:
-			if(gObj2.getType().equals(GameObjectType.PLAYER) && !this.getType().equals(GameObjectType.BULLET_PROTAGINIST)) {
+			if(gObj2.getType().equals(GameObjectType.PLAYER) && !this.getType().equals(GameObjectType.BULLET_PLAYER)) {
 				//delete this object
 			}else if(!gObj2.getType().equals(GameObjectType.PLAYER) && 
-					 this.getType().equals(GameObjectType.BULLET_PROTAGINIST)) {
+					 this.getType().equals(GameObjectType.BULLET_PLAYER)) {
 				//delete this object
 			}
 		default:

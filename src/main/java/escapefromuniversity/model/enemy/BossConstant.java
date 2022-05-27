@@ -4,7 +4,7 @@ import escapefromuniversity.model.Point2D;
 
 public class BossConstant {
 	
-	protected final static Point2D BOSS_BOX_OCCUPATION = new Point2D(3,1);
+	protected final static Point2D BOSS_BOX_SIZE = new Point2D(3,1);
 	
 	protected static final int boss1_life = 0;
 	protected static final int boss2_life = 0;

@@ -25,6 +25,7 @@ public class CreditsController {
     @FXML
     void openLink(ActionEvent event) throws URISyntaxException, IOException {
     	OSFixes osFixes = new OSFixes();
+//    	TODO fix links loader
     	if (event.getSource().equals(daniel)) {
     		osFixes.openUrl("https://github.com/DanielCapannini");
     	} else if (event.getSource().equals(denis)) {

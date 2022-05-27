@@ -1,12 +1,12 @@
 package escapefromuniversity.model.enemy;
 
-import escapefromuniversity.model.AbstractDynamicGameObject;
-import escapefromuniversity.model.GameObject;
-import escapefromuniversity.model.GameObjectType;
 import escapefromuniversity.model.Point2D;
 import escapefromuniversity.model.Vector2D;
 import escapefromuniversity.model.bullet.BulletFactory;
 import escapefromuniversity.model.bullet.BulletFactoryImp;
+import escapefromuniversity.model.gameObject.AbstractDynamicGameObject;
+import escapefromuniversity.model.gameObject.GameObject;
+import escapefromuniversity.model.gameObject.GameObjectType;
 
 public abstract class BossImp extends AbstractDynamicGameObject implements Boss{
 	
@@ -14,14 +14,14 @@ public abstract class BossImp extends AbstractDynamicGameObject implements Boss{
 	private final long shootDelay;
 	private long shootLastTime;
 	private BossState state;
-	private int impatDamage;
+	private int impactDamage;
 	
-	public BossImp(int speed, Point2D position, Point2D upperCorner, Vector2D direction, GameObjectType type, int life, long shootDelay, int impatDamage) {
+	public BossImp(int speed, Point2D position, Point2D upperCorner, Vector2D direction, GameObjectType type, int life, long shootDelay, int impactDamage) {
 		super(type, position, upperCorner, speed, direction);
 		this.life = life;
 		this.shootDelay = shootDelay;
 		this.state = BossState.QUIZ;
-		this.impatDamage = impatDamage;
+		this.impactDamage = impactDamage;
 	}
 
 	@Override
@@ -84,7 +84,7 @@ public abstract class BossImp extends AbstractDynamicGameObject implements Boss{
 
 	@Override
 	public int getDamage() {
-		return this.impatDamage;
+		return this.impactDamage;
 	}
 
 }

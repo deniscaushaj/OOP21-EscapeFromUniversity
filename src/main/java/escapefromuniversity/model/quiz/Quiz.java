@@ -13,6 +13,6 @@ public interface Quiz {
 	
 	boolean hasBeenAnswered();
 	
-	boolean giveAnAnswer(char chose);
+	boolean giveAnAnswer(char choice);
 
 }

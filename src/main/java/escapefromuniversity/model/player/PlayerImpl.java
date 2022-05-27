@@ -1,21 +1,21 @@
 package escapefromuniversity.model.player;
 
-import escapefromuniversity.model.AbstractDynamicGameObject;
-import escapefromuniversity.model.GameObject;
-import escapefromuniversity.model.GameObjectType;
 import escapefromuniversity.model.Point2D;
 import escapefromuniversity.model.Vector2D;
+import escapefromuniversity.model.gameObject.AbstractDynamicGameObject;
+import escapefromuniversity.model.gameObject.GameObject;
+import escapefromuniversity.model.gameObject.GameObjectType;
 
 public class PlayerImpl extends AbstractDynamicGameObject implements Player{
 	
 	private static final int MAX_LIFE = 100;
-//	eventuali MAX_STATS
+	private final static Point2D HIT_BOX_PLAYER = new Point2D(0,0); // values to be changed
+//	eventual MAX_STATS
 	
 	private int life;
 	private int credits;
 	private boolean dead;
 	private boolean graduated;
-	private final static Point2D HIT_BOX_PLAYER = new Point2D(0,0);
 
 	public PlayerImpl(GameObjectType type, Point2D position, int speed, Vector2D direction) {
 		super(type, position, HIT_BOX_PLAYER, speed, direction);
