@@ -3,6 +3,8 @@ package escapefromuniversity.model.gameObject;
 import escapefromuniversity.model.Point2D;
 import escapefromuniversity.model.Vector2D;
 
+import escapefromuniversity.model.map.Room;
+
 public interface DynamicGameObject extends StaticGameObject{
 	
 	int getSpeed();
@@ -14,5 +16,7 @@ public interface DynamicGameObject extends StaticGameObject{
 	void setPosition(Point2D newPosition);
 	
 	void update(double deltaTime);
+	
+	Room getRoom();
 
 }

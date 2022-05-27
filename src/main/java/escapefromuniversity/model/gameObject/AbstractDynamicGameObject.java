@@ -5,6 +5,8 @@ import escapefromuniversity.model.HitBoxImpl;
 import escapefromuniversity.model.Point2D;
 import escapefromuniversity.model.Vector2D;
 
+import escapefromuniversity.model.map.Room;
+
 public abstract class AbstractDynamicGameObject implements DynamicGameObject {
 
 	private int id;
@@ -13,6 +15,7 @@ public abstract class AbstractDynamicGameObject implements DynamicGameObject {
 	private Vector2D direction;
 	private Point2D position;
 	private final HitBoxImpl box;
+	private Room room;
 
 	public AbstractDynamicGameObject(final GameObjectType type, final Point2D position, Point2D upperCorner, final int speed, final Vector2D direction) {
 		this.type = type;
@@ -77,6 +80,10 @@ public abstract class AbstractDynamicGameObject implements DynamicGameObject {
 	@Override
 	public HitBox getObjectHitBox() {
 		return new HitBoxImpl(this.box);
+	}
+	
+	public Room getRoom() {
+		return this.room;
 	}
 
 }
