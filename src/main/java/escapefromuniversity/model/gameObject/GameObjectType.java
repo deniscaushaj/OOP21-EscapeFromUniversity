@@ -1,4 +1,6 @@
-package escapefromuniversity.model;
+package escapefromuniversity.model.gameObject;
+
+import escapefromuniversity.model.GameCollisionType;
 
 public enum GameObjectType {
 	PLAYER(GameCollisionType.ENTITY),

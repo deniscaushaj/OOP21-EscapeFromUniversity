@@ -1,12 +1,12 @@
 package escapefromuniversity.model.bullet;
 
-import escapefromuniversity.model.AbstractDynamicGameObject;
 import escapefromuniversity.model.GameCollisionType;
-import escapefromuniversity.model.GameObject;
-import escapefromuniversity.model.GameObjectType;
 import escapefromuniversity.model.Point2D;
 import escapefromuniversity.model.Vector2D;
 import escapefromuniversity.model.enemy.Enemy;
+import escapefromuniversity.model.gameObject.AbstractDynamicGameObject;
+import escapefromuniversity.model.gameObject.GameObject;
+import escapefromuniversity.model.gameObject.GameObjectType;
 
 public class BulletImp extends AbstractDynamicGameObject implements Bullet{
 	

@@ -1,10 +1,10 @@
 package escapefromuniversity.model.enemy;
 
-import escapefromuniversity.model.GameObjectType;
 import escapefromuniversity.model.Point2D;
 import escapefromuniversity.model.Vector2D;
 import escapefromuniversity.model.bullet.BulletFactory;
 import escapefromuniversity.model.bullet.BulletFactoryImp;
+import escapefromuniversity.model.gameObject.GameObjectType;
 
 public class BossFactoryImp implements BossFactory{
 	private final BulletFactory bulletCre = new BulletFactoryImp();

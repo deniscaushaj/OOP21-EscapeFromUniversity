@@ -1,6 +1,6 @@
-package model.player;
+package escapefromuniversity.model.player;
 
-import escapefromuniversity.model.DynamicGameObject;
+import escapefromuniversity.model.gameObject.DynamicGameObject;
 
 public interface Player extends DynamicGameObject{
 	
@@ -37,12 +37,12 @@ public interface Player extends DynamicGameObject{
 //	void setNewBuff();
 	
 	/**
-	 * @return true if the Player is dead.
+	 * @return <code>true</code> if the Player is dead.
 	 */
 	boolean isDead();
 	
 	/**
-	 * @return true if the Player is graduated.
+	 * @return <code>true</code> if the Player is graduated.
 	 */
 	boolean isGraduated();
 

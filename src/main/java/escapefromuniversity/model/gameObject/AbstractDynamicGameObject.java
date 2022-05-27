@@ -1,4 +1,9 @@
-package escapefromuniversity.model;
+package escapefromuniversity.model.gameObject;
+
+import escapefromuniversity.model.HitBox;
+import escapefromuniversity.model.HitBoxImpl;
+import escapefromuniversity.model.Point2D;
+import escapefromuniversity.model.Vector2D;
 
 public abstract class AbstractDynamicGameObject implements DynamicGameObject {
 

@@ -1,12 +1,12 @@
 package escapefromuniversity.model.enemy;
 
-import escapefromuniversity.model.AbstractDynamicGameObject;
-import escapefromuniversity.model.GameObject;
-import escapefromuniversity.model.GameObjectType;
 import escapefromuniversity.model.Point2D;
 import escapefromuniversity.model.Vector2D;
 import escapefromuniversity.model.bullet.BulletFactory;
 import escapefromuniversity.model.bullet.BulletFactoryImp;
+import escapefromuniversity.model.gameObject.AbstractDynamicGameObject;
+import escapefromuniversity.model.gameObject.GameObject;
+import escapefromuniversity.model.gameObject.GameObjectType;
 
 public abstract class BossImp extends AbstractDynamicGameObject implements Boss{
 	

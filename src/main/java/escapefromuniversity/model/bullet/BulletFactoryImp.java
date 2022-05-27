@@ -1,8 +1,8 @@
 package escapefromuniversity.model.bullet;
 
-import escapefromuniversity.model.GameObjectType;
 import escapefromuniversity.model.Point2D;
 import escapefromuniversity.model.Vector2D;
+import escapefromuniversity.model.gameObject.GameObjectType;
 
 public class BulletFactoryImp implements BulletFactory{
 	

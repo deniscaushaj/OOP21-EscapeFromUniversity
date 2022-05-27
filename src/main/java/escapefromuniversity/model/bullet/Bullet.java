@@ -1,6 +1,6 @@
 package escapefromuniversity.model.bullet;
 
-import escapefromuniversity.model.DynamicGameObject;
+import escapefromuniversity.model.gameObject.DynamicGameObject;
 
 
 /**
