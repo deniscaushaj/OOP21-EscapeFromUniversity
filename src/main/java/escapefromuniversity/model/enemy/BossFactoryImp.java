@@ -1,8 +1,12 @@
 package escapefromuniversity.model.enemy;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import escapefromuniversity.model.GameObjectType;
 import escapefromuniversity.model.Point2D;
 import escapefromuniversity.model.Vector2D;
+import escapefromuniversity.model.bullet.Bullet;
 import escapefromuniversity.model.bullet.BulletFactory;
 import escapefromuniversity.model.bullet.BulletFactoryImp;
 
@@ -19,8 +23,8 @@ public class BossFactoryImp implements BossFactory{
 
 			@Override
 			void shoot() {
-				
-				
+				final Bullet bullet = bulletCre.createBoss1Bullet(this.getObjectPosition(), this.getDirection());
+				this.getRoom().addDynamicGameObject(bullet);
 			}
 			
 		};
@@ -35,8 +39,14 @@ public class BossFactoryImp implements BossFactory{
 
 			@Override
 			void shoot() {
-				// TODO Auto-generated method stub
-				
+				final List<Bullet> bullets = new LinkedList<>();
+				final Point2D pos = this.getObjectPosition();
+				bullets.add(bulletCre.createBoss2Bullet(this.getObjectPosition(), this.getDirection()));
+				bullets.add(bulletCre.createBoss2Bullet(pos.sum(new Vector2D(10, 10)), this.getDirection()));
+				bullets.add(bulletCre.createBoss2Bullet(pos.sum(new Vector2D(-10, -10)), this.getDirection()));
+				bullets.forEach(bul -> {
+					this.getRoom().addDynamicGameObject(bul);
+				});
 			}
 			
 		};
@@ -51,8 +61,19 @@ public class BossFactoryImp implements BossFactory{
 
 			@Override
 			void shoot() {
-				// TODO Auto-generated method stub
-				
+				final List<Bullet> bullets = new LinkedList<>();
+				final Point2D pos = this.getObjectPosition();
+				bullets.add(bulletCre.createBoss3Bullet(pos, new Vector2D(0, 1)));
+				bullets.add(bulletCre.createBoss3Bullet(pos, new Vector2D(0, -1)));
+				bullets.add(bulletCre.createBoss3Bullet(pos, new Vector2D(1, 1)));
+				bullets.add(bulletCre.createBoss3Bullet(pos, new Vector2D(-1, 1)));
+				bullets.add(bulletCre.createBoss3Bullet(pos, new Vector2D(1, -1)));
+				bullets.add(bulletCre.createBoss3Bullet(pos, new Vector2D(-1, -1)));
+				bullets.add(bulletCre.createBoss3Bullet(pos, new Vector2D(1, 0)));
+				bullets.add(bulletCre.createBoss3Bullet(pos, new Vector2D(1, 0)));
+				bullets.forEach(bul -> {
+					this.getRoom().addDynamicGameObject(bul);
+				});
 			}
 			
 		};
@@ -67,7 +88,8 @@ public class BossFactoryImp implements BossFactory{
 
 			@Override
 			void shoot() {
-				// TODO Auto-generated method stub
+				final Bullet bullet = bulletCre.createBoss4Bullet(this.getObjectPosition(), this.getDirection());
+				this.getRoom().addDynamicGameObject(bullet);
 				
 			}
 			
@@ -83,7 +105,8 @@ public class BossFactoryImp implements BossFactory{
 
 			@Override
 			void shoot() {
-				// TODO Auto-generated method stub
+				final Bullet bullet = bulletCre.createBoss5Bullet(this.getObjectPosition(), this.getDirection());
+				this.getRoom().addDynamicGameObject(bullet);
 				
 			}
 			
@@ -99,7 +122,8 @@ public class BossFactoryImp implements BossFactory{
 
 			@Override
 			void shoot() {
-				// TODO Auto-generated method stub
+				final Bullet bullet = bulletCre.createBoss6Bullet(this.getObjectPosition(), this.getDirection());
+				this.getRoom().addDynamicGameObject(bullet);
 				
 			}
 			
