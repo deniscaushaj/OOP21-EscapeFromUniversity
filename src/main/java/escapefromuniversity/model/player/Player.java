@@ -37,6 +37,16 @@ public interface Player extends DynamicGameObject{
 //	void setNewBuff();
 	
 	/**
+	 * @return <code>true</code> if the Player can shoot.
+	 */
+	boolean canShoot();
+	
+	/**
+	 * The Player shoots.
+	 */
+	void shoot();
+	
+	/**
 	 * @return <code>true</code> if the Player is dead.
 	 */
 	boolean isDead();

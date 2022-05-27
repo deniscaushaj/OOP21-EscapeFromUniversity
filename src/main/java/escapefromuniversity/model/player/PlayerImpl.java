@@ -14,21 +14,31 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
 	
 	private int life;
 	private int credits;
+	private int shootDelay;
+	private long lastShoot;
 	private boolean dead;
 	private boolean graduated;
 
-	public PlayerImpl(GameObjectType type, Point2D position, int speed, Vector2D direction) {
+	public PlayerImpl(GameObjectType type, Point2D position, int speed, Vector2D direction, int shootDelay) {
 		super(type, position, HIT_BOX_PLAYER, speed, direction);
 		this.life = MAX_LIFE;
 		this.credits = 0;
+		this.shootDelay = shootDelay;
 		this.dead = false;
 		this.graduated = false;
 	}
 
 	@Override
 	public void collisionWith(GameObject gObj2) {
-		// TODO Auto-generated method stub
-		
+		if (this.collisionWithCheck(gObj2)) {
+			switch(gObj2.getType().getCollisionType()) {
+			case OBSTACLE:
+//				TODO collision with obstacle
+				break;
+			default:
+				break;
+			}
+		}
 	}
 
 	@Override
@@ -74,6 +84,20 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
 //	}
 
 	@Override
+	public boolean canShoot() {
+		if (System.currentTimeMillis() - this.lastShoot > this.shootDelay) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public void shoot() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
 	public boolean isDead() {
 		return this.life <= 0;
 	}
@@ -82,6 +106,5 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
 	public boolean isGraduated() {
 		return this.graduated;
 	}
-	
 
 }
