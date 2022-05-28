@@ -37,11 +37,11 @@ public class CompetitionImpl {
 		private final Map<Integer,Quiz> competition = new HashMap<Integer,Quiz>();;
 		private final String name;
 		
-		public Builder(String name) {
+		public Builder(final String name) {
 			this.name = name;
 		}
 		
-		public Builder addQuiz(Quiz quiz) {
+		public Builder addQuiz(final Quiz quiz) {
 			if(this.competition.containsKey(quiz.getID())) {
 				throw new IllegalStateException("There is already a quiz with id " + quiz.getID() + " in this package");
 			} else {
