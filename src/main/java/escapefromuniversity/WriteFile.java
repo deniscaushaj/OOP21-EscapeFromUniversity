@@ -1,21 +1,29 @@
 package escapefromuniversity;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import escapefromuniversity.model.OSFixes;
 
 public class WriteFile {
 	
 	private final String fileName;
-	private BufferedReader r;
+	private BufferedWriter w;
 	
-	public WriteFile(String folderName, String fileName) throws FileNotFoundException {
+	public WriteFile(String folderName, String fileName) throws IOException {
 		this.fileName = OSFixes.getLocation(folderName, fileName);
-		this.r = new BufferedReader(
-				new FileReader(this.fileName));
+		this.w = new BufferedWriter(
+				new FileWriter(this.fileName));
 		
+	}
+	
+	public void writeNewLine(String line) throws IOException {
+		w.write(line);
+	}
+	
+	public void close() throws IOException {
+		w.close();
 	}
 
 }
