@@ -3,6 +3,7 @@ package escapefromuniversity;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 
 import escapefromuniversity.model.OSFixes;
 
@@ -11,15 +12,19 @@ public class ReadFile {
 	private final String fileName;
 	private BufferedReader r;
 	
-	public ReadFile(String folderName, String fileName) {
+	public ReadFile(String folderName, String fileName) throws FileNotFoundException {
 		this.fileName = OSFixes.getLocation(folderName, fileName);
-		try {
-			this.r = new BufferedReader(
-					new FileReader(this.fileName));
-		} catch (FileNotFoundException e) {
-			this.r = null;
-			e.printStackTrace();
-		}
+		this.r = new BufferedReader(
+				new FileReader(this.fileName));
+		
+	}
+	
+	public String newLine() throws IOException {
+		return r.readLine();
+	}
+	
+	public void close() throws IOException {
+		r.close();
 	}
 	
 	
