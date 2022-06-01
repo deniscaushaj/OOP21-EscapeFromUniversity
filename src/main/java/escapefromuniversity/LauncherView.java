@@ -31,7 +31,7 @@ public final class LauncherView extends Application{
         stage.setScene(launcher);
         stage.setResizable(false);
         stage.centerOnScreen();
-        Image logo = new Image("file:src/main/resources/images/logo.png"); // TODO change icon
+        Image logo = new Image("file:" + OSFixes.getLocation("images", "logo.png")); // TODO change icon
         stage.getIcons().add(logo);
         stage.show();
         launcherWindow = stage;
