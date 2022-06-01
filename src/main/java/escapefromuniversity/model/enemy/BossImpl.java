@@ -2,12 +2,17 @@ package escapefromuniversity.model.enemy;
 
 import escapefromuniversity.model.Point2D;
 import escapefromuniversity.model.Vector2D;
+<<<<<<< Updated upstream:src/main/java/escapefromuniversity/model/enemy/BossImp.java
+=======
+import escapefromuniversity.model.bullet.BulletFactory;
+import escapefromuniversity.model.bullet.BulletFactoryImpl;
+>>>>>>> Stashed changes:src/main/java/escapefromuniversity/model/enemy/BossImpl.java
 import escapefromuniversity.model.gameObject.AbstractDynamicGameObject;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.player.Player;
 
-public abstract class BossImp extends AbstractDynamicGameObject implements Boss{
+public abstract class BossImpl extends AbstractDynamicGameObject implements Boss{
 	
 	private int life;
 	private final long shootDelay;
@@ -16,7 +21,7 @@ public abstract class BossImp extends AbstractDynamicGameObject implements Boss{
 	private Point2D previousPosition;
 	private int impactDamage;
 	
-	public BossImp(int speed, Point2D position, Point2D upperCorner, Vector2D direction, GameObjectType type, int life, long shootDelay, int impactDamage) {
+	public BossImpl(int speed, Point2D position, Point2D upperCorner, Vector2D direction, GameObjectType type, int life, long shootDelay, int impactDamage) {
 		super(type, position, upperCorner, speed, direction);
 		this.life = life;
 		this.shootDelay = shootDelay;

@@ -9,12 +9,12 @@ import escapefromuniversity.model.gameObject.AbstractDynamicGameObject;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;
 
-public class BulletImp extends AbstractDynamicGameObject implements Bullet{
+public class BulletImpl extends AbstractDynamicGameObject implements Bullet{
 	
 	private final int damage;
 	
 
-	public BulletImp(GameObjectType type, Point2D position, int speed, Vector2D direction, int damage) {
+	public BulletImpl(GameObjectType type, Point2D position, int speed, Vector2D direction, int damage) {
 		super(type, position, position.sum(BulletConstant.BULLET_BOX_SIZE), speed, direction);
 		this.damage = damage;
 	}

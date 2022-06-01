@@ -10,7 +10,7 @@ public interface BulletFactory {
 	 * @param direction : the direction the bullet will go
 	 * @return player bullet.
 	 */
-	Bullet createProtagonistBullet(Point2D startPosition, Vector2D direction);
+	Bullet createPlayerBullet(Point2D startPosition, Vector2D direction);
 	
 	/**
 	 * @param startPosition : initial position of the bullet
