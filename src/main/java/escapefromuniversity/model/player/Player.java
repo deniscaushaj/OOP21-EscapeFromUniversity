@@ -33,10 +33,21 @@ public interface Player extends DynamicGameObject{
 	 * @param damage to inflict to the Player's life.
 	 */
 	void takeDamage(int damage);
+
+	/**
+	 * @return <code>true</code> if the Player can shoot.
+	 */
+	boolean canShoot();
+	
+	/**
+	 * Makes the Player shoot.
+	 */
+	void shoot();
 	
 //	void setNewBuff();
 	
 	/**
+<<<<<<< Updated upstream
 	 * @return <code>true</code> if the Player can shoot.
 	 */
 	boolean canShoot();
@@ -45,6 +56,11 @@ public interface Player extends DynamicGameObject{
 	 * The Player shoots.
 	 */
 	void shoot();
+=======
+	 * Increments {@link PlayerImpl#passed}.
+	 */
+	void passedExam();
+>>>>>>> Stashed changes
 	
 	/**
 	 * @return <code>true</code> if the Player is dead.
