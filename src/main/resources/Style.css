@@ -3,11 +3,11 @@
 	-fx-opacity: 0.8;
 }
 .anchor {
-    -fx-background-image:url('bg.jpeg');
+    -fx-background-image:url('/images/bg.jpeg');
 }
 .bt {
-	-fx-background-image:url('button.png');
+	-fx-background-image:url('/images/button.png');
 }
 .back {
-	-fx-background-image:url('back.png');
+	-fx-background-image:url('/images/back.png');
 }
