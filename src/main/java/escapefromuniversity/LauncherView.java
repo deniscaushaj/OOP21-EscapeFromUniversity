@@ -12,14 +12,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public final class LauncherView extends Application{
 
 	static Stage launcherWindow;
 	static Scene launcher;
-	static Pane content;
 	
 	public final void start(Stage stage) throws Exception {
 		FXMLLoader loader = new FXMLLoader();
@@ -33,7 +31,7 @@ public final class LauncherView extends Application{
         stage.setScene(launcher);
         stage.setResizable(false);
         stage.centerOnScreen();
-        Image logo = new Image("file:src/main/resources/images/logo.png");
+        Image logo = new Image("file:src/main/resources/images/logo.png"); // TODO change icon
         stage.getIcons().add(logo);
         stage.show();
         launcherWindow = stage;

@@ -31,7 +31,7 @@ public class LauncherController {
     }
     
     @FXML	
-    void credits(ActionEvent event) { //creditsButton
+    void credits(ActionEvent event) {
     	try {
     		FXMLLoader loader = new FXMLLoader();
     		URL fileLocation = new File(OSFixes.getLocation("layouts","Credits.fxml")).toURI().toURL();
