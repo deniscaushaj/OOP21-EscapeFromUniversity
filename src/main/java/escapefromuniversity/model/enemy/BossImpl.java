@@ -2,11 +2,8 @@ package escapefromuniversity.model.enemy;
 
 import escapefromuniversity.model.Point2D;
 import escapefromuniversity.model.Vector2D;
-<<<<<<< Updated upstream:src/main/java/escapefromuniversity/model/enemy/BossImp.java
-=======
 import escapefromuniversity.model.bullet.BulletFactory;
 import escapefromuniversity.model.bullet.BulletFactoryImpl;
->>>>>>> Stashed changes:src/main/java/escapefromuniversity/model/enemy/BossImpl.java
 import escapefromuniversity.model.gameObject.AbstractDynamicGameObject;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;

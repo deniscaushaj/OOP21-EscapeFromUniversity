@@ -45,22 +45,11 @@ public interface Player extends DynamicGameObject{
 	void shoot();
 	
 //	void setNewBuff();
-	
+
 	/**
-<<<<<<< Updated upstream
-	 * @return <code>true</code> if the Player can shoot.
-	 */
-	boolean canShoot();
-	
-	/**
-	 * The Player shoots.
-	 */
-	void shoot();
-=======
-	 * Increments {@link PlayerImpl#passed}.
+	 * Increments the number of passed exams.
 	 */
 	void passedExam();
->>>>>>> Stashed changes
 	
 	/**
 	 * @return <code>true</code> if the Player is dead.
