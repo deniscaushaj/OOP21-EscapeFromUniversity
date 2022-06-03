@@ -10,7 +10,8 @@ public class MapManagerImpl implements MapManager {
     }
 
     @Override
-    public void getRoom() {
+    public Room getRoom() {
+		return null;
         /*
         * Forse da sostituire con un getZone
         * Forse sarebbe figo creare una map che contenga tutti gli ID delle stanze (KEY) e in modo tale da poter restituire
