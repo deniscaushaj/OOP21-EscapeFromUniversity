@@ -4,7 +4,7 @@ public interface MapManager {
 
     public void roomChange();
 
-    public void getRoom();
+    public Room getRoom();
 
     public boolean gameOver();
 }
