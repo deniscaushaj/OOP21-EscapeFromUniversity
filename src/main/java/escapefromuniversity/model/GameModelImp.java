@@ -17,7 +17,7 @@ public class GameModelImp implements GameModel{
 
 	@Override
 	public void updateGame(double deltaTime) {
-		// TODO Auto-generated method stub
+		this.mapManaget.getRoom().update(deltaTime);
 		
 	}
 
@@ -29,8 +29,7 @@ public class GameModelImp implements GameModel{
 
 	@Override
 	public boolean isLost() {
-		// TODO Auto-generated method stub
-		return false;
+		return this.mapManaget.gameOver();
 	}
 
 }
