@@ -3,7 +3,7 @@ package escapefromuniversity;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-import escapefromuniversity.model.OSFixes;
+import escapefromuniversity.model.utilities.OSFixes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

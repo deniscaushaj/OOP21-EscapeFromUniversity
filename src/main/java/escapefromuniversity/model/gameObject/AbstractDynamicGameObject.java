@@ -1,9 +1,9 @@
 package escapefromuniversity.model.gameObject;
 
-import escapefromuniversity.model.HitBox;
-import escapefromuniversity.model.HitBoxImpl;
-import escapefromuniversity.model.Point2D;
-import escapefromuniversity.model.Vector2D;
+import escapefromuniversity.model.basics.HitBox;
+import escapefromuniversity.model.basics.HitBoxImpl;
+import escapefromuniversity.model.basics.Point2D;
+import escapefromuniversity.model.basics.Vector2D;
 
 import escapefromuniversity.model.map.Room;
 

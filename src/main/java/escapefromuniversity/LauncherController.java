@@ -1,7 +1,7 @@
 package escapefromuniversity;
 
-import escapefromuniversity.model.LauncherResizer;
-import escapefromuniversity.model.OSFixes;
+import escapefromuniversity.model.utilities.LauncherResizer;
+import escapefromuniversity.model.utilities.OSFixes;
 
 import java.io.File;
 import java.net.URL;

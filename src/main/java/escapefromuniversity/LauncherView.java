@@ -1,9 +1,9 @@
 package escapefromuniversity;
 
-import escapefromuniversity.model.LauncherResizer;
-import escapefromuniversity.model.OSFixes;
+import escapefromuniversity.model.utilities.LauncherResizer;
+import escapefromuniversity.model.utilities.OSFixes;
 
-import static escapefromuniversity.model.LauncherResizer.*;
+import static escapefromuniversity.model.utilities.LauncherResizer.*;
 import java.io.File;
 import java.net.URL;
 

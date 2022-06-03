@@ -1,4 +1,4 @@
-package escapefromuniversity.model;
+package escapefromuniversity.model.basics;
 
 public enum GameCollisionType {
 	

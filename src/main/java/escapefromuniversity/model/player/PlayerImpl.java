@@ -1,7 +1,7 @@
 package escapefromuniversity.model.player;
 
-import escapefromuniversity.model.Point2D;
-import escapefromuniversity.model.Vector2D;
+import escapefromuniversity.model.basics.Point2D;
+import escapefromuniversity.model.basics.Vector2D;
 import escapefromuniversity.model.gameObject.AbstractDynamicGameObject;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;

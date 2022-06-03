@@ -7,8 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import escapefromuniversity.model.Point2D;
-import escapefromuniversity.model.HitBoxImpl;
+import escapefromuniversity.model.basics.Point2D;
+import escapefromuniversity.model.basics.HitBoxImpl;
 
 public class TestHitBox {
 
