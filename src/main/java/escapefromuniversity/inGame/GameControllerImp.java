@@ -1,4 +1,4 @@
-package escapefromuniversity;
+package escapefromuniversity.inGame;
 
 public class GameControllerImp implements GameController{
 
