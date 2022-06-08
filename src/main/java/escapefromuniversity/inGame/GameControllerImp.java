@@ -23,10 +23,8 @@ public class GameControllerImp implements GameController{
 		while(continueGame()) {
 			long currentTime = System.currentTimeMillis();
 			long deltaTime = currentTime - lastTime;
-			
-			
-			
-			
+			this.updateModel(deltaTime);
+			this.view.update();
 			lastTime = currentTime;
 		}
 		
