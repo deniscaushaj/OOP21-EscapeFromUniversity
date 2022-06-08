@@ -14,8 +14,21 @@ public class GameControllerImp implements GameController{
 
 	@Override
 	public void GameLoop() {
-		// TODO Auto-generated method stub
+		long lastTime = System.currentTimeMillis();
+		while(continueGame()) {
+			long currentTime = System.currentTimeMillis();
+			long deltaTime = currentTime - lastTime;
+			
+			
+			
+			
+			lastTime = currentTime;
+		}
 		
+	}
+	
+	private boolean continueGame() {
+		return !this.model.isLost() && !this.model.isWin();
 	}
 
 }
