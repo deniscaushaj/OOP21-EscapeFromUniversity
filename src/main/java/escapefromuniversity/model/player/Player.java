@@ -35,7 +35,7 @@ public interface Player extends DynamicGameObject{
 	void takeDamage(int damage);
 
 	/**
-	 * @return <code>true</code> if the Player can shoot.
+	 * @return {@code true} if the Player can shoot.
 	 */
 	boolean canShoot();
 	
@@ -52,12 +52,12 @@ public interface Player extends DynamicGameObject{
 	void passedExam();
 	
 	/**
-	 * @return <code>true</code> if the Player is dead.
+	 * @return {@code true} if the Player is dead.
 	 */
 	boolean isDead();
 	
 	/**
-	 * @return <code>true</code> if the Player is graduated.
+	 * @return {@code true} if the Player is graduated.
 	 */
 	boolean isGraduated();
 

@@ -11,10 +11,10 @@ import javafx.scene.control.Hyperlink;
 
 public class CreditsController {
 	
-	@FXML
+    @FXML
     private Button backButton;
 	
-	@FXML
+    @FXML
     private Hyperlink daniel, denis, emanuele, marco, tileset;
 
     @FXML
@@ -27,15 +27,15 @@ public class CreditsController {
     	OSFixes osFixes = new OSFixes();
 //    	TODO fix links loader
     	if (event.getSource().equals(daniel)) {
-    		osFixes.openUrl("https://github.com/DanielCapannini");
+    	    osFixes.openUrl("https://github.com/DanielCapannini");
     	} else if (event.getSource().equals(denis)) {
-    		osFixes.openUrl("https://github.com/deniscaushaj");
+    	    osFixes.openUrl("https://github.com/deniscaushaj");
     	} else if (event.getSource().equals(emanuele)) {
-    		osFixes.openUrl("https://github.com/brtmnl");
+    	    osFixes.openUrl("https://github.com/brtmnl");
     	} else if (event.getSource().equals(marco)) {
-    		osFixes.openUrl("https://github.com/MarcoAntolini");
+    	    osFixes.openUrl("https://github.com/MarcoAntolini");
     	} else if(event.getSource().equals(tileset)) {
-    		osFixes.openUrl("https://limezu.itch.io/");
+    	    osFixes.openUrl("https://limezu.itch.io/");
         }
     }
 
