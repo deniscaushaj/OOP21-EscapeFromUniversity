@@ -3,6 +3,7 @@ package escapefromuniversity.model;
 import java.util.List;
 
 import escapefromuniversity.model.gameObject.GameObject;
+import escapefromuniversity.model.player.Player;
 
 public interface GameModel {
 	
@@ -30,6 +31,12 @@ public interface GameModel {
 	 * @return true if you lost.
 	 */
 	boolean isLost();
+	
+	/**
+	 * 
+	 * @return the Player object.
+	 */
+	Player getPlayer();
 	
 
 }
