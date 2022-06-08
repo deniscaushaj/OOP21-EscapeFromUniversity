@@ -43,12 +43,9 @@ public class TMXMapParser {
         final var tilesets = doc.getElementsByTagName("tileset");
         final var tilesetsStream = streamParse(tilesets);
 
-        final var ti = tilesetsStream.map(t -> tilesetNodeFromName(
-                t.getAttributes().getNamedItem("source").getTextContent()));
-
         return new MapPropertiesImpl(w, h, tw, th,
                 layerStream.map(this::parseLayer).collect(Collectors.toList()),
-                ti.map(this::parseTileset).collect(Collectors.toList()));
+                tilesetsStream.map(this::parseTileset).collect(Collectors.toList()));
     }
 
     private Node tilesetNodeFromName(String tilesetName) {
@@ -63,7 +60,9 @@ public class TMXMapParser {
         }
     }
 
-    private Tileset parseTileset(final Node tileset) {
+    private Tileset parseTileset(final Node t) {
+        final var tileset = tilesetNodeFromName(t.getAttributes().getNamedItem("source").getTextContent());
+        final var firstTileId = Integer.parseInt(t.getAttributes().getNamedItem("firstgid").getTextContent());
         final var children = streamParse(tileset.getChildNodes());
         final var path = children.filter(p -> "image".equals(p.getNodeName()))
                 .findFirst()
@@ -74,7 +73,7 @@ public class TMXMapParser {
         final var tilesCount = Integer.parseInt(tileset.getAttributes().getNamedItem("tilecount").getTextContent());
         final var cols = Integer.parseInt(tileset.getAttributes().getNamedItem("columns").getTextContent());
 
-        return new Tileset(path, tilesCount, cols);
+        return new Tileset(path, tilesCount, cols, firstTileId);
     }
 
     private Layer parseLayer(final Node node) {
