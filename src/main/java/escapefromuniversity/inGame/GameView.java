@@ -7,5 +7,7 @@ public interface GameView {
 	void isLost();
 	
 	void isWin();
+	
+	void setGameController();
 
 }
