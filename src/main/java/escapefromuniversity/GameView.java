@@ -12,9 +12,9 @@ import static escapefromuniversity.model.utilities.LauncherResizer.*;
 
 public class GameView {
 
-    BufferedImage tempScreen;
     BufferedImage tempScreen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_ARGB);
     Graphics2D g2d = (Graphics2D)tempScreen.getGraphics();
+    
     private GameState state;
     
     public static void startGame () {
