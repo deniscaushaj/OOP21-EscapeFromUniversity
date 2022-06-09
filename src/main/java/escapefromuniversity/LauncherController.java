@@ -22,7 +22,8 @@ public class LauncherController {
 
     @FXML
     void newGame(ActionEvent event) {
-
+        GameView.startGame();
+        LauncherView.launcherWindow.close();
     }
     
     @FXML
