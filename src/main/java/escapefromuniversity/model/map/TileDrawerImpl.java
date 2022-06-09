@@ -1,9 +1,6 @@
 package escapefromuniversity.model.map;
 
 import escapefromuniversity.model.Point2D;
-import javafx.util.Pair;
-
-import java.awt.*;
 import java.util.Comparator;
 
 public class TileDrawerImpl implements TileDrawer {
