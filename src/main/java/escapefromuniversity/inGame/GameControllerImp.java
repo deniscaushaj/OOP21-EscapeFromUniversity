@@ -45,4 +45,16 @@ public class GameControllerImp implements GameController{
 				.collect(Collectors.toList());
 	}
 
+
+	@Override
+	public int getPlayerLife() {
+		return this.model.getPlayer().getLife();
+	}
+
+
+	@Override
+	public int getPlayerCredits() {
+		return this.model.getPlayer().getCredits();
+	}
+
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.map.MapManager;
 import escapefromuniversity.model.map.MapManagerImpl;
+import escapefromuniversity.model.player.Player;
 
 public class GameModelImp implements GameModel{
 	private final MapManager mapManaget = new MapManagerImpl();
@@ -42,6 +43,15 @@ public class GameModelImp implements GameModel{
 	@Override
 	public boolean isLost() {
 		return this.mapManaget.gameOver();
+	}
+
+	/**
+	 * {@
+	 */
+	@Override
+	public Player getPlayer() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
