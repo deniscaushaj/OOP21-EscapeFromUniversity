@@ -33,23 +33,5 @@ public enum GameState {
     /**
      * Identifies the win state.
      */   
-    WIN;
-    
-    private GameState gameState;
-    
-    /**
-     * @return the current game state.
-     */
-    public GameState getGameState () {
-        return gameState;
-    }
-    
-    /**
-     * Sets the current game state.
-     * @param gameState : the game state to set.
-     */
-    public void setGameState (GameState gameState) {
-        this.gameState = gameState;
-    }
-    
+    WIN;  
 }
