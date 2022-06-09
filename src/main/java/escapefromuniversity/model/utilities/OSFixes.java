@@ -17,7 +17,7 @@ public class OSFixes {
      * Opens the url passed as a string.
      * @param url : the web url to open.
      */
-    public void openUrl(String url) {
+    public static void openUrl(String url) {
         if (OS.contains("win")) {
             try {
 		new ProcessBuilder("rundll32 url.dll,FileProtocolHandler ", url).start();
