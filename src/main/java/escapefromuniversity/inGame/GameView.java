@@ -8,6 +8,6 @@ public interface GameView {
 	
 	void isWin();
 	
-	void setGameController();
+	void setGameController(GameController controller);
 
 }

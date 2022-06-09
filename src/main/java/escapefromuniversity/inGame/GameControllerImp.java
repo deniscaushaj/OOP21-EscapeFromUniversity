@@ -14,6 +14,7 @@ public class GameControllerImp implements GameController{
 	public GameControllerImp(GameModel model, GameView view) {
 		this.model = model;
 		this.view = view;
+		this.view.setGameController(this);
 	}
 	
 
@@ -26,6 +27,11 @@ public class GameControllerImp implements GameController{
 			this.updateModel(deltaTime);
 			this.view.update();
 			lastTime = currentTime;
+		}
+		if(this.model.isWin()) {
+			this.view.isWin();
+		}else {
+			this.view.isLost();
 		}
 		
 	}
