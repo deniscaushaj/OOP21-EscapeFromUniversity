@@ -4,5 +4,9 @@ public interface GameController {
 	
 	
 	void GameLoop();
+	
+	int getPlayerLife();
+	
+	int getPlayerCredits();
 
 }
