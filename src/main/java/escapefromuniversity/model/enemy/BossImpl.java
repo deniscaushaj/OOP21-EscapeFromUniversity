@@ -2,8 +2,6 @@ package escapefromuniversity.model.enemy;
 
 import escapefromuniversity.model.Point2D;
 import escapefromuniversity.model.Vector2D;
-import escapefromuniversity.model.bullet.BulletFactory;
-import escapefromuniversity.model.bullet.BulletFactoryImpl;
 import escapefromuniversity.model.gameObject.AbstractDynamicGameObject;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;
@@ -17,6 +15,7 @@ public abstract class BossImpl extends AbstractDynamicGameObject implements Boss
 	private BossState state;
 	private Point2D previousPosition;
 	private int impactDamage;
+	private final int credicts = 12;
 	
 	public BossImpl(int speed, Point2D position, Point2D upperCorner, Vector2D direction, GameObjectType type, int life, long shootDelay, int impactDamage) {
 		super(type, position, upperCorner, speed, direction);
@@ -68,7 +67,10 @@ public abstract class BossImpl extends AbstractDynamicGameObject implements Boss
 	@Override
 	public void takeDamage(int damage) {
 		this.life = this.life - damage;
-		
+		if(this.life <= 0) {
+			this.getRoom().getPlayer().setCredits(credicts);
+			this.getRoom().deleteGameObject(this);
+		}
 	}
 
 	/**
@@ -119,7 +121,7 @@ public abstract class BossImpl extends AbstractDynamicGameObject implements Boss
 	 * {@inheritDoc}
 	 */
 	protected Vector2D newDirection() {
-		Point2D playerPos = this.getRoom().getPlayerPosition();
+		Point2D playerPos = this.getRoom().getPlayer().getObjectPosition();
 		return new Vector2D((this.getObjectPosition().getX() - playerPos.getX())/this.getObjectPosition().module(playerPos),
 				            (this.getObjectPosition().getY() - playerPos.getY())/this.getObjectPosition().module(playerPos));
 	}
