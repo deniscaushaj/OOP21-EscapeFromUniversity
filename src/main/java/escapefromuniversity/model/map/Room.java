@@ -6,6 +6,7 @@ import escapefromuniversity.model.Point2D;
 import escapefromuniversity.model.gameObject.DynamicGameObject;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.StaticGameObject;
+import escapefromuniversity.model.player.Player;
 
 public interface Room {
 
@@ -19,5 +20,5 @@ public interface Room {
 
     List<GameObject> getAllGameObject();
     
-    Point2D getPlayerPosition();
+    Player getPlayer();
 }
