@@ -139,5 +139,21 @@ public abstract class BossImpl extends AbstractDynamicGameObject implements Boss
 	private void setPreviousPosition(Point2D previousPosition) {
 		this.previousPosition = previousPosition;
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setState(BossState state) {
+		this.state = state;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public BossState getState() {
+		return this.state;
+	}
 
 }

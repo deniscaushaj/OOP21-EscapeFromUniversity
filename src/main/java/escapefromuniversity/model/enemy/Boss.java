@@ -11,6 +11,6 @@ public interface Boss extends Enemy{
 	
 	BossState getState();
 	
-	void setState();
+	void setState(BossState state);
 
 }
