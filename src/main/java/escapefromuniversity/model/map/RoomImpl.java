@@ -3,10 +3,11 @@ package escapefromuniversity.model.map;
 import java.util.LinkedList;
 import java.util.List;
 
-import escapefromuniversity.model.Point2D;
+
 import escapefromuniversity.model.gameObject.DynamicGameObject;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.StaticGameObject;
+import escapefromuniversity.model.player.Player;
 
 public class RoomImpl implements Room {
     private final List<StaticGameObject> staticGameObjects = new LinkedList<>();
@@ -51,7 +52,7 @@ public class RoomImpl implements Room {
     }
 
 	@Override
-	public Point2D getPlayerPosition() {
+	public Player getPlayer() {
 		// TODO Auto-generated method stub
 		return null;
 	}
