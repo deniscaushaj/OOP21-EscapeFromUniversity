@@ -9,6 +9,8 @@ public interface Boss extends Enemy{
 	
 	int getImpactDamage();
 	
-	//getQuiz
+	BossState getState();
+	
+	void setState();
 
 }
