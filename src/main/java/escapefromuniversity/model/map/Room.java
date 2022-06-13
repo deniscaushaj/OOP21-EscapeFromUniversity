@@ -4,6 +4,7 @@ import java.util.List;
 
 import escapefromuniversity.model.gameObject.DynamicGameObject;
 import escapefromuniversity.model.gameObject.GameObject;
+import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.StaticGameObject;
 import escapefromuniversity.model.player.Player;
 
@@ -20,4 +21,6 @@ public interface Room {
     List<GameObject> getAllGameObject();
     
     Player getPlayer();
+    
+    void goQuiz(GameObjectType type);
 }
