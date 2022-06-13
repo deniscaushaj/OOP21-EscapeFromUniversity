@@ -36,6 +36,7 @@ public class GameControllerImp implements GameController{
 		
 	}
 	
+	
 	private boolean continueGame() {
 		return !this.model.isLost() && !this.model.isWin();
 	}
