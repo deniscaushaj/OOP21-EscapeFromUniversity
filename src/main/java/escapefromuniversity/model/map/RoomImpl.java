@@ -6,6 +6,7 @@ import java.util.List;
 
 import escapefromuniversity.model.gameObject.DynamicGameObject;
 import escapefromuniversity.model.gameObject.GameObject;
+import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.StaticGameObject;
 import escapefromuniversity.model.player.Player;
 
@@ -55,5 +56,12 @@ public class RoomImpl implements Room {
 	public Player getPlayer() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	@Override
+	public void goQuiz(GameObjectType type) {
+		// TODO Auto-generated method stub
+		
 	}
 }
