@@ -15,6 +15,7 @@ public abstract class BossImp extends AbstractDynamicGameObject implements Boss{
 	private BossState state;
 	private Point2D previousPosition;
 	private int impactDamage;
+	private int CompetitionImpl;
 	
 	public BossImp(int speed, Point2D position, Point2D upperCorner, Vector2D direction, GameObjectType type, int life, long shootDelay, int impactDamage) {
 		super(type, position, upperCorner, speed, direction);

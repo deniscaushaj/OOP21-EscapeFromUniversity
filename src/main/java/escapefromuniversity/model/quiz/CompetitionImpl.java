@@ -8,16 +8,22 @@ import java.util.Map;
 public class CompetitionImpl {
 	
 	private final Map<Integer,Quiz> competition;
-	private final String name;
+	private final String teacherName;
+	private final String subjectName;
 	private int currentQuiz = 0;
 	
-	private CompetitionImpl(Map<Integer,Quiz> competition, String name) {
+	private CompetitionImpl(Map<Integer,Quiz> competition, String techerName, String subjectName) {
 		this.competition = competition;
-		this.name = name;
+		this.teacherName = techerName;
+		this.subjectName = subjectName;
 	}
 	
-	public String getName() {
-		return this.name;
+	public String getTeacherName() {
+		return this.teacherName;
+	}
+	
+	public String getSubjectName() {
+		return this.subjectName;
 	}
 	
 	public Quiz getNextQuiz() {
@@ -35,11 +41,8 @@ public class CompetitionImpl {
 	
 	public static class Builder {
 		private final Map<Integer,Quiz> competition = new HashMap<Integer,Quiz>();;
-		private final String name;
-		
-		public Builder(final String name) {
-			this.name = name;
-		}
+		private String teacherName;
+		private String subjectName;
 		
 		public Builder addQuiz(final Quiz quiz) {
 			if(this.competition.containsKey(quiz.getID())) {
@@ -50,14 +53,27 @@ public class CompetitionImpl {
 			return this;
 		}
 		
+		public Builder setTeacher(final String teacherName) {
+			this.teacherName = teacherName;
+			return this;
+		}
+		
+		public Builder setSubject(final String subjectName) {
+			this.subjectName = subjectName;
+			return this;
+		}
+		
 		public CompetitionImpl build() {
-			if(this.name == null) {
-				throw new IllegalStateException("This competition does not have a correctly set name");
+			if(this.teacherName == null) {
+				throw new IllegalStateException("This competition does not have a correctly set teacher");
+			}
+			if(this.subjectName == null) {
+				throw new IllegalStateException("This competition does not have a correctly set subject");
 			}
 			if(this.competition.size() < 1) {
 				throw new IllegalStateException("This competition must have at least one quiz");
 			}
-			return new CompetitionImpl(this.competition, this.name);
+			return new CompetitionImpl(this.competition, this.teacherName, this.subjectName);
 		}
 	}
 	
