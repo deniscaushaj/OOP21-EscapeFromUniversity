@@ -19,11 +19,11 @@ public class TileDrawerImpl implements TileDrawer {
         var ts = this.searchTileset(id);
         var tPos = calcTPos(id, ts);
         var tileHeight = map.getHeight();
-        var tileWeidth = map.getWidth();
+        var tileWidth = map.getWidth();
         this.canvasDrawer.drawImage(ts.getFileName(),
                 new Rectangle(
-                    new Point2D(tPos.getX() * tileWeidth, tPos.getY() * tileHeight),
-                    new Point2D((tPos.getX() * tileWeidth) + tileWeidth, (tPos.getY() * tileHeight) + tileHeight)),
+                    new Point2D(tPos.getX() * tileWidth, tPos.getY() * tileHeight),
+                    new Point2D((tPos.getX() * tileWidth) + tileWidth, (tPos.getY() * tileHeight) + tileHeight)),
                 pos);
     }
 
