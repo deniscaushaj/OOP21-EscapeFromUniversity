@@ -13,10 +13,11 @@ public abstract class AbstractStaticGameObject implements StaticGameObject{
 	private final HitBoxImpl box;
 	private Room room;
 	
-	public AbstractStaticGameObject(GameObjectType type, Point2D position, Point2D upperCorner) {
+	public AbstractStaticGameObject(GameObjectType type, Point2D position, Point2D upperCorner, Room room) {
 		this.type = type;
 		this.position = position;
 		this.box = new HitBoxImpl(position, upperCorner);
+		this.room = room;
 	}
 	
 	@Override
