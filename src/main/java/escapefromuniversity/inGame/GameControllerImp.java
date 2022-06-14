@@ -65,4 +65,11 @@ public class GameControllerImp implements GameController{
 		return this.model.getPlayer().getCredits();
 	}
 
+
+	@Override
+	public void goQuiz() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
