@@ -2,7 +2,11 @@ package escapefromuniversity.model.player;
 
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.basics.Vector2D;
+import escapefromuniversity.model.bullet.Bullet;
+import escapefromuniversity.model.bullet.BulletFactory;
+import escapefromuniversity.model.bullet.BulletFactoryImpl;
 import escapefromuniversity.model.gameObject.AbstractDynamicGameObject;
+import escapefromuniversity.model.gameObject.Direction;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;
 
@@ -16,8 +20,11 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
     private int credits;
     private int passed;
     private long shootDelay;
-    private long lastShoot;
-
+    private long lastShot;
+    private boolean shooting;
+    private Vector2D shotDirection;
+    private final BulletFactory bulletFactory;
+    
     /**
      * @param type
      * @param position
@@ -25,13 +32,15 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
      * @param direction
      * @param shootDelay
      */
-    public PlayerImpl(GameObjectType type, Point2D position, int speed, Vector2D direction, int shootDelay) {
+    public PlayerImpl(GameObjectType type, Point2D position, int speed, Vector2D direction, int shootDelay, BulletFactory bulletFactory) {
         super(type, position, HIT_BOX_PLAYER, speed, direction);
         this.life = MAX_LIFE;
         this.credits = 0;
         this.passed = 0;
         this.shootDelay = shootDelay;
-        this.lastShoot = 0;
+        this.shooting = false;
+        this.lastShot = System.currentTimeMillis();
+        this.bulletFactory = new BulletFactoryImpl();
     }
 
     @Override
@@ -49,7 +58,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
 
     @Override
     public void update(double deltaTime) {
-        if (this.canShoot()) {
+        if (this.shooting) {
             this.shoot();
         }
         this.move(deltaTime);
@@ -87,18 +96,29 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
 
     @Override
     public boolean canShoot() {
-        if (System.currentTimeMillis() - this.lastShoot >= this.shootDelay) {
-            this.lastShoot = System.currentTimeMillis();
+        final long currentTime = System.currentTimeMillis();
+        if (currentTime - this.lastShot >= this.shootDelay) {
+            this.lastShot = currentTime;
             return true;
         }
         return false;
     }
+    
+    @Override
+    public void setShoot(final boolean shooting, final Direction direction) {
+        if (this.canShoot()) {
+            this.shooting = shooting;
+            this.shotDirection = direction.getDirection();
+        }
+    }
 
     @Override
     public void shoot() {
-
+        final Bullet bullet = bulletFactory.createPlayerBullet(this.getObjectPosition(), this.shotDirection);
+        this.getRoom().addDynamicGameObject(bullet);
+        this.shooting = false;
     }
-
+    
     //	@Override
     //	public void setNewBuff() {
     //		// TODO Auto-generated method stub

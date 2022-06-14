@@ -1,5 +1,6 @@
 package escapefromuniversity.model.player;
 
+import escapefromuniversity.model.gameObject.Direction;
 import escapefromuniversity.model.gameObject.DynamicGameObject;
 
 public interface Player extends DynamicGameObject{
@@ -38,6 +39,13 @@ public interface Player extends DynamicGameObject{
 	 * @return {@code true} if the Player can shoot.
 	 */
 	boolean canShoot();
+	
+	/**
+	 * Sets a shot with its direction.
+	 * @param shooting : {@code true} if the player is shooting.
+	 * @param direction : the direction of the shot.
+	 */
+	void setShoot(boolean shooting, Direction direction);
 	
 	/**
 	 * Makes the Player shoot.
