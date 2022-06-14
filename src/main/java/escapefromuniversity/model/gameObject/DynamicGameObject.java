@@ -39,5 +39,9 @@ public interface DynamicGameObject extends StaticGameObject{
 	 * @return the room of the dynamic game 
 	 */
 	Room getRoom();
+	
+	void setState(State state);
+	
+	State getState();
 
 }
