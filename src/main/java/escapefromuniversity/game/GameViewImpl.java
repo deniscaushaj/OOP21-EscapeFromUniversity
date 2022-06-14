@@ -19,7 +19,7 @@ public class GameViewImpl extends JPanel implements GameView {
     
     KeyHandler keyHandler = new KeyHandler();
     
-    private static GameState state;
+    private static GameState gameState;
     
     public GameViewImpl () {
         this.setDoubleBuffered(true);
@@ -43,7 +43,7 @@ public class GameViewImpl extends JPanel implements GameView {
      * @return the current game state.
      */
     public static GameState getGameState () {
-        return state;
+        return gameState;
     }
     
     /**
@@ -51,7 +51,7 @@ public class GameViewImpl extends JPanel implements GameView {
      * @param gameState : the game state to set.
      */
     public void setGameState (GameState gameState) {
-        state = gameState;
+    	gameState = gameState;
     }
     
     public void draw (Graphics2D g2d) {
