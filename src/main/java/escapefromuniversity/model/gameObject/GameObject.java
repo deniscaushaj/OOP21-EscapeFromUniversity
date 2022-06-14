@@ -2,6 +2,7 @@ package escapefromuniversity.model.gameObject;
 
 import escapefromuniversity.model.HitBox;
 import escapefromuniversity.model.Point2D;
+import escapefromuniversity.model.map.Room;
 
 public interface GameObject {
 	
@@ -43,6 +44,8 @@ public interface GameObject {
 	 * @return true if the game objects are colliding
 	 */
 	public boolean collisionWithCheck(final GameObject gObj2);
+	
+	Room getRoom();
 	
 	
 }

@@ -34,10 +34,5 @@ public interface DynamicGameObject extends StaticGameObject{
 	
 	void update(double deltaTime);
 	
-	/**
-	 * 
-	 * @return the room of the dynamic game 
-	 */
-	Room getRoom();
 
 }
