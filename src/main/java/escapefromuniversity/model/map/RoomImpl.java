@@ -3,7 +3,6 @@ package escapefromuniversity.model.map;
 import java.util.LinkedList;
 import java.util.List;
 
-
 import escapefromuniversity.model.gameObject.DynamicGameObject;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;

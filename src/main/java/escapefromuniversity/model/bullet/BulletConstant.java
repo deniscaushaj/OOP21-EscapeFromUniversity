@@ -1,6 +1,6 @@
 package escapefromuniversity.model.bullet;
 
-import escapefromuniversity.model.Point2D;
+import escapefromuniversity.model.basics.Point2D;
 
 public class BulletConstant {
 	

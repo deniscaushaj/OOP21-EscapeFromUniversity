@@ -3,8 +3,8 @@ package escapefromuniversity.model.enemy;
 import java.util.LinkedList;
 import java.util.List;
 
-import escapefromuniversity.model.Point2D;
-import escapefromuniversity.model.Vector2D;
+import escapefromuniversity.model.basics.Point2D;
+import escapefromuniversity.model.basics.Vector2D;
 import escapefromuniversity.model.bullet.Bullet;
 import escapefromuniversity.model.bullet.BulletFactory;
 import escapefromuniversity.model.bullet.BulletFactoryImpl;

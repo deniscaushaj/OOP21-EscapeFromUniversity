@@ -1,8 +1,8 @@
 package escapefromuniversity.model.bullet;
 
-import escapefromuniversity.model.GameCollisionType;
-import escapefromuniversity.model.Point2D;
-import escapefromuniversity.model.Vector2D;
+import escapefromuniversity.model.basics.GameCollisionType;
+import escapefromuniversity.model.basics.Point2D;
+import escapefromuniversity.model.basics.Vector2D;
 import escapefromuniversity.model.enemy.Enemy;
 import escapefromuniversity.model.player.Player;
 import escapefromuniversity.model.gameObject.AbstractDynamicGameObject;
