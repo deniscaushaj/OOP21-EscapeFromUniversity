@@ -7,12 +7,12 @@ import java.util.stream.Collectors;
 import escapefromuniversity.model.GameModel;
 import escapefromuniversity.model.GameModelImp;
 
-public class GameControllerImp implements GameController{
+public class GameControllerImpl implements GameController{
 	private final GameModel model;
 	private final GameView view;
 	private List<Integer> gameObjID = new LinkedList();
 	
-	public GameControllerImp() {
+	public GameControllerImpl() {
 		this.model = new GameModelImp(this);
 		this.view = new GameViewImpl();
 		this.view.setGameController(this);
