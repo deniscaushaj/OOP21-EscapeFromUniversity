@@ -23,7 +23,7 @@ public class PlayerMovementImpl implements PlayerMovement {
     
     @Override
     public void setImage () {
-        int count = 1;
+        int tileCount = 1;
         String number = null;
         String filename = null;
         File filepath;
@@ -46,15 +46,15 @@ public class PlayerMovementImpl implements PlayerMovement {
         default:
             break;
         }
-        if (count == 1) {
+        if (tileCount == 1) {
             number = "1";
-            count++;
-        } else if (count == 2) {
+            tileCount++;
+        } else if (tileCount == 2) {
             number = "2";
-            count++;
-        } else if (count == 3) {
+            tileCount++;
+        } else if (tileCount == 3) {
             number = "3";
-            count = 1;
+            tileCount = 1;
         }
 //        TODO how many updates per second
         filename.concat(number);      
