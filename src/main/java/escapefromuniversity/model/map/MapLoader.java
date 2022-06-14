@@ -1,5 +1,5 @@
 package escapefromuniversity.model.map;
-import escapefromuniversity.model.Point2D;
+import escapefromuniversity.model.basics.Point2D;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
