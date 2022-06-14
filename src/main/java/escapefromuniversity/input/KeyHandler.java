@@ -18,11 +18,11 @@ public class KeyHandler implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        int code = e.getKeyCode();
+        int key = e.getKeyCode();
         if (GameViewImpl.getGameState() == GameState.PLAY 
                 || GameViewImpl.getGameState() == GameState.FIGHT
                 || GameViewImpl.getGameState() == GameState.WIN) {
-            switch (code) {
+            switch (key) {
             case KeyEvent.VK_W:
                 upPressed = true;
                 break;
@@ -41,11 +41,11 @@ public class KeyHandler implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        int code = e.getKeyCode();
+        int key = e.getKeyCode();
         if (GameViewImpl.getGameState() == GameState.PLAY 
                 || GameViewImpl.getGameState() == GameState.FIGHT
                 || GameViewImpl.getGameState() == GameState.WIN) {
-            switch (code) {
+            switch (key) {
             case KeyEvent.VK_W:
                 upPressed = false;
                 break;
