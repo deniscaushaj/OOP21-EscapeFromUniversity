@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import escapefromuniversity.inGame.GameController;
+import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.map.MapManager;
@@ -66,6 +67,16 @@ public class GameModelImp implements GameModel{
 	public void goQuiz(GameObjectType type) {
 		this.controller.goQuiz();
 		
+	}
+
+	
+	public Point2D getPositionOfID(int id) {
+		for(final GameObject obj : this.mapManaget.getRoom().getAllGameObject()) {
+			if(obj.getID() == id) {
+				return obj.getObjectPosition();
+			}
+		}
+		return null;
 	}
 
 }

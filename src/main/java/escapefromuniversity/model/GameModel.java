@@ -2,6 +2,7 @@ package escapefromuniversity.model;
 
 import java.util.List;
 
+import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.player.Player;
@@ -40,7 +41,11 @@ public interface GameModel {
 	Player getPlayer();
 	
 	
+	Point2D getPositionOfID(int id);
+	
 	void goQuiz(GameObjectType type);
+	
+	
 	
 
 }
