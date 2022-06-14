@@ -23,21 +23,20 @@ public class LauncherController {
 
     @FXML
     void newGame(ActionEvent event) {
-<<<<<<< HEAD:src/main/java/escapefromuniversity/launcher/LauncherController.java
+
         GameViewImpl.startGame();
         LauncherView.launcherWindow.close();
-=======
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			URL fileLocation = new File(OSFixes.getLocation("layouts","Game.fxml")).toURI().toURL();
-			loader.setLocation(fileLocation);
-			Parent gameRoot = loader.load();
-			Scene game = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
-			LauncherView.launcherWindow.setScene(game);
-		} catch (Exception e) {
-			System.out.println(e);
-		}
->>>>>>> Edit LauncherController for testing purposes:src/main/java/escapefromuniversity/LauncherController.java
+
+//		try {
+//			FXMLLoader loader = new FXMLLoader();
+//			URL fileLocation = new File(OSFixes.getLocation("layouts","Game.fxml")).toURI().toURL();
+//			loader.setLocation(fileLocation);
+//			Parent gameRoot = loader.load();
+//			Scene game = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
+//			LauncherView.launcherWindow.setScene(game);
+//		} catch (Exception e) {
+//			System.out.println(e);
+//		}
     }
     
     @FXML
