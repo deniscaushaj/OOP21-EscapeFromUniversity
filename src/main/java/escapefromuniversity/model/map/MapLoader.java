@@ -1,4 +1,5 @@
 package escapefromuniversity.model.map;
+import escapefromuniversity.model.Point2D;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
@@ -20,14 +21,23 @@ public class MapLoader {
     @FXML
     public final void myButtonOnClickHandler(final MouseEvent evt) {
         final var gc = gameCanvas.getGraphicsContext2D();
-        Image image = new Image(getClass().getResourceAsStream("/images/map.png"));
-        gc.drawImage(image, 0, 0, 400, 400);
-        final var prova = new TMXMapParser("final-map.tmx");
+        //Image image = new Image(getClass().getResourceAsStream("/images/logo.png"));
+        //gc.drawImage(image, 0, 0, 400, 400);
+        final var parser = new TMXMapParser("final-map.tmx");
         try {
-            System.out.println(prova.parse());
+            var map = parser.parse();
+            var drawer = new TileDrawerImpl(map, new CanvasDrawerImpl(gc));
+
+            map.getLayers().forEach(l -> {
+                for (int i = 0; i < map.getWidth(); i++) {
+                    for (int j = 0; j < map.getHeight(); j++) {
+                        drawer.drawTileByID(l.getData().get(i).get(j),
+                                new Rectangle(new Point2D(i * 20, j * 20), new Point2D((i+1) * 20, (j+1) * 20)));
+                    }
+                }
+            });
         } catch (ParserConfigurationException | SAXException | IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 }
