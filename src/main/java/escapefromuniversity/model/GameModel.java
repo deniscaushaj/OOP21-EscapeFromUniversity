@@ -3,6 +3,7 @@ package escapefromuniversity.model;
 import java.util.List;
 
 import escapefromuniversity.model.gameObject.GameObject;
+import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.player.Player;
 
 public interface GameModel {
@@ -37,6 +38,9 @@ public interface GameModel {
 	 * @return the Player object.
 	 */
 	Player getPlayer();
+	
+	
+	void goQuiz(GameObjectType type);
 	
 
 }

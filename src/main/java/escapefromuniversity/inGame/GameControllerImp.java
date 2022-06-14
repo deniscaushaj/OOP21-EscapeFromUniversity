@@ -5,15 +5,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import escapefromuniversity.model.GameModel;
+import escapefromuniversity.model.GameModelImp;
 
 public class GameControllerImp implements GameController{
 	private final GameModel model;
 	private final GameView view;
 	private List<Integer> gameObjID = new LinkedList();
 	
-	public GameControllerImp(GameModel model, GameView view) {
-		this.model = model;
-		this.view = view;
+	public GameControllerImp() {
+		this.model = new GameModelImp(this);
+		this.view = new GameViewImpl();
 		this.view.setGameController(this);
 	}
 	
@@ -62,6 +63,13 @@ public class GameControllerImp implements GameController{
 	@Override
 	public int getPlayerCredits() {
 		return this.model.getPlayer().getCredits();
+	}
+
+
+	@Override
+	public void goQuiz() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

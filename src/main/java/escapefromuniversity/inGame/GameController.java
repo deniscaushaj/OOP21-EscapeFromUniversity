@@ -8,5 +8,7 @@ public interface GameController {
 	int getPlayerLife();
 	
 	int getPlayerCredits();
+	
+	void goQuiz();
 
 }
