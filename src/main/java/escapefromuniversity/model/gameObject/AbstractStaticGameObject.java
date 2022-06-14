@@ -3,6 +3,7 @@ package escapefromuniversity.model.gameObject;
 import escapefromuniversity.model.HitBox;
 import escapefromuniversity.model.HitBoxImpl;
 import escapefromuniversity.model.Point2D;
+import escapefromuniversity.model.map.Room;
 
 public abstract class AbstractStaticGameObject implements StaticGameObject{
 	
@@ -10,6 +11,7 @@ public abstract class AbstractStaticGameObject implements StaticGameObject{
 	private final GameObjectType type;
 	private final Point2D position;
 	private final HitBoxImpl box;
+	private Room room;
 	
 	public AbstractStaticGameObject(GameObjectType type, Point2D position, Point2D upperCorner) {
 		this.type = type;
@@ -49,6 +51,11 @@ public abstract class AbstractStaticGameObject implements StaticGameObject{
 	@Override
 	public HitBox getObjectHitBox() {
 		return new HitBoxImpl(this.box);
+	}
+	
+	@Override
+	public Room getRoom() {
+		return this.room;
 	}
 
 	
