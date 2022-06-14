@@ -64,7 +64,7 @@ public class GameModelImp implements GameModel{
 
 	@Override
 	public void goQuiz(GameObjectType type) {
-		// TODO Auto-generated method stub
+		this.controller.goQuiz();
 		
 	}
 
