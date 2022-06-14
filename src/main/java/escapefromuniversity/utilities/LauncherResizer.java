@@ -1,4 +1,4 @@
-package escapefromuniversity.model;
+package escapefromuniversity.utilities;
 
 import javafx.stage.Screen;
 

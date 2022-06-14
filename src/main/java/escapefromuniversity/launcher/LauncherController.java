@@ -1,7 +1,8 @@
-package escapefromuniversity;
+package escapefromuniversity.launcher;
 
-import escapefromuniversity.model.LauncherResizer;
-import escapefromuniversity.model.OSFixes;
+import escapefromuniversity.game.GameViewImpl;
+import escapefromuniversity.utilities.LauncherResizer;
+import escapefromuniversity.utilities.OSFixes;
 
 import java.io.File;
 import java.net.URL;
@@ -17,12 +18,13 @@ import javafx.scene.input.MouseEvent;
 
 public class LauncherController {
     
-	@FXML
+    @FXML
     private Button creditsButton, exitButton, leaderboardButton, newGameButton;
 
     @FXML
     void newGame(ActionEvent event) {
-
+        GameViewImpl.startGame();
+        LauncherView.launcherWindow.close();
     }
     
     @FXML
@@ -33,16 +35,16 @@ public class LauncherController {
     @FXML	
     void credits(ActionEvent event) {
     	try {
-    		FXMLLoader loader = new FXMLLoader();
-    		URL fileLocation = new File(OSFixes.getLocation("layouts","Credits.fxml")).toURI().toURL();
-    		loader.setLocation(fileLocation);
-    		Parent creditsRoot = loader.load();
-	        Scene credits = new Scene(creditsRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
-	        LauncherView.launcherWindow.setScene(credits);
+    	    FXMLLoader loader = new FXMLLoader();
+    	    URL fileLocation = new File(OSFixes.getLocation("layouts","Credits.fxml")).toURI().toURL();
+    	    loader.setLocation(fileLocation);
+    	    Parent creditsRoot = loader.load();
+    	    Scene credits = new Scene(creditsRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
+    	    LauncherView.launcherWindow.setScene(credits);
     	} catch (Exception e) {
-    		System.out.println(e);
+    	    System.out.println(e);
     	}
-	}
+    }
     
     @FXML
     void exit(MouseEvent event) {

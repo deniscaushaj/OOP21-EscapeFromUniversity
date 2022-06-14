@@ -1,5 +1,6 @@
 package escapefromuniversity.model.player;
 
+import escapefromuniversity.model.gameObject.Direction;
 import escapefromuniversity.model.gameObject.DynamicGameObject;
 
 public interface Player extends DynamicGameObject{
@@ -35,9 +36,16 @@ public interface Player extends DynamicGameObject{
 	void takeDamage(int damage);
 
 	/**
-	 * @return <code>true</code> if the Player can shoot.
+	 * @return {@code true} if the Player can shoot.
 	 */
 	boolean canShoot();
+	
+	/**
+	 * Sets a shot with its direction.
+	 * @param shooting : {@code true} if the player is shooting.
+	 * @param direction : the direction of the shot.
+	 */
+	void setShoot(boolean shooting, Direction direction);
 	
 	/**
 	 * Makes the Player shoot.
@@ -52,12 +60,12 @@ public interface Player extends DynamicGameObject{
 	void passedExam();
 	
 	/**
-	 * @return <code>true</code> if the Player is dead.
+	 * @return {@code true} if the Player is dead.
 	 */
 	boolean isDead();
 	
 	/**
-	 * @return <code>true</code> if the Player is graduated.
+	 * @return {@code true} if the Player is graduated.
 	 */
 	boolean isGraduated();
 

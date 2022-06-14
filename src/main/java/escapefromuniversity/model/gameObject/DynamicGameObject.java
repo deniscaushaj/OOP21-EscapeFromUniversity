@@ -1,7 +1,7 @@
 package escapefromuniversity.model.gameObject;
 
-import escapefromuniversity.model.Point2D;
-import escapefromuniversity.model.Vector2D;
+import escapefromuniversity.model.basics.Point2D;
+import escapefromuniversity.model.basics.Vector2D;
 
 import escapefromuniversity.model.map.Room;
 
@@ -39,5 +39,9 @@ public interface DynamicGameObject extends StaticGameObject{
 	 * @return the room of the dynamic game 
 	 */
 	Room getRoom();
+	
+	void setState(State state);
+	
+	State getState();
 
 }

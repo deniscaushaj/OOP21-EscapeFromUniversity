@@ -1,9 +1,7 @@
 package escapefromuniversity.model.enemy;
 
-import escapefromuniversity.model.Point2D;
-import escapefromuniversity.model.Vector2D;
-import escapefromuniversity.model.bullet.BulletFactory;
-import escapefromuniversity.model.bullet.BulletFactoryImpl;
+import escapefromuniversity.model.basics.Point2D;
+import escapefromuniversity.model.basics.Vector2D;
 import escapefromuniversity.model.gameObject.AbstractDynamicGameObject;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;

@@ -1,6 +1,6 @@
 package escapefromuniversity.model.enemy;
 
-import escapefromuniversity.model.Point2D;
+import escapefromuniversity.model.basics.Point2D;
 
 public class BossConstant {
 	
