@@ -1,21 +1,32 @@
-package escapefromuniversity;
+package escapefromuniversity.game;
+
+import static escapefromuniversity.utilities.LauncherResizer.*;
 
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-import escapefromuniversity.model.utilities.OSFixes;
+import escapefromuniversity.input.KeyHandler;
+import escapefromuniversity.utilities.OSFixes;
 
-import static escapefromuniversity.model.utilities.LauncherResizer.*;
-
-public class GameView {
+public class GameViewImpl extends JPanel implements GameView {
 
     BufferedImage tempScreen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_ARGB);
     Graphics2D g2d = (Graphics2D)tempScreen.getGraphics();
     
-    private GameState state;
+    KeyHandler keyHandler = new KeyHandler();
+    
+    private static GameState state;
+    
+    public GameViewImpl () {
+        this.setDoubleBuffered(true);
+        this.addKeyListener(keyHandler);
+        this.setFocusable(true);
+    }
+   
     
     public static void startGame () {
         JFrame window = new JFrame();
@@ -31,7 +42,7 @@ public class GameView {
     /**
      * @return the current game state.
      */
-    public GameState getGameState () {
+    public static GameState getGameState () {
         return state;
     }
     
@@ -40,14 +51,14 @@ public class GameView {
      * @param gameState : the game state to set.
      */
     public void setGameState (GameState gameState) {
-        this.state = gameState;
+        state = gameState;
     }
     
     public void draw (Graphics2D g2d) {
         this.g2d = g2d;
 //      g2d.setFont(null); TODO choose font
-        switch (this.getGameState()) {
-        case CHARACTER:
+        switch (getGameState()) {
+        case INVENTORY:
             this.addPauseBG();
             break;
         case DIALOGUE:
@@ -81,6 +92,5 @@ public class GameView {
     public void removePauseBG () {
         
     }
-    
-    
+
 }

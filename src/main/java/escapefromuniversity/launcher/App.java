@@ -1,4 +1,4 @@
-package escapefromuniversity;
+package escapefromuniversity.launcher;
 
 public final class App{
 	

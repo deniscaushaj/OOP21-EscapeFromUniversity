@@ -1,12 +1,12 @@
-package escapefromuniversity;
+package escapefromuniversity.launcher;
 
-import escapefromuniversity.model.utilities.LauncherResizer;
-import escapefromuniversity.model.utilities.OSFixes;
+import static escapefromuniversity.utilities.LauncherResizer.*;
 
-import static escapefromuniversity.model.utilities.LauncherResizer.*;
 import java.io.File;
 import java.net.URL;
 
+import escapefromuniversity.utilities.LauncherResizer;
+import escapefromuniversity.utilities.OSFixes;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

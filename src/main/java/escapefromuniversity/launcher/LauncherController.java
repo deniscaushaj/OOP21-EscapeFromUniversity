@@ -1,7 +1,8 @@
-package escapefromuniversity;
+package escapefromuniversity.launcher;
 
-import escapefromuniversity.model.utilities.LauncherResizer;
-import escapefromuniversity.model.utilities.OSFixes;
+import escapefromuniversity.game.GameViewImpl;
+import escapefromuniversity.utilities.LauncherResizer;
+import escapefromuniversity.utilities.OSFixes;
 
 import java.io.File;
 import java.net.URL;
@@ -22,7 +23,7 @@ public class LauncherController {
 
     @FXML
     void newGame(ActionEvent event) {
-        GameView.startGame();
+        GameViewImpl.startGame();
         LauncherView.launcherWindow.close();
     }
     

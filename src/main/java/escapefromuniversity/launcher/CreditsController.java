@@ -1,9 +1,9 @@
-package escapefromuniversity;
+package escapefromuniversity.launcher;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-import escapefromuniversity.model.utilities.OSFixes;
+import escapefromuniversity.utilities.OSFixes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

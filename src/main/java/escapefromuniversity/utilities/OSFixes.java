@@ -1,4 +1,4 @@
-package escapefromuniversity.model.utilities;
+package escapefromuniversity.utilities;
 
 import java.io.IOException;
 
