@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import escapefromuniversity.model.OSFixes;
+import escapefromuniversity.utilities.OSFixes;
 
 public class ReadFile {
 	

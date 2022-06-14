@@ -17,12 +17,12 @@ public interface Boss extends Enemy{
 	 * 
 	 * @return state of Boss.
 	 */
-	BossState getState();
+	BossState getBossState();
 	
 	/**
 	 * 
 	 * @param state: new state.
 	 */
-	void setState(BossState state);
+	void setBossState(BossState state);
 
 }

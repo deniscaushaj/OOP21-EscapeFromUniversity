@@ -34,8 +34,8 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
      * @param direction
      * @param shootDelay
      */
-    public PlayerImpl(GameObjectType type, Point2D position, int speed, Vector2D direction, int shootDelay, BulletFactory bulletFactory) {
-        super(type, position, HIT_BOX_PLAYER, speed, direction);
+    public PlayerImpl(GameObjectType type, Point2D position, int speed, Vector2D direction, int shootDelay, BulletFactory bulletFactory, Room room) {
+        super(type, position, HIT_BOX_PLAYER, speed, direction, room);
         this.life = MAX_LIFE;
         this.credits = 0;
         this.passed = 0;
@@ -119,7 +119,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
 
     @Override
     public void shoot() {
-        final Bullet bullet = bulletFactory.createPlayerBullet(this.getObjectPosition(), this.shotDirection);
+        final Bullet bullet = bulletFactory.createPlayerBullet(this.getObjectPosition(), this.shotDirection, this.room);
         this.getRoom().addDynamicGameObject(bullet);
         this.shooting = false;
     }

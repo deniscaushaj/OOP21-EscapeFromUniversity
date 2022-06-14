@@ -13,7 +13,7 @@ public abstract class BossImpl extends AbstractDynamicGameObject implements Boss
 	private int life;
 	private final long shootDelay;
 	private long shootLastTime;
-	private BossState state;
+	private BossState bossState;
 	private Point2D previousPosition;
 	private int impactDamage;
 	private final int credicts = 12;
@@ -22,7 +22,7 @@ public abstract class BossImpl extends AbstractDynamicGameObject implements Boss
 		super(type, position, upperCorner, speed, direction, room);
 		this.life = life;
 		this.shootDelay = shootDelay;
-		this.state = BossState.QUIZ;
+		this.bossState = BossState.QUIZ;
 		this.impactDamage = impactDamage;
 	}
 
@@ -79,7 +79,7 @@ public abstract class BossImpl extends AbstractDynamicGameObject implements Boss
 	 */
 	@Override
 	public void update(double deltaTime) {
-		if(this.state.equals(BossState.FIGHT)) {
+		if(this.bossState.equals(BossState.FIGHT)) {
 			this.maybeShoot();
 			this.setPreviousPosition(this.getObjectPosition());
 			this.move(deltaTime);
@@ -99,7 +99,7 @@ public abstract class BossImpl extends AbstractDynamicGameObject implements Boss
 				break;
 			case ENTITY:
 				if(gObj2.getType().equals(GameObjectType.PLAYER)) {
-					if(this.state.equals(BossState.QUIZ)) {
+					if(this.bossState.equals(BossState.QUIZ)) {
 						this.getRoom().goQuiz(getType());
 					}
 					final Player player = (Player) gObj2;
@@ -148,16 +148,16 @@ public abstract class BossImpl extends AbstractDynamicGameObject implements Boss
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setState(BossState state) {
-		this.state = state;
+	public void setBossState(BossState state) {
+		this.bossState = state;
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public BossState getState() {
-		return this.state;
+	public BossState getBossState() {
+		return this.bossState;
 	}
 
 }

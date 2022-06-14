@@ -4,7 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import escapefromuniversity.model.OSFixes;
+import escapefromuniversity.utilities.OSFixes;
 
 public class WriteFile {
 	

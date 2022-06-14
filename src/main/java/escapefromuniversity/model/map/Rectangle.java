@@ -1,6 +1,6 @@
 package escapefromuniversity.model.map;
 
-import escapefromuniversity.model.Point2D;
+import escapefromuniversity.model.basics.Point2D;
 
 public class Rectangle {
 
