@@ -5,6 +5,7 @@ import escapefromuniversity.model.Vector2D;
 import escapefromuniversity.model.gameObject.AbstractDynamicGameObject;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;
+import escapefromuniversity.model.map.Room;
 
 public class PlayerImpl extends AbstractDynamicGameObject implements Player{
 	
@@ -18,8 +19,8 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
 	private long shootDelay;
 	private long lastShoot;
 
-	public PlayerImpl(GameObjectType type, Point2D position, int speed, Vector2D direction, int shootDelay) {
-		super(type, position, HIT_BOX_PLAYER, speed, direction);
+	public PlayerImpl(GameObjectType type, Point2D position, int speed, Vector2D direction, int shootDelay, Room room) {
+		super(type, position, HIT_BOX_PLAYER, speed, direction, room);
 		this.life = MAX_LIFE;
 		this.credits = 0;
 		this.passed = 0;
@@ -111,6 +112,12 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
 	@Override
 	public boolean isGraduated() {
 		return this.passed >= 6;
-	}	
+	}
+
+	@Override
+	public void setRoom(Room room) {
+		this.room = room;
+	}
+
 
 }

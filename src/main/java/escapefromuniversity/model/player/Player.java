@@ -1,6 +1,7 @@
 package escapefromuniversity.model.player;
 
 import escapefromuniversity.model.gameObject.DynamicGameObject;
+import escapefromuniversity.model.map.Room;
 
 public interface Player extends DynamicGameObject{
 	
@@ -60,5 +61,8 @@ public interface Player extends DynamicGameObject{
 	 * @return <code>true</code> if the Player is graduated.
 	 */
 	boolean isGraduated();
+	
+	
+	void setRoom(Room room);
 
 }

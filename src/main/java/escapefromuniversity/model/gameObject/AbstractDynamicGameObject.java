@@ -15,7 +15,7 @@ public abstract class AbstractDynamicGameObject implements DynamicGameObject {
 	private Vector2D direction;
 	private Point2D position;
 	private final HitBoxImpl box;
-	private Room room;
+	protected Room room;
 
 	public AbstractDynamicGameObject(final GameObjectType type, final Point2D position, Point2D upperCorner, final int speed, final Vector2D direction, Room room) {
 		this.type = type;
