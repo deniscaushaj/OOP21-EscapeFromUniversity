@@ -13,7 +13,7 @@ public class GameControllerImp implements GameController{
 	private List<Integer> gameObjID = new LinkedList();
 	
 	public GameControllerImp() {
-		this.model = new GameModelImp();
+		this.model = new GameModelImp(this);
 		this.view = new GameViewImpl();
 		this.view.setGameController(this);
 	}
