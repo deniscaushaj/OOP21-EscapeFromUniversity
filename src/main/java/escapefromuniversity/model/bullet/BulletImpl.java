@@ -8,14 +8,15 @@ import escapefromuniversity.model.player.Player;
 import escapefromuniversity.model.gameObject.AbstractDynamicGameObject;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;
+import escapefromuniversity.model.map.Room;
 
 public class BulletImpl extends AbstractDynamicGameObject implements Bullet{
 	
 	private final int damage;
 	
 
-	public BulletImpl(GameObjectType type, Point2D position, int speed, Vector2D direction, int damage) {
-		super(type, position, position.sum(BulletConstant.BULLET_BOX_SIZE), speed, direction);
+	public BulletImpl(GameObjectType type, Point2D position, int speed, Vector2D direction, int damage, Room room) {
+		super(type, position, position.sum(BulletConstant.BULLET_BOX_SIZE), speed, direction, room);
 		this.damage = damage;
 	}
     
