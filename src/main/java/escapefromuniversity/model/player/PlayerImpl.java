@@ -1,5 +1,6 @@
 package escapefromuniversity.model.player;
 
+import escapefromuniversity.model.basics.GameCollisionType;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.basics.Vector2D;
 import escapefromuniversity.model.bullet.Bullet;
@@ -22,6 +23,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
     private long shootDelay;
     private long lastShot;
     private boolean shooting;
+    private Point2D prevPosition;
     private Vector2D shotDirection;
     private final BulletFactory bulletFactory;
     
@@ -46,12 +48,9 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
     @Override
     public void collisionWith(GameObject gObj2) {
         if (this.collisionWithCheck(gObj2)) {
-            switch(gObj2.getType().getCollisionType()) {
-            case OBSTACLE:
-                //				TODO collision with obstacle
-                break;
-            default:
-                break;
+            if (gObj2.getType().getCollisionType() == GameCollisionType.ENTITY
+            		|| gObj2.getType().getCollisionType() == GameCollisionType.OBSTACLE) {
+            	this.setPosition(this.getPreviousPosition());
             }
         }
     }
@@ -61,8 +60,9 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
         if (this.shooting) {
             this.shoot();
         }
+        this.setPreviousPosition(this.getObjectPosition());
         this.move(deltaTime);
-    } // TODO GameEntity?
+    }
 
     @Override
     public int getMaxLife() {
@@ -124,6 +124,14 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
     //		// TODO Auto-generated method stub
     //		
     //	}
+    
+    private void setPreviousPosition (final Point2D prevPos) {
+    	this.prevPosition = prevPos;
+    }
+    
+    private Point2D getPreviousPosition () {
+    	return this.prevPosition;
+    }
 
     @Override
     public void passedExam() {
