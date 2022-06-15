@@ -1,11 +1,11 @@
 package escapefromuniversity;
 
+import escapefromuniversity.utilities.OSFixes;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-
-import escapefromuniversity.utilities.OSFixes;
 
 public class ReadFile {
 	
