@@ -1,0 +1,38 @@
+diff a/src/main/java/escapefromuniversity/model/enemy/BossImpl.java b/src/main/java/escapefromuniversity/model/enemy/BossImpl.java	(rejected hunks)
+@@ -1,28 +1,27 @@
+ package escapefromuniversity.model.enemy;
+ 
+-import escapefromuniversity.model.basics.Point2D;
+-import escapefromuniversity.model.basics.Vector2D;
++import escapefromuniversity.model.Point2D;
++import escapefromuniversity.model.Vector2D;
+ import escapefromuniversity.model.gameObject.AbstractDynamicGameObject;
+ import escapefromuniversity.model.gameObject.GameObject;
+ import escapefromuniversity.model.gameObject.GameObjectType;
+-import escapefromuniversity.model.map.Room;
+ import escapefromuniversity.model.player.Player;
+ 
+-public abstract class BossImpl extends AbstractDynamicGameObject implements Boss{
++public abstract class BossImp extends AbstractDynamicGameObject implements Boss{
+ 	
+ 	private int life;
+ 	private final long shootDelay;
+ 	private long shootLastTime;
+-	private BossState bossState;
++	private BossState state;
+ 	private Point2D previousPosition;
+ 	private int impactDamage;
+-	private final int credicts = 12;
++	private int CompetitionImpl;
+ 	
+-	public BossImpl(int speed, Point2D position, Point2D upperCorner, Vector2D direction, GameObjectType type, int life, long shootDelay, int impactDamage, Room room) {
+-		super(type, position, upperCorner, speed, direction, room);
++	public BossImp(int speed, Point2D position, Point2D upperCorner, Vector2D direction, GameObjectType type, int life, long shootDelay, int impactDamage) {
++		super(type, position, upperCorner, speed, direction);
+ 		this.life = life;
+ 		this.shootDelay = shootDelay;
+-		this.bossState = BossState.QUIZ;
++		this.state = BossState.QUIZ;
+ 		this.impactDamage = impactDamage;
+ 	}
+ 

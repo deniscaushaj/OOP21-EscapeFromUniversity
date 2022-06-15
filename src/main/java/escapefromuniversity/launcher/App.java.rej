@@ -1,0 +1,12 @@
+diff a/src/main/java/escapefromuniversity/launcher/App.java b/src/main/java/escapefromuniversity/launcher/App.java	(rejected hunks)
+@@ -5,7 +5,8 @@
+ 	private App() { }
+ 	
+ 	public static void main (final String[] args) {
+-        LauncherView.createLauncher(args);
++        //LauncherView.createLauncher(args);
++		QuizView.startQuizCompetition(args);
+     }
+     
+ }
+\ No newline at end of file
