@@ -1,10 +1,19 @@
 package escapefromuniversity.model.map;
 
+import escapefromuniversity.model.player.Player;
+
 public interface MapManager {
 
-    public void roomChange();
+    void update(double deltaTime);
 
-    public Room getRoom();
+    Room getRoom();
 
-    public boolean gameOver();
+    Player getPlayer();
+
+    void goQuiz();
+
+    void setCurrentRoom(Door door);
+
+    void goShop();
+
 }
