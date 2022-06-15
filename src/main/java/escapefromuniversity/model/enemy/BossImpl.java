@@ -68,7 +68,10 @@ public abstract class BossImpl extends AbstractDynamicGameObject implements Boss
 	@Override
 	public void takeDamage(int damage) {
 		this.life = this.life - damage;
-		
+		if(this.life <= 0) {
+			this.getRoom().getPlayer().setCredits(credicts);
+			this.getRoom().deleteGameObject(this);
+		}
 	}
 
 	/**
@@ -96,6 +99,9 @@ public abstract class BossImpl extends AbstractDynamicGameObject implements Boss
 				break;
 			case ENTITY:
 				if(gObj2.getType().equals(GameObjectType.PLAYER)) {
+					if(this.bossState.equals(BossState.QUIZ)) {
+						this.getRoom().goQuiz(getType());
+					}
 					final Player player = (Player) gObj2;
 					player.takeDamage(this.getImpactDamage());
 				}
@@ -136,6 +142,22 @@ public abstract class BossImpl extends AbstractDynamicGameObject implements Boss
 	 */
 	private void setPreviousPosition(Point2D previousPosition) {
 		this.previousPosition = previousPosition;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setBossState(BossState state) {
+		this.bossState = state;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public BossState getBossState() {
+		return this.bossState;
 	}
 
 }
