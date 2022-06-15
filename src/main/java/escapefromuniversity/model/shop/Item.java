@@ -1,8 +1,8 @@
 package escapefromuniversity.model.shop;
 
+import java.util.Map;
+
 public interface Item {
 
-    int getPrice();
-
-    Items getName();
+    Map<Items, Integer> getAllItems();
 }
