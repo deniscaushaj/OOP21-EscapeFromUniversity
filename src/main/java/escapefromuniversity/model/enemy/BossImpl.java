@@ -119,7 +119,7 @@ public abstract class BossImpl extends AbstractDynamicGameObject implements Boss
 	 * {@inheritDoc}
 	 */
 	protected Vector2D newDirection() {
-		Point2D playerPos = this.getRoom().getPlayerPosition();
+		Point2D playerPos = this.getRoom().getPlayer().getObjectPosition();
 		return new Vector2D((this.getObjectPosition().getX() - playerPos.getX())/this.getObjectPosition().module(playerPos),
 				            (this.getObjectPosition().getY() - playerPos.getY())/this.getObjectPosition().module(playerPos));
 	}
