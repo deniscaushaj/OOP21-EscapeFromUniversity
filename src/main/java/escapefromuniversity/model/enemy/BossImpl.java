@@ -76,7 +76,7 @@ public abstract class BossImpl extends AbstractDynamicGameObject implements Boss
 	 */
 	@Override
 	public void update(double deltaTime) {
-		if(this.state.equals(BossState.FIGHT)) {
+		if(this.bossState.equals(BossState.FIGHT)) {
 			this.maybeShoot();
 			this.setPreviousPosition(this.getObjectPosition());
 			this.move(deltaTime);
