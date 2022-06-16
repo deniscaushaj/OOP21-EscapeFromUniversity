@@ -58,8 +58,7 @@ public class MapManagerImpl implements MapManager {
 
     @Override
     public void goShop() {
-        // TODO Auto-generated method stub
-
+        this.model.goShop();
     }
 
 }
