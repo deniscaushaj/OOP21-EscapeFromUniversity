@@ -1,6 +1,7 @@
 package escapefromuniversity.model.map;
 
 import escapefromuniversity.model.GameModel;
+import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.player.Player;
 
 import java.util.List;
@@ -44,8 +45,8 @@ public class MapManagerImpl implements MapManager {
     }
 
     @Override
-    public void goQuiz() {
-        this.model.goQuiz();
+    public void goQuiz(GameObjectType type) {
+        this.model.goQuiz(type);
     }
 
     @Override

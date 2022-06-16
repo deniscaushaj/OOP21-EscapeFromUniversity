@@ -45,6 +45,8 @@ public interface GameModel {
 	
 	void goQuiz(GameObjectType type);
 	
+	void goShop();
+	
 	
 	
 

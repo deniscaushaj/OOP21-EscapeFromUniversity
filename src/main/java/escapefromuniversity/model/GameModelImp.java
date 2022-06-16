@@ -51,7 +51,7 @@ public class GameModelImp implements GameModel{
 	 */
 	@Override
 	public boolean isLost() {
-		return this.mapManaget.gameOver();
+		return false; //this.mapManaget.gameOver();
 	}
 
 	/**
@@ -76,6 +76,12 @@ public class GameModelImp implements GameModel{
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public void goShop() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

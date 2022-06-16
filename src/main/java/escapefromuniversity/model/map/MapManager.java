@@ -1,5 +1,6 @@
 package escapefromuniversity.model.map;
 
+import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.player.Player;
 
 public interface MapManager {
@@ -10,7 +11,7 @@ public interface MapManager {
 
     Player getPlayer();
 
-    void goQuiz();
+    void goQuiz(GameObjectType type);
 
     void setCurrentRoom(Door door);
 

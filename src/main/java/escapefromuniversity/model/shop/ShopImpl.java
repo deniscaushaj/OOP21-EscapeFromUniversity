@@ -15,7 +15,7 @@ public class ShopImpl extends AbstractStaticGameObject implements Shop {
     @Override
     public void collisionWith(GameObject gObj2) {
         if (gObj2.getType() == GameObjectType.PLAYER) {
-            this.getRoom().getMapManager().moveToShop();
+            this.getRoom().getMapManager().goShop();
         }
     }
 }
