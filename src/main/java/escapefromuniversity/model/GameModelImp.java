@@ -59,8 +59,7 @@ public class GameModelImp implements GameModel{
 	 */
 	@Override
 	public Player getPlayer() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.mapManaget.getPlayer();
 	}
 
 	@Override
