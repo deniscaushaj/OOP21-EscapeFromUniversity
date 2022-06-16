@@ -22,7 +22,7 @@ public interface Room {
     
     Player getPlayer();
     
-    MapManager getMapManger();
+    MapManager getMapManager();
     
     void goQuiz(GameObjectType type);
 }

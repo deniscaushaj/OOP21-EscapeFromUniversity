@@ -71,7 +71,7 @@ public class RoomImpl implements Room {
 	}
 
 	@Override
-	public MapManager getMapManger() {
+	public MapManager getMapManager() {
 		return this.mapManager;
 	}
 }

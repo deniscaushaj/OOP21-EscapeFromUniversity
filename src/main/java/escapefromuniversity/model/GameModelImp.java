@@ -17,7 +17,7 @@ public class GameModelImp implements GameModel{
 	
 	public GameModelImp(GameController controller) {
 		this.controller = controller;
-		this.mapManaget = new MapManagerImpl();
+		this.mapManaget = new MapManagerImpl(this);
 	}
 
 	/**
