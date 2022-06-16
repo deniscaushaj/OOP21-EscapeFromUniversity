@@ -21,7 +21,7 @@ public class BulletConstant {
 	/**
 	 * Constants of bullets damage.
 	 */
-	protected static final int PLAYER_BULLET_DAMAGE = 15;
+	//protected static final int PLAYER_BULLET_DAMAGE = 15;
 	protected static final int BOSS_1_BULLET_DAMAGE = 15;
 	protected static final int BOSS_2_BULLET_DAMAGE = 20;
 	protected static final int BOSS_3_BULLET_DAMAGE = 30;

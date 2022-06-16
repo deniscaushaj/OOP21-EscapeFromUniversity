@@ -168,7 +168,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
 
     @Override
     public void shoot() {
-        final Bullet bullet = bulletFactory.createPlayerBullet(this.getObjectPosition(), this.shotDirection, this.room);
+        final Bullet bullet = bulletFactory.createPlayerBullet(this.getObjectPosition(), this.shotDirection, this.damage, this.room);
         this.getRoom().addDynamicGameObject(bullet);
         this.shooting = false;
     }

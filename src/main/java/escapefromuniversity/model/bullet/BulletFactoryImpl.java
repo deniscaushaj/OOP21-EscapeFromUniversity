@@ -11,8 +11,7 @@ public class BulletFactoryImpl implements BulletFactory{
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Bullet createPlayerBullet(Point2D startPosition, Vector2D direction, int bonusDamage, Room room) {
-		int damage = BulletConstant.PLAYER_BULLET_DAMAGE + bonusDamage;
+	public Bullet createPlayerBullet(Point2D startPosition, Vector2D direction, int damage, Room room) {
 		return new BulletImpl(GameObjectType.BULLET_PLAYER, startPosition,BulletConstant.PLAYER_BULLET_SPEED,
 				             direction, damage, room);
 	}
