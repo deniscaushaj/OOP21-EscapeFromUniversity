@@ -60,5 +60,80 @@ public class TestBullets {
 		assertEquals(bul.getSpeed(), BOSS_1_BULLET_SPEED);
 		assertEquals(bul.getRoom(), room);
 	}
+	
+	@Test
+	public void testCreateBulletBoss2() {
+		Room room = new RoomImpl(null);
+		final Vector2D vec = new Vector2D(0, 1);
+		final Point2D pos = new Point2D(0,0);
+		Bullet bul = bullets.createBoss1Bullet(pos, vec, room);
+		room.addDynamicGameObject(bul);
+		System.out.println(bul.getObjectPosition().getX());
+		assertEquals(vec, bul.getDirection());
+		assertEquals(pos, bul.getObjectPosition());
+		assertEquals(bul.getDamage(), BOSS_2_BULLET_DAMAGE);
+		assertEquals(bul.getSpeed(), BOSS_2_BULLET_SPEED);
+		assertEquals(bul.getRoom(), room);
+	}
+	
+	@Test
+	public void testCreateBulletBoss3() {
+		Room room = new RoomImpl(null);
+		final Vector2D vec = new Vector2D(0, 1);
+		final Point2D pos = new Point2D(0,0);
+		Bullet bul = bullets.createBoss1Bullet(pos, vec, room);
+		room.addDynamicGameObject(bul);
+		System.out.println(bul.getObjectPosition().getX());
+		assertEquals(vec, bul.getDirection());
+		assertEquals(pos, bul.getObjectPosition());
+		assertEquals(bul.getDamage(), BOSS_3_BULLET_DAMAGE);
+		assertEquals(bul.getSpeed(), BOSS_3_BULLET_SPEED);
+		assertEquals(bul.getRoom(), room);
+	}
+	
+	@Test
+	public void testCreateBulletBoss4() {
+		Room room = new RoomImpl(null);
+		final Vector2D vec = new Vector2D(0, 1);
+		final Point2D pos = new Point2D(0,0);
+		Bullet bul = bullets.createBoss1Bullet(pos, vec, room);
+		room.addDynamicGameObject(bul);
+		System.out.println(bul.getObjectPosition().getX());
+		assertEquals(vec, bul.getDirection());
+		assertEquals(pos, bul.getObjectPosition());
+		assertEquals(bul.getDamage(), BOSS_4_BULLET_DAMAGE);
+		assertEquals(bul.getSpeed(), BOSS_4_BULLET_SPEED);
+		assertEquals(bul.getRoom(), room);
+	}
+	
+	@Test
+	public void testCreateBulletBoss5() {
+		Room room = new RoomImpl(null);
+		final Vector2D vec = new Vector2D(0, 1);
+		final Point2D pos = new Point2D(0,0);
+		Bullet bul = bullets.createBoss1Bullet(pos, vec, room);
+		room.addDynamicGameObject(bul);
+		System.out.println(bul.getObjectPosition().getX());
+		assertEquals(vec, bul.getDirection());
+		assertEquals(pos, bul.getObjectPosition());
+		assertEquals(bul.getDamage(), BOSS_5_BULLET_DAMAGE);
+		assertEquals(bul.getSpeed(), BOSS_5_BULLET_SPEED);
+		assertEquals(bul.getRoom(), room);
+	}
+	
+	@Test
+	public void testCreateBulletBoss6() {
+		Room room = new RoomImpl(null);
+		final Vector2D vec = new Vector2D(0, 1);
+		final Point2D pos = new Point2D(0,0);
+		Bullet bul = bullets.createBoss1Bullet(pos, vec, room);
+		room.addDynamicGameObject(bul);
+		System.out.println(bul.getObjectPosition().getX());
+		assertEquals(vec, bul.getDirection());
+		assertEquals(pos, bul.getObjectPosition());
+		assertEquals(bul.getDamage(), BOSS_6_BULLET_DAMAGE);
+		assertEquals(bul.getSpeed(), BOSS_6_BULLET_SPEED);
+		assertEquals(bul.getRoom(), room);
+	}
 
 }
