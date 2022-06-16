@@ -1,6 +1,9 @@
 package escapefromuniversity.utilities;
 
+import java.awt.Desktop;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 /**
  * Implements fields and methods to open web urls and filepaths working on every OS supported.
@@ -16,23 +19,25 @@ public class OSFixes {
     /**
      * Opens the url passed as a string.
      * @param url : the web url to open.
+     * @throws URISyntaxException 
      */
-    public static void openUrl(String url) {
+    public static void openUrl(String url) throws URISyntaxException {
         if (OS.contains("win")) {
+            Desktop desktop = Desktop.getDesktop();
             try {
-		new ProcessBuilder("rundll32 url.dll,FileProtocolHandler ", url).start();
-            } catch (IOException e) {
-		e.printStackTrace();
+                desktop.browse(new URI(url));
+            } catch (IOException | URISyntaxException e) {
+                e.printStackTrace();
             }
 	} else if (OS.contains("mac")) {
 	    try {
-		new ProcessBuilder("open ", url).start();
+		new ProcessBuilder("open " + url).start();
 	    } catch (IOException e) {
 		e.printStackTrace();
 	    }
 	} else if (OS.contains("nix") || OS.contains("nux")) {
 	    try {
-		new ProcessBuilder("xdg-open ", url).start();
+		new ProcessBuilder("xdg-open " + url).start();
 	    } catch (IOException e){
 		e.printStackTrace();
 	    }

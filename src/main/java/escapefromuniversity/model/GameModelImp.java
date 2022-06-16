@@ -17,7 +17,7 @@ public class GameModelImp implements GameModel{
 	
 	public GameModelImp(GameController controller) {
 		this.controller = controller;
-		this.mapManaget = new MapManagerImpl();
+		this.mapManaget = new MapManagerImpl(this);
 	}
 
 	/**
@@ -51,7 +51,7 @@ public class GameModelImp implements GameModel{
 	 */
 	@Override
 	public boolean isLost() {
-		return this.mapManaget.gameOver();
+		return false; //this.mapManaget.gameOver();
 	}
 
 	/**
@@ -59,8 +59,7 @@ public class GameModelImp implements GameModel{
 	 */
 	@Override
 	public Player getPlayer() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.mapManaget.getPlayer();
 	}
 
 	@Override
@@ -77,6 +76,12 @@ public class GameModelImp implements GameModel{
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public void goShop() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

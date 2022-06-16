@@ -12,6 +12,12 @@ import escapefromuniversity.model.player.Player;
 public class RoomImpl implements Room {
     private final List<StaticGameObject> staticGameObjects = new LinkedList<>();
     private final List<DynamicGameObject> dynamicGameObjects = new LinkedList<>();
+    private final MapManager mapManager;
+    
+    
+    public RoomImpl(MapManager mapManager) {
+    	this.mapManager = mapManager;
+    }
 
     @Override
     public void update(double deltaTime) {
@@ -62,5 +68,10 @@ public class RoomImpl implements Room {
 	public void goQuiz(GameObjectType type) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public MapManager getMapManager() {
+		return this.mapManager;
 	}
 }

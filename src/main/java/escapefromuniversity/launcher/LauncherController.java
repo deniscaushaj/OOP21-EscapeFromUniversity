@@ -1,7 +1,6 @@
 package escapefromuniversity.launcher;
 
 import escapefromuniversity.game.GameViewImpl;
-import escapefromuniversity.inGame.GameController;
 import escapefromuniversity.inGame.GameControllerImpl;
 import escapefromuniversity.utilities.LauncherResizer;
 import escapefromuniversity.utilities.OSFixes;

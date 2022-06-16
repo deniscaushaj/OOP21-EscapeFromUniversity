@@ -7,58 +7,64 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: beige;" styleClass="anchor" stylesheets="@../Style.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/" fx:controller="escapefromuniversity.CreditsController">
-   <children>
-      <VBox layoutX="-6.0" layoutY="-3.0" prefHeight="85.0" prefWidth="606.0" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="600.0" style="-fx-background-color: transparent;" text="Credits" VBox.vgrow="ALWAYS">
-               <font>
-                  <Font name="OCR A Extended" size="41.0" />
-               </font>
-            </Button>
-         </children>
-      </VBox>
-      <VBox layoutX="486.0" layoutY="350.0" prefHeight="36.0" prefWidth="77.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0">
-         <children>
-            <Button fx:id="backButton" alignment="CENTER" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="100.0" minHeight="35.0" minWidth="100.0" mnemonicParsing="false" onAction="#back" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="Back" VBox.vgrow="ALWAYS">
-               <font>
-                  <Font name="OCR A Extended" size="20.0" />
-               </font>
-               <styleClass>
-                  <String fx:value="launcherItem" />
-                  <String fx:value="back" />
-               </styleClass>
-            </Button>
-         </children>
-      </VBox>
-      <VBox alignment="CENTER" layoutY="87.0" prefHeight="250.0" prefWidth="600.0" AnchorPane.bottomAnchor="62.599999999999994" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="87.0">
-         <children>
-            <Hyperlink fx:id="marco" onAction="#openLink" text="Antolini Marco" visited="true">
-               <font>
-                  <Font name="OCR A Extended" size="13.0" />
-               </font>
-            </Hyperlink>
-            <Hyperlink fx:id="emanuele" onAction="#openLink" text="Bertolero Emanuele" visited="true">
-               <font>
-                  <Font name="OCR A Extended" size="13.0" />
-               </font>
-            </Hyperlink>
-            <Hyperlink fx:id="daniel" onAction="#openLink" text="Capannini Daniel" visited="true">
-               <font>
-                  <Font name="OCR A Extended" size="13.0" />
-               </font>
-            </Hyperlink>
-            <Hyperlink fx:id="denis" onAction="#openLink" text="Caushaj Denis" visited="true">
-               <font>
-                  <Font name="OCR A Extended" size="13.0" />
-               </font>
-            </Hyperlink>
-            <Hyperlink fx:id="tileset" alignment="CENTER" onAction="#openLink" text="LimeZu (tileset)" visited="true" VBox.vgrow="ALWAYS">
-               <font>
-                  <Font name="OCR A Extended" size="12.0" />
-               </font>
-            </Hyperlink>
-         </children>
-      </VBox>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" style="-fx-background-color: beige;" styleClass="anchor" stylesheets="@../Style.css"
+            xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/"
+            fx:controller="escapefromuniversity.launcher.CreditsController">
+   <VBox layoutX="-6.0" layoutY="-3.0" prefHeight="85.0" prefWidth="606.0" AnchorPane.leftAnchor="-6.0"
+         AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0"
+              mnemonicParsing="false" prefHeight="82.0" prefWidth="600.0" style="-fx-background-color: transparent;"
+              text="Credits" VBox.vgrow="ALWAYS">
+         <font>
+            <Font name="OCR A Extended" size="41.0"/>
+         </font>
+      </Button>
+   </VBox>
+   <VBox layoutX="486.0" layoutY="350.0" prefHeight="36.0" prefWidth="77.0" AnchorPane.bottomAnchor="14.0"
+         AnchorPane.rightAnchor="14.0">
+      <Button fx:id="backButton" alignment="CENTER" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="100.0"
+              minHeight="35.0" minWidth="100.0" mnemonicParsing="false" onAction="#back" prefHeight="35.0"
+              prefWidth="100.0"
+              style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;"
+              text="Back" VBox.vgrow="ALWAYS">
+         <font>
+            <Font name="OCR A Extended" size="20.0"/>
+         </font>
+         <styleClass>
+            <String fx:value="launcherItem"/>
+            <String fx:value="back"/>
+         </styleClass>
+      </Button>
+   </VBox>
+   <VBox alignment="CENTER" layoutY="87.0" prefHeight="250.0" prefWidth="600.0"
+         AnchorPane.bottomAnchor="62.599999999999994" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+         AnchorPane.topAnchor="87.0">
+      <Hyperlink fx:id="marco" onAction="#openLink" text="Antolini Marco" visited="true">
+         <font>
+            <Font name="OCR A Extended" size="13.0"/>
+         </font>
+      </Hyperlink>
+      <Hyperlink fx:id="emanuele" onAction="#openLink" text="Bertolero Emanuele" visited="true">
+         <font>
+            <Font name="OCR A Extended" size="13.0"/>
+         </font>
+      </Hyperlink>
+      <Hyperlink fx:id="daniel" onAction="#openLink" text="Capannini Daniel" visited="true">
+         <font>
+            <Font name="OCR A Extended" size="13.0"/>
+         </font>
+      </Hyperlink>
+      <Hyperlink fx:id="denis" onAction="#openLink" text="Caushaj Denis" visited="true">
+         <font>
+            <Font name="OCR A Extended" size="13.0"/>
+         </font>
+      </Hyperlink>
+      <Hyperlink fx:id="tileset" alignment="CENTER" onAction="#openLink" text="LimeZu (tileset)" visited="true"
+                 VBox.vgrow="ALWAYS">
+         <font>
+            <Font name="OCR A Extended" size="12.0"/>
+         </font>
+      </Hyperlink>
+   </VBox>
 </AnchorPane>

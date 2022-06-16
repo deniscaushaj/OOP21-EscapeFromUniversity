@@ -1,10 +1,10 @@
 package escapefromuniversity;
 
+import escapefromuniversity.utilities.OSFixes;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-
-import escapefromuniversity.utilities.OSFixes;
 
 public class WriteFile {
 	
