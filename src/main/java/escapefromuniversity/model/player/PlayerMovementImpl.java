@@ -14,13 +14,13 @@ public class PlayerMovementImpl implements PlayerMovement {
 
     private final Player player;
     private Image image;
-    
+
     public PlayerMovementImpl(final Player player) {
         this.player = player;
     }
-    
+
     //TODO move from here image methods
-    
+
     @Override
     public void setImage () {
         int tileCount = 1;
@@ -28,23 +28,23 @@ public class PlayerMovementImpl implements PlayerMovement {
         String filename = null;
         File filepath;
         switch (player.getState()) {
-        case IDLE:
+            case IDLE:
 //            TODO idle
-            break;
-        case UP:
-            filename = "player_back_";
-            break;
-        case DOWN:
-            filename = "player_front_";
-            break;
-        case RIGHT:
-            filename = "player_right_";
-            break;
-        case LEFT:
-            filename = "player_left_";
-            break;
-        default:
-            break;
+                break;
+            case UP:
+                filename = "player_back_";
+                break;
+            case DOWN:
+                filename = "player_front_";
+                break;
+            case RIGHT:
+                filename = "player_right_";
+                break;
+            case LEFT:
+                filename = "player_left_";
+                break;
+            default:
+                break;
         }
         if (tileCount == 1) {
             number = "1";
@@ -57,18 +57,18 @@ public class PlayerMovementImpl implements PlayerMovement {
             tileCount = 1;
         }
 //        TODO how many updates per second
-        filename.concat(number);      
+        filename.concat(number);
         filepath = new File(OSFixes.getLocation("player", filename));
         try {
             this.image = ImageIO.read(filepath);
         } catch (IOException e) {
-            e.printStackTrace();;
+            e.printStackTrace();
         }
     }
-        
+
     @Override
     public Image getImage () {
-        return this.image;        
+        return this.image;
     }
 
     private void moveUp() {
@@ -86,7 +86,7 @@ public class PlayerMovementImpl implements PlayerMovement {
     private void moveLeft() {
         this.player.setDirection(new Vector2D(-1, this.player.getDirection().getY()));
     }
-    
+
     public void stopVertical() {
         this.player.setDirection(new Vector2D(this.player.getDirection().getX(), 0));
     }
@@ -94,23 +94,15 @@ public class PlayerMovementImpl implements PlayerMovement {
     public void stopHorizontal() {
         this.player.setDirection(new Vector2D(0, this.player.getDirection().getY()));
     }
-    
+
     public void move(final Direction direction) {
         switch (direction) {
-            case UP:
-                this.moveUp();
-                break;
-            case DOWN:
-                this.moveDown();
-                break;
-            case RIGHT:
-                this.moveRight();
-                break;
-            case LEFT:
-                this.moveLeft();
-                break;
-            default:
-                break;
+            case UP -> this.moveUp();
+            case DOWN -> this.moveDown();
+            case RIGHT -> this.moveRight();
+            case LEFT -> this.moveLeft();
+            default -> {
+            }
         }
     }
 

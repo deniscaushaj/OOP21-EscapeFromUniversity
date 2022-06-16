@@ -1,6 +1,5 @@
 package escapefromuniversity.launcher;
 
-import java.io.IOException;
 import java.net.URISyntaxException;
 
 import escapefromuniversity.utilities.OSFixes;
@@ -23,7 +22,7 @@ public class CreditsController {
     }
     
     @FXML
-    void openLink(ActionEvent event) throws URISyntaxException, IOException {
+    void openLink(ActionEvent event) throws URISyntaxException {
     	if (event.getSource().equals(daniel)) {
     	    OSFixes.openUrl("https://github.com/DanielCapannini");
     	} else if (event.getSource().equals(denis)) {
