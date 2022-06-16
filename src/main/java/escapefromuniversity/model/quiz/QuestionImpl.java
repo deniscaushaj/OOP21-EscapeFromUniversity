@@ -20,5 +20,10 @@ public class QuestionImpl implements Question {
 		return text;
 	}
 	
+	@Override
+	public String toString() {
+		return "[Question n°" + this.id + "] " + this.text;
+	}
+	
 	
 }

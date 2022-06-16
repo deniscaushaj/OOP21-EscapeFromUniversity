@@ -2,7 +2,7 @@ package escapefromuniversity.model.quiz;
 
 public interface Anwser {
 
-	char getId();
+	int getId();
 
 	String getText();
 

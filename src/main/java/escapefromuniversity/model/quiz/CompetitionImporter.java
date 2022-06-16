@@ -1,8 +1,17 @@
 package escapefromuniversity.model.quiz;
 
-import org.json.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Map;
 
-import escapefromuniversity.model.quiz.CompetitionImpl.Builder;
+import org.json.*;
+import org.json.simple.*;
+import org.json.simple.parser.*;
+import escapefromuniversity.model.quiz.*;
+import escapefromuniversity.utilities.OSFixes;
 
 public class CompetitionImporter {
 	
@@ -12,31 +21,36 @@ public class CompetitionImporter {
 		this.path = path;
 	}
 	
-	public CompetitionImpl importCompetition() {
-		
-		CompetitionImpl competition = null;
-		Builder competitionBuilder = new Builder();
-		
-		JSONObject obj = new JSONObject(path);
-		competitionBuilder.setTeacher(obj.getString("teacher"));
-		competitionBuilder.setSubject(obj.getString("subject"));
+	public CompetitionImpl importCompetition() throws Exception {
 
-		JSONArray arr = obj.getJSONArray("quiz");
+		CompetitionImpl.Builder competitionBuilder = new CompetitionImpl.Builder();
+	
+		JSONParser parser = new JSONParser();
+		Object obj = parser.parse(new FileReader(OSFixes.getLocation("quiz",path)));
+        JSONObject jsonObject = (JSONObject)obj;
+        
+		competitionBuilder.setTeacher(jsonObject.get("teacher").toString());
+		competitionBuilder.setSubject(jsonObject.get("subject").toString());
 		
-		//Cicle for quiz
-		for (int i = 0; i < arr.length(); i++)
-		{
-		    String question = arr.getJSONObject(i).getString("question");
-		    JSONArray answer = arr.getJSONObject(i).getJSONArray("answer");
-		    String a = answer.getJSONObject(0).getString("a");
-		    String b = answer.getJSONObject(1).getString("b");
-		    String c = answer.getJSONObject(2).getString("c");
-		    String d = answer.getJSONObject(3).getString("d");
-		    String correct = arr.getJSONObject(i).getString("correct");
+		JSONArray quizes = (JSONArray) jsonObject.get("quiz");
+		
+
+		for (int i = 0; i < quizes.size(); i++)	{
+			JSONObject quiz = (JSONObject) quizes.get(i);
+			String question = (String) quiz.get("question");
+			String correct = (String) quiz.get("correct");
+			JSONArray answers = (JSONArray) quiz.get("answers");
+			
+			QuizImpl.Builder quizBuilder = new QuizImpl.Builder(new QuestionImpl(i+1, quiz.get("question").toString()));
+			
+			for (int j = 0; j < answers.size(); j++) {
+				quizBuilder.addAnwser(new AnwserImpl(j+1, answers.get(j).toString(), (correct.equals(answers.get(i).toString()))));
+			}
+			
+			competitionBuilder.addQuiz(quizBuilder.build());
 		}
 		
-		return competition;
+		return competitionBuilder.build();
 	}
-	
 	
 }
