@@ -2,18 +2,18 @@ package escapefromuniversity.model.quiz;
 
 public class AnwserImpl implements Anwser {
 
-	private final char id;
+	private final int id;
 	private final String text;
 	private final boolean correct;
 	
-	public AnwserImpl(char id, String text, boolean correct) {
+	public AnwserImpl(final int id, final String text, final boolean correct) {
 		this.id = id;
 		this.text = text;
 		this.correct = correct;
 	}
 
 	@Override
-	public char getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -25,6 +25,11 @@ public class AnwserImpl implements Anwser {
 	@Override
 	public boolean isCorrect() {
 		return correct;
+	}
+	
+	@Override
+	public String toString() {
+		return "[Anwser n°" + this.id + "] " + this.text + ", is correct: " + this.correct;
 	}
 	
 	
