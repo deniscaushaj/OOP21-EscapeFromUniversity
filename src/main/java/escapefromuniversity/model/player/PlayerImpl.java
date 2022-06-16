@@ -14,19 +14,27 @@ import escapefromuniversity.model.map.Room;
 
 public class PlayerImpl extends AbstractDynamicGameObject implements Player{
 
+    // TODO values to be changed:
     private static final int MAX_LIFE = 100;
-    private final static Point2D HIT_BOX_PLAYER = new Point2D(0,0); // TODO values to be changed
+    private static final int MAX_DAMAGE = 30;
+    private static final int MAX_ARMOR = 20;
+    private static final int START_CREDITS = 0;
+    private static final int START_DAMAGE = 10;
+    private static final int START_ARMOR = 0;
+    private static final Point2D HIT_BOX_PLAYER = new Point2D(0,0);
     //	TODO eventual MAX_STATS
     private int life;
     private int credits;
+    private int damage;
+    private int armor;
     private int passed;
-    private long shootDelay;
+    private final long shootDelay;
     private long lastShot;
     private boolean shooting;
     private Point2D prevPosition;
     private Vector2D shotDirection;
     private final BulletFactory bulletFactory;
-    
+
     /**
      * @param type
      * @param position
@@ -34,10 +42,12 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
      * @param direction
      * @param shootDelay
      */
-    public PlayerImpl(GameObjectType type, Point2D position, int speed, Vector2D direction, int shootDelay, BulletFactory bulletFactory, Room room) {
+    public PlayerImpl(GameObjectType type, Point2D position, int speed, Vector2D direction, int shootDelay, Room room) {
         super(type, position, HIT_BOX_PLAYER, speed, direction, room);
         this.life = MAX_LIFE;
-        this.credits = 0;
+        this.credits = START_CREDITS;
+        this.damage = START_DAMAGE;
+        this.armor = START_ARMOR;
         this.passed = 0;
         this.shootDelay = shootDelay;
         this.shooting = false;
@@ -49,8 +59,8 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
     public void collisionWith(GameObject gObj2) {
         if (this.collisionWithCheck(gObj2)) {
             if (gObj2.getType().getCollisionType() == GameCollisionType.ENTITY
-            		|| gObj2.getType().getCollisionType() == GameCollisionType.OBSTACLE) {
-            	this.setPosition(this.getPreviousPosition());
+                    || gObj2.getType().getCollisionType() == GameCollisionType.OBSTACLE) {
+                this.setPosition(this.getPreviousPosition());
             }
         }
     }
@@ -70,18 +80,32 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
     }
 
     @Override
+    public int getMaxDamage() {return MAX_DAMAGE;}
+
+    @Override
+    public int getMaxArmor() {
+        return MAX_ARMOR;
+    }
+
+    @Override
     public int getLife() {
-        return life;
+        return this.life;
     }
 
     @Override
     public int getCredits() {
-        return credits;
+        return this.credits;
     }
 
     @Override
+    public int getDamage() {return this.damage;}
+
+    @Override
+    public int getArmor() {return this.armor;}
+
+    @Override
     public void setLife(final int life) {
-        this.life = life;		
+        this.life = life;
     }
 
     @Override
@@ -89,14 +113,39 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
         this.credits = credits;
     }
 
-	@Override
-	public void setRoom(Room room) {
-		this.room = room;
-	}
-    
+    @Override
+    public void setDamage(final int damage) {
+        this.damage = damage;
+    }
+
+    @Override
+    public void setArmor(final int armor) {
+        this.armor = armor;
+    }
+
+    @Override
+    public void resetLife() {
+        this.setLife(this.getMaxLife());
+    }
+
+    @Override
+    public void setDamageBuff(final int damage) {
+        this.setDamage(this.getDamage() + damage);
+    }
+
+    @Override
+    public void setArmorBuff(final int armor) {
+        this.setArmor(this.getArmor() + armor);
+    }
+
+    @Override
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
     @Override
     public void takeDamage(final int damage) {
-        this.life -= damage;
+        this.setLife(this.getLife() + this.getArmor() - damage);
     }
 
     @Override
@@ -108,7 +157,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
         }
         return false;
     }
-    
+
     @Override
     public void setShoot(final boolean shooting, final Direction direction) {
         if (this.canShoot()) {
@@ -123,19 +172,13 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
         this.getRoom().addDynamicGameObject(bullet);
         this.shooting = false;
     }
-    
-    //	@Override
-    //	public void setNewBuff() {
-    //		// TODO Auto-generated method stub
-    //		
-    //	}
-    
+
     private void setPreviousPosition (final Point2D prevPos) {
-    	this.prevPosition = prevPos;
+        this.prevPosition = prevPos;
     }
-    
+
     private Point2D getPreviousPosition () {
-    	return this.prevPosition;
+        return this.prevPosition;
     }
 
     @Override
