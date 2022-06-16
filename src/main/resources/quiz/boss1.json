@@ -1,0 +1,21 @@
+{
+    "teacher": "Ghini",
+    "subject": "Sistemi Operativi",
+    "quiz": [
+      {
+        "question": "Quale comando di bash ci permette di navigare tra le directory?",
+        "answers": ["man", "cd", "clear", "grep"],
+        "correct": "2"
+      },
+       {
+        "question": "Quale di questi non è un algoritmo di scheduling?",
+        "answers": ["FCFS", "Round Robin", "Memoria condivisa", "SJF"],
+        "correct": "3"
+      },
+      {
+        "question": "Quali di questi non è un sistema operativo?",
+        "answers": ["Ubuntu", "Kali Linux", "Windows 10", "Daisy chaining"],
+        "correct": "4"
+      }
+    ]
+  }

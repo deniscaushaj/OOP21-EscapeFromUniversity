@@ -12,9 +12,9 @@ public class CompetitionImpl {
 	private final String subjectName;
 	private int currentQuiz = 0;
 	
-	private CompetitionImpl(Map<Integer,Quiz> competition, String techerName, String subjectName) {
+	private CompetitionImpl(Map<Integer,Quiz> competition, String teacherName, String subjectName) {
 		this.competition = competition;
-		this.teacherName = techerName;
+		this.teacherName = teacherName;
 		this.subjectName = subjectName;
 	}
 	
@@ -75,6 +75,8 @@ public class CompetitionImpl {
 			}
 			return new CompetitionImpl(this.competition, this.teacherName, this.subjectName);
 		}
+
+		
 	}
 	
 	
