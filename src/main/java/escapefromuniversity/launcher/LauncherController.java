@@ -18,7 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 
 public class LauncherController {
-    
+
     @FXML
     private Button creditsButton, exitButton, leaderboardButton, newGameButton;
 
@@ -28,7 +28,7 @@ public class LauncherController {
         GameViewImpl.startGame();
         GameControllerImpl gameController = new GameControllerImpl();
         LauncherView.launcherWindow.close();
-        
+
 
 //		try {
 //			FXMLLoader loader = new FXMLLoader();
@@ -41,29 +41,29 @@ public class LauncherController {
 //			System.out.println(e);
 //		}
     }
-    
+
     @FXML
     void leaderboard(ActionEvent event) {
 
     }
-    
-    @FXML	
+
+    @FXML
     void credits(ActionEvent event) {
-    	try {
-    	    FXMLLoader loader = new FXMLLoader();
-    	    URL fileLocation = new File(OSFixes.getLocation("layouts","Credits.fxml")).toURI().toURL();
-    	    loader.setLocation(fileLocation);
-    	    Parent creditsRoot = loader.load();
-    	    Scene credits = new Scene(creditsRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
-    	    LauncherView.launcherWindow.setScene(credits);
-    	} catch (Exception e) {
-    	    System.out.println(e);
-    	}
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            URL fileLocation = new File(OSFixes.getLocation("layouts","Credits.fxml")).toURI().toURL();
+            loader.setLocation(fileLocation);
+            Parent creditsRoot = loader.load();
+            Scene credits = new Scene(creditsRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
+            LauncherView.launcherWindow.setScene(credits);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
-    
+
     @FXML
     void exit(MouseEvent event) {
-    	Platform.exit();
+        Platform.exit();
     }
-    
+
 }
