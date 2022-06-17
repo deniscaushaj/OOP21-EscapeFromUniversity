@@ -1,5 +1,13 @@
 animazione sprites
-keyhandler
+
+metodi con concat
+spritecount si resetta ogni volta
+
+togliere improved switch
+aggiungere metodo quiz
+
+player???
+
 view e control
 parlare con ema per javafx menu
 g2 e bufferedimage
@@ -10,5 +18,3 @@ controllare indentazione, todo, javadoc, intellij warnings.
 se getdamage = getmaxdmg non puoi piu comprare
 
 l'armor del player deve sempre essere piu piccola del danno dell'enemy
-
-in menu, quiz ecc si usa solo il mouse, no tasti!

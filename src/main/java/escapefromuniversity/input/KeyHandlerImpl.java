@@ -76,7 +76,7 @@ public class KeyHandlerImpl implements KeyHandler {
 
     private void playCommands(int keyCode) {
         if (keyCode == KeyEvent.VK_ESCAPE) {
-//             open menu
+//             TODO open menu
         } else if (keyCode == KeyEvent.VK_A || keyCode == KeyEvent.VK_LEFT) {
             playerMovement.move(Direction.LEFT);
         } else if (keyCode == KeyEvent.VK_S || keyCode == KeyEvent.VK_DOWN) {
@@ -90,13 +90,13 @@ public class KeyHandlerImpl implements KeyHandler {
 
     private void fightCommands(int keyCode) {
         if(keyCode == KeyEvent.VK_SPACE) {
-            // shoot
+            // TODO shoot
         }
     }
 
     private void menuCommands(int keyCode) {
         if (keyCode == KeyEvent.VK_ESCAPE) {
-//            check gamestate & close menu/shop
+//            TODO check gamestate & close menu/shop
         }
     }    
 
