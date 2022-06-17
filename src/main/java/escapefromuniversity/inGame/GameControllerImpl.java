@@ -8,16 +8,17 @@ import java.util.stream.Collectors;
 import escapefromuniversity.input.KeyHandler;
 import escapefromuniversity.input.KeyHandlerImpl;
 import escapefromuniversity.model.GameModel;
-import escapefromuniversity.model.GameModelImp;
+import escapefromuniversity.model.GameState;
 
 public class GameControllerImpl implements GameController{
 	private final GameModel model;
 	private final GameView view;
 	private final KeyHandler keyHandler;
+	private static GameState gameState;
 	private List<Integer> gameObjID = new LinkedList();
-	
-	public GameControllerImpl() {
-		this.model = new GameModelImp(this);
+
+	public GameControllerImpl(final GameModel gameModel) {
+		this.model = gameModel;
 		this.view = new GameViewImpl();
 		this.view.setGameController(this);
 		this.keyHandler = new KeyHandlerImpl(this.model, this);
@@ -76,6 +77,23 @@ public class GameControllerImpl implements GameController{
 	public void goQuiz() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	/**
+	 * @return the current game state.
+	 */
+	@Override
+	public GameState getGameState () {
+		return gameState;
+	}
+
+	/**
+	 * Sets the current game state.
+	 * @param gameState the game state to set.
+	 */
+	@Override
+	public void setGameState(GameState gameState) {
+		this.gameState = gameState;
 	}
 
 	private void executeInput() {

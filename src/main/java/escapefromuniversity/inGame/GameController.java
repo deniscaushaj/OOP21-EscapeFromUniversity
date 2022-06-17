@@ -1,5 +1,7 @@
 package escapefromuniversity.inGame;
 
+import escapefromuniversity.model.GameState;
+
 import java.awt.event.KeyEvent;
 
 public interface GameController {
@@ -12,6 +14,10 @@ public interface GameController {
 	int getPlayerCredits();
 	
 	void goQuiz();
+
+	GameState getGameState();
+
+	void setGameState(GameState gameState);
 
 	void pressKey(KeyEvent key);
 
