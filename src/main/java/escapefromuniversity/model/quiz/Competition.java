@@ -7,6 +7,8 @@ public interface Competition {
 	String getSubjectName();
 
 	void setBonusQuiz(boolean state);
+	
+	boolean getBonusQuiz();
 
 	Quiz getNextQuiz();
 
