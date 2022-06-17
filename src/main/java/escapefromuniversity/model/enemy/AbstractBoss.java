@@ -8,7 +8,7 @@ import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.map.Room;
 import escapefromuniversity.model.player.Player;
 
-public abstract class BossImpl extends AbstractDynamicGameObject implements Boss{
+public abstract class AbstractBoss extends AbstractDynamicGameObject implements Boss{
 	
 	private int life;
 	private final long shootDelay;
@@ -18,7 +18,7 @@ public abstract class BossImpl extends AbstractDynamicGameObject implements Boss
 	private int impactDamage;
 	private final int credicts = 12;
 	
-	public BossImpl(int speed, Point2D position, Point2D upperCorner, Vector2D direction, GameObjectType type, int life, long shootDelay, int impactDamage, Room room) {
+	public AbstractBoss(int speed, Point2D position, Point2D upperCorner, Vector2D direction, GameObjectType type, int life, long shootDelay, int impactDamage, Room room) {
 		super(type, position, upperCorner, speed, direction, room);
 		this.life = life;
 		this.shootDelay = shootDelay;
