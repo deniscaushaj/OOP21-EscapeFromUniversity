@@ -22,7 +22,8 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 	private BufferedImage tempScreen;
 	private static final long DELAY_CLOSE = 5000;
 
-	public GameViewImpl() {
+	public GameViewImpl(GameController controller) {
+		this.controller = controller;
 		this.window = new JFrame();
 		this.window.setUndecorated(true);
 		this.window.setSize(screenWidth, screenHeight);
