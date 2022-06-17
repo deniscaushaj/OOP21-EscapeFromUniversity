@@ -47,7 +47,7 @@ public class QuizImpl implements Quiz {
 		return "[Quiz n."+ this.getID() + "] " + this.question.toString() + this.getAllAnwsers().toString();
 	}
 	
-	public static class Builder {
+	public static class Builder implements QuizBuilder {
 
 		private Question question;
 		private Map<Integer,Answer> anwsers = new HashMap<Integer,Answer>();
@@ -56,11 +56,13 @@ public class QuizImpl implements Quiz {
 			this.question = question;
 		}
 		
-		public Builder addAnwser(Answer anwser) {
+		@Override
+		public QuizBuilder addAnwser(Answer anwser) {
 			this.anwsers.put(anwser.getId(), anwser);
 			return this;
 		}
 		
+		@Override
 		public Quiz build() {
 			if(this.question == null){
 				throw new IllegalStateException("This quiz does not have a correctly set question");

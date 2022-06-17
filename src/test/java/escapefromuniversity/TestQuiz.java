@@ -15,7 +15,7 @@ public class TestQuiz {
 
 	@Test
 	public void testImport() throws Exception {
-	    CompetitionImpl comp = new CompetitionImporter("boss1.json").importCompetition();
+	    Competition comp = new CompetitionImporter("boss1.json").importCompetition();
 	    while(comp.hasNextQuiz()) {
 	    	System.out.println(comp.getNextQuiz());
 	    }

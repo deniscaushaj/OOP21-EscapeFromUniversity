@@ -21,9 +21,9 @@ public class CompetitionImporter {
 		this.path = path;
 	}
 	
-	public CompetitionImpl importCompetition() throws Exception {
+	public Competition importCompetition() throws Exception {
 
-		CompetitionImpl.Builder competitionBuilder = new CompetitionImpl.Builder();
+		CompetitionBuilder competitionBuilder = new CompetitionImpl.Builder();
 	
 		JSONParser parser = new JSONParser();
 		Object obj = parser.parse(new FileReader(OSFixes.getLocation("quiz",path)));
@@ -41,7 +41,7 @@ public class CompetitionImporter {
 			String correct = (String) quiz.get("correct");
 			JSONArray answers = (JSONArray) quiz.get("answers");
 			
-			QuizImpl.Builder quizBuilder = new QuizImpl.Builder(new QuestionImpl(i+1, quiz.get("question").toString()));
+			QuizBuilder quizBuilder = new QuizImpl.Builder(new QuestionImpl(i+1, quiz.get("question").toString()));
 			
 			for (int j = 0; j < answers.size(); j++) {
 				quizBuilder.addAnwser(new AnswerImpl(j+1, answers.get(j).toString(), (correct.equals(answers.get(i).toString()))));

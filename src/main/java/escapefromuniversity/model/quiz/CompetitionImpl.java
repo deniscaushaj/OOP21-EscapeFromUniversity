@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CompetitionImpl {
+public class CompetitionImpl implements Competition {
 	
 	private final Map<Integer,Quiz> competition;
 	private final String teacherName;
@@ -19,37 +19,44 @@ public class CompetitionImpl {
 		this.subjectName = subjectName;
 	}   
 	
+	@Override
 	public String getTeacherName() {
 		return this.teacherName;
 	}
 	
+	@Override
 	public String getSubjectName() {
 		return this.subjectName;
 	}
 	
+	@Override
 	public void setBonusQuiz(final boolean state) {
 		this.bonusQuiz = state;
 	}
 	
+	@Override
 	public Quiz getNextQuiz() {
 		currentQuiz++;
 		return this.competition.get(currentQuiz);
 	}
 	
+	@Override
 	public boolean hasNextQuiz() {
 		return currentQuiz+1 <= competition.size();
 	}
 	
+	@Override
 	public double getProgress() {
 		return (float) (competition.size() / currentQuiz) * 100;
 	}
 	
-	public static class Builder {
+	public static class Builder implements CompetitionBuilder {
 		private final Map<Integer,Quiz> competition = new HashMap<Integer,Quiz>();;
 		private String teacherName;
 		private String subjectName;
 		
-		public Builder addQuiz(final Quiz quiz) {
+		@Override
+		public CompetitionBuilder addQuiz(final Quiz quiz) {
 			if(this.competition.containsKey(quiz.getID())) {
 				throw new IllegalStateException("There is already a quiz with id " + quiz.getID() + " in this package");
 			} else {
@@ -58,17 +65,20 @@ public class CompetitionImpl {
 			return this;
 		}
 		
-		public Builder setTeacher(final String teacherName) {
+		@Override
+		public CompetitionBuilder setTeacher(final String teacherName) {
 			this.teacherName = teacherName;
 			return this;
 		}
 		
-		public Builder setSubject(final String subjectName) {
+		@Override
+		public CompetitionBuilder setSubject(final String subjectName) {
 			this.subjectName = subjectName;
 			return this;
 		}
 		
-		public CompetitionImpl build() {
+		@Override
+		public Competition build() {
 			if(this.teacherName == null) {
 				throw new IllegalStateException("This competition does not have a correctly set teacher");
 			}
