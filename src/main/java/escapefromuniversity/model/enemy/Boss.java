@@ -25,9 +25,15 @@ public interface Boss extends Enemy{
 	 */
 	void setBossState(BossState state);
 	
-	
+	/**
+	 * 
+	 * @param result: point in quiz.
+	 */
 	void setQuizResult(double result);
 	
+	/**
+	 * delete this object.
+	 */
 	void kill();
 
 }

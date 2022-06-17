@@ -159,11 +159,19 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
 		return this.bossState;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public void kill() {
 		this.getRoom().getPlayer().setCredits(credicts);
 		this.getRoom().deleteGameObject(this);
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public void setQuizResult(double result) {
 		
 	}
