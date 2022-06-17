@@ -12,12 +12,12 @@ import escapefromuniversity.model.map.MapManagerImpl;
 import escapefromuniversity.model.player.Player;
 
 public class GameModelImp implements GameModel{
-	private final MapManager mapManaget;
+	private final MapManager mapManager;
 	private final GameController controller;
 	
 	public GameModelImp(GameController controller) {
 		this.controller = controller;
-		this.mapManaget = new MapManagerImpl(this);
+		this.mapManager = new MapManagerImpl(this);
 	}
 
 	/**
@@ -25,7 +25,7 @@ public class GameModelImp implements GameModel{
 	 */
 	@Override
 	public List<GameObject> getAllGameObj() {
-		return new LinkedList<GameObject>(this.mapManaget.getRoom().getAllGameObject());
+		return new LinkedList<GameObject>(this.mapManager.getRoom().getAllGameObject());
 	}
 
 	/**
@@ -33,7 +33,7 @@ public class GameModelImp implements GameModel{
 	 */
 	@Override
 	public void updateGame(double deltaTime) {
-		this.mapManaget.getRoom().update(deltaTime);
+		this.mapManager.getRoom().update(deltaTime);
 		
 	}
 
@@ -51,7 +51,7 @@ public class GameModelImp implements GameModel{
 	 */
 	@Override
 	public boolean isLost() {
-		return false; //this.mapManaget.gameOver();
+		return false; //this.mapManager.gameOver();
 	}
 
 	/**
@@ -59,7 +59,7 @@ public class GameModelImp implements GameModel{
 	 */
 	@Override
 	public Player getPlayer() {
-		return this.mapManaget.getPlayer();
+		return this.mapManager.getPlayer();
 	}
 
 	@Override
@@ -70,7 +70,7 @@ public class GameModelImp implements GameModel{
 
 	
 	public Point2D getPositionOfID(int id) {
-		for(final GameObject obj : this.mapManaget.getRoom().getAllGameObject()) {
+		for(final GameObject obj : this.mapManager.getRoom().getAllGameObject()) {
 			if(obj.getID() == id) {
 				return obj.getObjectPosition();
 			}
