@@ -1,6 +1,7 @@
 package escapefromuniversity.inGame;
 
 public class GameViewImpl implements GameView{
+		this.window.addKeyListener(this);
 
 	@Override
 	public void update() {
@@ -26,4 +27,21 @@ public class GameViewImpl implements GameView{
 		
 	}
 
+	@Override
+	public void keyTyped(KeyEvent key) {
+	}
+
+	@Override
+	public void keyPressed(KeyEvent key) {
+		if(this.controller != null) {
+			this.controller.pressKey(key);
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent key) {
+		if(this.controller != null) {
+			this.controller.releaseKey(key);
+		}
+	}
 }

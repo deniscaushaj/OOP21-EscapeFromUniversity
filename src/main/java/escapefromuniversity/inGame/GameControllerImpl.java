@@ -1,21 +1,26 @@
 package escapefromuniversity.inGame;
 
+import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import escapefromuniversity.input.KeyHandler;
+import escapefromuniversity.input.KeyHandlerImpl;
 import escapefromuniversity.model.GameModel;
 import escapefromuniversity.model.GameModelImp;
 
 public class GameControllerImpl implements GameController{
 	private final GameModel model;
 	private final GameView view;
+	private final KeyHandler keyHandler;
 	private List<Integer> gameObjID = new LinkedList();
 	
 	public GameControllerImpl() {
 		this.model = new GameModelImp(this);
 		this.view = new GameViewImpl();
 		this.view.setGameController(this);
+		this.keyHandler = new KeyHandlerImpl(this.model, this);
 	}
 	
 
@@ -25,6 +30,7 @@ public class GameControllerImpl implements GameController{
 		while(continueGame()) {
 			long currentTime = System.currentTimeMillis();
 			long deltaTime = currentTime - lastTime;
+			executeInput();
 			this.updateModel(deltaTime);
 			this.view.update();
 			lastTime = currentTime;
@@ -70,6 +76,20 @@ public class GameControllerImpl implements GameController{
 	public void goQuiz() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	private void executeInput() {
+		this.keyHandler.executeCommand();
+	}
+
+	@Override
+	public void pressKey(final KeyEvent key) {
+		this.keyHandler.setKey(key.getKeyCode(), true);
+	}
+
+	@Override
+	public void releaseKey(final KeyEvent key) {
+		this.keyHandler.setKey(key.getKeyCode(), false);
 	}
 
 }

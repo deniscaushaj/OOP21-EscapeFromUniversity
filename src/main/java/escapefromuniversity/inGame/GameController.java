@@ -1,5 +1,7 @@
 package escapefromuniversity.inGame;
 
+import java.awt.event.KeyEvent;
+
 public interface GameController {
 	
 	
@@ -11,4 +13,7 @@ public interface GameController {
 	
 	void goQuiz();
 
+	void pressKey(KeyEvent key);
+
+	void releaseKey(KeyEvent key);
 }
