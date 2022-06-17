@@ -90,11 +90,6 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 		
 	}
 
-	@Override
-	public void setGameController(final GameController controller) {
-		this.controller = controller;
-	}
-
 	public void addPauseBG () {
 		Color color = new Color(0,0,0,205);
 		this.pause.setBackground(color);
