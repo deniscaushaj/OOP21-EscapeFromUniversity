@@ -29,7 +29,7 @@ public class AnwserImpl implements Anwser {
 	
 	@Override
 	public String toString() {
-		return "[Anwser n°" + this.id + "] " + this.text + ", is correct: " + this.correct;
+		return "[Answer n." + this.id + "] " + this.text + ", is correct: " + this.correct;
 	}
 	
 	

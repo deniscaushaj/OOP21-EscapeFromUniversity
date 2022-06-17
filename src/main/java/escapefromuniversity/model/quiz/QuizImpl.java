@@ -44,7 +44,7 @@ public class QuizImpl implements Quiz {
 	
 	@Override
 	public String toString() {
-		return "[Quiz n°"+ this.getID() + "] " + this.question.toString() + this.getAllAnwsers().toString(); 
+		return "[Quiz n."+ this.getID() + "] " + this.question.toString() + this.getAllAnwsers().toString();
 	}
 	
 	public static class Builder {
