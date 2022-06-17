@@ -23,7 +23,7 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 	private static final long DELAY_CLOSE = 5000;
 
 	public GameViewImpl(GameController controller) {
-		this.controller = controller;
+		this.controller = controller;	
 		this.window = new JFrame();
 		this.window.setUndecorated(true);
 		this.window.setSize(screenWidth, screenHeight);

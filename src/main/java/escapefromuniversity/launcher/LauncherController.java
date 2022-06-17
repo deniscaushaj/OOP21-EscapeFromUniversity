@@ -25,7 +25,7 @@ public class LauncherController {
     void newGame(ActionEvent event) {
 
 //        GameViewImpl.startGame();
-//        GameControllerImpl gameController = new GameControllerImpl();
+        GameControllerImpl gameController = new GameControllerImpl();
         LauncherView.launcherWindow.close();
 
 
