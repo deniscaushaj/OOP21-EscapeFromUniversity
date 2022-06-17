@@ -1,4 +1,4 @@
-package escapefromuniversity.game;
+package escapefromuniversity.model;
 
 public enum GameState {
     
@@ -23,15 +23,11 @@ public enum GameState {
      */   
     DIALOGUE,
     /**
-     * Identifies the character state.
-     */   
-    INVENTORY,
-    /**
      * Identifies the shop state.
      */   
     SHOP,
     /**
      * Identifies the win state.
      */   
-    WIN;  
+    WIN;
 }

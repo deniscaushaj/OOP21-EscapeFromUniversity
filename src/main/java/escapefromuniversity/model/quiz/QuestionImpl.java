@@ -22,7 +22,7 @@ public class QuestionImpl implements Question {
 	
 	@Override
 	public String toString() {
-		return "[Question n°" + this.id + "] " + this.text;
+		return "[Question n." + this.id + "] " + this.text;
 	}
 	
 	

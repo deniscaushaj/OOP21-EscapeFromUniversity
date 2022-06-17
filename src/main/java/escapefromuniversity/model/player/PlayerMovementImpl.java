@@ -87,14 +87,17 @@ public class PlayerMovementImpl implements PlayerMovement {
         this.player.setDirection(new Vector2D(-1, this.player.getDirection().getY()));
     }
 
+    @Override
     public void stopVertical() {
         this.player.setDirection(new Vector2D(this.player.getDirection().getX(), 0));
     }
 
+    @Override
     public void stopHorizontal() {
         this.player.setDirection(new Vector2D(0, this.player.getDirection().getY()));
     }
 
+    @Override
     public void move(final Direction direction) {
         switch (direction) {
             case UP -> this.moveUp();
