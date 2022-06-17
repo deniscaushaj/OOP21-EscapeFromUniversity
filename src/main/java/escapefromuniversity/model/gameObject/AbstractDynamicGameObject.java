@@ -58,7 +58,18 @@ public abstract class AbstractDynamicGameObject implements DynamicGameObject {
 
     @Override
     public void setDirection(final Vector2D newDirection) {
-        this.direction = newDirection;	
+        if (Direction.UP.getDirection().equals(newDirection)) {
+            this.setState(State.UP);
+        } else if (Direction.LEFT.getDirection().equals(newDirection)) {
+            this.setState(State.LEFT);
+        } else if (Direction.DOWN.getDirection().equals(newDirection)) {
+            this.setState(State.DOWN);
+        } else if (Direction.RIGHT.getDirection().equals(newDirection)) {
+            this.setState(State.RIGHT);
+        } else {
+            this.setState(State.IDLE);
+        }
+        this.direction = newDirection;
     }
 
     @Override
@@ -89,12 +100,12 @@ public abstract class AbstractDynamicGameObject implements DynamicGameObject {
     }
 
     @Override
-    public void setState (State state) {
+    public void setState(State state) {
         this.state = state;
     }
     
     @Override
-    public State getState () {
+    public State getState() {
         return this.state;
     }
 }
