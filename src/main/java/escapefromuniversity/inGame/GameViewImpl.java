@@ -71,6 +71,8 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 				this.addPauseBG();
 //				showShop
 				break;
+			case LOST:
+				break;
 			case WIN:
 				break;
 			default:
@@ -80,18 +82,6 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void isLost() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void isWin() {
 		// TODO Auto-generated method stub
 		
 	}
