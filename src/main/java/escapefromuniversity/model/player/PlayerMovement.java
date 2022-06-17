@@ -6,10 +6,6 @@ import java.awt.Image;
 
 public interface PlayerMovement {
 
-    void setImage();
-
-    Image getImage();
-
     void stopVertical();
 
     void stopHorizontal();

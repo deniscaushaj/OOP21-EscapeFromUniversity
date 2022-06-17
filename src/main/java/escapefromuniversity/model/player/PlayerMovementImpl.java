@@ -13,62 +13,9 @@ import escapefromuniversity.model.gameObject.Direction;
 public class PlayerMovementImpl implements PlayerMovement {
 
     private final Player player;
-    private Image image;
 
     public PlayerMovementImpl(final Player player) {
         this.player = player;
-    }
-
-    //TODO move from here image methods
-
-    @Override
-    public void setImage () {
-        int tileCount = 1;
-        String number = null;
-        String filename = null;
-        File filepath;
-        switch (player.getState()) {
-            case IDLE:
-//            TODO idle
-                break;
-            case UP:
-                filename = "player_back_";
-                break;
-            case DOWN:
-                filename = "player_front_";
-                break;
-            case RIGHT:
-                filename = "player_right_";
-                break;
-            case LEFT:
-                filename = "player_left_";
-                break;
-            default:
-                break;
-        }
-        if (tileCount == 1) {
-            number = "1";
-            tileCount++;
-        } else if (tileCount == 2) {
-            number = "2";
-            tileCount++;
-        } else if (tileCount == 3) {
-            number = "3";
-            tileCount = 1;
-        }
-//        TODO how many updates per second
-        filename.concat(number);
-        filepath = new File(OSFixes.getLocation("player", filename));
-        try {
-            this.image = ImageIO.read(filepath);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public Image getImage () {
-        return this.image;
     }
 
     private void moveUp() {
