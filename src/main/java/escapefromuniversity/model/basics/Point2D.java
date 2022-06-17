@@ -1,5 +1,7 @@
 package escapefromuniversity.model.basics;
 
+import java.util.Objects;
+
 public class Point2D {
 	
 	private final double x;
@@ -10,7 +12,25 @@ public class Point2D {
 		 this.y = y;
 	 }
 	 
-	 public Point2D(Point2D point) {
+	 @Override
+	public int hashCode() {
+		return Objects.hash(x, y);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Point2D other = (Point2D) obj;
+		return Double.doubleToLongBits(x) == Double.doubleToLongBits(other.x)
+				&& Double.doubleToLongBits(y) == Double.doubleToLongBits(other.y);
+	}
+
+	public Point2D(Point2D point) {
 		 this.x = point.getX();
 		 this.y = point.getY();
 	 }
