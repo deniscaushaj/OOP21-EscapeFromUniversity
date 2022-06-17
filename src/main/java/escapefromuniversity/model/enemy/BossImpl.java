@@ -69,8 +69,7 @@ public abstract class BossImpl extends AbstractDynamicGameObject implements Boss
 	public void takeDamage(int damage) {
 		this.life = this.life - damage;
 		if(this.life <= 0) {
-			this.getRoom().getPlayer().setCredits(credicts);
-			this.getRoom().deleteGameObject(this);
+			this.kill();
 		}
 	}
 
@@ -161,7 +160,8 @@ public abstract class BossImpl extends AbstractDynamicGameObject implements Boss
 	}
 	
 	public void kill() {
-		
+		this.getRoom().getPlayer().setCredits(credicts);
+		this.getRoom().deleteGameObject(this);
 	}
 	
 	public void setQuizResult(double result) {
