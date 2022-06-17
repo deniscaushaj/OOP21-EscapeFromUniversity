@@ -11,29 +11,21 @@ public enum Items {
 
     INCREASE_ATTACK, INCREASE_DEFENSE, RESET_HEALTH, DOUBLE_CHANCE;
 
-    public void increaseAttack(GameObject gameObject, Bullet bullet){
-        if(gameObject.getType() == GameObjectType.PLAYER){
-            bullet.setDamage(bullet.getDamage() * 150 / 100);
-        }
+    public void increaseAttack(Player player){
+        player.setDamageBuff(0); //cambiare valore TODO
     }
 
-    public void increaseDefense(GameObject gameObject, Bullet bullet){
-        if(gameObject.getType() == GameObjectType.BOSS1 || gameObject.getType() == GameObjectType.BOSS2 ||
-                gameObject.getType() == GameObjectType.BOSS3 || gameObject.getType() == GameObjectType.BOSS4 ||
-                gameObject.getType() == GameObjectType.BOSS5 || gameObject.getType() == GameObjectType.BOSS6){
-            bullet.setDamage(bullet.getDamage() * 50 / 100);
-        }
+    public void increaseDefense(Player player){
+        player.setArmorBuff(0); // cambia valore TODO
     }
 
     public void resetHealth(Player player){
-        if(player.getLife() != player.getMaxLife()){
-            player.setLife(player.getMaxLife());
-        }
+        player.resetLife();
     }
 
     public void doubleChance(Anwser ans, Quiz quiz){
         if(!ans.isCorrect()){
-            quiz.doubleChance();
+           // quiz.doubleChance(); TODO
         }
     }
 }
