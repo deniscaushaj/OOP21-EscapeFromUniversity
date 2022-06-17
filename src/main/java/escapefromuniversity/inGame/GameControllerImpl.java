@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import escapefromuniversity.input.KeyHandler;
 import escapefromuniversity.input.KeyHandlerImpl;
 import escapefromuniversity.model.GameModel;
+import escapefromuniversity.model.GameModelImp;
 import escapefromuniversity.model.GameState;
 
 public class GameControllerImpl implements GameController{
@@ -17,10 +18,9 @@ public class GameControllerImpl implements GameController{
 	private static GameState gameState;
 	private List<Integer> gameObjID = new LinkedList();
 
-	public GameControllerImpl(final GameModel gameModel) {
-		this.model = gameModel;
-		this.view = new GameViewImpl();
-		this.view.setGameController(this);
+	public GameControllerImpl() {
+		this.model = new GameModelImp(this);
+		this.view = new GameViewImpl(this);
 		this.keyHandler = new KeyHandlerImpl(this.model, this);
 	}
 	
