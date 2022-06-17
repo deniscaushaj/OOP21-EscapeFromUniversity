@@ -1,6 +1,5 @@
 package escapefromuniversity.launcher;
 
-import escapefromuniversity.game.GameViewImpl;
 import escapefromuniversity.inGame.GameControllerImpl;
 import escapefromuniversity.utilities.LauncherResizer;
 import escapefromuniversity.utilities.OSFixes;
@@ -25,8 +24,8 @@ public class LauncherController {
     @FXML
     void newGame(ActionEvent event) {
 
-        GameViewImpl.startGame();
-        GameControllerImpl gameController = new GameControllerImpl();
+//        GameViewImpl.startGame();
+//        GameControllerImpl gameController = new GameControllerImpl();
         LauncherView.launcherWindow.close();
 
 
