@@ -159,5 +159,13 @@ public abstract class BossImpl extends AbstractDynamicGameObject implements Boss
 	public BossState getBossState() {
 		return this.bossState;
 	}
+	
+	public void kill() {
+		
+	}
+	
+	public void setQuizResult(double result) {
+		
+	}
 
 }

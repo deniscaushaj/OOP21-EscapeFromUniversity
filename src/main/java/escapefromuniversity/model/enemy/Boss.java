@@ -24,5 +24,10 @@ public interface Boss extends Enemy{
 	 * @param state: new state.
 	 */
 	void setBossState(BossState state);
+	
+	
+	void setQuizResult(double result);
+	
+	void kill();
 
 }
