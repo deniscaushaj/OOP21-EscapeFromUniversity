@@ -82,7 +82,7 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
+		this.drawToImage();
 		
 	}
 
