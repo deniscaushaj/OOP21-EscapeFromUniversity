@@ -1,6 +1,7 @@
 package escapefromuniversity.model.map;
 
 import escapefromuniversity.model.GameModel;
+import escapefromuniversity.model.enemy.Boss;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.player.Player;
 
@@ -45,8 +46,8 @@ public class MapManagerImpl implements MapManager {
     }
 
     @Override
-    public void goQuiz(GameObjectType type) {
-        this.model.goQuiz(type);
+    public void goQuiz(Boss boss) {
+        this.model.goQuiz(boss);
     }
 
     @Override

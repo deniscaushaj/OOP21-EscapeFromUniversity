@@ -100,7 +100,7 @@ public abstract class BossImpl extends AbstractDynamicGameObject implements Boss
 			case ENTITY:
 				if(gObj2.getType().equals(GameObjectType.PLAYER)) {
 					if(this.bossState.equals(BossState.QUIZ)) {
-						this.getRoom().goQuiz(getType());
+						this.getRoom().goQuiz(this);
 					}
 					final Player player = (Player) gObj2;
 					player.takeDamage(this.getImpactDamage());

@@ -3,8 +3,8 @@ package escapefromuniversity.model;
 import java.util.List;
 
 import escapefromuniversity.model.basics.Point2D;
+import escapefromuniversity.model.enemy.Boss;
 import escapefromuniversity.model.gameObject.GameObject;
-import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.player.Player;
 
 public interface GameModel {
@@ -43,7 +43,7 @@ public interface GameModel {
 	
 	Point2D getPositionOfID(int id);
 	
-	void goQuiz(GameObjectType type);
+	void goQuiz(Boss boss);
 	
 	void goShop();
 	

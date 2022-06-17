@@ -5,8 +5,8 @@ import java.util.List;
 
 import escapefromuniversity.inGame.GameController;
 import escapefromuniversity.model.basics.Point2D;
+import escapefromuniversity.model.enemy.Boss;
 import escapefromuniversity.model.gameObject.GameObject;
-import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.map.MapManager;
 import escapefromuniversity.model.map.MapManagerImpl;
 import escapefromuniversity.model.player.Player;
@@ -63,7 +63,7 @@ public class GameModelImp implements GameModel{
 	}
 
 	@Override
-	public void goQuiz(GameObjectType type) {
+	public void goQuiz(Boss boss) {
 		this.controller.goQuiz();
 		
 	}
