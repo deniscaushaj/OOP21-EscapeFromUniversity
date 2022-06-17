@@ -11,7 +11,7 @@ import escapefromuniversity.model.bullet.BulletFactoryImpl;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.map.Room;
 
-public class BossFactoryImp implements BossFactory{
+public class BossFactoryImpl implements BossFactory{
 	private final BulletFactory bulletCreate = new BulletFactoryImpl();
 
     
