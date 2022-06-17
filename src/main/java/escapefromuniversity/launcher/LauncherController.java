@@ -26,7 +26,8 @@ public class LauncherController {
 
 //        GameViewImpl.startGame();
         GameControllerImpl gameController = new GameControllerImpl();
-        LauncherView.launcherWindow.close();
+        LauncherView.launcherWindow.close();  //this.creditsButton.getScene().getWindow().hide();
+        
 
 
 //		try {
