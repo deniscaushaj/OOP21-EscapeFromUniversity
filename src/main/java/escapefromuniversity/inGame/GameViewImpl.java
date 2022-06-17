@@ -19,6 +19,7 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 	private final JFrame window;
 	private JPanel pause;
 	private BufferedImage tempScreen;
+	private static final long DELAY_CLOSE = 5000;
 
 	public GameViewImpl() {
 		this.window = new JFrame();
@@ -72,6 +73,7 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 //				showShop
 				break;
 			case LOST:
+				this.lost();
 				break;
 			case WIN:
 				break;
@@ -117,5 +119,15 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 		if(this.controller != null) {
 			this.controller.releaseKey(key);
 		}
+	}
+	
+	private void lost() {
+		//aggiorna con immagine sconfitta
+		try {
+			Thread.sleep(DELAY_CLOSE);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.exit(0);
 	}
 }
