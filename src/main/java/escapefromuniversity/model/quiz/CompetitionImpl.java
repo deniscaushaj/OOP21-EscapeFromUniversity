@@ -33,6 +33,10 @@ public class CompetitionImpl implements Competition {
 	public void setBonusQuiz(final boolean state) {
 		this.bonusQuiz = state;
 	}
+
+	public boolean getBonusQuiz() {
+		return this.bonusQuiz;
+	}
 	
 	@Override
 	public Quiz getNextQuiz() {
