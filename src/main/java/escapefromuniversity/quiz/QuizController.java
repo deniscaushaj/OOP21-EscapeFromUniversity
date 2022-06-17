@@ -1,4 +1,4 @@
-package escapefromuniversity;
+package escapefromuniversity.quiz;
 
 import javafx.fxml.FXML;
 

@@ -9,7 +9,7 @@ public interface Quiz {
 
 	Question getQuestion();
 
-	Map<Integer,Anwser> getAllAnwsers();
+	Map<Integer,Answer> getAllAnwsers();
 	
 	boolean hasBeenAnswered();
 	

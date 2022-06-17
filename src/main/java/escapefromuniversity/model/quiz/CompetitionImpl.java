@@ -11,12 +11,13 @@ public class CompetitionImpl {
 	private final String teacherName;
 	private final String subjectName;
 	private int currentQuiz = 0;
+	private boolean bonusQuiz = false;
 	
 	private CompetitionImpl(Map<Integer,Quiz> competition, String teacherName, String subjectName) {
 		this.competition = competition;
 		this.teacherName = teacherName;
 		this.subjectName = subjectName;
-	}
+	}   
 	
 	public String getTeacherName() {
 		return this.teacherName;
@@ -24,6 +25,10 @@ public class CompetitionImpl {
 	
 	public String getSubjectName() {
 		return this.subjectName;
+	}
+	
+	public void setBonusQuiz(final boolean state) {
+		this.bonusQuiz = state;
 	}
 	
 	public Quiz getNextQuiz() {

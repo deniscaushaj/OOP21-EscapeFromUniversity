@@ -1,4 +1,4 @@
-package escapefromuniversity;
+package escapefromuniversity.quiz;
 
 import static escapefromuniversity.utilities.LauncherResizer.*;
 

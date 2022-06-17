@@ -1,6 +1,6 @@
 package escapefromuniversity.model.quiz;
 
-public interface Anwser {
+public interface Answer {
 
 	int getId();
 
