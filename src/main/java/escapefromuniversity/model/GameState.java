@@ -27,6 +27,10 @@ public enum GameState {
      */   
     SHOP,
     /**
+     * Identifies the lost state.
+     */
+    LOST,
+    /**
      * Identifies the win state.
      */   
     WIN;
