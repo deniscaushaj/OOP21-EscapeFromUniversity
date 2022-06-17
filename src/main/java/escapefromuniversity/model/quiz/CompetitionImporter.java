@@ -44,7 +44,7 @@ public class CompetitionImporter {
 			QuizImpl.Builder quizBuilder = new QuizImpl.Builder(new QuestionImpl(i+1, quiz.get("question").toString()));
 			
 			for (int j = 0; j < answers.size(); j++) {
-				quizBuilder.addAnwser(new AnwserImpl(j+1, answers.get(j).toString(), (correct.equals(answers.get(i).toString()))));
+				quizBuilder.addAnwser(new AnswerImpl(j+1, answers.get(j).toString(), (correct.equals(answers.get(i).toString()))));
 			}
 			
 			competitionBuilder.addQuiz(quizBuilder.build());

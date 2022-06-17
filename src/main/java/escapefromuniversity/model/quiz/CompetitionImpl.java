@@ -16,7 +16,7 @@ public class CompetitionImpl {
 		this.competition = competition;
 		this.teacherName = teacherName;
 		this.subjectName = subjectName;
-	}
+	}   
 	
 	public String getTeacherName() {
 		return this.teacherName;

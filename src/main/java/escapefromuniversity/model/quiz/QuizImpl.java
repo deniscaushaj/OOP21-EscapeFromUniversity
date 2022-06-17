@@ -8,10 +8,10 @@ import java.util.Map;
 public class QuizImpl implements Quiz {
 
 	private final Question question;
-	private final Map<Integer,Anwser> anwsers;
+	private final Map<Integer,Answer> anwsers;
 	private boolean answered = false;
 	
-	private QuizImpl(Question question, Map<Integer,Anwser> anwsers) {
+	private QuizImpl(Question question, Map<Integer,Answer> anwsers) {
 		this.question = question;
 		this.anwsers = anwsers;
 	}
@@ -27,7 +27,7 @@ public class QuizImpl implements Quiz {
 	}
 	
 	@Override
-	public Map<Integer,Anwser> getAllAnwsers() {
+	public Map<Integer,Answer> getAllAnwsers() {
 		return this.anwsers;
 	}
 	
@@ -50,13 +50,13 @@ public class QuizImpl implements Quiz {
 	public static class Builder {
 
 		private Question question;
-		private Map<Integer,Anwser> anwsers = new HashMap<Integer,Anwser>();
+		private Map<Integer,Answer> anwsers = new HashMap<Integer,Answer>();
 		
 		public Builder(Question question) {
 			this.question = question;
 		}
 		
-		public Builder addAnwser(Anwser anwser) {
+		public Builder addAnwser(Answer anwser) {
 			this.anwsers.put(anwser.getId(), anwser);
 			return this;
 		}

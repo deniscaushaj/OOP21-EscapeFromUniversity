@@ -1,12 +1,12 @@
 package escapefromuniversity.model.quiz;
 
-public class AnwserImpl implements Anwser {
+public class AnswerImpl implements Answer {
 
 	private final int id;
 	private final String text;
 	private final boolean correct;
 	
-	public AnwserImpl(final int id, final String text, final boolean correct) {
+	public AnswerImpl(final int id, final String text, final boolean correct) {
 		this.id = id;
 		this.text = text;
 		this.correct = correct;
