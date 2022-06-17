@@ -36,11 +36,7 @@ public class GameControllerImpl implements GameController{
 			this.view.update();
 			lastTime = currentTime;
 		}
-		if(this.model.isWin()) {
-			this.view.isWin();
-		}else {
-			this.view.isLost();
-		}
+		this.view.update();
 		
 	}
 	
