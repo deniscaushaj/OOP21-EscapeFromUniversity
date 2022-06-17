@@ -1,8 +1,5 @@
 package escapefromuniversity.model.shop;
 
-import escapefromuniversity.model.bullet.Bullet;
-import escapefromuniversity.model.gameObject.GameObject;
-import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.player.Player;
 import escapefromuniversity.model.quiz.Anwser;
 import escapefromuniversity.model.quiz.Quiz;
