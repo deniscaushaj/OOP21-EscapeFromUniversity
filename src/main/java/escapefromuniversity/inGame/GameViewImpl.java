@@ -74,9 +74,10 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 //				showShop
 				break;
 			case LOST:
-				this.lost();
+				this.end(this.controller.getGameState());
 				break;
 			case WIN:
+				this.end(this.controller.getGameState());
 				break;
 			default:
 				break;
@@ -122,8 +123,12 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 		}
 	}
 	
-	private void lost() {
-		//aggiorna con immagine sconfitta
+	private void end(GameState gameState) {
+		if(gameState == GameState.WIN) {
+			//aggiorna con immagine vittoria
+		}else {
+			//aggiorna con immagine sconfitta
+		}
 		try {
 			Thread.sleep(DELAY_CLOSE);
 		} catch (InterruptedException e) {
@@ -132,4 +137,5 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 		LauncherView.createLauncher();
 		System.exit(0);
 	}
+	
 }
