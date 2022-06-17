@@ -6,7 +6,7 @@ import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;
 
 public class DoorImpl extends AbstractStaticGameObject implements Door{
-    private Point2D pos;
+    private final Point2D pos;
 
     public DoorImpl(GameObjectType type, Point2D position, Point2D upperCorner, Room room, Point2D pos) {
         super(type, position, upperCorner, room);
