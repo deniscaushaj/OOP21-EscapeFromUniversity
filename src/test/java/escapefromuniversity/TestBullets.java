@@ -66,7 +66,7 @@ public class TestBullets {
 		Room room = new RoomImpl(null);
 		final Vector2D vec = new Vector2D(0, 1);
 		final Point2D pos = new Point2D(0,0);
-		Bullet bul = bullets.createBoss1Bullet(pos, vec, room);
+		Bullet bul = bullets.createBoss2Bullet(pos, vec, room);
 		room.addDynamicGameObject(bul);
 		System.out.println(bul.getObjectPosition().getX());
 		assertEquals(vec, bul.getDirection());
@@ -81,7 +81,7 @@ public class TestBullets {
 		Room room = new RoomImpl(null);
 		final Vector2D vec = new Vector2D(0, 1);
 		final Point2D pos = new Point2D(0,0);
-		Bullet bul = bullets.createBoss1Bullet(pos, vec, room);
+		Bullet bul = bullets.createBoss3Bullet(pos, vec, room);
 		room.addDynamicGameObject(bul);
 		System.out.println(bul.getObjectPosition().getX());
 		assertEquals(vec, bul.getDirection());
@@ -96,7 +96,7 @@ public class TestBullets {
 		Room room = new RoomImpl(null);
 		final Vector2D vec = new Vector2D(0, 1);
 		final Point2D pos = new Point2D(0,0);
-		Bullet bul = bullets.createBoss1Bullet(pos, vec, room);
+		Bullet bul = bullets.createBoss4Bullet(pos, vec, room);
 		room.addDynamicGameObject(bul);
 		System.out.println(bul.getObjectPosition().getX());
 		assertEquals(vec, bul.getDirection());
@@ -111,7 +111,7 @@ public class TestBullets {
 		Room room = new RoomImpl(null);
 		final Vector2D vec = new Vector2D(0, 1);
 		final Point2D pos = new Point2D(0,0);
-		Bullet bul = bullets.createBoss1Bullet(pos, vec, room);
+		Bullet bul = bullets.createBoss5Bullet(pos, vec, room);
 		room.addDynamicGameObject(bul);
 		System.out.println(bul.getObjectPosition().getX());
 		assertEquals(vec, bul.getDirection());
@@ -126,7 +126,7 @@ public class TestBullets {
 		Room room = new RoomImpl(null);
 		final Vector2D vec = new Vector2D(0, 1);
 		final Point2D pos = new Point2D(0,0);
-		Bullet bul = bullets.createBoss1Bullet(pos, vec, room);
+		Bullet bul = bullets.createBoss6Bullet(pos, vec, room);
 		room.addDynamicGameObject(bul);
 		System.out.println(bul.getObjectPosition().getX());
 		assertEquals(vec, bul.getDirection());
