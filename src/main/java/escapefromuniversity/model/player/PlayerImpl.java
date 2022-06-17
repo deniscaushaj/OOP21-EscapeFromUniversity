@@ -180,7 +180,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
     private Point2D getPreviousPosition () {
         return this.prevPosition;
     }
-
+    
     @Override
     public void passedExam() {
         this.passed ++;
