@@ -2,27 +2,39 @@ package escapefromuniversity.model.shop;
 
 import escapefromuniversity.model.player.Player;
 import escapefromuniversity.model.quiz.Answer;
-import escapefromuniversity.model.quiz.Quiz;
+import escapefromuniversity.model.quiz.CompetitionImpl;
 
 public enum Items {
 
     INCREASE_ATTACK, INCREASE_DEFENSE, RESET_HEALTH, DOUBLE_CHANCE;
 
     public void increaseAttack(Player player){
-        player.setDamageBuff(0); //cambiare valore TODO
+        var maxDam = player.getMaxDamage();
+        var currDam = player.getDamage();
+        if(currDam < maxDam){
+            player.setDamageBuff(currDam+10);
+        }
     }
 
     public void increaseDefense(Player player){
-        player.setArmorBuff(0); // cambia valore TODO
+        var maxDef = player.getMaxArmor();
+        var currDef = player.getArmor();
+        if(currDef < maxDef){
+            player.setArmorBuff(currDef+10);
+        }
     }
 
     public void resetHealth(Player player){
-        player.resetLife();
+        var maxLife = player.getMaxLife();
+        var currLife = player.getLife();
+        if(currLife != maxLife){
+            player.resetLife();
+        }
     }
 
-    public void doubleChance(Answer ans, Quiz quiz){
-        if(!ans.isCorrect()){
-           // quiz.doubleChance(); TODO
+    public void doubleChance(Answer ans, CompetitionImpl competition){
+        if(!ans.isCorrect() && !competition.getBonusQuiz()){
+           competition.setBonusQuiz(true);
         }
     }
 }
