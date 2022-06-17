@@ -37,7 +37,7 @@ public final class LauncherView extends Application{
         launcherWindow = stage;
     }
 
-    public static void createLauncher(final String[] args) {
+    public static void createLauncher() {
         launch();
     }
 

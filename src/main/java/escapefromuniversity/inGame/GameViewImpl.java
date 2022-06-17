@@ -1,5 +1,6 @@
 package escapefromuniversity.inGame;
 
+import escapefromuniversity.launcher.LauncherView;
 import escapefromuniversity.menu.MenuViewImpl;
 import escapefromuniversity.model.GameState;
 import escapefromuniversity.utilities.OSFixes;
@@ -128,6 +129,7 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		LauncherView.createLauncher();
 		System.exit(0);
 	}
 }
