@@ -58,10 +58,8 @@ public class KeyHandlerImpl implements KeyHandler {
                             this.fightCommands(keyCode);
                             this.playCommands(keyCode);
                         }
-                        case MENU -> this.menuCommands(keyCode);
+                        case MENU, SHOP -> this.menuCommands(keyCode);
                         case PLAY, WIN -> this.playCommands(keyCode);
-                        case QUIZ -> this.quizCommands(keyCode);
-                        case SHOP -> this.shopCommands(keyCode);
                         default -> {
                         }
                     }
@@ -98,49 +96,9 @@ public class KeyHandlerImpl implements KeyHandler {
 
     private void menuCommands(int keyCode) {
         if (keyCode == KeyEvent.VK_ESCAPE) {
-//            close menu
-        } else if (keyCode == KeyEvent.VK_ENTER) {
-
-        } else if (keyCode == KeyEvent.VK_A || keyCode == KeyEvent.VK_LEFT) {
-
-        } else if (keyCode == KeyEvent.VK_S || keyCode == KeyEvent.VK_DOWN) {
-
-        } else if (keyCode == KeyEvent.VK_D || keyCode == KeyEvent.VK_RIGHT) {
-
-        } else if (keyCode == KeyEvent.VK_W || keyCode == KeyEvent.VK_UP) {
-
+//            check gamestate & close menu/shop
         }
-    }
-
-    private void quizCommands(int keyCode) {
-        if (keyCode == KeyEvent.VK_ENTER) {
-
-        } else if (keyCode == KeyEvent.VK_A || keyCode == KeyEvent.VK_LEFT) {
-
-        } else if (keyCode == KeyEvent.VK_S || keyCode == KeyEvent.VK_DOWN) {
-
-        } else if (keyCode == KeyEvent.VK_D || keyCode == KeyEvent.VK_RIGHT) {
-
-        } else if (keyCode == KeyEvent.VK_W || keyCode == KeyEvent.VK_UP) {
-
-        }
-    }
-
-    private void shopCommands(int keyCode) {
-        if (keyCode == KeyEvent.VK_ESCAPE) {
-//          close shop
-        } else if (keyCode == KeyEvent.VK_ENTER) {
-
-        } else if (keyCode == KeyEvent.VK_A || keyCode == KeyEvent.VK_LEFT) {
-
-        } else if (keyCode == KeyEvent.VK_S || keyCode == KeyEvent.VK_DOWN) {
-
-        } else if (keyCode == KeyEvent.VK_D || keyCode == KeyEvent.VK_RIGHT) {
-
-        } else if (keyCode == KeyEvent.VK_W || keyCode == KeyEvent.VK_UP) {
-
-        }
-    }
+    }    
 
     public void setKey(final int key, final boolean clicked) {
         final Optional<Command<Integer, Boolean, Optional<Direction>>> command = this.keyList.stream()
