@@ -2,7 +2,7 @@ package escapefromuniversity.model.shop;
 
 import escapefromuniversity.model.player.Player;
 import escapefromuniversity.model.quiz.Answer;
-import escapefromuniversity.model.quiz.CompetitionImpl;
+import escapefromuniversity.model.quiz.Competition;
 
 public enum Items {
 
@@ -32,7 +32,7 @@ public enum Items {
         }
     }
 
-    public void doubleChance(Answer ans, CompetitionImpl competition){
+    public void doubleChance(Answer ans, Competition competition){
         if(!ans.isCorrect() && !competition.getBonusQuiz()){
            competition.setBonusQuiz(true);
         }
