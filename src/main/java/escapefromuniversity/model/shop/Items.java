@@ -1,7 +1,7 @@
 package escapefromuniversity.model.shop;
 
 import escapefromuniversity.model.player.Player;
-import escapefromuniversity.model.quiz.Anwser;
+import escapefromuniversity.model.quiz.Answer;
 import escapefromuniversity.model.quiz.Quiz;
 
 public enum Items {
@@ -20,7 +20,7 @@ public enum Items {
         player.resetLife();
     }
 
-    public void doubleChance(Anwser ans, Quiz quiz){
+    public void doubleChance(Answer ans, Quiz quiz){
         if(!ans.isCorrect()){
            // quiz.doubleChance(); TODO
         }
