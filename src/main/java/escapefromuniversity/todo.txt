@@ -14,7 +14,3 @@ g2 e bufferedimage
 
 
 controllare indentazione, todo, javadoc, intellij warnings.
-
-se getdamage = getmaxdmg non puoi piu comprare
-
-l'armor del player deve sempre essere piu piccola del danno dell'enemy
