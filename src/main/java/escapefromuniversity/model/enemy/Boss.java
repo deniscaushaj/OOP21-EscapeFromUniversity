@@ -29,7 +29,7 @@ public interface Boss extends Enemy{
 	 * 
 	 * @param result: point in quiz.
 	 */
-	void setQuizResult(double result);
+	void setQuizResult(int result);
 	
 	/**
 	 * delete this object.

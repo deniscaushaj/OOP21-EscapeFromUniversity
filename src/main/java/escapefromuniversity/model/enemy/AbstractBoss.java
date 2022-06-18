@@ -172,8 +172,8 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setQuizResult(double result) {
-		
+	public void setQuizResult(int result) {
+		this.getRoom().getPlayer().setFinalMark(result);
 	}
 
 }
