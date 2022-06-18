@@ -41,6 +41,8 @@ public interface GameModel {
 	
 	void goShop();
 	
+	int finalMark();
+	
 	
 	
 

@@ -90,4 +90,9 @@ public class GameModelImp implements GameModel{
 		this.controller.setGameState(GameState.SHOP);
 	}
 
+	@Override
+	public int finalMark() {
+		return this.getPlayer().getFinalMark();
+	}
+
 }
