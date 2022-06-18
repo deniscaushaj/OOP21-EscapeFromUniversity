@@ -25,6 +25,7 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 	public GameViewImpl(GameController controller) {
 		this.controller = controller;	
 		this.window = new JFrame();
+		this.window.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.window.setUndecorated(true);
 		this.window.setSize(screenWidth, screenHeight);
 		this.window.setResizable(false);
@@ -131,7 +132,9 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 			e.printStackTrace();
 		}
 		LauncherView.createLauncher();
-		System.exit(0);
+//		System.exit(0);
+		this.window.setVisible(false);
+		this.window.dispose();
 	}
 	
 }
