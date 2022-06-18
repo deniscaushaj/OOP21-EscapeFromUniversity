@@ -1,16 +1,8 @@
-animazione sprites
-
-metodi con concat
-spritecount si resetta ogni volta
-
-togliere improved switch
-aggiungere metodo quiz
-
-player???
+gamestate win e lost??
+items sbagliato!!
 
 view e control
 parlare con ema per javafx menu
 g2 e bufferedimage
-
 
 controllare indentazione, todo, javadoc, intellij warnings.
