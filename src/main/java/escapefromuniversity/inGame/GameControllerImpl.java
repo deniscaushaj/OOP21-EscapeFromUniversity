@@ -26,6 +26,9 @@ public class GameControllerImpl implements GameController{
 	}
 	
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void gameLoop() {
 		long lastTime = System.currentTimeMillis();
@@ -72,19 +75,25 @@ public class GameControllerImpl implements GameController{
 				.collect(Collectors.toList());
 	}
 
-
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int getPlayerLife() {
 		return this.model.getPlayer().getLife();
 	}
 
-
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int getPlayerCredits() {
 		return this.model.getPlayer().getCredits();
 	}
 
-
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void goQuiz() {
 		// TODO Auto-generated method stub
@@ -92,7 +101,7 @@ public class GameControllerImpl implements GameController{
 	}
 
 	/**
-	 * @return the current game state.
+	 * {@inheritDoc}
 	 */
 	@Override
 	public GameState getGameState () {
@@ -100,8 +109,7 @@ public class GameControllerImpl implements GameController{
 	}
 
 	/**
-	 * Sets the current game state.
-	 * @param gameState the game state to set.
+	 * {@inheritDoc}
 	 */
 	@Override
 	public void setGameState(GameState gameState) {
@@ -112,11 +120,17 @@ public class GameControllerImpl implements GameController{
 		this.keyHandler.executeCommand();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void pressKey(final KeyEvent key) {
 		this.keyHandler.setKey(key.getKeyCode(), true);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void releaseKey(final KeyEvent key) {
 		this.keyHandler.setKey(key.getKeyCode(), false);
