@@ -29,6 +29,8 @@ public interface Player extends DynamicGameObject{
 
 	int getArmor();
 
+	int getFinalMark();
+
 	/**
 	 * @param life to set for the Player.
 	 */
@@ -42,6 +44,8 @@ public interface Player extends DynamicGameObject{
 	void setDamage(int damage);
 
 	void setArmor(int armor);
+
+	void setFinalMark(int newMark);
 
 	void resetLife();
 

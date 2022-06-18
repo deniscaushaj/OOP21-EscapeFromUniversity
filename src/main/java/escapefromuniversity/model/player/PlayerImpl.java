@@ -29,6 +29,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
     private int damage;
     private int armor;
     private int passed;
+    private int finalMark;
     private final long shootDelay;
     private long lastShot;
     private boolean shooting;
@@ -107,6 +108,11 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
     public int getArmor() {return this.armor;}
 
     @Override
+    public int getFinalMark() {
+        return this.finalMark;
+    }
+
+    @Override
     public void setLife(final int life) {
         this.life = life;
     }
@@ -124,6 +130,11 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
     @Override
     public void setArmor(final int armor) {
         this.armor = armor;
+    }
+
+    @Override
+    public void setFinalMark(final int newMark) {
+        this.finalMark = this.finalMark + newMark;
     }
 
     @Override
