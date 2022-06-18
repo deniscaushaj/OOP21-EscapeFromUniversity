@@ -43,7 +43,7 @@ public class GameControllerImpl implements GameController{
 	
 	
 	private boolean continueGame() {
-		return !this.model.isLost() && !this.model.isWin();
+		return this.getGameState() != GameState.LOST && this.getGameState() != GameState.WIN;
 	}
 	
 	private void updateModel(long deltaTime) {
