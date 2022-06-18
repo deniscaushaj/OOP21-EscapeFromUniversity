@@ -27,14 +27,29 @@ public class GameControllerImpl implements GameController{
 	
 
 	@Override
-	public void GameLoop() {
+	public void gameLoop() {
 		long lastTime = System.currentTimeMillis();
 		while(continueGame()) {
 			long currentTime = System.currentTimeMillis();
-			long deltaTime = currentTime - lastTime;
-			executeInput();
-			this.updateModel(deltaTime);
-			this.view.update();
+			switch(this.getGameState()) {
+			case PLAY:
+				long deltaTime = currentTime - lastTime;
+				executeInput();
+				this.updateModel(deltaTime);
+				this.view.update();
+				break;
+			case QUIZ:
+				this.goQuiz();
+				break;
+			case MENU:
+				//menu
+				break;
+			case SHOP:
+				//shop
+				break;
+			default:
+				break;
+			}
 			lastTime = currentTime;
 		}
 		this.view.update();

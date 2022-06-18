@@ -7,7 +7,7 @@ import java.awt.event.KeyEvent;
 public interface GameController {
 	
 	
-	void GameLoop();
+	void gameLoop();
 	
 	int getPlayerLife();
 	
