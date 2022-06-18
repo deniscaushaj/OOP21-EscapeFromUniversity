@@ -47,11 +47,19 @@ public class PlayerMovementImpl implements PlayerMovement {
     @Override
     public void move(final Direction direction) {
         switch (direction) {
-            case UP -> this.moveUp();
-            case DOWN -> this.moveDown();
-            case RIGHT -> this.moveRight();
-            case LEFT -> this.moveLeft();
-            default -> {
+            case UP:
+                this.moveUp();
+                break;
+            case DOWN:
+                this.moveDown();
+                break;
+            case RIGHT:
+                this.moveRight();
+                break;
+            case LEFT:
+                this.moveLeft();
+                break;
+            default: {
             }
         }
     }

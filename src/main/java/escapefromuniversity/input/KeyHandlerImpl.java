@@ -54,13 +54,19 @@ public class KeyHandlerImpl implements KeyHandler {
                 this.command = findKey(keyCode);
                 if (this.command.isEmpty()) {
                     switch (this.gameController.getGameState()) {
-                        case FIGHT -> {
+                        case FIGHT:
                             this.fightCommands(keyCode);
                             this.playCommands(keyCode);
-                        }
-                        case MENU, SHOP -> this.menuCommands(keyCode);
-                        case PLAY, WIN -> this.playCommands(keyCode);
-                        default -> {
+                            break;
+                        case MENU:
+                        case SHOP:
+                            this.menuCommands(keyCode);
+                            break;
+                        case PLAY:
+                        case WIN:
+                            this.playCommands(keyCode);
+                            break;
+                        default: {
                         }
                     }
                 }
