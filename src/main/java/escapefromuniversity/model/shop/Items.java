@@ -8,33 +8,23 @@ public enum Items {
 
     INCREASE_ATTACK, INCREASE_DEFENSE, RESET_HEALTH, DOUBLE_CHANCE;
 
-    public void increaseAttack(Player player){
-        var maxDam = player.getMaxDamage();
-        var currDam = player.getDamage();
-        if(currDam < maxDam){
-            player.setDamageBuff(currDam+10);
-        }
+    public void increaseDamage(Player player, int damageBuff){
+//        if(player.getDamage() < player.getMaxDamage()){} TODO fuori quando chiami il metodo, altrimenti così puoi comprarlo sempre e poi l'if a volte lo rende inefficace
+        player.setDamageBuff(damageBuff);
     }
 
-    public void increaseDefense(Player player){
-        var maxDef = player.getMaxArmor();
-        var currDef = player.getArmor();
-        if(currDef < maxDef){
-            player.setArmorBuff(currDef+10);
-        }
+    public void increaseArmor(Player player, int armorBuff){
+//        if(player.getArmor() < player.getMaxArmor()){} TODO idem
+        player.setArmorBuff(armorBuff);
     }
 
     public void resetHealth(Player player){
-        var maxLife = player.getMaxLife();
-        var currLife = player.getLife();
-        if(currLife != maxLife){
-            player.resetLife();
-        }
+//        if(player.getLife() != player.getMaxLife()){} TODO idem
+        player.resetLife();
     }
 
     public void doubleChance(Answer ans, Competition competition){
-        if(!ans.isCorrect() && !competition.getBonusQuiz()){
-           competition.setBonusQuiz(true);
-        }
+//        if(!ans.isCorrect() && !competition.getBonusQuiz()){} TODO idem
+        competition.setBonusQuiz(true);
     }
 }
