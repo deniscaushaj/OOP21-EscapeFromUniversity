@@ -18,14 +18,17 @@ public class SpriteImpl implements Sprite {
     private File prevFilepath;
     private String folder;
     private String filename;
+    private int tileCount;
 
     public SpriteImpl(DynamicGameObject gameObject, GameObjectType objType) {
         this.gameObject = gameObject;
         this.objType = objType;
+        this.tileCount = 1;
     }
 
     @Override
     public void setImage() {
+        // TODO add update check
         if(this.objType.equals(GameObjectType.BOSS1) || this.objType.equals(GameObjectType.BOSS2)
                 || this.objType.equals(GameObjectType.BOSS3) || this.objType.equals(GameObjectType.BOSS4)
                 || this.objType.equals(GameObjectType.BOSS5) || this.objType.equals(GameObjectType.BOSS6)) {
@@ -85,16 +88,16 @@ public class SpriteImpl implements Sprite {
     private void setSpriteDirection() {
         switch (this.gameObject.getState()) {
             case UP:
-                this.getFilename().concat("_back");
+                this.setFilename(this.getFilename().concat("_back"));
                 break;
             case DOWN:
-                this.getFilename().concat("_front");
+                this.setFilename(this.getFilename().concat("_front"));
                 break;
             case RIGHT:
-                this.getFilename().concat("_right");
+                this.setFilename(this.getFilename().concat("_right"));
                 break;
             case LEFT:
-                this.getFilename().concat("_left");
+                this.setFilename(this.getFilename().concat("_left"));
                 break;
             default:
                 break;
@@ -102,16 +105,18 @@ public class SpriteImpl implements Sprite {
     }
 
     private void setSpriteNumber() {
-        int tileCount = 1;
-        if (tileCount == 1) {
-            this.getFilename().concat("_1");
-            tileCount++;
-        } else if (tileCount == 2) {
-            this.getFilename().concat("_2");
-            tileCount++;
-        } else if (tileCount == 3) {
-            this.getFilename().concat("_3");
-            tileCount = 1;
+        switch(this.tileCount) {
+            case 1:
+                this.setFilename(this.getFilename().concat("_1"));
+                this.tileCount++;
+            case 2:
+                this.setFilename(this.getFilename().concat("_2"));
+                this.tileCount++;
+            case 3:
+                this.setFilename(this.getFilename().concat("_3"));
+                this.tileCount = 1;
+            default: {
+            }
         }
     }
 
