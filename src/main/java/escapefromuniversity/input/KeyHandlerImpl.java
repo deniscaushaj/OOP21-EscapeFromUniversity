@@ -97,6 +97,7 @@ public class KeyHandlerImpl implements KeyHandler {
     private void fightCommands(int keyCode) {
         if(keyCode == KeyEvent.VK_SPACE) {
             // TODO shoot
+            this.player.setShoot(true, this.player.getLastDirection());
         }
     }
 
