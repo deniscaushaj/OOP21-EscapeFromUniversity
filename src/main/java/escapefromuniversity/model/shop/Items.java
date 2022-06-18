@@ -9,7 +9,7 @@ public enum Items {
     INCREASE_ATTACK, INCREASE_DEFENSE, RESET_HEALTH, DOUBLE_CHANCE;
 
     public void increaseDamage(Player player, int damageBuff){
-//        if(player.getDamage() < player.getMaxDamage()){} TODO fuori quando chiami il metodo, altrimenti così puoi comprarlo sempre e poi l'if a volte lo rende inefficace
+//        if(player.getDamage() < player.getMaxDamage()){} TODO l'if è da usare fuori quando chiami il metodo, altrimenti così puoi comprarlo sempre e poi l'if a volte lo rende inefficace
         player.setDamageBuff(damageBuff);
     }
 
