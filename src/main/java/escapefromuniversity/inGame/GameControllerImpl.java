@@ -1,10 +1,14 @@
 package escapefromuniversity.inGame;
 
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import escapefromuniversity.WriteFile;
 import escapefromuniversity.input.KeyHandler;
 import escapefromuniversity.input.KeyHandlerImpl;
 import escapefromuniversity.model.GameModel;
@@ -54,6 +58,9 @@ public class GameControllerImpl implements GameController{
 				break;
 			}
 			lastTime = currentTime;
+		}
+		if(this.getGameState() == GameState.WIN) {
+			this.saveScore(this.model.finalMark());
 		}
 		this.view.update();
 		
@@ -134,6 +141,17 @@ public class GameControllerImpl implements GameController{
 	@Override
 	public void releaseKey(final KeyEvent key) {
 		this.keyHandler.setKey(key.getKeyCode(), false);
+	}
+	
+	private void saveScore(int mark) {
+		try {
+			WriteFile w = new WriteFile("score", "score.txt");
+			DateTimeFormatter dtf4 = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
+			w.writeNewLine("" + dtf4.format(LocalDateTime.now()) + "      SCORE:  " + mark);
+			w.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
