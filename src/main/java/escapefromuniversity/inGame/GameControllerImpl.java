@@ -22,6 +22,7 @@ public class GameControllerImpl implements GameController{
 		this.model = new GameModelImp(this);
 		this.view = new GameViewImpl(this);
 		this.keyHandler = new KeyHandlerImpl(this.model, this);
+		this.setGameState(GameState.PLAY);
 	}
 	
 

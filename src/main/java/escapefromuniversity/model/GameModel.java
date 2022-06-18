@@ -22,17 +22,11 @@ public interface GameModel {
 	 */
 	void updateGame(double deltaTime);
 	
-	/**
-	 * 
-	 * @return true if you won.
-	 */
-	boolean isWin();
 	
-	/**
-	 * 
-	 * @return true if you lost.
-	 */
-	boolean isLost();
+	void isWin();
+	
+	
+	void isLost();
 	
 	/**
 	 * 

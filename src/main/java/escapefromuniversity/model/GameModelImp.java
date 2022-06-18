@@ -41,17 +41,16 @@ public class GameModelImp implements GameModel{
 	 * {@inheritDoc}
 	 */
 	@Override
-	public boolean isWin() {
-		// TODO Auto-generated method stub
-		return false;
+	public void isWin() {
+		this.controller.setGameState(GameState.WIN);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public boolean isLost() {
-		return false; //this.mapManager.gameOver();
+	public void isLost() {
+		this.controller.setGameState(GameState.LOST);
 	}
 
 	/**
