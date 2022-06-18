@@ -64,7 +64,7 @@ public class GameModelImp implements GameModel{
 
 	@Override
 	public void goQuiz(Boss boss) {
-		this.controller.goQuiz();
+		this.controller.setGameState(GameState.QUIZ);;
 		
 	}
 

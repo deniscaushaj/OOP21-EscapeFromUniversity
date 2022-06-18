@@ -15,7 +15,7 @@ public class GameControllerImpl implements GameController{
 	private final GameModel model;
 	private final GameView view;
 	private final KeyHandler keyHandler;
-	private static GameState gameState;
+	private GameState gameState;
 	private List<Integer> gameObjID = new LinkedList();
 
 	public GameControllerImpl() {
