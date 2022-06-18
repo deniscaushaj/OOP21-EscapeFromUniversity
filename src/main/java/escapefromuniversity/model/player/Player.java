@@ -71,6 +71,10 @@ public interface Player extends DynamicGameObject{
 	 */
 	void shoot();
 
+	void setLastDirection(Direction direction);
+
+	Direction getLastDirection();
+
 	/**
 	 * Increments the number of passed exams.
 	 */

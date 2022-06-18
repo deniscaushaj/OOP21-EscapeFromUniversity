@@ -21,6 +21,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
     private static final int START_CREDITS = 0;
     private static final int START_DAMAGE = 10;
     private static final int START_ARMOR = 0;
+    private static final Direction START_DIRECTION = Direction.DOWN;
     private static final Point2D HIT_BOX_PLAYER = new Point2D(0,0);
     //	TODO eventual MAX_STATS
     private int life;
@@ -33,6 +34,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
     private boolean shooting;
     private Point2D prevPosition;
     private Vector2D shotDirection;
+    private Direction direction;
     private final BulletFactory bulletFactory;
 
     /**
@@ -48,6 +50,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
         this.credits = START_CREDITS;
         this.damage = START_DAMAGE;
         this.armor = START_ARMOR;
+        this.direction = START_DIRECTION;
         this.passed = 0;
         this.shootDelay = shootDelay;
         this.shooting = false;
@@ -180,7 +183,17 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
     private Point2D getPreviousPosition () {
         return this.prevPosition;
     }
-    
+
+    @Override
+    public void setLastDirection(Direction direction) {
+        this.direction = direction;
+    }
+
+    @Override
+    public Direction getLastDirection() {
+        return this.direction;
+    }
+
     @Override
     public void passedExam() {
         this.passed ++;

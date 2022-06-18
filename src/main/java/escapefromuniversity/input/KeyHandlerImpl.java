@@ -84,19 +84,22 @@ public class KeyHandlerImpl implements KeyHandler {
         if (keyCode == KeyEvent.VK_ESCAPE) {
 //             TODO open menu
         } else if (keyCode == KeyEvent.VK_A || keyCode == KeyEvent.VK_LEFT) {
-            playerMovement.move(Direction.LEFT);
+            this.playerMovement.move(Direction.LEFT);
+            this.player.setLastDirection(Direction.LEFT);
         } else if (keyCode == KeyEvent.VK_S || keyCode == KeyEvent.VK_DOWN) {
-            playerMovement.move(Direction.DOWN);
+            this.playerMovement.move(Direction.DOWN);
+            this.player.setLastDirection(Direction.DOWN);
         } else if (keyCode == KeyEvent.VK_D || keyCode == KeyEvent.VK_RIGHT) {
-            playerMovement.move(Direction.RIGHT);
+            this.playerMovement.move(Direction.RIGHT);
+            this.player.setLastDirection(Direction.RIGHT);
         } else if (keyCode == KeyEvent.VK_W || keyCode == KeyEvent.VK_UP) {
-            playerMovement.move(Direction.UP);
+            this.playerMovement.move(Direction.UP);
+            this.player.setLastDirection(Direction.UP);
         }
     }
 
     private void fightCommands(int keyCode) {
         if(keyCode == KeyEvent.VK_SPACE) {
-            // TODO shoot
             this.player.setShoot(true, this.player.getLastDirection());
         }
     }
@@ -105,12 +108,12 @@ public class KeyHandlerImpl implements KeyHandler {
         if (keyCode == KeyEvent.VK_ESCAPE) {
 //            TODO check gamestate & close menu/shop
         }
-    }    
+    }
 
     public void setKey(final int key, final boolean clicked) {
         final Optional<Command<Integer, Boolean, Optional<Direction>>> command = this.keyList.stream()
-                                                                                             .filter(obj -> obj.getKey() == key)
-                                                                                             .findFirst();
+                .filter(obj -> obj.getKey() == key)
+                .findFirst();
         command.ifPresent(integerBooleanOptionalCommand -> integerBooleanOptionalCommand.setClicked(clicked));
     }
 
