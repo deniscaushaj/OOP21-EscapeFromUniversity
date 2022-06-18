@@ -80,8 +80,7 @@ public class GameModelImp implements GameModel{
 
 	@Override
 	public void goShop() {
-		// TODO Auto-generated method stub
-		
+		this.controller.setGameState(GameState.SHOP);
 	}
 
 }
