@@ -55,20 +55,25 @@ public class GameModelImp implements GameModel{
 	}
 
 	/**
-	 * {@
+	 * {@inheritDoc}
 	 */
 	@Override
 	public Player getPlayer() {
 		return this.mapManager.getPlayer();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void goQuiz(Boss boss) {
 		this.controller.setGameState(GameState.QUIZ);;
 		
 	}
 
-	
+	/**
+	 * {@inheritDoc}
+	 */
 	public Point2D getPositionOfID(int id) {
 		for(final GameObject obj : this.mapManager.getRoom().getAllGameObject()) {
 			if(obj.getID() == id) {
@@ -78,6 +83,9 @@ public class GameModelImp implements GameModel{
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void goShop() {
 		this.controller.setGameState(GameState.SHOP);
