@@ -34,17 +34,16 @@ public class CompetitionImporter {
 		
 		JSONArray quizes = (JSONArray) jsonObject.get("quiz");
 		
-
 		for (int i = 0; i < quizes.size(); i++)	{
 			JSONObject quiz = (JSONObject) quizes.get(i);
 			String question = (String) quiz.get("question");
-			String correct = (String) quiz.get("correct");
+			Long correct = (Long) quiz.get("correct");
 			JSONArray answers = (JSONArray) quiz.get("answers");
 			
 			QuizBuilder quizBuilder = new QuizImpl.Builder(new QuestionImpl(i+1, quiz.get("question").toString()));
 			
 			for (int j = 0; j < answers.size(); j++) {
-				quizBuilder.addAnwser(new AnswerImpl(j+1, answers.get(j).toString(), (correct.equals(answers.get(i).toString()))));
+				quizBuilder.addAnwser(new AnswerImpl(j+1, answers.get(j).toString(), (j+1==correct)));
 			}
 			
 			competitionBuilder.addQuiz(quizBuilder.build());

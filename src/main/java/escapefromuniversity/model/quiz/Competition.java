@@ -15,5 +15,5 @@ public interface Competition {
 	boolean hasNextQuiz();
 
 	double getProgress();
-
+	
 }
