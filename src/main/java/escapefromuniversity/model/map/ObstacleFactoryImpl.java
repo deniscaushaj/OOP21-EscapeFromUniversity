@@ -1,6 +1,9 @@
 package escapefromuniversity.model.map;
 
-public class ObstacleFactoryImpl implements ObstacleFactory{
+/**
+ * An implementation of ObstacleFactory interface.
+ */
+public class ObstacleFactoryImpl implements ObstacleFactory {
     @Override
     public Obstacle createObstacle() {
         return null;
