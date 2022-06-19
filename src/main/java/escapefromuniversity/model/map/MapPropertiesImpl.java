@@ -3,7 +3,7 @@ package escapefromuniversity.model.map;
 import java.util.List;
 
 /**
- * Implementation of interface MapProperties.
+ * A class which implements the interface MapProperties.
  */
 public class MapPropertiesImpl implements MapProperties {
 
@@ -33,33 +33,38 @@ public class MapPropertiesImpl implements MapProperties {
         this.tilesets = tilesets;
     }
 
-    public int getWidth() {
-        return this.width;
-    }
-
-    public int getHeight() {
-        return this.height;
-    }
-
-    public int getTileWidth() {
-        return this.tileWidth;
-    }
-
-    public int getTileHeight() {
-        return this.tileHeight;
-    }
-
-    public List<Layer> getLayers() {
-        return this.layers;
-    }
-
-    public List<Tileset> getTilesets() {
-        return this.tilesets;
-    }
-
     @Override
     public String toString() {
         return "MapProperties [width=" + width + ", height=" + height + ", tileWidth=" + tileWidth + ", tileHeight="
                 + tileHeight + ", layers=" + layers + ", tilesets=" + tilesets + "]";
+    }
+    @Override
+    public int getWidth() {
+        return this.width;
+    }
+
+    @Override
+    public int getHeight() {
+        return this.height;
+    }
+
+    @Override
+    public int getTileWidth() {
+        return this.tileWidth;
+    }
+
+    @Override
+    public int getTileHeight() {
+        return this.tileHeight;
+    }
+
+    @Override
+    public List<Layer> getLayers() {
+        return this.layers;
+    }
+
+    @Override
+    public List<Tileset> getTilesets() {
+        return this.tilesets;
     }
 }

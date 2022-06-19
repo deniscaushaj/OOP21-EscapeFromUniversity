@@ -6,7 +6,7 @@ import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;
 
 /**
- * Implementation of Door interface
+ * A class which implements the interface Door.
  */
 public class DoorImpl extends AbstractStaticGameObject implements Door {
     private final Point2D pos;

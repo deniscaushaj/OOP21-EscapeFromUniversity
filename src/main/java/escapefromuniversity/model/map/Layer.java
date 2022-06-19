@@ -3,7 +3,7 @@ package escapefromuniversity.model.map;
 import java.util.List;
 
 /**
- * Class which models a Layer.
+ * A class which models a Layer.
  */
 public class Layer {
 
@@ -13,7 +13,7 @@ public class Layer {
 
     /**
      * Constructor.
-     * @param properties the list of properties of a layer
+     * @param properties The list of properties of a layer
      * @param name the name of the layer
      * @param data the list of data of a layer
      */
@@ -23,14 +23,26 @@ public class Layer {
         this.data = List.copyOf(data);
     }
 
+    /**
+     * Returns the list of data of the layer.
+     * @return the list of data of the layer.
+     */
     public List<List<Integer>> getData() {
         return List.copyOf(data);
     }
 
+    /**
+     * Returns the properties of the layer.
+     * @return the properties of the layer
+     */
     public List<String> getProperties() {
         return this.properties;
     }
 
+    /**
+     * Returns the name of the layer.
+     * @return the name of the layer.
+     */
     public String getName() {
         return this.name;
     }

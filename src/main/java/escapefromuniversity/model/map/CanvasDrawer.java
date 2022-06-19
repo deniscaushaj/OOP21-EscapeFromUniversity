@@ -1,7 +1,7 @@
 package escapefromuniversity.model.map;
 
 /**
- * Interface which draws a canvas.
+ * An interface which draws a canvas.
  */
 public interface CanvasDrawer {
 

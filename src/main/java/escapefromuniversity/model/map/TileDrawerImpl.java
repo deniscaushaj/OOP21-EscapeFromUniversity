@@ -9,13 +9,18 @@ public class TileDrawerImpl implements TileDrawer {
     private final MapProperties map;
     private final CanvasDrawer canvasDrawer;
 
-    public TileDrawerImpl(final MapProperties map, CanvasDrawer canvasDrawer){
+    /**
+     * Constructor of TileDrawerImpl.
+     * @param map the properties of the map
+     * @param canvasDrawer the canvas drawer
+     */
+    public TileDrawerImpl(final MapProperties map, final CanvasDrawer canvasDrawer) {
         this.map = map;
         this.canvasDrawer = canvasDrawer;
     }
 
     @Override
-    public void drawTileByID(int id, Rectangle pos) {
+    public void drawTileByID(final int id, final Rectangle pos) {
         var ts = this.searchTileset(id);
         var tPos = calcTPos(id, ts);
         var tileHeight = map.getHeight();
@@ -28,10 +33,12 @@ public class TileDrawerImpl implements TileDrawer {
     }
 
     /**
-     * @param id
-     * @return Tile's position in Tileset
+     * A method to calculate the position of a tile in the tileset.
+     * @param id the ID of the tile wanted
+     * @param ts the tileset containing the tile
+     * @return the position of the tile
      */
-    private Point2D calcTPos(int id, Tileset ts) {
+    private Point2D calcTPos(final int id, final Tileset ts) {
         /*
          * Per calcolare la posizione del tile che mi serve devo fare la get delle colonne e delle righe del tileset giusto.
          * In questo modo posso determinare in base all'id la posizione.
@@ -47,7 +54,7 @@ public class TileDrawerImpl implements TileDrawer {
     }
 
     @Override
-    public Tileset searchTileset(int id) {
+    public Tileset searchTileset(final int id) {
         /*
         * Voglio prendere da MapProperties la lista di Tileset per poter cercare quello che contiene l'id di cui ho bisogno
         * e poi poter prendere l'immagine PNG

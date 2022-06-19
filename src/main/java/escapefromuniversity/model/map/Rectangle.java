@@ -69,32 +69,32 @@ public class Rectangle {
     }
 
     /**
-     * Returns the top-left point.
-     * @return the top-left point
+     * Returns the position of top-left point.
+     * @return the position of top-left point
      */
     public Point2D getTopLeft() {
         return this.topLeft;
     }
 
     /**
-     * Returns the top-right point.
-     * @return the top-right point
+     * Returns the position of top-right point.
+     * @return the position of top-right point
      */
     public Point2D getTopRight() {
         return new Point2D(getBottomRight().getX(), getTopLeft().getY());
     }
 
     /**
-     * Returns the bottom-left point.
-     * @return the bottom-left point
+     * Returns the position of bottom-left point.
+     * @return the position of  bottom-left point
      */
     public Point2D getBottomLeft() {
         return new Point2D(getTopLeft().getX(), getBottomLeft().getY());
     }
 
     /**
-     * Returns the bottom-right point.
-     * @return the bottom-right point
+     * Returns the position of bottom-right point.
+     * @return the position of bottom-right point
      */
     public Point2D getBottomRight() {
         return this.bottomRight;
