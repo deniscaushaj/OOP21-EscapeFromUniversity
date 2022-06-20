@@ -59,7 +59,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="67.0" prefWidth="600.0">
                <children>
-                  <Button id="answer1" fx:id="a" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#answer" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="Risposta 1" textAlignment="CENTER">
+                  <Button id="answer1" fx:id="uno" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#answer" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="Risposta 1" textAlignment="CENTER">
                      <font>
                         <Font name="OCR A Extended" size="24.0" />
                      </font>
@@ -68,7 +68,7 @@
                         <String fx:value="bt" />
                      </styleClass>
                   </Button>
-                  <Button id="answer2" fx:id="b" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#answer" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="Risposta 2" textAlignment="CENTER">
+                  <Button id="answer2" fx:id="due" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#answer" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="Risposta 2" textAlignment="CENTER">
                      <font>
                         <Font name="OCR A Extended" size="24.0" />
                      </font>
@@ -81,7 +81,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="65.0" prefWidth="600.0">
                <children>
-                  <Button id="answer3" fx:id="c" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#answer" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="Risposta 3" textAlignment="CENTER">
+                  <Button id="answer3" fx:id="tre" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#answer" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="Risposta 3" textAlignment="CENTER">
                      <font>
                         <Font name="OCR A Extended" size="24.0" />
                      </font>
@@ -96,7 +96,7 @@
                         <String fx:value="bt" />
                      </styleClass>
                   </Button>
-                  <Button id="answer4" fx:id="d" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#answer" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="Risposta 4" textAlignment="CENTER">
+                  <Button id="answer4" fx:id="quattro" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#answer" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="Risposta 4" textAlignment="CENTER">
                      <font>
                         <Font name="OCR A Extended" size="24.0" />
                      </font>

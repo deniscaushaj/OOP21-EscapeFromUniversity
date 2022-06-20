@@ -6,7 +6,7 @@
     -fx-background-color: transparent;
 }
 .bt {
-	-fx-background-image:url('button.png');
+	-fx-background-image:url('images/button.png');
 }
 .question {
 	-fx-background-image:url('question.png');
