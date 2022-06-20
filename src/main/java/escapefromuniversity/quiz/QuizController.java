@@ -3,7 +3,9 @@ package escapefromuniversity.quiz;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
-
+import escapefromuniversity.model.quiz.Competition;
+import escapefromuniversity.model.quiz.CompetitionImporter;
+import escapefromuniversity.model.quiz.Quiz;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;
@@ -16,36 +18,86 @@ public class QuizController {
 	@FXML
 	private ProgressBar progressBar;
 	@FXML
-	private Button questionButton, nextButton, a, b, c, d;
+	private Button questionButton, nextButton, uno, due, tre, quattro;
+	private Competition comp;
+	private Quiz currentQuiz;
+	
+	public QuizController() {
+		try {
+			this.comp = new CompetitionImporter("boss1.json").importCompetition();
+			if(this.comp.hasNextQuiz()) {
+				currentQuiz = this.comp.getNextQuiz();
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void initialize(){
+		questionButton.setStyle("-fx-background-image:url('question.png');");
+		setDisableToAll(false);
+		System.out.println("progerss " + this.comp.getProgress());
+		progressBar.setProgress(this.comp.getProgress());
+		questionButton.setTextFill(Color.BLACK);
+		profLabel.setText(this.comp.getTeacherName());
+		subjectLabel.setText(this.comp.getSubjectName());
+		questionButton.setText(this.currentQuiz.getQuestion().getText());
+		uno.setText(this.currentQuiz.getAllAnwsers().get(1).getText());
+		due.setText(this.currentQuiz.getAllAnwsers().get(2).getText());
+		tre.setText(this.currentQuiz.getAllAnwsers().get(3).getText());
+		quattro.setText(this.currentQuiz.getAllAnwsers().get(4).getText());
+		nextButton.setDisable(true);
+	}
 
 	// Event Listener on Button[#nextButton].onAction
 	@FXML
 	public void next(ActionEvent event) {
-		progressBar.setProgress(progressBar.getProgress()+0.25);
-		nextButton.setDisable(true);
+		if(this.comp.hasNextQuiz()) {
+			currentQuiz = this.comp.getNextQuiz();
+			this.initialize();
+		} else {
+			nextButton.setDisable(true);
+			questionButton.setDisable(true);
+			questionButton.setOpacity(0.5);
+		}	
 	}
+	
 	// Event Listener on Button[#a].onAction
 	@FXML
 	public void answer(ActionEvent event) {	
 		try {
 			char choce;
-			if (event.getSource().equals(a)) {
-	    		choce = 'a';
-	    	} else if (event.getSource().equals(b)) {	
-	    		choce = 'b';
-	    	} else if (event.getSource().equals(c)) {
-	    		choce = 'c';
-	    	} else if (event.getSource().equals(d)) {
-	    		choce = 'd';
+			if (event.getSource().equals(uno)) {
+	    		answerUpdate(1);
+	    	} else if (event.getSource().equals(due)) {	
+	    		answerUpdate(2);
+	    	} else if (event.getSource().equals(tre)) {
+	    		answerUpdate(3);
+	    	} else if (event.getSource().equals(quattro)) {
+	    		answerUpdate(4);
 	    	}
 			nextButton.setDisable(false);
-			
     	} catch (Exception e) {
     		System.out.println(e);
     	}
 	}
 	
-	public void update() {
-		
+	private void answerUpdate(int choice) {
+		if(this.currentQuiz.giveAnAnswer(choice)) {
+			questionButton.setTextFill(Color.DARKGREEN);
+			questionButton.setStyle("-fx-background-image:url('questionRight.png');");
+		} else {
+			questionButton.setTextFill(Color.DARKRED);
+			questionButton.setStyle("-fx-background-image:url('questionWrong.png');");
+		}
+		setDisableToAll(true);
+	}
+	
+	private void setDisableToAll(boolean state) {
+		uno.setDisable(state);
+		due.setDisable(state);
+		tre.setDisable(state);
+		quattro.setDisable(state);
 	}
 }

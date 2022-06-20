@@ -36,7 +36,7 @@ public final class QuizView extends Application{
         quizWindow = stage;
 	}
 	
-	public static void startQuizCompetition(final String[] args) {
+	public static void startQuizCompetition() {
         launch();
     }
 	

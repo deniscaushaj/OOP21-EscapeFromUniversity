@@ -37,7 +37,7 @@ public class QuizImpl implements Quiz {
 	}
 	
 	@Override
-	public boolean giveAnAnswer(char choice) {
+	public boolean giveAnAnswer(int choice) {
 		this.answered = true;
 		return this.anwsers.get(choice).isCorrect();
 	}

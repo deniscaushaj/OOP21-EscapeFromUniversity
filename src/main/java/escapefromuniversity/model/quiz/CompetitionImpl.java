@@ -51,7 +51,7 @@ public class CompetitionImpl implements Competition {
 	
 	@Override
 	public double getProgress() {
-		return (float) (competition.size() / currentQuiz) * 100;
+		return (float) (currentQuiz / competition.size());
 	}
 	
 	public static class Builder implements CompetitionBuilder {
