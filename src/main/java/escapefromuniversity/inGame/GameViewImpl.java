@@ -3,6 +3,7 @@ package escapefromuniversity.inGame;
 import escapefromuniversity.launcher.LauncherView;
 import escapefromuniversity.menu.MenuViewImpl;
 import escapefromuniversity.model.GameState;
+import escapefromuniversity.model.player.Sprite;
 import escapefromuniversity.utilities.OSFixes;
 
 import javax.swing.*;
@@ -10,6 +11,8 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+import java.util.HashMap;
+import java.util.Map;
 
 import static escapefromuniversity.utilities.LauncherResizer.screenHeight;
 import static escapefromuniversity.utilities.LauncherResizer.screenWidth;
@@ -21,6 +24,7 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 	private JPanel pause;
 	private BufferedImage tempScreen;
 	private static final long DELAY_CLOSE = 5000;
+	private final Map<Integer,Sprite> animations = new HashMap<>();
 
 	public GameViewImpl(GameController controller) {
 		this.controller = controller;	
