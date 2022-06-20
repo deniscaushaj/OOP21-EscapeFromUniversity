@@ -2,37 +2,26 @@ package escapefromuniversity;
 
 import escapefromuniversity.utilities.OSFixes;
 
-import java.awt.*;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Scanner;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class ReadFile {
-	
+
 	private final String fileName;
-	private BufferedReader r;
+	private final BufferedReader reader;
 	
-	public ReadFile(String folderName, String fileName) throws FileNotFoundException {
+	public ReadFile(String folderName, String fileName) throws IOException {
 		this.fileName = OSFixes.getLocation(folderName, fileName);
-		this.r = new BufferedReader(
-				new FileReader(this.fileName));
+		this.reader = new BufferedReader(new FileReader(this.fileName));
 	}
 	
 	public String newLine() throws IOException {
-		return r.readLine();
+		return reader.readLine();
 	}
 	
 	public void close() throws IOException {
-		r.close();
+		reader.close();
 	}
-
-	public void bho() throws IOException {
-		String[] sep = newLine().split(" ");
-		String ciao = sep[1];
-	}
-	
-	
 
 }
