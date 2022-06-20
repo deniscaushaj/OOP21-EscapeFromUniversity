@@ -24,7 +24,8 @@ public class BossFactoryImpl implements BossFactory{
 
 			@Override
 			void shoot() {
-				final Bullet bullet = bulletCreate.createBoss1Bullet(this.getObjectPosition(), this.getDirection(), room);
+				final Point2D startPosition = new Point2D(this.getObjectPosition().getX(), this.getObjectPosition().getY() + this.getObjectHitBox().getHeight());
+				final Bullet bullet = bulletCreate.createBoss1Bullet(startPosition, this.getDirection(), room);
 				this.getRoom().addDynamicGameObject(bullet);
 			}
 			
@@ -41,10 +42,10 @@ public class BossFactoryImpl implements BossFactory{
 			@Override
 			void shoot() {
 				final List<Bullet> bullets = new LinkedList<>();
-				final Point2D pos = this.getObjectPosition();
+				final Point2D startPosition = new Point2D(this.getObjectPosition().getX(), this.getObjectPosition().getY() + this.getObjectHitBox().getHeight());
 				bullets.add(bulletCreate.createBoss2Bullet(this.getObjectPosition(), this.getDirection(), room));
-				bullets.add(bulletCreate.createBoss2Bullet(pos.sum(new Vector2D(10, 10)), this.getDirection(), room));
-				bullets.add(bulletCreate.createBoss2Bullet(pos.sum(new Vector2D(-10, -10)), this.getDirection(), room));
+				bullets.add(bulletCreate.createBoss2Bullet(startPosition.sum(new Vector2D(10, 10)), this.getDirection(), room));
+				bullets.add(bulletCreate.createBoss2Bullet(startPosition.sum(new Vector2D(-10, -10)), this.getDirection(), room));
 				bullets.forEach(bul -> {
 					this.getRoom().addDynamicGameObject(bul);
 				});
@@ -63,15 +64,15 @@ public class BossFactoryImpl implements BossFactory{
 			@Override
 			void shoot() {
 				final List<Bullet> bullets = new LinkedList<>();
-				final Point2D pos = this.getObjectPosition();
-				bullets.add(bulletCreate.createBoss3Bullet(pos, new Vector2D(0, 1), room));
-				bullets.add(bulletCreate.createBoss3Bullet(pos, new Vector2D(0, -1), room));
-				bullets.add(bulletCreate.createBoss3Bullet(pos, new Vector2D(1, 1), room));
-				bullets.add(bulletCreate.createBoss3Bullet(pos, new Vector2D(-1, 1), room));
-				bullets.add(bulletCreate.createBoss3Bullet(pos, new Vector2D(1, -1), room));
-				bullets.add(bulletCreate.createBoss3Bullet(pos, new Vector2D(-1, -1), room));
-				bullets.add(bulletCreate.createBoss3Bullet(pos, new Vector2D(1, 0), room));
-				bullets.add(bulletCreate.createBoss3Bullet(pos, new Vector2D(1, 0), room));
+				final Point2D startPosition = new Point2D(this.getObjectPosition().getX(), this.getObjectPosition().getY() + this.getObjectHitBox().getHeight());
+				bullets.add(bulletCreate.createBoss3Bullet(startPosition, new Vector2D(0, 1), room));
+				bullets.add(bulletCreate.createBoss3Bullet(startPosition, new Vector2D(0, -1), room));
+				bullets.add(bulletCreate.createBoss3Bullet(startPosition, new Vector2D(1, 1), room));
+				bullets.add(bulletCreate.createBoss3Bullet(startPosition, new Vector2D(-1, 1), room));
+				bullets.add(bulletCreate.createBoss3Bullet(startPosition, new Vector2D(1, -1), room));
+				bullets.add(bulletCreate.createBoss3Bullet(startPosition, new Vector2D(-1, -1), room));
+				bullets.add(bulletCreate.createBoss3Bullet(startPosition, new Vector2D(1, 0), room));
+				bullets.add(bulletCreate.createBoss3Bullet(startPosition, new Vector2D(1, 0), room));
 				bullets.forEach(bul -> {
 					this.getRoom().addDynamicGameObject(bul);
 				});
@@ -89,7 +90,8 @@ public class BossFactoryImpl implements BossFactory{
 
 			@Override
 			void shoot() {
-				final Bullet bullet = bulletCreate.createBoss4Bullet(this.getObjectPosition(), this.getDirection(), room);
+				final Point2D startPosition = new Point2D(this.getObjectPosition().getX(), this.getObjectPosition().getY() + this.getObjectHitBox().getHeight());
+				final Bullet bullet = bulletCreate.createBoss4Bullet(startPosition, this.getDirection(), room);
 				this.getRoom().addDynamicGameObject(bullet);
 				
 			}
@@ -106,7 +108,8 @@ public class BossFactoryImpl implements BossFactory{
 
 			@Override
 			void shoot() {
-				final Bullet bullet = bulletCreate.createBoss5Bullet(this.getObjectPosition(), this.getDirection(), room);
+				final Point2D startPosition = new Point2D(this.getObjectPosition().getX(), this.getObjectPosition().getY() + this.getObjectHitBox().getHeight());
+				final Bullet bullet = bulletCreate.createBoss5Bullet(startPosition, this.getDirection(), room);
 				this.getRoom().addDynamicGameObject(bullet);
 				
 			}
@@ -123,7 +126,8 @@ public class BossFactoryImpl implements BossFactory{
 
 			@Override
 			void shoot() {
-				final Bullet bullet = bulletCreate.createBoss6Bullet(this.getObjectPosition(), this.getDirection(), room);
+				final Point2D startPosition = new Point2D(this.getObjectPosition().getX(), this.getObjectPosition().getY() + this.getObjectHitBox().getHeight());
+				final Bullet bullet = bulletCreate.createBoss6Bullet(startPosition, this.getDirection(), room);
 				this.getRoom().addDynamicGameObject(bullet);
 				
 			}
