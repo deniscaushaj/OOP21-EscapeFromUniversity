@@ -12,7 +12,7 @@ public enum GameObjectType {
 	BOSS6(GameCollisionType.ENTITY),
 	WALL(GameCollisionType.OBSTACLE),
 	DOOR(GameCollisionType.OBSTACLE),
-	COIN(GameCollisionType.OBSTACLE),
+	DESK(GameCollisionType.OBSTACLE),
 	BULLET_PLAYER(GameCollisionType.BULLET),
 	BULLET_BOSS_1(GameCollisionType.BULLET),
 	BULLET_BOSS_2(GameCollisionType.BULLET),
