@@ -1,7 +1,7 @@
 package escapefromuniversity.model.player;
 
-import escapefromuniversity.model.gameObject.DynamicGameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;
+import escapefromuniversity.model.gameObject.State;
 import escapefromuniversity.utilities.OSFixes;
 
 import javax.imageio.ImageIO;
@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class SpriteImpl implements Sprite {
 
-    private final DynamicGameObject gameObject;
+    private State state;
     private final GameObjectType objType;
     private Image image;
     private File filepath;
@@ -20,8 +20,8 @@ public class SpriteImpl implements Sprite {
     private String filename;
     private int tileCount;
 
-    public SpriteImpl(DynamicGameObject gameObject, GameObjectType objType) {
-        this.gameObject = gameObject;
+    public SpriteImpl(State state, GameObjectType objType) {
+        this.state = state;
         this.objType = objType;
         this.tileCount = 1;
     }
@@ -86,7 +86,7 @@ public class SpriteImpl implements Sprite {
     }
 
     private void setSpriteDirection() {
-        switch (this.gameObject.getState()) {
+        switch (this.state) {
             case UP:
                 this.setFilename(this.getFilename().concat("_back"));
                 break;
@@ -119,5 +119,10 @@ public class SpriteImpl implements Sprite {
             }
         }
     }
+
+	@Override
+	public void setState(State state) {
+		this.state = state;
+	}
 
 }
