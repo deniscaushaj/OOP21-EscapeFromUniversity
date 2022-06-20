@@ -11,3 +11,6 @@
 .back {
 	-fx-background-image:url('/images/back.png');
 }
+.scroll-pane .viewport {
+	-fx-background-color: transparent;
+}
