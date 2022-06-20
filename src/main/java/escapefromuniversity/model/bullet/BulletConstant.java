@@ -4,7 +4,7 @@ import escapefromuniversity.model.basics.Point2D;
 
 public class BulletConstant {
 	
-	protected final static Point2D BULLET_BOX_SIZE = new Point2D(5,5);
+	protected final static Point2D BULLET_BOX_SIZE = new Point2D(15,15);
 	
 	/**
 	 * Constant of bullets speed.
