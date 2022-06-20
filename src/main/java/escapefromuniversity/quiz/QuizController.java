@@ -19,7 +19,14 @@ public class QuizController {
 	@FXML
 	private Button questionButton, nextButton, a, b, c, d;
 	
-	
+	public QuizController() {
+		try {
+			Competition comp = new CompetitionImporter("boss1.json").importCompetition();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	// Event Listener on Button[#nextButton].onAction
 	@FXML

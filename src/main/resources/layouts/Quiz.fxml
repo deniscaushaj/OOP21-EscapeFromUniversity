@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="anchor" stylesheets="@../Quiz.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="escapefromuniversity.QuizController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="anchor" stylesheets="@../Quiz.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="escapefromuniversity.quiz.QuizController">
    <children>
       <VBox alignment="CENTER" cacheShape="false" centerShape="false" prefHeight="400.0" prefWidth="600.0" spacing="15.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="-17.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -59,7 +59,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="67.0" prefWidth="600.0">
                <children>
-                  <Button id="answerA" fx:id="a" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#answer" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="Risposta A" textAlignment="CENTER">
+                  <Button id="answer1" fx:id="a" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#answer" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="Risposta 1" textAlignment="CENTER">
                      <font>
                         <Font name="OCR A Extended" size="24.0" />
                      </font>
@@ -68,7 +68,7 @@
                         <String fx:value="bt" />
                      </styleClass>
                   </Button>
-                  <Button id="answerB" fx:id="b" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#answer" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="Risposta B" textAlignment="CENTER">
+                  <Button id="answer2" fx:id="b" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#answer" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="Risposta 2" textAlignment="CENTER">
                      <font>
                         <Font name="OCR A Extended" size="24.0" />
                      </font>
@@ -81,7 +81,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="65.0" prefWidth="600.0">
                <children>
-                  <Button id="answerC" fx:id="c" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#answer" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="Risposta C" textAlignment="CENTER">
+                  <Button id="answer3" fx:id="c" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#answer" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="Risposta 3" textAlignment="CENTER">
                      <font>
                         <Font name="OCR A Extended" size="24.0" />
                      </font>
@@ -96,7 +96,7 @@
                         <String fx:value="bt" />
                      </styleClass>
                   </Button>
-                  <Button id="answerD" fx:id="d" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#answer" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="Risposta D" textAlignment="CENTER">
+                  <Button id="answer4" fx:id="d" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#answer" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="Risposta 4" textAlignment="CENTER">
                      <font>
                         <Font name="OCR A Extended" size="24.0" />
                      </font>
