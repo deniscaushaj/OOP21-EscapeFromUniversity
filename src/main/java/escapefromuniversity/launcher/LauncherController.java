@@ -1,10 +1,12 @@
 package escapefromuniversity.launcher;
 
+import escapefromuniversity.WriteFile;
 import escapefromuniversity.inGame.GameControllerImpl;
 import escapefromuniversity.utilities.LauncherResizer;
 import escapefromuniversity.utilities.OSFixes;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 
 import javafx.application.Platform;
@@ -44,8 +46,17 @@ public class LauncherController {
     }
 
     @FXML
-    void leaderboard(ActionEvent event) {
-
+    void leaderboard(ActionEvent event) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            URL fileLocation = new File(OSFixes.getLocation("layouts","Leaderboard.fxml")).toURI().toURL();
+            loader.setLocation(fileLocation);
+            Parent leaderboardRoot = loader.load();
+            Scene leaderboard = new Scene(leaderboardRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
+            LauncherView.launcherWindow.setScene(leaderboard);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     @FXML
