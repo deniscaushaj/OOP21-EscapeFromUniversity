@@ -1,5 +1,7 @@
 package escapefromuniversity.inGame;
 
+import escapefromuniversity.utilities.OSFixes;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -21,7 +23,7 @@ public class GameHUDPanel extends JLayeredPane{
 	private final Rectangle playerLifeBarPosition;
 	private final Rectangle creditsPosition;
 	private final Rectangle creditsCounterPosition;
-	
+
 	GameHUDPanel(final double windowRatio){
 		this.creditsCounter.setText("0");
 		this.creditsCounter.setFont(font);
@@ -29,7 +31,7 @@ public class GameHUDPanel extends JLayeredPane{
 		this.creditsPosition = new Rectangle((int) (10 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio));
 		this.creditsCounterPosition = new Rectangle((int) (60 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio));
 		this.creditsCounter.setBounds(creditsCounterPosition);
-		this.creditsImage = new ImageIcon(this.getClass().getResource("file immagine")).getImage().getScaledInstance((int) creditsPosition.getWidth(),
+		this.creditsImage = new ImageIcon(OSFixes.getLocation("hud", "credits.png")).getImage().getScaledInstance((int) creditsPosition.getWidth(),
                 (int) creditsPosition.getHeight(), 
                 Image.SCALE_SMOOTH);
 		this.playerLifeBarPosition = new Rectangle((int) (10 * windowRatio), (int) (10 * windowRatio), (int) (300 * windowRatio), (int) (30 * windowRatio));
