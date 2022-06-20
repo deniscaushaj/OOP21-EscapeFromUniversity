@@ -24,6 +24,7 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 	private JPanel pause;
 	private BufferedImage tempScreen;
 	private final WindowSet windowSet = new WindowSet();
+	private final GameHUDPanel gameHUD = new GameHUDPanel(windowSet.getWindowRatio());
 	private static final long DELAY_CLOSE = 5000;
 	private final Map<Integer,Sprite> animations = new HashMap<>();
 
