@@ -3,6 +3,7 @@ import escapefromuniversity.model.basics.Point2D;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
+import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import org.xml.sax.SAXException;
@@ -19,10 +20,12 @@ public class MapLoader {
     private Button myButton;
 
     @FXML
+    private Slider zoomSlider;
+
+    @FXML
     public final void myButtonOnClickHandler(final MouseEvent evt) {
+        final int zoom = (int)zoomSlider.getValue();
         final var gc = gameCanvas.getGraphicsContext2D();
-        //Image image = new Image(getClass().getResourceAsStream("/images/logo.png"));
-        //gc.drawImage(image, 0, 0, 400, 400);
         final var parser = new TMXMapParser("final-map.tmx");
         try {
             var map = parser.parse();
@@ -31,8 +34,8 @@ public class MapLoader {
             map.getLayers().forEach(l -> {
                 for (int i = 0; i < map.getWidth(); i++) {
                     for (int j = 0; j < map.getHeight(); j++) {
-                        drawer.drawTileByID(l.getData().get(i).get(j),
-                                new Rectangle(new Point2D(i * 20, j * 20), new Point2D((i+1) * 20, (j+1) * 20)));
+                        drawer.drawTileByID(l.getData().get(j).get(i),
+                                new Rectangle(new Point2D(i * zoom, j * zoom), new Point2D((i+1) * zoom, (j+1) * zoom)));
                     }
                 }
             });

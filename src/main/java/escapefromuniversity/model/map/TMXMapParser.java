@@ -54,7 +54,7 @@ public class TMXMapParser {
         final var layerNodes = doc.getElementsByTagName("layer");
         final var layerStream = nodelistToStreamParse(layerNodes);
         //Getting a stream from the tilesets composing the map
-        final var tilesets = doc.getElementsByTagName("tilesets");
+        final var tilesets = doc.getElementsByTagName("tileset");
         final var tilesetsStream = nodelistToStreamParse(tilesets);
 
         return new MapPropertiesImpl(w, h, tw, th,
@@ -73,7 +73,7 @@ public class TMXMapParser {
             final var builder = factory.newDocumentBuilder();
             final var tName = builder.parse(ClassLoader.getSystemResourceAsStream(tilesetName));
 
-            return tName.getElementsByTagName("tilesets").item(0);
+            return tName.getElementsByTagName("tileset").item(0);
         } catch (ParserConfigurationException | IOException | SAXException e) {
             throw new RuntimeException(e);
         }
