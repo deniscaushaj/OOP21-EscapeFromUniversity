@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 
 import org.junit.jupiter.api.Test;
 import escapefromuniversity.model.quiz.*;
+import escapefromuniversity.quiz.QuizView;
 
 
 public class TestQuiz {
@@ -19,6 +20,7 @@ public class TestQuiz {
 	    while(comp.hasNextQuiz()) {
 	    	System.out.println(comp.getNextQuiz());
 	    }
+	    QuizView.startQuizCompetition();
 	}
 
 }

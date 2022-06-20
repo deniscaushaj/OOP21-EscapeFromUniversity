@@ -3,7 +3,8 @@ package escapefromuniversity.quiz;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
-
+import escapefromuniversity.model.quiz.Competition;
+import escapefromuniversity.model.quiz.CompetitionImporter;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;
@@ -17,6 +18,8 @@ public class QuizController {
 	private ProgressBar progressBar;
 	@FXML
 	private Button questionButton, nextButton, a, b, c, d;
+	
+	
 
 	// Event Listener on Button[#nextButton].onAction
 	@FXML
