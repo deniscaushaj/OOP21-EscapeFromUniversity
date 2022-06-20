@@ -23,7 +23,10 @@ public class LeaderboardController {
     }
 
     public void createLeaderboard() throws IOException {
-        ReadFile readFile = new ReadFile("score", "score.txt");
-        this.leaderboard.addRow(1,new TextField(readFile.newLine()));
+        ReadFile reader = new ReadFile("score", "score.txt");
+        for(int i=0; i<10; i++) {
+            leaderboard.addRow(i, new TextField(reader.newLine()));
+            reader.close();
+        }
     }
 }
