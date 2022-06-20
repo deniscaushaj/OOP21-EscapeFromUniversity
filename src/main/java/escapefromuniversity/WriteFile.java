@@ -38,21 +38,4 @@ public class WriteFile {
 		writer.close();
 	}
 
-//	public void prependPrefix(String newLine) throws IOException {
-//		Path oldFile = Paths.get(OSFixes.getLocation("score", "score.txt"));
-//		Path tempFile = Files.createTempFile(Path.of(OSFixes.getLocation("score", "")), "score", ".txt");
-//		try(BufferedReader r = Files.newBufferedReader(oldFile); PrintWriter w = new PrintWriter(Files.newBufferedWriter(tempFile))) {
-//			w.write(newLine);
-//			String line = null;
-//			while((line=r.readLine())!=null) {
-//				w.write(line);
-//				w.write("\n");
-//			}
-//			Files.copy(tempFile, oldFile, StandardCopyOption.COPY_ATTRIBUTES);
-//			Files.delete(tempFile);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//	}
-
 }
