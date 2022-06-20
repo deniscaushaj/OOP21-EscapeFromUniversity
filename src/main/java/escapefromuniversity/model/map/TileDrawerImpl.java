@@ -21,10 +21,12 @@ public class TileDrawerImpl implements TileDrawer {
 
     @Override
     public void drawTileByID(final int id, final Rectangle pos) {
+        if (id == 0)
+            return;
         var ts = this.searchTileset(id);
         var tPos = calcTPos(id, ts);
-        var tileHeight = map.getHeight();
-        var tileWidth = map.getWidth();
+        var tileHeight = this.map.getTileHeight();
+        var tileWidth = this.map.getTileWidth();
         this.canvasDrawer.drawImage(ts.getFileName(),
                 new Rectangle(
                     new Point2D(tPos.getX() * tileWidth, tPos.getY() * tileHeight),
@@ -48,8 +50,8 @@ public class TileDrawerImpl implements TileDrawer {
          * */
         var cols = ts.getColumns();
         var idOffset = id - ts.getFirstTileId();
-        var x = idOffset / cols;
-        var y = idOffset % cols;
+        var x = idOffset % cols;
+        var y = idOffset / cols;
         return new Point2D(x, y);
     }
 
