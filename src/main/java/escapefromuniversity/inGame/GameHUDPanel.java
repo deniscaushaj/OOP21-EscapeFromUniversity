@@ -6,7 +6,11 @@ import javax.swing.JLayeredPane;
 import javax.swing.JProgressBar;
 
 import java.awt.Rectangle;
-import java.awt.*;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Toolkit;
 
 public class GameHUDPanel extends JLayeredPane{
 	
