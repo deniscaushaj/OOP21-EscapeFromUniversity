@@ -56,7 +56,7 @@ public class GameHUDPanel extends JLayeredPane{
 	@Override
 	public void paintComponent(final Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(this.creditsImage, this.creditsPosition.getX(), this.creditsPosition.getY(), null);
+		g.drawImage(this.creditsImage, (int) this.creditsPosition.getX(), (int) this.creditsPosition.getY(), null);
 		Toolkit.getDefaultToolkit().sync();
 	}
 
