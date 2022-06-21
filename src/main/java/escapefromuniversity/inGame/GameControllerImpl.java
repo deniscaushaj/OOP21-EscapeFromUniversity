@@ -110,7 +110,7 @@ public class GameControllerImpl implements GameController{
 		    final FXMLLoader loader = new FXMLLoader(getClass().getResource("/layouts/Quiz.fxml"));
 			final Parent startRoot = loader.load();
 			final QuizController quizControl = loader.getController();
-			quizControl.getParameters(boss, this);
+			quizControl.setParameters(boss, this);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

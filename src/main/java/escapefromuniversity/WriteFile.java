@@ -20,22 +20,21 @@ public class WriteFile {
 		while((line=reader.readLine())!=null) {
 			list.add(line);
 		}
-		reader.close();
 		list.sort(Collections.reverseOrder());
 		FileWriter writer = new FileWriter(OSFixes.getLocation("score", "score.txt"));
 		for(String s: list){
 			writer.write(s);
 			writer.write("\r\n");
 		}
-		writer.close();
+		reader.close();
 	}
 
 	public void writeNewLine(String line) throws IOException {
-		writer.write(line);
+		this.writer.write(line);
 	}
 
 	public void close() throws IOException {
-		writer.close();
+		this.writer.close();
 	}
 
 }

@@ -25,7 +25,7 @@ public class LeaderboardController {
     public void createLeaderboard() throws IOException {
         ReadFile reader = new ReadFile("score", "score.txt");
         for(int i=0; i<10; i++) {
-            leaderboard.addRow(i, new TextField(reader.newLine()));
+            (leaderboard = new GridPane()).addRow(i, new TextField(reader.newLine()));
             reader.close();
         }
     }
