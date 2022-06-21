@@ -68,7 +68,6 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 				break;
 			case MENU:
 				this.addPauseBG();
-				new MenuViewImpl();
 				break;
 			case PLAY:
 				this.removePauseBG();

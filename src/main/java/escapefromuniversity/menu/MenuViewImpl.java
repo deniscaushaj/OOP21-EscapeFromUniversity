@@ -9,6 +9,9 @@ public class MenuViewImpl implements MenuView {
 	
 	public MenuViewImpl(MenuController controller) {
 		this.controller = controller;
+		this.window.setTitle("EscapeFromUniversity");
+		this.window.setResizable(false);
+		this.window.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 	}
 
 }
