@@ -5,6 +5,7 @@ import escapefromuniversity.menu.MenuViewImpl;
 import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.player.Sprite;
 import escapefromuniversity.utilities.OSFixes;
+import escapefromuniversity.utilities.WindowSet;
 
 import javax.swing.*;
 import java.awt.*;
