@@ -14,6 +14,10 @@ import escapefromuniversity.input.KeyHandlerImpl;
 import escapefromuniversity.model.GameModel;
 import escapefromuniversity.model.GameModelImp;
 import escapefromuniversity.model.GameState;
+import escapefromuniversity.model.enemy.Boss;
+import escapefromuniversity.quiz.QuizController;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 
 public class GameControllerImpl implements GameController{
 	private final GameModel model;
@@ -46,7 +50,7 @@ public class GameControllerImpl implements GameController{
 				this.view.update();
 				break;
 			case QUIZ:
-				this.goQuiz();
+				this.goQuiz(this.model.getCurrentBoss());
 				break;
 			case MENU:
 				//menu
@@ -101,9 +105,15 @@ public class GameControllerImpl implements GameController{
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
-	public void goQuiz() {
-		// TODO Auto-generated method stub
+	private void goQuiz(Boss boss) {
+		try {
+		    final FXMLLoader loader = new FXMLLoader(getClass().getResource("/layouts/Quiz.fxml"));
+			final Parent startRoot = loader.load();
+			final QuizController quizControl = loader.getController();
+			quizControl.getParameters(boss, this);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 	}
 

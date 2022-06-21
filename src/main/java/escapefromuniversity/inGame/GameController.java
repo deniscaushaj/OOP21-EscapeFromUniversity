@@ -23,11 +23,6 @@ public interface GameController {
 	 * @return credits of player
 	 */
 	int getPlayerCredits();
-	
-	/**
-	 * play the quiz
-	 */
-	void goQuiz();
 
 	/**
 	 * 
