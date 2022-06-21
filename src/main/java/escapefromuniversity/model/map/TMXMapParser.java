@@ -51,11 +51,11 @@ public class TMXMapParser {
         final var tw = Integer.parseInt(attributes.getNamedItem("tilewidth").getTextContent());
         final var th = Integer.parseInt(attributes.getNamedItem("tileheight").getTextContent());
         //Getting a stream from the layers composing the map
-        final var layerNodes = doc.getElementsByTagName("layer");
-        final var layerStream = nodelistToStreamParse(layerNodes);
+        final var layersNode = doc.getElementsByTagName("layer");
+        final var layerStream = nodelistToStreamParse(layersNode);
         //Getting a stream from the tilesets composing the map
-        final var tilesets = doc.getElementsByTagName("tileset");
-        final var tilesetsStream = nodelistToStreamParse(tilesets);
+        final var tilesetsNode = doc.getElementsByTagName("tileset");
+        final var tilesetsStream = nodelistToStreamParse(tilesetsNode);
 
         return new MapPropertiesImpl(w, h, tw, th,
                 layerStream.map(this::parseLayer).collect(Collectors.toList()),
