@@ -16,7 +16,7 @@ import javafx.scene.paint.Color;
 
 public class QuizController {
 	@FXML
-	private Label profLabel, subjectLabel;
+	private Label profLabel, subjectLabel, scoreLabel;
 	@FXML
 	private ProgressBar progressBar;
 	@FXML
@@ -76,6 +76,7 @@ public class QuizController {
 	// Event Listener on Button[#nextButton].onAction
 	@FXML
 	public void next(final ActionEvent event) {
+		progressBar.setProgress(this.comp.getProgress());
 		if (this.comp.hasNextQuiz()) {
 			currentQuiz = this.comp.getNextQuiz();
 			this.initialize();
@@ -84,7 +85,6 @@ public class QuizController {
 			questionButton.setText("QUIZ COMPLETATO");
 			this.boss.setQuizResult(this.comp.getScore());
 		}
-		progressBar.setProgress(this.comp.getProgress());
 	}
 	
 	// Event Listener on Button[#a].onAction
@@ -102,6 +102,7 @@ public class QuizController {
 	    		answerUpdate(4);
 	    	}
 			nextButton.setDisable(false);
+			scoreLabel.setText(this.comp.getScore() + " su " + this.comp.getTotal());
     	} catch (Exception e) {
     		System.out.println(e);
     	}

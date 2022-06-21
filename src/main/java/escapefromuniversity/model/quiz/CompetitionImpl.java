@@ -65,6 +65,11 @@ public class CompetitionImpl implements Competition {
 		return (int) this.competition.entrySet().stream().filter(q -> q.getValue().hasBeenAnswered() && q.getValue().hasAnsweredWell().get()).count();
 	}
 	
+	@Override
+	public int getTotal() {
+		return competition.size();
+	}
+	
 	/**
 	 * A Builder for a Competition.
 	 *
