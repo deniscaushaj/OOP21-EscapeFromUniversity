@@ -24,11 +24,11 @@ public class ShopControllerImpl implements ShopController {
             case RESET_HEALTH:
                 this.items.resetHealth(this.player);
                 break;
-            case INCREASE_DEFENSE:
-                this.items.increaseDefense(this.player);
+            case INCREASE_ARMOR:
+                this.items.increaseArmor(this.player);
                 break;
-            case INCREASE_ATTACK:
-                this.items.increaseAttack(this.player);
+            case INCREASE_DAMAGE:
+                this.items.increaseDamage(this.player);
                 break;
             case DOUBLE_CHANCE:
                 this.items.doubleChance(this.competition);
