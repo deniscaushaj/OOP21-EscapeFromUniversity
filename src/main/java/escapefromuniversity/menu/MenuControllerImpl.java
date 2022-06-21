@@ -8,7 +8,7 @@ public class MenuControllerImpl implements MenuController{
 	
 	public MenuControllerImpl(final GameController gameController) {
 		this.gameController = gameController;
-		this.view = new MenuViewImpl();
+		this.view = new MenuViewImpl(this);
 	}
 
 	@Override
