@@ -61,7 +61,7 @@ public enum Items {
      * @param ans the answer given by the user
      * @param competition the current exam
      */
-    public void doubleChance(Answer ans, Competition competition){
+    public void doubleChance(Competition competition){
         if(!competition.getBonusQuiz()){
             competition.setBonusQuiz(true);
         }
