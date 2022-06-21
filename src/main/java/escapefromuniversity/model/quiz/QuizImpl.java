@@ -8,11 +8,11 @@ import java.util.Map;
 public class QuizImpl implements Quiz {
 
 	private final Question question;
-	private final Map<Integer,Answer> anwsers;
+	private final Map<Integer, Answer> anwsers;
 	private boolean answered;
 	private boolean correct;
 	
-	private QuizImpl(Question question, Map<Integer,Answer> anwsers) {
+	private QuizImpl(final Question question, final Map<Integer, Answer> anwsers) {
 		this.question = question;
 		this.anwsers = anwsers;
 	}
@@ -28,7 +28,7 @@ public class QuizImpl implements Quiz {
 	}
 	
 	@Override
-	public Map<Integer,Answer> getAllAnwsers() {
+	public Map<Integer, Answer> getAllAnwsers() {
 		return this.anwsers;
 	}
 	
@@ -38,7 +38,7 @@ public class QuizImpl implements Quiz {
 	}
 	
 	@Override
-	public boolean giveAnAnswer(int choice) {
+	public boolean giveAnAnswer(final int choice) {
 		this.answered = true;
 		this.correct = this.anwsers.get(choice).isCorrect();
 		return this.correct;
@@ -46,24 +46,24 @@ public class QuizImpl implements Quiz {
 	
 	@Override
 	public String toString() {
-		return "[Quiz n."+ this.getID() + "] " + this.question.toString() + this.getAllAnwsers().toString();
+		return "[Quiz n." + this.getID() + "] " + this.question.toString() + this.getAllAnwsers().toString();
 	}
 	
 	public static class Builder implements QuizBuilder {
 
 		private Question question;
-		private Map<Integer,Answer> anwsers = new HashMap<Integer,Answer>();
-		
-		public Builder(Question question) {
+		private Map<Integer, Answer> anwsers = new HashMap<Integer, Answer>();
+
+		public Builder(final Question question) {
 			this.question = question;
 		}
-		
+
 		@Override
-		public QuizBuilder addAnwser(Answer anwser) {
+		public QuizBuilder addAnwser(final Answer anwser) {
 			this.anwsers.put(anwser.getId(), anwser);
 			return this;
 		}
-		
+
 		@Override
 		public Quiz build() {
 			if(this.question == null){

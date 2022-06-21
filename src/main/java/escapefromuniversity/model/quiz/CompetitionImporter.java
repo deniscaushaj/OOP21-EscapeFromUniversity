@@ -7,7 +7,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
 
-import org.json.*;
 import org.json.simple.*;
 import org.json.simple.parser.*;
 import escapefromuniversity.model.quiz.*;
@@ -25,15 +24,15 @@ public class CompetitionImporter {
 
 		CompetitionBuilder competitionBuilder = new CompetitionImpl.Builder();
 	
-		JSONParser parser = new JSONParser();
-		Object obj = parser.parse(new FileReader(OSFixes.getLocation("quiz",path)));
-        JSONObject jsonObject = (JSONObject)obj;
-        
+		final JSONParser parser = new JSONParser();
+		final Object obj = parser.parse(new FileReader(OSFixes.getLocation("quiz", path)));
+        final JSONObject jsonObject = (JSONObject) obj;
+
 		competitionBuilder.setTeacher(jsonObject.get("teacher").toString());
 		competitionBuilder.setSubject(jsonObject.get("subject").toString());
-		
-		JSONArray quizes = (JSONArray) jsonObject.get("quiz");
-		
+
+		final JSONArray quizes = (JSONArray) jsonObject.get("quiz");
+
 		for (int i = 0; i < quizes.size(); i++)	{
 			JSONObject quiz = (JSONObject) quizes.get(i);
 			String question = (String) quiz.get("question");
