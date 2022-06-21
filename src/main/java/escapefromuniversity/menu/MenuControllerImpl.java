@@ -31,4 +31,10 @@ public class MenuControllerImpl implements MenuController{
 		
 	}
 
+	@Override
+	public void back() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

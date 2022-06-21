@@ -7,5 +7,7 @@ public interface MenuController {
 	void exit();
 	
 	void resume();
+	
+	void back();
 
 }
