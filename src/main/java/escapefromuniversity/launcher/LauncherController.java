@@ -1,13 +1,9 @@
 package escapefromuniversity.launcher;
 
-import escapefromuniversity.ReadFile;
-import escapefromuniversity.WriteFile;
 import escapefromuniversity.inGame.GameControllerImpl;
-import escapefromuniversity.utilities.LauncherResizer;
 import escapefromuniversity.utilities.OSFixes;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 
 import javafx.application.Platform;
@@ -18,6 +14,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+
+import static escapefromuniversity.utilities.LauncherResizer.sceneWidth;
+import static escapefromuniversity.utilities.LauncherResizer.sceneHeight;
 
 public class LauncherController {
 
@@ -54,10 +53,10 @@ public class LauncherController {
             URL fileLocation = new File(OSFixes.getLocation("layouts","Leaderboard.fxml")).toURI().toURL();
             loader.setLocation(fileLocation);
             Parent leaderboardRoot = loader.load();
+            Scene leaderboard = new Scene(leaderboardRoot, sceneWidth, sceneHeight);
+            LauncherView.launcherWindow.setScene(leaderboard);
             LeaderboardController leaderboardController = new LeaderboardController();
             loader.setController(leaderboardController);
-            Scene leaderboard = new Scene(leaderboardRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
-            LauncherView.launcherWindow.setScene(leaderboard);
             leaderboardController.createLeaderboard();
         } catch (Exception e) {
             System.out.println(e);
@@ -71,7 +70,7 @@ public class LauncherController {
             URL fileLocation = new File(OSFixes.getLocation("layouts","Credits.fxml")).toURI().toURL();
             loader.setLocation(fileLocation);
             Parent creditsRoot = loader.load();
-            Scene credits = new Scene(creditsRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
+            Scene credits = new Scene(creditsRoot, sceneWidth, sceneHeight);
             LauncherView.launcherWindow.setScene(credits);
         } catch (Exception e) {
             System.out.println(e);
