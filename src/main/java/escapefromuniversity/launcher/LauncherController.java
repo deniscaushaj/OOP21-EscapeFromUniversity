@@ -1,6 +1,7 @@
 package escapefromuniversity.launcher;
 
 import escapefromuniversity.inGame.GameControllerImpl;
+import escapefromuniversity.utilities.LauncherResizer;
 import escapefromuniversity.utilities.OSFixes;
 
 import java.io.File;
