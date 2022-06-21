@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class CompetitionImpl implements Competition {
 	
-	private final Map<Integer,Quiz> competition;
+	private final Map<Integer, Quiz> competition;
 	private final String teacherName;
 	private final String subjectName;
 	private int currentQuiz = 0;
@@ -66,7 +66,7 @@ public class CompetitionImpl implements Competition {
 	}
 	
 	/**
-	 * 
+	 * A Builder for a Competition.
 	 *
 	 */
 	public static class Builder implements CompetitionBuilder {
