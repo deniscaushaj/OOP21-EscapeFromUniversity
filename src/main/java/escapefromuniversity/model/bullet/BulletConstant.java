@@ -4,7 +4,7 @@ import escapefromuniversity.model.basics.Point2D;
 
 /**
  * 
- * 
+ * Bullet constant.
  *
  */
 final class BulletConstant {
