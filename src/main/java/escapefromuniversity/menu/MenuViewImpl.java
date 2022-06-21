@@ -1,8 +1,6 @@
 package escapefromuniversity.menu;
 
 import java.awt.Rectangle;
-import java.awt.Color;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
@@ -30,7 +28,7 @@ public class MenuViewImpl implements MenuView {
 	private final JButton btExit = new JButton("EXIT");
 	private final JButton btResume = new JButton("RESUME");
 	private final JButton btCommand = new JButton("COMMAND");
-	private final JButton btBack = new JButton("COMMAND");
+	private final JButton btBack = new JButton("BACK");
 	
 	public MenuViewImpl(MenuController controller) {
 		this.controller = controller;
@@ -41,6 +39,7 @@ public class MenuViewImpl implements MenuView {
 		this.menuPanel.setOpaque(false);
 		this.commandPanel = new JLayeredPane();
 		this.commandPanel.setOpaque(false);
+		this.window.setSize((int) (screenWidth * windowRatio), (int) (screenHeight * windowRatio));
 		this.startMenu();
 	}
 	
@@ -51,7 +50,6 @@ public class MenuViewImpl implements MenuView {
 		this.btResume.setBounds(this.retBtResume);
 		this.btCommand.setBounds(this.retBtCommand);
 		this.window.getContentPane().add(this.menuPanel);
-		this.window.setSize((int) (screenWidth * windowRatio), (int) (screenHeight * windowRatio));
 		this.btExit.addActionListener(e -> this.controller.exit());
 		this.btResume.addActionListener(e -> this.controller.resume());
 		this.btCommand.addActionListener(e -> this.controller.getCommand());
@@ -71,7 +69,6 @@ public class MenuViewImpl implements MenuView {
 		this.window.remove(menuPanel);
 		this.btBack.setBounds(this.retBtBack);
 		this.window.getContentPane().add(this.commandPanel);
-		this.window.setSize((int) (screenWidth * windowRatio), (int) (screenHeight * windowRatio));
 		this.btBack.addActionListener(e -> this.controller.back());
 		this.commandPanel.add(this.btBack);
 		this.window.setVisible(true);
