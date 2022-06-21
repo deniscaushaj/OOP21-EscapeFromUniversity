@@ -13,4 +13,6 @@ public interface ObstacleFactory {
     Obstacle createObstacle() throws ParserConfigurationException, IOException, SAXException;
 
     Obstacle createWall() throws ParserConfigurationException, IOException, SAXException;
+
+    Obstacle createNPC() throws ParserConfigurationException, IOException, SAXException;
 }
