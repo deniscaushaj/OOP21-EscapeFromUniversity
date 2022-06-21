@@ -3,7 +3,7 @@
 	-fx-opacity: 0.8;
 }
 .anchor {
-    -fx-background-color: transparent;
+    -fx-background-image:url('/images/bg.jpeg');
 }
 .bt {
 	-fx-background-image:url('images/button.png');
