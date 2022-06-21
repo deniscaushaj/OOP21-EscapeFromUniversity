@@ -1,5 +1,12 @@
 package escapefromuniversity.launcher;
 
+import escapefromuniversity.ReadFile;
+import escapefromuniversity.WriteFile;
+import escapefromuniversity.inGame.GameControllerImpl;
+import escapefromuniversity.menu.MenuController;
+import escapefromuniversity.menu.MenuControllerImpl;
+import escapefromuniversity.utilities.LauncherResizer;
+
 import escapefromuniversity.utilities.OSFixes;
 
 import java.io.File;
@@ -25,6 +32,7 @@ public class LauncherController {
     @FXML
     void newGame(ActionEvent event) {
 
+    	//MenuController menu = new MenuControllerImpl(null);
 //        GameViewImpl.startGame();
 
 //        GameControllerImpl gameController = new GameControllerImpl();
