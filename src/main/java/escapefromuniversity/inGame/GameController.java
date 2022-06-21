@@ -1,6 +1,7 @@
 package escapefromuniversity.inGame;
 
 import escapefromuniversity.model.GameState;
+import escapefromuniversity.model.enemy.Boss;
 
 import java.awt.event.KeyEvent;
 
@@ -51,4 +52,5 @@ public interface GameController {
 	 * @param key
 	 */
 	void releaseKey(KeyEvent key);
+	
 }

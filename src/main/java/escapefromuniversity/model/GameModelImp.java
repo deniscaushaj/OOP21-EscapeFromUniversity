@@ -66,8 +66,7 @@ public class GameModelImp implements GameModel{
 	 */
 	@Override
 	public void goQuiz(Boss boss) {
-		this.controller.setGameState(GameState.QUIZ);;
-		
+		this.controller.setGameState(GameState.QUIZ);
 	}
 
 	/**
@@ -93,6 +92,11 @@ public class GameModelImp implements GameModel{
 	@Override
 	public int finalMark() {
 		return this.getPlayer().getFinalMark();
+	}
+
+	@Override
+	public Boss getCurrentBoss() {
+		return null;
 	}
 
 }
