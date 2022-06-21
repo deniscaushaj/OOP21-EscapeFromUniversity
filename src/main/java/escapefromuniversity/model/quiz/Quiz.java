@@ -12,7 +12,6 @@ public interface Quiz {
 	int getID();
 
 	/**
-	 *  
 	 * @return The question for this quiz
 	 */
 	Question getQuestion();

@@ -10,8 +10,8 @@ public class CompetitionImpl implements Competition {
 	private final Map<Integer, Quiz> competition;
 	private final String teacherName;
 	private final String subjectName;
-	private int currentQuiz = 0;
-	private boolean bonusQuiz = false;
+	private int currentQuiz;
+	private boolean bonusQuiz;
 	
 	
 	private CompetitionImpl(final Map<Integer, Quiz> competition, final String teacherName, final String subjectName) {

@@ -9,7 +9,8 @@ public class QuizImpl implements Quiz {
 
 	private final Question question;
 	private final Map<Integer,Answer> anwsers;
-	private boolean answered = false;
+	private boolean answered;
+	private boolean correct;
 	
 	private QuizImpl(Question question, Map<Integer,Answer> anwsers) {
 		this.question = question;
@@ -39,7 +40,8 @@ public class QuizImpl implements Quiz {
 	@Override
 	public boolean giveAnAnswer(int choice) {
 		this.answered = true;
-		return this.anwsers.get(choice).isCorrect();
+		this.correct = this.anwsers.get(choice).isCorrect();
+		return this.correct;
 	}
 	
 	@Override
@@ -73,6 +75,11 @@ public class QuizImpl implements Quiz {
 			return new QuizImpl(this.question, this.anwsers);
 		}
 
+	}
+
+	@Override
+	public boolean hasAnsweredWell() {
+		return this.correct;
 	}
 	
 }
