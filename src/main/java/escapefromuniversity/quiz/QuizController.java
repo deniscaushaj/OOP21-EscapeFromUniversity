@@ -27,10 +27,13 @@ public class QuizController {
 	private Boss boss;
 	private GameController gc;
 	
+	/**
+	 * Constructor.
+	 */
 	public QuizController() {
 		try {
 			this.comp = new CompetitionImporter("boss1.json").importCompetition();
-			if(this.comp.hasNextQuiz()) {
+			if (this.comp.hasNextQuiz()) {
 				currentQuiz = this.comp.getNextQuiz();
 			}
 		} catch (Exception e) {
@@ -38,7 +41,12 @@ public class QuizController {
 		}
 	}
 	
-	public void setParameters(Boss boss, GameController gc) {
+	/**
+	 * 
+	 * @param boss The boss against whom the quiz competition is based
+	 * @param gc The calling GameController
+	 */
+	public void setParameters(final Boss boss, final GameController gc) {
 		this.boss = boss;
 		this.gc = gc;
 		try {
@@ -50,7 +58,7 @@ public class QuizController {
 	}
 	
 	@FXML
-	void initialize(){
+	void initialize() {
 		questionButton.setStyle("-fx-background-image:url('question.png');");
 		setDisableToAll(false);
 		progressBar.setProgress(this.comp.getProgress());
@@ -67,8 +75,8 @@ public class QuizController {
 
 	// Event Listener on Button[#nextButton].onAction
 	@FXML
-	public void next(ActionEvent event) {
-		if(this.comp.hasNextQuiz()) {
+	public void next(final ActionEvent event) {
+		if (this.comp.hasNextQuiz()) {
 			currentQuiz = this.comp.getNextQuiz();
 			this.initialize();
 		} else {
@@ -81,7 +89,7 @@ public class QuizController {
 	
 	// Event Listener on Button[#a].onAction
 	@FXML
-	public void answer(ActionEvent event) {	
+	public void answer(final ActionEvent event) {	
 		try {
 			char choce;
 			if (event.getSource().equals(uno)) {
@@ -99,11 +107,10 @@ public class QuizController {
     	}
 	}
 	
-	private void answerUpdate(int choice) {
-		if(this.currentQuiz.giveAnAnswer(choice)) {
+	private void answerUpdate(final int choice) {
+		if (this.currentQuiz.giveAnAnswer(choice)) {
 			questionButton.setTextFill(Color.DARKGREEN);
 			questionButton.setStyle("-fx-background-image:url('questionRight.png');");
-			correct++;
 		} else {
 			questionButton.setTextFill(Color.DARKRED);
 			questionButton.setStyle("-fx-background-image:url('questionWrong.png');");
@@ -111,7 +118,7 @@ public class QuizController {
 		setDisableToAll(true);
 	}
 	
-	private void setDisableToAll(boolean state) {
+	private void setDisableToAll(final boolean state) {
 		uno.setDisable(state);
 		due.setDisable(state);
 		tre.setDisable(state);
