@@ -1,6 +1,6 @@
 package escapefromuniversity.launcher;
 
-import escapefromuniversity.inGame.GameControllerImpl;
+import escapefromuniversity.model.shop.ShopViewImpl;
 import escapefromuniversity.utilities.OSFixes;
 
 import java.io.File;
@@ -27,11 +27,12 @@ public class LauncherController {
     void newGame(ActionEvent event) {
 
 //        GameViewImpl.startGame();
-        GameControllerImpl gameController = new GameControllerImpl();
-        gameController.gameLoop();
-        LauncherView.launcherWindow.close();  //this.creditsButton.getScene().getWindow().hide();
-//        Platform.exit();
-        
+
+//        GameControllerImpl gameController = new GameControllerImpl();
+//        gameController.gameLoop();
+//        LauncherView.launcherWindow.close();  //this.creditsButton.getScene().getWindow().hide();
+////        Platform.exit();
+
 
 
 //		try {
