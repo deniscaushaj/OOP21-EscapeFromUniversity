@@ -31,6 +31,7 @@ public class LauncherController {
         GameControllerImpl gameController = new GameControllerImpl();
         gameController.gameLoop();
         LauncherView.launcherWindow.close();  //this.creditsButton.getScene().getWindow().hide();
+//        Platform.exit();
         
 
 
