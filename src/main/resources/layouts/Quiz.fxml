@@ -59,7 +59,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="67.0" prefWidth="600.0">
                <children>
-                  <Button id="answer1" fx:id="uno" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#answer" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="Risposta 1" textAlignment="CENTER">
+                  <Button id="answer1" fx:id="uno" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#answer" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" stylesheets="@../Style.css" text="Risposta 1" textAlignment="CENTER">
                      <font>
                         <Font name="OCR A Extended" size="24.0" />
                      </font>

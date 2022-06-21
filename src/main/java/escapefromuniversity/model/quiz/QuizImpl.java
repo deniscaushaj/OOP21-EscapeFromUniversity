@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class QuizImpl implements Quiz {
 
 	private final Question question;
 	private final Map<Integer, Answer> anwsers;
 	private boolean answered;
-	private boolean correct;
+	private Optional<Boolean> correct;
 	
 	private QuizImpl(final Question question, final Map<Integer, Answer> anwsers) {
 		this.question = question;
@@ -40,13 +41,18 @@ public class QuizImpl implements Quiz {
 	@Override
 	public boolean giveAnAnswer(final int choice) {
 		this.answered = true;
-		this.correct = this.anwsers.get(choice).isCorrect();
-		return this.correct;
+		this.correct = Optional.of(this.anwsers.get(choice).isCorrect());
+		return this.correct.get();
 	}
 	
 	@Override
 	public String toString() {
 		return "[Quiz n." + this.getID() + "] " + this.question.toString() + this.getAllAnwsers().toString();
+	}
+	
+	@Override
+	public Optional<Boolean> hasAnsweredWell() {
+		return this.correct;
 	}
 	
 	public static class Builder implements QuizBuilder {
@@ -75,11 +81,6 @@ public class QuizImpl implements Quiz {
 			return new QuizImpl(this.question, this.anwsers);
 		}
 
-	}
-
-	@Override
-	public boolean hasAnsweredWell() {
-		return this.correct;
 	}
 	
 }
