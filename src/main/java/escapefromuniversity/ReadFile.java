@@ -17,11 +17,11 @@ public class ReadFile {
 	}
 	
 	public String newLine() throws IOException {
-		return reader.readLine();
+		return this.reader.readLine();
 	}
 	
 	public void close() throws IOException {
-		reader.close();
+		this.reader.close();
 	}
 
 }
