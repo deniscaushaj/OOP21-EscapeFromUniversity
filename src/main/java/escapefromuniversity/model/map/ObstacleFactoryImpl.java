@@ -76,4 +76,8 @@ public class ObstacleFactoryImpl implements ObstacleFactory {
     public Obstacle createWall() throws ParserConfigurationException, IOException, SAXException {
         return genObstacle("border");
     }
+
+    public Obstacle createNPC() throws ParserConfigurationException, IOException, SAXException {
+        return genObstacle("npc");
+    }
 }
