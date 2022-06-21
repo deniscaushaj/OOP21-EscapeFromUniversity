@@ -11,6 +11,12 @@
 .back {
 	-fx-background-image:url('/images/back.png');
 }
+.question {
+	-fx-background-image:url('question.png');
+}
+.next {
+	-fx-background-image:url('next.png');
+}
 .scroll-pane .viewport {
 	-fx-background-color: transparent;
 }
