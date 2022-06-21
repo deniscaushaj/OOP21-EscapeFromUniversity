@@ -47,6 +47,18 @@ public class ShopViewImpl extends JPanel implements ShopView {
             this.shopController.buyItem();
             this.setItemType(Items.RESET_HEALTH);
         });
+        this.buyArmor.addActionListener(e -> {
+            this.shopController.buyItem();
+            this.setItemType(Items.INCREASE_ARMOR);
+        });
+        this.buyDamage.addActionListener(e -> {
+            this.shopController.buyItem();
+            this.setItemType(Items.INCREASE_DAMAGE);
+        });
+        this.buyChance.addActionListener(e -> {
+            this.shopController.buyItem();
+            this.setItemType(Items.DOUBLE_CHANCE);
+        });
         this.exit.addActionListener(e -> this.shopController.closeShop());
 
 
