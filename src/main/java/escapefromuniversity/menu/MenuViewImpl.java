@@ -1,6 +1,7 @@
 package escapefromuniversity.menu;
 
 import java.awt.Rectangle;
+import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,6 +17,7 @@ public class MenuViewImpl implements MenuView {
 	private final JFrame window = new JFrame();
 	private final MenuController controller;
 	private final JLayeredPane menuPanel;
+	private final JLayeredPane commandPanel;
 	
 	private final WindowSet windowSet = new WindowSet();
 	private final double windowRatio = windowSet.getWindowRatio();
@@ -23,10 +25,12 @@ public class MenuViewImpl implements MenuView {
 	private final Rectangle retBtExit = new Rectangle((int) (screenWidth / 3 * windowRatio), (int) (300 * windowRatio), (int) (screenWidth / 3 * windowRatio), (int) (90 * windowRatio));
 	private final Rectangle retBtResume = new Rectangle((int) (screenWidth / 3 * windowRatio), (int) (400 * windowRatio), (int) (screenWidth / 3 * windowRatio), (int) (90 * windowRatio));
 	private final Rectangle retBtCommand = new Rectangle((int) (screenWidth / 3 * windowRatio), (int) (500 * windowRatio), (int) (screenWidth / 3 * windowRatio), (int) (90 * windowRatio));
+	private final Rectangle retBtBack = new Rectangle((int) (screenWidth / 3 * windowRatio), (int) (500 * windowRatio), (int) (screenWidth / 3 * windowRatio), (int) (90 * windowRatio));
 	
 	private final JButton btExit = new JButton("EXIT");
 	private final JButton btResume = new JButton("RESUME");
 	private final JButton btCommand = new JButton("COMMAND");
+	private final JButton btBack = new JButton("COMMAND");
 	
 	public MenuViewImpl(MenuController controller) {
 		this.controller = controller;
@@ -34,10 +38,15 @@ public class MenuViewImpl implements MenuView {
 		this.window.setResizable(false);
 		this.window.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.menuPanel = new JLayeredPane();
+		this.menuPanel.setOpaque(false);
+		this.commandPanel = new JLayeredPane();
+		this.commandPanel.setOpaque(false);
 		this.startMenu();
 	}
 	
+	@Override
 	public void startMenu() {
+	    this.window.remove(commandPanel);
 		this.btExit.setBounds(this.retBtExit);
 		this.btResume.setBounds(this.retBtResume);
 		this.btCommand.setBounds(this.retBtCommand);
@@ -55,6 +64,17 @@ public class MenuViewImpl implements MenuView {
 	@Override
 	public void close() {
 		this.window.setVisible(false);
+	}
+
+	@Override
+	public void startCommandMenu() {
+		this.window.remove(menuPanel);
+		this.btBack.setBounds(this.retBtBack);
+		this.window.getContentPane().add(this.commandPanel);
+		this.window.setSize((int) (screenWidth * windowRatio), (int) (screenHeight * windowRatio));
+		this.btBack.addActionListener(e -> this.controller.back());
+		this.commandPanel.add(this.btBack);
+		this.window.setVisible(true);
 	}
 
 }
