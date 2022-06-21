@@ -4,4 +4,8 @@ public interface MenuView {
 	
 	void close();
 	
+	void startMenu();
+	
+	void startCommandMenu();
+	
 }
