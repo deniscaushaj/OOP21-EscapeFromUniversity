@@ -3,6 +3,8 @@ package escapefromuniversity.quiz;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
+import escapefromuniversity.inGame.GameController;
+import escapefromuniversity.model.enemy.Boss;
 import escapefromuniversity.model.quiz.Competition;
 import escapefromuniversity.model.quiz.CompetitionImporter;
 import escapefromuniversity.model.quiz.Quiz;
@@ -19,8 +21,11 @@ public class QuizController {
 	private ProgressBar progressBar;
 	@FXML
 	private Button questionButton, nextButton, uno, due, tre, quattro;
+	
 	private Competition comp;
 	private Quiz currentQuiz;
+	private Boss boss;
+	private GameController gc;
 	
 	public QuizController() {
 		try {
@@ -29,15 +34,25 @@ public class QuizController {
 				currentQuiz = this.comp.getNextQuiz();
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void setParameters(Boss boss, GameController gc) {
+		this.boss = boss;
+		this.gc = gc;
+		try {
+			this.comp = new CompetitionImporter(boss.getType().toString()).importCompetition();
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	public void initialize(){
+	@FXML
+	void initialize(){
 		questionButton.setStyle("-fx-background-image:url('question.png');");
 		setDisableToAll(false);
-		System.out.println("progerss " + this.comp.getProgress());
 		progressBar.setProgress(this.comp.getProgress());
 		questionButton.setTextFill(Color.BLACK);
 		profLabel.setText(this.comp.getTeacherName());
@@ -58,9 +73,10 @@ public class QuizController {
 			this.initialize();
 		} else {
 			nextButton.setDisable(true);
-			questionButton.setDisable(true);
-			questionButton.setOpacity(0.5);
-		}	
+			questionButton.setText("QUIZ COMPLETATO");
+			this.boss.setQuizResult(this.comp.getScore());
+		}
+		progressBar.setProgress(this.comp.getProgress());
 	}
 	
 	// Event Listener on Button[#a].onAction
@@ -87,6 +103,7 @@ public class QuizController {
 		if(this.currentQuiz.giveAnAnswer(choice)) {
 			questionButton.setTextFill(Color.DARKGREEN);
 			questionButton.setStyle("-fx-background-image:url('questionRight.png');");
+			correct++;
 		} else {
 			questionButton.setTextFill(Color.DARKRED);
 			questionButton.setStyle("-fx-background-image:url('questionWrong.png');");

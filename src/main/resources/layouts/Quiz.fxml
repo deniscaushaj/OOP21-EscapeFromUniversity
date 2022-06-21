@@ -34,7 +34,7 @@
                   </Label>
                </graphic>
             </Label>
-            <ProgressBar id="progressBar" fx:id="progressBar" disable="true" minWidth="400.0" opacity="0.99" prefHeight="30.0" prefWidth="400.0" progress="0.0" />
+            <ProgressBar id="progressBar" fx:id="progressBar" disable="true" minWidth="400.0" opacity="0.99" prefHeight="30.0" prefWidth="400.0" progress="0.65" style="-fx-accent: #e8ad5f;" />
             <HBox alignment="CENTER" maxHeight="80.0" maxWidth="400.0" minHeight="80.0" minWidth="400.0" prefHeight="80.0" prefWidth="400.0">
                <children>
                   <Button id="question" fx:id="questionButton" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" disable="true" maxHeight="80.0" maxWidth="335.0" minHeight="80.0" minWidth="335.0" mnemonicParsing="false" opacity="0.99" prefHeight="80.0" prefWidth="335.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="Qual è secondo te la risposta giusta tra queste quattro che vedi qui sotto?" textAlignment="CENTER" wrapText="true">

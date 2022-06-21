@@ -44,4 +44,10 @@ public interface Competition {
 	 */
 	double getProgress();
 	
+	/**
+	 * 
+	 * @return Score representing quizzes answered correctly
+	 */
+	int getScore();
+	
 }
