@@ -1,8 +1,15 @@
 package escapefromuniversity.menu;
 
+import escapefromuniversity.inGame.GameController;
+
 public class MenuControllerImpl implements MenuController{
+	private final GameController gameController;
+	private final MenuView view;
 	
-	
+	public MenuControllerImpl(final GameController gameController) {
+		this.gameController = gameController;
+		this.view = new MenuViewImpl();
+	}
 
 	@Override
 	public void getCommand() {
@@ -18,7 +25,6 @@ public class MenuControllerImpl implements MenuController{
 
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
 		
 	}
 
