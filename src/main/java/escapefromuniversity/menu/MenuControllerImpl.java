@@ -14,7 +14,7 @@ public class MenuControllerImpl implements MenuController{
 
 	@Override
 	public void getCommand() {
-		System.exit(0);
+		this.view.startCommandMenu();
 		
 	}
 
@@ -33,8 +33,7 @@ public class MenuControllerImpl implements MenuController{
 
 	@Override
 	public void back() {
-		// TODO Auto-generated method stub
-		
+		this.view.startMenu();
 	}
 
 }
