@@ -3,8 +3,6 @@ package escapefromuniversity;
 import escapefromuniversity.utilities.OSFixes;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
 
 public class ReadFile {
 
