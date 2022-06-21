@@ -116,9 +116,9 @@ public class TMXMapParser {
             final var propsNode = control.get();
             list = nodelistToStreamParse(propsNode.getChildNodes())
                     .filter(p -> "property".equals(p.getNodeName()))
-                    .filter(e -> "true".equals(e.getAttributes().getNamedItem("value").getTextContent()))
-                    .map(e -> e.getAttributes().getNamedItem("name").getTextContent())
-                    .collect(Collectors.toList());
+                .filter(e -> "true".equals(e.getAttributes().getNamedItem("value").getTextContent()))
+                .map(e -> e.getAttributes().getNamedItem("name").getTextContent())
+                .collect(Collectors.toList());
         }
         final var rows = data.getTextContent().split("\n");
         final var columns = Arrays.stream(rows)
