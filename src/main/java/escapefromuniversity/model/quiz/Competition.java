@@ -50,4 +50,10 @@ public interface Competition {
 	 */
 	int getScore();
 	
+	/**
+	 * 
+	 * @return The total number of quizzes
+	 */
+	int getTotal();
+	
 }

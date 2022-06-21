@@ -2,6 +2,7 @@ package escapefromuniversity.model.quiz;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public interface Quiz {
 
@@ -32,7 +33,7 @@ public interface Quiz {
 	 * 
 	 * @return True if the quiz is answered correctly.
 	 */
-	boolean hasAnsweredWell();
+	Optional<Boolean> hasAnsweredWell();
 	
 	/**
 	 * 

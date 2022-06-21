@@ -62,7 +62,12 @@ public class CompetitionImpl implements Competition {
 	
 	@Override
 	public int getScore() {
-		return (int) this.competition.entrySet().stream().filter(q -> q.getValue().hasBeenAnswered() && q.getValue().hasAnsweredWell()).count();
+		return (int) this.competition.entrySet().stream().filter(q -> q.getValue().hasBeenAnswered() && q.getValue().hasAnsweredWell().get()).count();
+	}
+	
+	@Override
+	public int getTotal() {
+		return competition.size();
 	}
 	
 	/**

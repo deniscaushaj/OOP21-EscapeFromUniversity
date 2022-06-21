@@ -1,6 +1,5 @@
 package escapefromuniversity.launcher;
 
-import escapefromuniversity.model.shop.ShopViewImpl;
 import escapefromuniversity.utilities.OSFixes;
 
 import java.io.File;

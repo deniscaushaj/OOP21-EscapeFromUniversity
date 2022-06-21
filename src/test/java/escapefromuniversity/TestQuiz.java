@@ -14,14 +14,11 @@ import escapefromuniversity.model.quiz.*;
 import escapefromuniversity.quiz.QuizController;
 import escapefromuniversity.quiz.QuizView;
 
-
 public class TestQuiz {
 
 	@Test
 	public void testImport() throws Exception {
-		
 	    QuizView.startQuizCompetition();
-		
 	}
 
 }
