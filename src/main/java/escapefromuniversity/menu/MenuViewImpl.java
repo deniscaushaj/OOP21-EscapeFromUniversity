@@ -51,5 +51,10 @@ public class MenuViewImpl implements MenuView {
 		this.menuPanel.add(this.btCommand);
 		this.window.setVisible(true);
 	}
+	
+	@Override
+	public void close() {
+		this.window.setVisible(false);
+	}
 
 }
