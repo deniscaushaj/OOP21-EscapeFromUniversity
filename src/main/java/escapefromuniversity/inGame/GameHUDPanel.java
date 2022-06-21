@@ -1,6 +1,7 @@
 package escapefromuniversity.inGame;
 
 import escapefromuniversity.utilities.OSFixes;
+import escapefromuniversity.utilities.WindowSet;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -8,7 +9,6 @@ import javax.swing.JLayeredPane;
 import javax.swing.JProgressBar;
 
 import java.awt.Rectangle;
-import java.awt.Font;
 import java.awt.Image;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -22,7 +22,6 @@ public class GameHUDPanel extends JLayeredPane{
 	private static final long serialVersionUID = 1L;
 	private final JLabel creditsCounter = new JLabel();
 	private JProgressBar playerLifeBar;
-	private final Font font = new Font("OCR A Extended", Font.PLAIN, 20);
 	private final Image creditsImage;
 	private final Rectangle playerLifeBarPosition;
 	private final Rectangle creditsPosition;
@@ -30,7 +29,7 @@ public class GameHUDPanel extends JLayeredPane{
 
 	GameHUDPanel(final double windowRatio){
 		this.creditsCounter.setText("0");
-		this.creditsCounter.setFont(font);
+		this.creditsCounter.setFont(WindowSet.FONT);
 		this.creditsCounter.setForeground(Color.white);
 		this.creditsPosition = new Rectangle((int) (10 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio));
 		this.creditsCounterPosition = new Rectangle((int) (60 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio));
