@@ -14,12 +14,20 @@ public class BulletImpl extends AbstractDynamicGameObject implements Bullet{
 	
 	private final int damage;
 	
-
+	/**
+	 * 
+	 * @param type
+	 * @param position
+	 * @param speed
+	 * @param direction
+	 * @param damage
+	 * @param room
+	 */
 	public BulletImpl(GameObjectType type, Point2D position, int speed, Vector2D direction, int damage, Room room) {
 		super(type, position, position.sum(BulletConstant.BULLET_BOX_SIZE), speed, direction, room);
 		this.damage = damage;
 	}
-    
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -78,6 +86,7 @@ public class BulletImpl extends AbstractDynamicGameObject implements Bullet{
 					 this.getType().equals(GameObjectType.BULLET_PLAYER)) {
 				this.getRoom().deleteGameObject(this);
 			}
+			break;
 		default:
 			break;
 		}

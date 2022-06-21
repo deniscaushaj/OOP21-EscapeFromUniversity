@@ -13,11 +13,16 @@ public class CompetitionImpl implements Competition {
 	private int currentQuiz = 0;
 	private boolean bonusQuiz = false;
 	
-	private CompetitionImpl(Map<Integer,Quiz> competition, String teacherName, String subjectName) {
+	
+	private CompetitionImpl(final Map<Integer, Quiz> competition, final String teacherName, final String subjectName) {
 		this.competition = competition;
 		this.teacherName = teacherName;
 		this.subjectName = subjectName;
-	}   
+	}
+	
+	private int completedQuiz() {
+		return (int) this.competition.entrySet().stream().filter(q -> q.getValue().hasBeenAnswered()).count();
+	}
 	
 	@Override
 	public String getTeacherName() {
@@ -34,6 +39,7 @@ public class CompetitionImpl implements Competition {
 		this.bonusQuiz = state;
 	}
 
+	@Override
 	public boolean getBonusQuiz() {
 		return this.bonusQuiz;
 	}
@@ -46,57 +52,67 @@ public class CompetitionImpl implements Competition {
 	
 	@Override
 	public boolean hasNextQuiz() {
-		return currentQuiz+1 <= competition.size();
+		return currentQuiz + 1 <= competition.size();
 	}
 	
 	@Override
 	public double getProgress() {
-		return (float) (currentQuiz / competition.size());
+		return (float) ((float) (this.completedQuiz()) / competition.size());
 	}
 	
+	@Override
+	public int getScore() {
+		return (int) this.competition.entrySet().stream().filter(q -> q.getValue().hasBeenAnswered() && q.getValue().hasAnsweredWell()).count();
+	}
+	
+	/**
+	 * 
+	 *
+	 */
 	public static class Builder implements CompetitionBuilder {
-		private final Map<Integer,Quiz> competition = new HashMap<Integer,Quiz>();;
+		private final Map<Integer, Quiz> competition = new HashMap<Integer, Quiz>();;
 		private String teacherName;
 		private String subjectName;
-		
+
 		@Override
 		public CompetitionBuilder addQuiz(final Quiz quiz) {
-			if(this.competition.containsKey(quiz.getID())) {
+			if (this.competition.containsKey(quiz.getID())) {
 				throw new IllegalStateException("There is already a quiz with id " + quiz.getID() + " in this package");
 			} else {
 				this.competition.put(quiz.getID(), quiz);
 			}
 			return this;
 		}
-		
+
 		@Override
 		public CompetitionBuilder setTeacher(final String teacherName) {
 			this.teacherName = teacherName;
 			return this;
 		}
-		
+
 		@Override
 		public CompetitionBuilder setSubject(final String subjectName) {
 			this.subjectName = subjectName;
 			return this;
 		}
-		
+
 		@Override
 		public Competition build() {
-			if(this.teacherName == null) {
+			if (this.teacherName == null) {
 				throw new IllegalStateException("This competition does not have a correctly set teacher");
 			}
-			if(this.subjectName == null) {
+			if (this.subjectName == null) {
 				throw new IllegalStateException("This competition does not have a correctly set subject");
 			}
-			if(this.competition.size() < 1) {
+			if (this.competition.size() < 1) {
 				throw new IllegalStateException("This competition must have at least one quiz");
 			}
 			return new CompetitionImpl(this.competition, this.teacherName, this.subjectName);
 		}
 
-		
 	}
+	
+	
 	
 	
 }

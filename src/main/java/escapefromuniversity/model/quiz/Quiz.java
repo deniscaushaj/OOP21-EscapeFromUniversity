@@ -21,13 +21,19 @@ public interface Quiz {
 	 * 
 	 * @return All answers in this quiz numbered with their ID
 	 */
-	Map<Integer,Answer> getAllAnwsers();
+	Map<Integer, Answer> getAllAnwsers();
 	
 	/**
 	 * 
 	 * @return True if an answer was given by the user
 	 */
 	boolean hasBeenAnswered();
+	
+	/**
+	 * 
+	 * @return True if the quiz is answered correctly.
+	 */
+	boolean hasAnsweredWell();
 	
 	/**
 	 * 
