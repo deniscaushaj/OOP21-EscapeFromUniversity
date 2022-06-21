@@ -9,6 +9,8 @@ import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
 
+import static escapefromuniversity.launcher.LauncherView.*;
+
 public class LeaderboardController {
 
     @FXML
@@ -19,7 +21,7 @@ public class LeaderboardController {
 
     @FXML
     void back(ActionEvent event) {
-        LauncherView.launcherWindow.setScene(LauncherView.launcher);
+        launcherWindow.setScene(launcher);
     }
 
     public void createLeaderboard() throws IOException {
