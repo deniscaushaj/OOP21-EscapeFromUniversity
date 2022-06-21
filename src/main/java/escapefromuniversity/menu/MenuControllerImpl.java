@@ -13,7 +13,7 @@ public class MenuControllerImpl implements MenuController{
 
 	@Override
 	public void getCommand() {
-		// TODO Auto-generated method stub
+		System.exit(0);
 		
 	}
 
@@ -25,7 +25,7 @@ public class MenuControllerImpl implements MenuController{
 
 	@Override
 	public void resume() {
-		
+		System.exit(0);
 	}
 
 }

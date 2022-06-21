@@ -20,9 +20,9 @@ public class MenuViewImpl implements MenuView {
 	private final WindowSet windowSet = new WindowSet();
 	private final double windowRatio = windowSet.getWindowRatio();
 	
-	private final Rectangle retBtExit = new Rectangle((int) (WindowSet.NATIVE_WIDTH / 4 * windowRatio), (int) (300 * windowRatio), (int) (300 * windowRatio), (int) (90 * windowRatio));
-	private final Rectangle retBtResume = new Rectangle((int) (WindowSet.NATIVE_WIDTH / 4 * windowRatio), (int) (400 * windowRatio), (int) (300 * windowRatio), (int) (90 * windowRatio));
-	private final Rectangle retBtCommand = new Rectangle((int) (WindowSet.NATIVE_WIDTH / 4 * windowRatio), (int) (500 * windowRatio), (int) (300 * windowRatio), (int) (90 * windowRatio));
+	private final Rectangle retBtExit = new Rectangle((int) (screenWidth / 3 * windowRatio), (int) (300 * windowRatio), (int) (screenWidth / 3 * windowRatio), (int) (90 * windowRatio));
+	private final Rectangle retBtResume = new Rectangle((int) (screenWidth / 3 * windowRatio), (int) (400 * windowRatio), (int) (screenWidth / 3 * windowRatio), (int) (90 * windowRatio));
+	private final Rectangle retBtCommand = new Rectangle((int) (screenWidth / 3 * windowRatio), (int) (500 * windowRatio), (int) (screenWidth / 3 * windowRatio), (int) (90 * windowRatio));
 	
 	private final JButton btExit = new JButton("EXIT");
 	private final JButton btResume = new JButton("RESUME");
@@ -49,6 +49,7 @@ public class MenuViewImpl implements MenuView {
 		this.menuPanel.add(this.btExit);
 		this.menuPanel.add(this.btResume);
 		this.menuPanel.add(this.btCommand);
+		this.window.setVisible(true);
 	}
 
 }
