@@ -16,7 +16,7 @@ public class ShopControllerImpl implements ShopController {
     @Override
     public void closeShop() {
 
-    };
+    }
 
     @Override
     public void buyItem() {
