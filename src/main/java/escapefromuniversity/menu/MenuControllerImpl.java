@@ -1,6 +1,7 @@
 package escapefromuniversity.menu;
 
 import escapefromuniversity.inGame.GameController;
+import escapefromuniversity.model.GameState;
 
 public class MenuControllerImpl implements MenuController{
 	private final GameController gameController;
@@ -8,12 +9,12 @@ public class MenuControllerImpl implements MenuController{
 	
 	public MenuControllerImpl(final GameController gameController) {
 		this.gameController = gameController;
-		this.view = new MenuViewImpl();
+		this.view = new MenuViewImpl(this);
 	}
 
 	@Override
 	public void getCommand() {
-		// TODO Auto-generated method stub
+		this.view.startCommandMenu();
 		
 	}
 
@@ -25,7 +26,14 @@ public class MenuControllerImpl implements MenuController{
 
 	@Override
 	public void resume() {
+		this.view.close();
+		this.gameController.setGameState(GameState.PLAY);
 		
+	}
+
+	@Override
+	public void back() {
+		this.view.startMenu();
 	}
 
 }
