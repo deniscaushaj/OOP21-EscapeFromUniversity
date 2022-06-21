@@ -43,7 +43,7 @@ public interface GameModel {
 	
 	int finalMark();
 	
-	
+	Boss getCurrentBoss();
 	
 
 }

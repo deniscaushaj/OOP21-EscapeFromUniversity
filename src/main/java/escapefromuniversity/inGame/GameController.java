@@ -1,6 +1,7 @@
 package escapefromuniversity.inGame;
 
 import escapefromuniversity.model.GameState;
+import escapefromuniversity.model.enemy.Boss;
 
 import java.awt.event.KeyEvent;
 
@@ -22,11 +23,6 @@ public interface GameController {
 	 * @return credits of player
 	 */
 	int getPlayerCredits();
-	
-	/**
-	 * play the quiz
-	 */
-	void goQuiz();
 
 	/**
 	 * 
@@ -51,4 +47,5 @@ public interface GameController {
 	 * @param key
 	 */
 	void releaseKey(KeyEvent key);
+	
 }
