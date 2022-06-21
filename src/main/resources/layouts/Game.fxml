@@ -4,9 +4,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1" fx:controller="escapefromuniversity.model.map.MapLoader">
+<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1" fx:controller="escapefromuniversity.model.map.MapLoader">
    <children>
-      <Canvas fx:id="gameCanvas" height="200.0" width="200.0" />
       <Button fx:id="myButton" onMouseClicked="#myButtonOnClickHandler" mnemonicParsing="false" text="Button" />
+      <Slider fx:id="zoomSlider" showTickLabels="true" showTickMarks="true" min="1" max="30" majorTickUnit="1"/>
+      <Canvas fx:id="gameCanvas" height="1000.0" width="1000.0" />
    </children>
-</HBox>
+</VBox>

@@ -14,7 +14,7 @@ public abstract class AbstractDynamicGameObject implements DynamicGameObject {
 	private final int speed;
 	private Vector2D direction;
 	private Point2D position;
-	private final HitBoxImpl box;
+	private final HitBox box;
 	protected Room room;
     private State state;
 

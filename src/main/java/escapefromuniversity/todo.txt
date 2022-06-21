@@ -1,5 +1,10 @@
 gamestate win e lost??
-items sbagliato!!
+
+hud e windowset??
+
+hitbox
+
+check gridpane null
 
 view e control
 parlare con ema per javafx menu
