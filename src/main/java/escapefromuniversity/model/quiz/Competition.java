@@ -1,5 +1,9 @@
 package escapefromuniversity.model.quiz;
 
+/**
+ * A competition is an object with quizzes and related questions and answers.
+ *
+ */
 public interface Competition {
 
 	/**
@@ -24,7 +28,7 @@ public interface Competition {
 	 * 
 	 * @return True if bonus response is available 
 	 */
-	boolean getBonusQuiz();
+	boolean isBonusAvailable();
 
 	/**
 	 * 
@@ -52,8 +56,21 @@ public interface Competition {
 	
 	/**
 	 * 
+	 * @return Max score for a competition
+	 */
+	int getMaxScore();
+	
+	/**
+	 * 
 	 * @return The total number of quizzes
 	 */
 	int getTotal();
+	
+	/**
+	 * 
+	 * @return True if the score is greater than 50% of the total quizzes
+	 */
+	boolean hasPassed();
+	
 	
 }

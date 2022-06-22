@@ -1,10 +1,12 @@
 package escapefromuniversity.model.quiz;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
+/**
+ * Implementation of the Competitio interface
+ *
+ */
 public class CompetitionImpl implements Competition {
 	
 	private final Map<Integer, Quiz> competition;
@@ -12,6 +14,8 @@ public class CompetitionImpl implements Competition {
 	private final String subjectName;
 	private int currentQuiz;
 	private boolean bonusQuiz;
+	private final int MAXSCORE = 30;
+	private final int PASSEDSCORE = 18;
 	
 	
 	private CompetitionImpl(final Map<Integer, Quiz> competition, final String teacherName, final String subjectName) {
@@ -40,7 +44,7 @@ public class CompetitionImpl implements Competition {
 	}
 
 	@Override
-	public boolean getBonusQuiz() {
+	public boolean isBonusAvailable() {
 		return this.bonusQuiz;
 	}
 	
@@ -62,7 +66,12 @@ public class CompetitionImpl implements Competition {
 	
 	@Override
 	public int getScore() {
-		return (int) this.competition.entrySet().stream().filter(q -> q.getValue().hasBeenAnswered() && q.getValue().hasAnsweredWell().get()).count();
+		return (int) this.getMaxScore() / this.getTotal() * (int) this.competition.entrySet().stream().filter(q -> q.getValue().hasBeenAnswered() && q.getValue().hasAnsweredWell().get()).count();
+	}
+	
+	@Override
+	public int getMaxScore() {
+		return this.MAXSCORE;
 	}
 	
 	@Override
@@ -70,12 +79,17 @@ public class CompetitionImpl implements Competition {
 		return competition.size();
 	}
 	
+	@Override
+	public boolean hasPassed() {
+		return this.getScore() > this.PASSEDSCORE;
+	}
+	
 	/**
 	 * A Builder for a Competition.
 	 *
 	 */
 	public static class Builder implements CompetitionBuilder {
-		private final Map<Integer, Quiz> competition = new HashMap<Integer, Quiz>();;
+		private final Map<Integer, Quiz> competition = new HashMap<>();;
 		private String teacherName;
 		private String subjectName;
 

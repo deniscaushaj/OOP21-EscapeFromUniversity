@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import escapefromuniversity.inGame.GameController;
 import escapefromuniversity.model.enemy.Boss;
+import escapefromuniversity.model.enemy.Boss.BossState;
 import escapefromuniversity.model.quiz.Competition;
 import escapefromuniversity.model.quiz.CompetitionImporter;
 import escapefromuniversity.model.quiz.Quiz;
@@ -14,6 +15,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.paint.Color;
 
+/**
+ * 
+ *
+ */
 public class QuizController {
 	@FXML
 	private Label profLabel, subjectLabel, scoreLabel;
@@ -82,8 +87,18 @@ public class QuizController {
 			this.initialize();
 		} else {
 			nextButton.setDisable(true);
-			questionButton.setText("QUIZ COMPLETATO");
-			this.boss.setQuizResult(this.comp.getScore());
+			//this.boss.setQuizResult(this.comp.getScore());
+			if (this.comp.hasPassed()) {
+				questionButton.setText("Complimenti, il prof ti ha promosso!");
+				questionButton.setTextFill(Color.DARKGREEN);
+				questionButton.setStyle("-fx-background-image:url('questionRight.png');");
+				this.boss.kill();
+			} else {
+				questionButton.setText("Noo, sei stato bocciato!");
+				questionButton.setTextFill(Color.DARKRED);
+				questionButton.setStyle("-fx-background-image:url('questionWrong.png');");
+				this.boss.setBossState(BossState.FIGHT);
+			}
 		}
 	}
 	
@@ -102,7 +117,7 @@ public class QuizController {
 	    		answerUpdate(4);
 	    	}
 			nextButton.setDisable(false);
-			scoreLabel.setText(this.comp.getScore() + " su " + this.comp.getTotal());
+			scoreLabel.setText(this.comp.getScore() + " su " + this.comp.getMaxScore());
     	} catch (Exception e) {
     		System.out.println(e);
     	}

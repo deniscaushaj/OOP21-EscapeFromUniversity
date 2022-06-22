@@ -14,6 +14,10 @@ import escapefromuniversity.model.quiz.*;
 import escapefromuniversity.quiz.QuizController;
 import escapefromuniversity.quiz.QuizView;
 
+/**
+ * 
+ *
+ */
 public class TestQuiz {
 
 	@Test

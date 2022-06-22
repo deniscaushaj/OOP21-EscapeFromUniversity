@@ -4,6 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * 
+ *
+ */
 public class QuizImpl implements Quiz {
 
 	private final Question question;
@@ -53,6 +57,10 @@ public class QuizImpl implements Quiz {
 		return this.correct;
 	}
 
+	/**
+	 * 
+	 *
+	 */
 	public static class Builder implements QuizBuilder {
 
 		private Question question;
