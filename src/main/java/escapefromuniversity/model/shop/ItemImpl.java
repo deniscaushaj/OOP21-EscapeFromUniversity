@@ -13,8 +13,8 @@ public class ItemImpl implements Item{
     }
 
     private void addItems(){
-        items.put(Items.INCREASE_ATTACK, 12);
-        items.put(Items.INCREASE_DEFENSE, 12);
+        items.put(Items.INCREASE_DAMAGE, 12);
+        items.put(Items.INCREASE_ARMOR, 12);
         items.put(Items.RESET_HEALTH, 6);
         items.put(Items.DOUBLE_CHANCE, 18);
     }

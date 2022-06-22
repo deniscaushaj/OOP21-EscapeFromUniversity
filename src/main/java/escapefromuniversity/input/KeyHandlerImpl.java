@@ -7,16 +7,21 @@ import java.util.Optional;
 
 import escapefromuniversity.inGame.GameController;
 import escapefromuniversity.model.GameModel;
+import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.gameObject.Direction;
 import escapefromuniversity.model.player.Player;
 import escapefromuniversity.model.player.PlayerMovement;
 import escapefromuniversity.model.player.PlayerMovementImpl;
+import escapefromuniversity.model.shop.ShopController;
+import escapefromuniversity.model.shop.ShopControllerImpl;
+import escapefromuniversity.model.shop.ShopView;
 
 public class KeyHandlerImpl implements KeyHandler {
 
     private final GameController gameController;
     private final Player player;
     private final PlayerMovement playerMovement;
+    private final ShopController shopController;
     private Optional<Command<Integer, Boolean, Optional<Direction>>> command;
     private final List<Command<Integer, Boolean, Optional<Direction>>> keyList = new ArrayList<>();
 
@@ -24,6 +29,7 @@ public class KeyHandlerImpl implements KeyHandler {
         this.gameController = gameController;
         this.player = gameModel.getPlayer();
         this.playerMovement = new PlayerMovementImpl(this.player);
+        this.shopController = new ShopControllerImpl();
         this.createKeyList();
     }
 
@@ -106,7 +112,11 @@ public class KeyHandlerImpl implements KeyHandler {
 
     private void menuCommands(int keyCode) {
         if (keyCode == KeyEvent.VK_ESCAPE) {
-//            TODO check gamestate & close menu/shop
+            if(this.gameController.getGameState().equals(GameState.MENU)) {
+//  TODO close menu
+            } else if(this.gameController.getGameState().equals(GameState.SHOP)) {
+                this.shopController.closeShop();
+            }
         }
     }
 

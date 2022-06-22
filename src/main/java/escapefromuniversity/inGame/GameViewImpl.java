@@ -5,6 +5,7 @@ import escapefromuniversity.menu.MenuViewImpl;
 import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.player.Sprite;
 import escapefromuniversity.utilities.OSFixes;
+import escapefromuniversity.utilities.WindowSet;
 
 import javax.swing.*;
 import java.awt.*;
@@ -68,7 +69,6 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 				break;
 			case MENU:
 				this.addPauseBG();
-				new MenuViewImpl();
 				break;
 			case PLAY:
 				this.removePauseBG();
