@@ -61,7 +61,7 @@ public enum Items {
      * @param competition the current exam
      */
     public void doubleChance(Competition competition){
-        if(!competition.getBonusQuiz()){
+        if(!competition.isBonusAvailable()){
             competition.setBonusQuiz(true);
         }
     }
