@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
+import java.awt.*;
 import java.io.IOException;
 
 import static escapefromuniversity.launcher.LauncherView.*;
@@ -26,8 +27,16 @@ public class LeaderboardController {
 
     public void createLeaderboard() throws IOException {
         ReadFile reader = new ReadFile("score", "score.txt");
+        this.leaderboard = new GridPane();
         for(int i=0; i<10; i++) {
-            (leaderboard = new GridPane()).addRow(i, new TextField(reader.newLine()));
+            String newLine = reader.newLine();
+            if(newLine!=null) {
+                TextField line = new TextField(newLine);
+                line.setStyle("-fx-text-fill: black;");
+                this.leaderboard.addRow(i, line);
+            } else {
+                break;
+            }
         }
         reader.close();
     }

@@ -15,7 +15,7 @@ public class WindowSet {
 	
 	private static final double windowRatio = Math.min((double) (screenHeight) / (double) (NATIVE_HEIGHT), (double) (screenWidth) / (double) (NATIVE_WIDTH));
 	
-	public double getWindowRatio() {
+	public static double getWindowRatio() {
 		return windowRatio;
 	}
 

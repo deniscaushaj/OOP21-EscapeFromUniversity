@@ -5,12 +5,13 @@ import escapefromuniversity.model.quiz.Competition;
 
 public class ShopControllerImpl implements ShopController {
 
-    ShopView shopView; // TODO initialize
-    Items items; // TODO same
-    Player player; // TODO same
-    Competition competition; // TODO same
+    private final ShopView shopView;
+    private Items itemType;
+    private Player player; // TODO initialize
+    private Competition competition; // TODO same
 
     public ShopControllerImpl() {
+        this.shopView = new ShopViewImpl(this);
     }
 
     @Override
@@ -20,22 +21,32 @@ public class ShopControllerImpl implements ShopController {
 
     @Override
     public void buyItem() {
-        switch(this.shopView.getItemType()) {
+        switch(this.getItemType()) {
             case RESET_HEALTH:
-                this.items.resetHealth(this.player);
+                this.itemType.resetHealth(this.player);
                 break;
             case INCREASE_ARMOR:
-                this.items.increaseArmor(this.player);
+                this.itemType.increaseArmor(this.player);
                 break;
             case INCREASE_DAMAGE:
-                this.items.increaseDamage(this.player);
+                this.itemType.increaseDamage(this.player);
                 break;
             case DOUBLE_CHANCE:
-                this.items.doubleChance(this.competition);
+                this.itemType.doubleChance(this.competition);
                 break;
             default: {
             }
         }
+    }
+
+    @Override
+    public void setItemType(Items itemType) {
+        this.itemType = itemType;
+    }
+
+    @Override
+    public Items getItemType() {
+        return this.itemType;
     }
 
 }

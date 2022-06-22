@@ -5,7 +5,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 
-import escapefromuniversity.inGame.WindowSet;
+import escapefromuniversity.utilities.WindowSet;
 
 import static escapefromuniversity.utilities.LauncherResizer.screenHeight;
 import static escapefromuniversity.utilities.LauncherResizer.screenWidth;
