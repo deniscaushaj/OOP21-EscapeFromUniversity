@@ -160,7 +160,7 @@ public class GameControllerImpl implements GameController{
 		try {
 			WriteFile w = new WriteFile("score", "score.txt");
 			DateTimeFormatter dtf4 = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
-			w.writeNewLine("" + dtf4.format(LocalDateTime.now()) + "      SCORE:  " + mark);
+			w.writeNewLine(mark + "      " + dtf4.format(LocalDateTime.now()));
 			w.close();
 		} catch (IOException e) {
 			e.printStackTrace();

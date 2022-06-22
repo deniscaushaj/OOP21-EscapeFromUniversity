@@ -1,5 +1,7 @@
 package escapefromuniversity.launcher;
 
+import escapefromuniversity.inGame.GameController;
+import escapefromuniversity.inGame.GameControllerImpl;
 import escapefromuniversity.menu.MenuController;
 import escapefromuniversity.menu.MenuControllerImpl;
 import escapefromuniversity.utilities.LauncherResizer;
@@ -59,9 +61,14 @@ public class LauncherController {
             Parent leaderboardRoot = loader.load();
             Scene leaderboard = new Scene(leaderboardRoot, sceneWidth, sceneHeight);
             LauncherView.launcherWindow.setScene(leaderboard);
+
             LeaderboardController leaderboardController = new LeaderboardController();
             loader.setController(leaderboardController);
-            leaderboardController.createLeaderboard();
+
+//            leaderboardController.initialize();
+
+
+
         } catch (Exception e) {
             System.out.println(e);
         }
