@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
 import escapefromuniversity.WriteFile;
 import escapefromuniversity.input.KeyHandler;
 import escapefromuniversity.input.KeyHandlerImpl;
+import escapefromuniversity.menu.MenuController;
+import escapefromuniversity.menu.MenuControllerImpl;
 import escapefromuniversity.model.GameModel;
 import escapefromuniversity.model.GameModelImp;
 import escapefromuniversity.model.GameState;
@@ -25,6 +27,7 @@ public class GameControllerImpl implements GameController{
 	private final KeyHandler keyHandler;
 	private GameState gameState;
 	private List<Integer> gameObjID = new LinkedList();
+	private final MenuController menuController = new MenuControllerImpl(this);
 
 	public GameControllerImpl() {
 		this.model = new GameModelImp(this);
@@ -53,7 +56,7 @@ public class GameControllerImpl implements GameController{
 				this.goQuiz(this.model.getCurrentBoss());
 				break;
 			case MENU:
-				//menu
+				this.menuController.startView();
 				break;
 			case SHOP:
 				//shop
