@@ -1,7 +1,6 @@
 package escapefromuniversity.inGame;
 
 import escapefromuniversity.launcher.LauncherView;
-import escapefromuniversity.menu.MenuViewImpl;
 import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.player.Sprite;
 import escapefromuniversity.utilities.OSFixes;
@@ -124,6 +123,11 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 		if(this.controller != null) {
 			this.controller.releaseKey(key);
 		}
+	}
+
+	@Override
+	public void openMenu() {
+		this.controller.setGameState(GameState.MENU);
 	}
 	
 	private void end(GameState gameState) {
