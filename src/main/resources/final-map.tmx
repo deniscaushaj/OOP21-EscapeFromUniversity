@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="180" height="180" tilewidth="48" tileheight="48" infinite="0" nextlayerid="25" nextobjectid="1">
- <tileset firstgid="1" source="Room_Builder_free_48x48.tsx"/>
- <tileset firstgid="392" source="Interiors_free_48x48.tsx"/>
- <tileset firstgid="1816" source="Characters_MV.tsx"/>
- <tileset firstgid="2008" source="Interiors_free_48x48v2.tsx"/>
- <tileset firstgid="3432" source="grass.tsx"/>
+ <tileset firstgid="1" source="tilesets/Room_Builder_free_48x48.tsx"/>
+ <tileset firstgid="392" source="tilesets/Interiors_free_48x48.tsx"/>
+ <tileset firstgid="1816" source="tilesets/Characters_MV.tsx"/>
+ <tileset firstgid="2008" source="tilesets/Interiors_free_48x48v2.tsx"/>
+ <tileset firstgid="3432" source="tilesets/grass.tsx"/>
  <layer id="3" name="Nero" width="180" height="180">
   <data encoding="csv">
 13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,
