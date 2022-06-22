@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.Optional;
 
 import escapefromuniversity.inGame.GameController;
+import escapefromuniversity.inGame.GameView;
+import escapefromuniversity.inGame.GameViewImpl;
+import escapefromuniversity.menu.MenuController;
+import escapefromuniversity.menu.MenuControllerImpl;
 import escapefromuniversity.model.GameModel;
 import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.gameObject.Direction;
@@ -19,17 +23,21 @@ import escapefromuniversity.model.shop.ShopView;
 public class KeyHandlerImpl implements KeyHandler {
 
     private final GameController gameController;
+    private final GameView gameView;
     private final Player player;
     private final PlayerMovement playerMovement;
     private final ShopController shopController;
+    private final MenuController menuController;
     private Optional<Command<Integer, Boolean, Optional<Direction>>> command;
     private final List<Command<Integer, Boolean, Optional<Direction>>> keyList = new ArrayList<>();
 
     public KeyHandlerImpl(final GameModel gameModel, final GameController gameController) {
         this.gameController = gameController;
+        this.gameView = new GameViewImpl(this.gameController);
         this.player = gameModel.getPlayer();
         this.playerMovement = new PlayerMovementImpl(this.player);
         this.shopController = new ShopControllerImpl();
+        this.menuController = new MenuControllerImpl(this.gameController);
         this.createKeyList();
     }
 
@@ -88,7 +96,7 @@ public class KeyHandlerImpl implements KeyHandler {
 
     private void playCommands(int keyCode) {
         if (keyCode == KeyEvent.VK_ESCAPE) {
-//             TODO open menu
+            this.gameView.openMenu();
         } else if (keyCode == KeyEvent.VK_A || keyCode == KeyEvent.VK_LEFT) {
             this.playerMovement.move(Direction.LEFT);
             this.player.setLastDirection(Direction.LEFT);
@@ -113,7 +121,7 @@ public class KeyHandlerImpl implements KeyHandler {
     private void menuCommands(int keyCode) {
         if (keyCode == KeyEvent.VK_ESCAPE) {
             if(this.gameController.getGameState().equals(GameState.MENU)) {
-//  TODO close menu
+                this.menuController.resume();
             } else if(this.gameController.getGameState().equals(GameState.SHOP)) {
                 this.shopController.closeShop();
             }
