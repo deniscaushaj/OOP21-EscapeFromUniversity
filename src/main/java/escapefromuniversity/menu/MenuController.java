@@ -9,5 +9,7 @@ public interface MenuController {
 	void resume();
 	
 	void back();
+	
+	void startView();
 
 }

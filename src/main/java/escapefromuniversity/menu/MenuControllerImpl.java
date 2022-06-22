@@ -36,4 +36,9 @@ public class MenuControllerImpl implements MenuController{
 		this.view.startMenu();
 	}
 
+    @Override
+    public void startView() {
+        this.view.startView();
+    }
+
 }

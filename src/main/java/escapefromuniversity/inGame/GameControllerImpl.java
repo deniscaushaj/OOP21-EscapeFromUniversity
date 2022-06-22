@@ -27,7 +27,7 @@ public class GameControllerImpl implements GameController{
 	private final KeyHandler keyHandler;
 	private GameState gameState;
 	private List<Integer> gameObjID = new LinkedList();
-	private MenuController menuController;
+	private final MenuController menuController = new MenuControllerImpl(this);
 
 	public GameControllerImpl() {
 		this.model = new GameModelImp(this);
@@ -56,7 +56,7 @@ public class GameControllerImpl implements GameController{
 				this.goQuiz(this.model.getCurrentBoss());
 				break;
 			case MENU:
-				this.menuController = new MenuControllerImpl(this);
+				this.menuController.startView();
 				break;
 			case SHOP:
 				//shop
