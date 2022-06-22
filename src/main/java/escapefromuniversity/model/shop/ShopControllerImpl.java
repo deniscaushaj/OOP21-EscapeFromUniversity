@@ -3,6 +3,9 @@ package escapefromuniversity.model.shop;
 import escapefromuniversity.model.player.Player;
 import escapefromuniversity.model.quiz.Competition;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 public class ShopControllerImpl implements ShopController {
 
     private final ShopView shopView;
@@ -12,6 +15,36 @@ public class ShopControllerImpl implements ShopController {
 
     public ShopControllerImpl() {
         this.shopView = new ShopViewImpl(this);
+        this.initializeButtons();
+    }
+
+    private void initializeButtons() {
+        this.shopView.getExit().addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
     }
 
     @Override
