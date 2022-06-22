@@ -2,7 +2,6 @@ package escapefromuniversity.model.shop;
 
 public interface ShopController {
 
-
     void closeShop();
 
     void buyItem();
@@ -10,4 +9,5 @@ public interface ShopController {
     void setItemType(Items itemType);
 
     Items getItemType();
+
 }
