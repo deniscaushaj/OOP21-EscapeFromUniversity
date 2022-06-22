@@ -4,6 +4,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * A quiz contains a question and answers.
+ *
+ */
 public interface Quiz {
 
 	/**

@@ -9,13 +9,28 @@
       },
        {
         "question": "Quale di questi non è un algoritmo di scheduling?",
-        "answers": ["FCFS", "Round Robin", "Memoria condivisa", "SJF"],
+        "answers": ["FCFS", "Round Robin", "Thread", "SJF"],
         "correct": 3
       },
       {
         "question": "Quali di questi non è un sistema operativo?",
         "answers": ["Ubuntu", "Kali Linux", "Windows 10", "Daisy chaining"],
         "correct": 4
+      },
+      {
+        "question": "Come si chiamano quei processi che rimangono senza padre?",
+        "answers": ["Zoombie", "Orfani", "Primari", "Secondari"],
+        "correct": 2
+      },
+      {
+        "question": "Quando un processo non ottiene mai la CPU si chiama:",
+        "answers": ["Starvation", "Busywaiting", "Deadlock", "Liveness"],
+        "correct": 1
+      },
+      {
+        "question": "Quale di questi è un algoritmo si sostituzione delle pagine?",
+        "answers": ["LRA", "FIFA", "Second-Chance", "Belady"],
+        "correct": 3
       }
     ]
   }

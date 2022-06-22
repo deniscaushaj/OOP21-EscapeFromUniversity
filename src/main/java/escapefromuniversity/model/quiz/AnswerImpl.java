@@ -31,8 +31,5 @@ public class AnswerImpl implements Answer {
 	public String toString() {
 		return "[Answer n." + this.id + "] " + this.text + ", is correct: " + this.correct;
 	}
-	
-	
-	
-	
+
 }
