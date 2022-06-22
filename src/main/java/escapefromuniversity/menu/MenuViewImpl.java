@@ -23,7 +23,7 @@ public class MenuViewImpl implements MenuView {
 	
 	private final JFrame window = new JFrame();
 	private final MenuController controller;
-	private final JLayeredPane menuPanel;
+	private JLayeredPane menuPanel;
 	
 	private final double windowRatio = WindowSet.getWindowRatio();
 	
@@ -43,15 +43,6 @@ public class MenuViewImpl implements MenuView {
 	 */
 	public MenuViewImpl(final MenuController controller) {
 		this.controller = controller;
-		this.window.setTitle("EscapeFromUniversity");
-		this.window.setResizable(false);
-		this.window.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		this.window.setSize((int) (screenWidth * windowRatio), (int) (screenHeight * windowRatio));
-		this.menuPanel = new JLayeredPane();
-        this.menuPanel.setOpaque(false);
-        this.window.getContentPane().add(menuPanel);
-        this.window.setVisible(true);
-		this.startMenu();
 	}
 	
 	@Override
@@ -88,5 +79,20 @@ public class MenuViewImpl implements MenuView {
 		this.btBack.addActionListener(e -> this.controller.back());
 		this.menuPanel.add(this.btBack);
 	}
+
+    @Override
+    public void startView() {
+        this.window.setTitle("EscapeFromUniversity");
+        this.window.setResizable(false);
+        this.window.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.window.setSize((int) (screenWidth * windowRatio), (int) (screenHeight * windowRatio));
+        this.menuPanel = new JLayeredPane();
+        this.menuPanel.setOpaque(false);
+        this.window.getContentPane().add(menuPanel);
+        this.window.setVisible(true);
+        this.startMenu();
+    }
+	
+	
 
 }

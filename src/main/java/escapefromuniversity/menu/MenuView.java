@@ -8,4 +8,6 @@ public interface MenuView {
 	
 	void startCommandMenu();
 	
+	void startView();
+	
 }
