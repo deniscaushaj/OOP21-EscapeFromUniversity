@@ -34,7 +34,7 @@ public class TestBullets {
 	public void testCreateBulletPlayer() {
 		Room room = new RoomImpl(null);
 		final Vector2D vec = new Vector2D(0, 1);
-		final Point2D pos = new Point2D(0,0);
+		final Point2D pos = new Point2D(0, 0);
 		int damage = 10;
 		Bullet bul = bullets.createPlayerBullet(pos, vec, damage, room);
 		room.addDynamicGameObject(bul);
