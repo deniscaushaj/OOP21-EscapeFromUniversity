@@ -1,8 +1,5 @@
 package escapefromuniversity.launcher;
 
-import escapefromuniversity.ReadFile;
-import escapefromuniversity.WriteFile;
-import escapefromuniversity.inGame.GameControllerImpl;
 import escapefromuniversity.menu.MenuController;
 import escapefromuniversity.menu.MenuControllerImpl;
 import escapefromuniversity.utilities.LauncherResizer;
@@ -38,20 +35,19 @@ public class LauncherController {
 //        GameControllerImpl gameController = new GameControllerImpl();
 //        gameController.gameLoop();
 //        LauncherView.launcherWindow.close();  //this.creditsButton.getScene().getWindow().hide();
-////        Platform.exit();
+//        Platform.exit();
 
 
-
-//		try {
-//			FXMLLoader loader = new FXMLLoader();
-//			URL fileLocation = new File(OSFixes.getLocation("layouts","Game.fxml")).toURI().toURL();
-//			loader.setLocation(fileLocation);
-//			Parent gameRoot = loader.load();
-//			Scene game = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
-//			LauncherView.launcherWindow.setScene(game);
-//		} catch (Exception e) {
-//			System.out.println(e);
-//		}
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			URL fileLocation = new File(OSFixes.getLocation("layouts","Game.fxml")).toURI().toURL();
+			loader.setLocation(fileLocation);
+			Parent gameRoot = loader.load();
+			Scene game = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
+			LauncherView.launcherWindow.setScene(game);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
     }
 
     @FXML
