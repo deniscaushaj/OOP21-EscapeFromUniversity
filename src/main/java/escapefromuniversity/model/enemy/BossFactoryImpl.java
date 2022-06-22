@@ -11,16 +11,22 @@ import escapefromuniversity.model.bullet.BulletFactoryImpl;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.map.Room;
 
-public class BossFactoryImpl implements BossFactory{
-	private final BulletFactory bulletCreate = new BulletFactoryImpl();
+/**
+ * 
+ * implementation of interface BossFactory.
+ *
+ */
+public class BossFactoryImpl implements BossFactory {
 
-    
+    private final BulletFactory bulletCreate = new BulletFactoryImpl();
+
+
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Enemy createBoss1(Point2D position, Vector2D direction, Room room) {
-		return new AbstractBoss(BossConstant.boss1_speed, position, BossConstant.BOSS_BOX_SIZE, direction, GameObjectType.BOSS1, BossConstant.boss1_life, BossConstant.boss1_shootDelay, BossConstant.boss1_damage, room) {
+	public Boss createBoss1(final Point2D position, final Vector2D direction, final Room room) {
+		return new AbstractBoss(BossConstant.BOSS_1_SPEED, position, BossConstant.BOSS_BOX_SIZE, direction, GameObjectType.BOSS1, BossConstant.BOSS_1_LIFE, BossConstant.BOSS_1_SHOOT_DELAY, BossConstant.BOSS_1_DAMAGE, room) {
 
 			@Override
 			void shoot() {
@@ -28,7 +34,6 @@ public class BossFactoryImpl implements BossFactory{
 				final Bullet bullet = bulletCreate.createBoss1Bullet(startPosition, this.getDirection(), room);
 				this.getRoom().addDynamicGameObject(bullet);
 			}
-			
 		};
 	}
 
@@ -36,8 +41,8 @@ public class BossFactoryImpl implements BossFactory{
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Enemy createBoss2(Point2D position, Vector2D direction, Room room) {
-		return new AbstractBoss(BossConstant.boss2_speed, position, BossConstant.BOSS_BOX_SIZE, direction, GameObjectType.BOSS2, BossConstant.boss2_life, BossConstant.boss2_shootDelay, BossConstant.boss2_damage, room) {
+	public Boss createBoss2(final Point2D position, final Vector2D direction, final Room room) {
+		return new AbstractBoss(BossConstant.BOSS_2_SPEED, position, BossConstant.BOSS_BOX_SIZE, direction, GameObjectType.BOSS2, BossConstant.BOSS_2_LIFE, BossConstant.BOSS_2_SHOOT_DELAY, BossConstant.BOSS_2_DAMAGE, room) {
 
 			@Override
 			void shoot() {
@@ -50,7 +55,6 @@ public class BossFactoryImpl implements BossFactory{
 					this.getRoom().addDynamicGameObject(bul);
 				});
 			}
-			
 		};
 	}
 
@@ -58,8 +62,8 @@ public class BossFactoryImpl implements BossFactory{
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Enemy createBoss3(Point2D position, Vector2D direction, Room room) {
-		return new AbstractBoss(BossConstant.boss3_speed, position, BossConstant.BOSS_BOX_SIZE, direction, GameObjectType.BOSS3, BossConstant.boss3_life, BossConstant.boss3_shootDelay, BossConstant.boss3_damage, room) {
+	public Boss createBoss3(final Point2D position, final Vector2D direction, final Room room) {
+		return new AbstractBoss(BossConstant.BOSS_3_SPEED, position, BossConstant.BOSS_BOX_SIZE, direction, GameObjectType.BOSS3, BossConstant.BOSS_3_LIFE, BossConstant.BOSS_3_SHOOT_DELAY, BossConstant.BOSS_3_DAMAGE, room) {
 
 			@Override
 			void shoot() {
@@ -77,7 +81,6 @@ public class BossFactoryImpl implements BossFactory{
 					this.getRoom().addDynamicGameObject(bul);
 				});
 			}
-			
 		};
 	}
 
@@ -85,17 +88,15 @@ public class BossFactoryImpl implements BossFactory{
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Enemy createBoss4(Point2D position, Vector2D direction, Room room) {
-		return new AbstractBoss(BossConstant.boss4_speed, position, BossConstant.BOSS_BOX_SIZE, direction, GameObjectType.BOSS4, BossConstant.boss4_life, BossConstant.boss4_shootDelay, BossConstant.boss4_damage, room) {
+	public Boss createBoss4(final Point2D position, final Vector2D direction, final Room room) {
+		return new AbstractBoss(BossConstant.BOSS_4_SPEED, position, BossConstant.BOSS_BOX_SIZE, direction, GameObjectType.BOSS4, BossConstant.BOSS_4_LIFE, BossConstant.BOSS_4_SHOOT_DELAY, BossConstant.BOSS_4_DAMAGE, room) {
 
 			@Override
 			void shoot() {
 				final Point2D startPosition = new Point2D(this.getObjectPosition().getX(), this.getObjectPosition().getY() + this.getObjectHitBox().getHeight());
 				final Bullet bullet = bulletCreate.createBoss4Bullet(startPosition, this.getDirection(), room);
 				this.getRoom().addDynamicGameObject(bullet);
-				
 			}
-			
 		};
 	}
 
@@ -103,17 +104,15 @@ public class BossFactoryImpl implements BossFactory{
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Enemy createBoss5(Point2D position, Vector2D direction, Room room) {
-		return new AbstractBoss(BossConstant.boss5_speed, position, BossConstant.BOSS_BOX_SIZE, direction, GameObjectType.BOSS5, BossConstant.boss5_life, BossConstant.boss5_shootDelay, BossConstant.boss5_damage, room) {
+	public Boss createBoss5(final Point2D position, final Vector2D direction, final Room room) {
+		return new AbstractBoss(BossConstant.BOSS_5_SPEED, position, BossConstant.BOSS_BOX_SIZE, direction, GameObjectType.BOSS5, BossConstant.BOSS_5_LIFE, BossConstant.BOSS_5_SHOOT_DELAY, BossConstant.BOSS_5_DAMAGE, room) {
 
 			@Override
 			void shoot() {
 				final Point2D startPosition = new Point2D(this.getObjectPosition().getX(), this.getObjectPosition().getY() + this.getObjectHitBox().getHeight());
 				final Bullet bullet = bulletCreate.createBoss5Bullet(startPosition, this.getDirection(), room);
 				this.getRoom().addDynamicGameObject(bullet);
-				
 			}
-			
 		};
 	}
 
@@ -121,17 +120,15 @@ public class BossFactoryImpl implements BossFactory{
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Enemy createBoss6(Point2D position, Vector2D direction, Room room) {
-		return new AbstractBoss(BossConstant.boss6_speed, position, BossConstant.BOSS_BOX_SIZE, direction, GameObjectType.BOSS6, BossConstant.boss6_life, BossConstant.boss6_shootDelay, BossConstant.boss6_damage, room) {
+	public Boss createBoss6(final Point2D position, final Vector2D direction, final Room room) {
+		return new AbstractBoss(BossConstant.BOSS_6_SPEED, position, BossConstant.BOSS_BOX_SIZE, direction, GameObjectType.BOSS6, BossConstant.BOSS_6_LIFE, BossConstant.BOSS_6_SHOOT_DELAY, BossConstant.BOSS_6_DAMAGE, room) {
 
 			@Override
 			void shoot() {
 				final Point2D startPosition = new Point2D(this.getObjectPosition().getX(), this.getObjectPosition().getY() + this.getObjectHitBox().getHeight());
 				final Bullet bullet = bulletCreate.createBoss6Bullet(startPosition, this.getDirection(), room);
 				this.getRoom().addDynamicGameObject(bullet);
-				
 			}
-			
 		};
 	}
 

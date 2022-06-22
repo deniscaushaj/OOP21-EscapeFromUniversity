@@ -32,7 +32,7 @@ public class LauncherController {
     @FXML
     void newGame(ActionEvent event) {
 
-    	//MenuController menu = new MenuControllerImpl(null);
+    	MenuController menu = new MenuControllerImpl(null);
 //        GameViewImpl.startGame();
 
 //        GameControllerImpl gameController = new GameControllerImpl();
