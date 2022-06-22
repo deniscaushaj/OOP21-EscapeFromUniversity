@@ -5,6 +5,8 @@ import escapefromuniversity.utilities.OSFixes;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class ShopViewImpl extends JPanel implements ShopView {
 
@@ -65,6 +67,7 @@ public class ShopViewImpl extends JPanel implements ShopView {
         this.exit.addActionListener(e -> this.shopController.closeShop());
 
 
+
         this.add(this.creditsCounter);
         this.add(this.itemInfo);
         this.add(this.buyLife);
@@ -75,4 +78,28 @@ public class ShopViewImpl extends JPanel implements ShopView {
         this.setVisible(true);
     }
 
+    @Override
+    public JButton getBuyLife() {
+        return this.buyLife;
+    }
+
+    @Override
+    public JButton getBuyArmor() {
+        return this.buyArmor;
+    }
+
+    @Override
+    public JButton getBuyDamage() {
+        return this.buyDamage;
+    }
+
+    @Override
+    public JButton getBuyChance() {
+        return this.buyChance;
+    }
+
+    @Override
+    public JButton getExit() {
+        return this.exit;
+    }
 }
