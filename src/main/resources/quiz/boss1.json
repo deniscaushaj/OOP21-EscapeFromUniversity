@@ -19,13 +19,18 @@
       },
       {
         "question": "Come si chiamano quei processi che rimangono senza padre?",
-        "answers": ["Zoombie", "Orfani", "Primari", "Secondari"],
+        "answers": ["Zombie", "Orfani", "Primari", "Secondari"],
         "correct": 2
       },
       {
         "question": "Quando un processo non ottiene mai la CPU si chiama:",
         "answers": ["Starvation", "Busywaiting", "Deadlock", "Liveness"],
         "correct": 1
+      },
+      {
+        "question": "Quale di questi è un algoritmo si sostituzione delle pagine?",
+        "answers": ["LRA", "FIFA", "Second-Chance", "Belady"],
+        "correct": 3
       },
       {
         "question": "Quale di questi è un algoritmo si sostituzione delle pagine?",

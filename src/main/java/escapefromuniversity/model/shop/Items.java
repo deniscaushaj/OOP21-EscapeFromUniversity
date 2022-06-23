@@ -1,7 +1,12 @@
 package escapefromuniversity.model.shop;
 
+<<<<<<< HEAD
+import escapefromuniversity.model.player.Player;
+import escapefromuniversity.model.quiz.Exam;
+=======
 import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.model.quiz.Competition;
+>>>>>>> 6dc00950b1128f9e321b9b015b6008c5ea810803
 
 public enum Items {
 
@@ -59,7 +64,7 @@ public enum Items {
      * Gives another chance to the player when the answer is incorrect.
      * @param competition the current exam
      */
-    public void doubleChance(Competition competition){
+    public void doubleChance(Exam competition){
         if(!competition.isBonusAvailable()){
             competition.setBonusQuiz(true);
         }

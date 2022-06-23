@@ -1,7 +1,7 @@
 package escapefromuniversity.model.shop;
 
+import escapefromuniversity.model.quiz.Exam;
 import escapefromuniversity.model.gameObject.player.Player;
-import escapefromuniversity.model.quiz.Competition;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -13,7 +13,7 @@ public class ShopControllerImpl implements ShopController, MouseListener {
     private final ShopView shopView;
     private Items itemType;
     private Player player; // TODO initialize
-    private Competition competition; // TODO same
+    private Exam competition; // TODO same
     private static final int resetHealthCost = 6;
     private static final int increaseArmorCost = 12;
     private static final int increaseDamageCost = 12;
