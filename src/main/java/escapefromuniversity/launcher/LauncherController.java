@@ -30,6 +30,7 @@ public class LauncherController {
     void newGame(ActionEvent event) {
 
     	MenuController menu = new MenuControllerImpl(null);
+    	menu.startView();
 //        GameViewImpl.startGame();
 
 //        GameControllerImpl gameController = new GameControllerImpl();

@@ -43,9 +43,9 @@ public class GameControllerImpl implements GameController{
 	@Override
 	public void gameLoop() {
 		long lastTime = System.currentTimeMillis();
-		while(continueGame()) {
+		while (continueGame()) {
 			long currentTime = System.currentTimeMillis();
-			switch(this.getGameState()) {
+			switch (this.getGameState()) {
 			case PLAY:
 				long deltaTime = currentTime - lastTime;
 				executeInput();
@@ -66,11 +66,10 @@ public class GameControllerImpl implements GameController{
 			}
 			lastTime = currentTime;
 		}
-		if(this.getGameState() == GameState.WIN) {
+		if (this.getGameState() == GameState.WIN) {
 			this.saveScore(this.model.finalMark());
 		}
 		this.view.update();
-		
 	}
 	
 	
@@ -78,12 +77,12 @@ public class GameControllerImpl implements GameController{
 		return this.getGameState() != GameState.LOST && this.getGameState() != GameState.WIN;
 	}
 	
-	private void updateModel(long deltaTime) {
+	private void updateModel(final long deltaTime) {
 		this.model.updateGame((double) deltaTime);
 		this.gameObjID = this.getGameObjectID();
 	}
 	
-	private List<Integer> getGameObjectID(){
+	private List<Integer> getGameObjectID() {
 		return this.model.getAllGameObj().stream()
 				.map(obj -> obj.getID())
 				.collect(Collectors.toList());
@@ -105,10 +104,7 @@ public class GameControllerImpl implements GameController{
 		return this.model.getPlayer().getCredits();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	private void goQuiz(Boss boss) {
+	private void goQuiz(final Boss boss) {
 		try {
 		    final FXMLLoader loader = new FXMLLoader(getClass().getResource("/layouts/Quiz.fxml"));
 			final Parent startRoot = loader.load();
@@ -117,14 +113,13 @@ public class GameControllerImpl implements GameController{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public GameState getGameState () {
+	public GameState getGameState() {
 		return gameState;
 	}
 
@@ -132,7 +127,7 @@ public class GameControllerImpl implements GameController{
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setGameState(GameState gameState) {
+	public void setGameState(final GameState gameState) {
 		this.gameState = gameState;
 	}
 
@@ -156,7 +151,7 @@ public class GameControllerImpl implements GameController{
 		this.keyHandler.setKey(key.getKeyCode(), false);
 	}
 	
-	private void saveScore(int mark) {
+	private void saveScore(final int mark) {
 		try {
 			WriteFile w = new WriteFile("score", "score.txt");
 			DateTimeFormatter dtf4 = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");

@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
 import escapefromuniversity.utilities.WindowSet;
@@ -28,11 +29,18 @@ public class MenuViewImpl implements MenuView {
     private final Rectangle retBtResume = new Rectangle((int) (screenWidth / 3 * windowRatio), (int) (400 * windowRatio), (int) (screenWidth / 3 * windowRatio), (int) (90 * windowRatio));
     private final Rectangle retBtCommand = new Rectangle((int) (screenWidth / 3 * windowRatio), (int) (500 * windowRatio), (int) (screenWidth / 3 * windowRatio), (int) (90 * windowRatio));
     private final Rectangle retBtBack = new Rectangle((int) (screenWidth / 3 * windowRatio), (int) (500 * windowRatio), (int) (screenWidth / 3 * windowRatio), (int) (90 * windowRatio));
+    private final Rectangle retBtTextCommand1 = new Rectangle((int) (screenWidth / 3 * windowRatio), (int) (10 * windowRatio), (int) (screenWidth / 3 * windowRatio), (int) (90 * windowRatio));
+    private final Rectangle retBtTextCommand2 = new Rectangle((int) (screenWidth / 3 * windowRatio), (int) (110 * windowRatio), (int) (screenWidth / 3 * windowRatio), (int) (90 * windowRatio));
+    private final Rectangle retBtTextCommand3 = new Rectangle((int) (screenWidth / 3 * windowRatio), (int) (210 * windowRatio), (int) (screenWidth / 2 * windowRatio), (int) (90 * windowRatio));
 
     private final JButton btExit = new JButton("EXIT");
     private final JButton btResume = new JButton("RESUME");
     private final JButton btCommand = new JButton("COMMAND");
     private final JButton btBack = new JButton("BACK");
+
+    private final JLabel command1 = new JLabel("A/W/S/D : per muoverso");
+    private final JLabel command2 = new JLabel("le freccette per sparare");
+    private final JLabel command3 = new JLabel("avvicinarsi agli oggetti per interagire");
 
     /**
      * 
@@ -71,6 +79,15 @@ public class MenuViewImpl implements MenuView {
         this.menuPanel.removeAll();
         this.menuPanel.revalidate();
         this.menuPanel.repaint();
+        this.command1.setBounds(this.retBtTextCommand1);
+        this.command1.setFont(WindowSet.FONT);
+        this.menuPanel.add(this.command1);
+        this.command2.setBounds(this.retBtTextCommand2);
+        this.command2.setFont(WindowSet.FONT);
+        this.menuPanel.add(this.command2);
+        this.command3.setBounds(this.retBtTextCommand3);
+        this.command3.setFont(WindowSet.FONT);
+        this.menuPanel.add(this.command3);
         this.btBack.setBounds(this.retBtBack);
         this.btBack.setFont(WindowSet.FONT);
         this.btBack.addActionListener(e -> this.controller.back());
