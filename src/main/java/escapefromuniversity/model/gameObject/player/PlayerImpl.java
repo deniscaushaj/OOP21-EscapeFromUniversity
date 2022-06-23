@@ -134,7 +134,10 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
 
     @Override
     public void setFinalMark(final int newMark) {
-        this.finalMark = this.finalMark + newMark;
+        this.finalMark = (this.finalMark * this.passed + newMark);
+        this.passedExam();
+        this.finalMark = this.finalMark / this.passed;
+        this.finalMark = this.finalMark * 110 / 30;
     }
 
     @Override
