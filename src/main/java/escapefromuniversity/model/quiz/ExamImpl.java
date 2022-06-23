@@ -1,5 +1,7 @@
 package escapefromuniversity.model.quiz;
 
+import escapefromuniversity.model.gameObject.player.Player;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,6 +18,7 @@ public class ExamImpl implements Exam {
 	private boolean bonusQuiz;
 	private final int MAXSCORE = 30;
 	private final int PASSEDSCORE = 18;
+	private Player player; // TODO initialize
 	
 	
 	private ExamImpl(final Map<Integer, Quiz> exam, final String teacherName, final String subjectName) {
@@ -129,6 +132,11 @@ public class ExamImpl implements Exam {
 			return new ExamImpl(this.exam, this.teacherName, this.subjectName);
 		}
 
+	}
+
+	@Override
+	public void addCredits() {
+		this.player.setCredits(this.player.getCredits() + this.getScore());
 	}
 	
 	

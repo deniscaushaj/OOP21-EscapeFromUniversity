@@ -71,6 +71,7 @@ public interface Exam {
 	 * @return True if the score is greater than 50% of the total quizzes
 	 */
 	boolean hasPassed();
-	
-	
+
+
+    void addCredits();
 }
