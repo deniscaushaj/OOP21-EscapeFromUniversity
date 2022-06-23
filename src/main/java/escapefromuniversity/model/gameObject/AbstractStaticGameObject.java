@@ -1,5 +1,6 @@
 package escapefromuniversity.model.gameObject;
 
+import escapefromuniversity.model.map.Rectangle;
 import escapefromuniversity.model.map.Room;
 import escapefromuniversity.model.basics.HitBox;
 import escapefromuniversity.model.basics.HitBoxImpl;
@@ -13,6 +14,7 @@ public abstract class AbstractStaticGameObject implements StaticGameObject{
 	private final HitBoxImpl box;
 	private Room room;
 	private Byte byteValue;
+	private Rectangle rectangle;
 	
 	public AbstractStaticGameObject(GameObjectType type, Point2D position, Point2D upperCorner, Room room) {
 		this.type = type;
@@ -24,15 +26,15 @@ public abstract class AbstractStaticGameObject implements StaticGameObject{
 	/**
 	 * A constructor for an AbstractStaticGameObject for modelling an obstacle.
 	 * @param type the type of GameObject
-	 * @param position the upper-left corner
-	 * @param upperCorner the lower-right corner
+	 * @param position the rectangle of the object
 	 * @param byteValue the byte value of the object
 	 */
-	public AbstractStaticGameObject(final GameObjectType type, final Point2D position, final Point2D upperCorner, final Byte byteValue) {
+	public AbstractStaticGameObject(final GameObjectType type, final Rectangle position, final Byte byteValue) {
 		this.type = type;
-		this.position = position;
-		this.box = new HitBoxImpl(position, upperCorner);
+		this.rectangle = position;
 		this.byteValue = byteValue;
+		this.position = null;
+		this.box = null;
 	}
 	
 	@Override
@@ -80,6 +82,10 @@ public abstract class AbstractStaticGameObject implements StaticGameObject{
 	 */
 	public Byte getByteValue() {
 		return this.byteValue;
+	}
+
+	public Rectangle getRectangle() {
+		return this.rectangle;
 	}
 
 }
