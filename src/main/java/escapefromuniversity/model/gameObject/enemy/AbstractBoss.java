@@ -21,7 +21,7 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
     private BossState bossState;
     private Point2D previousPosition;
     private int impactDamage;
-    private static final int credits = 12;
+    private static final int CREDITS = 12;
 
     /**
      * 
@@ -112,9 +112,10 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
                 if (gObj2.getType().equals(GameObjectType.PLAYER)) {
                     if (this.bossState.equals(BossState.QUIZ)) {
                         this.getRoom().goQuiz(this);
+                    } else {
+                        final Player player = (Player) gObj2;
+                        player.takeDamage(this.getImpactDamage());
                     }
-                    final Player player = (Player) gObj2;
-                    player.takeDamage(this.getImpactDamage());
                 }
                 this.setPosition(this.getPreviousPosition());
                 break;
@@ -174,7 +175,7 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
      */
     @Override
     public void kill() {
-        this.getRoom().getPlayer().setCredits(this.getRoom().getPlayer().getCredits() + credits);
+        this.getRoom().getPlayer().setCredits(this.getRoom().getPlayer().getCredits() + CREDITS);
         this.getRoom().deleteGameObject(this);
     }
 
