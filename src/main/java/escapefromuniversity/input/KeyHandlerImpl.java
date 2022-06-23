@@ -76,7 +76,7 @@ public class KeyHandlerImpl implements KeyHandler {
                             this.menuCommands(keyCode);
                             break;
                         case PLAY:
-                        case WIN:
+                        case GRADUATED:
                             this.playCommands(keyCode);
                             break;
                         default: {

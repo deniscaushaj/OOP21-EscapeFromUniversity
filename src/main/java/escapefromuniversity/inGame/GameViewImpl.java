@@ -61,9 +61,6 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 	public void drawToImage () {
 //      g2d.setFont(null); TODO choose font
 		switch (this.controller.getGameState()) { //pauseBG forse non qua
-			case DIALOGUE:
-				this.addPauseBG();
-				break;
 			case FIGHT:
 				break;
 			case MENU:
@@ -81,8 +78,6 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 //				showShop
 				break;
 			case LOST:
-				this.end(this.controller.getGameState());
-				break;
 			case WIN:
 				this.end(this.controller.getGameState());
 				break;
@@ -133,7 +128,7 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 	private void end(GameState gameState) {
 		if(gameState == GameState.WIN) {
 			//aggiorna con immagine vittoria
-		}else {
+		}else if(gameState == GameState.LOST){
 			//aggiorna con immagine sconfitta
 		}
 		try {
