@@ -45,7 +45,7 @@ public class ExamImpl implements Exam {
 
 	@Override
 	public boolean isBonusAvailable() {
-		return this.bonusQuiz;
+		return !this.bonusQuiz;
 	}
 	
 	@Override
