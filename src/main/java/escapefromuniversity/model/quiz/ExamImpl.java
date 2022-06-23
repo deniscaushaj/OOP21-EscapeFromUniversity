@@ -74,7 +74,7 @@ public class ExamImpl implements Exam {
 	
 	@Override
 	public int getMaxScore() {
-		return this.MAXSCORE;
+		return MAXSCORE;
 	}
 	
 	@Override
@@ -84,7 +84,7 @@ public class ExamImpl implements Exam {
 	
 	@Override
 	public boolean hasPassed() {
-		return this.getScore() > this.PASSEDSCORE;
+		return this.getScore() > PASSEDSCORE;
 	}
 	
 	/**
