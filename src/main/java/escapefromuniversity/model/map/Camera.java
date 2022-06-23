@@ -12,5 +12,5 @@ public interface Camera {
     Ciò significa che mi serve scegliere un livello di zoom della mappa e far disegnare la parte in cui si trova
     il player (con lui in mezzo).
      */
-    void zoom(Player player);
+    Rectangle zoom(Player player);
 }

@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class ObstacleImpl implements Obstacle {
 
     private static final String MAP_NAME = "final-map.tmx";
-    //TODO: Posizione dell'hit-box (48x48)
+    //TODO: Calcolare la posizione dell'hit-box come gameobject (48x48)
 
     @Override
     public List<Integer> getObstacleList() throws ParserConfigurationException, IOException, SAXException {
