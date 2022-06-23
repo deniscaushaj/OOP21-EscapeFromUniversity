@@ -13,4 +13,6 @@ public interface ShopView {
     JButton getBuyChance();
 
     JButton getExit();
+
+    void setItemInfo(String itemInfo);
 }

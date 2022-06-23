@@ -82,4 +82,21 @@ public class ShopControllerImpl implements ShopController {
         return this.itemType;
     }
 
+    public void mouseEntered(MouseEvent e) {
+        Object source = e.getSource();
+        if (this.shopView.getBuyLife().equals(source)) {
+            this.shopView.setItemInfo(buyLifeInfo);
+        } else if (this.shopView.getBuyArmor().equals(source)) {
+            this.shopView.setItemInfo(buyArmorInfo);
+        } else if (this.shopView.getBuyDamage().equals(source)) {
+            this.shopView.setItemInfo(buyDamageInfo);
+        } else if (this.shopView.getBuyChance().equals(source)) {
+            this.shopView.setItemInfo(buyChanceInfo);
+        }
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        this.shopView.setItemInfo("");
+    }
 }

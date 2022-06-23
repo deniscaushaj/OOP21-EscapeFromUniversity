@@ -14,6 +14,7 @@ public class ShopViewImpl extends JPanel implements ShopView {
     private final double windowRatio = WindowSet.getWindowRatio();
     private final JLabel creditsCounter = new JLabel("Credits", (Icon) this.creditsIcon, SwingConstants.CENTER);
     private JTextArea itemInfo;
+    private JTextArea itemInfo = new JTextArea("");
     private final JButton buyLife = new JButton("", this.creditsIcon);
     private final JButton buyArmor = new JButton("", this.creditsIcon);
     private final JButton buyDamage = new JButton("", this.creditsIcon);
@@ -32,6 +33,10 @@ public class ShopViewImpl extends JPanel implements ShopView {
     private final Rectangle buyChancePos = new Rectangle((int) (60 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio));
     private final Rectangle exitPos = new Rectangle((int) (60 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio));
 //    private final Rectangle iconspos
+    public static final String buyLifeInfo = "Restores your HP to max.";
+    public static final String buyArmorInfo = "Increases your armor.";
+    public static final String buyDamageInfo = "Increases your damage.";
+    public static final String buyChanceInfo = "Gives you a second chance when attending an exam quiz.";
 
     public ShopViewImpl(final ShopController shopController) {
         this.shopController = shopController;
@@ -101,5 +106,10 @@ public class ShopViewImpl extends JPanel implements ShopView {
     @Override
     public JButton getExit() {
         return this.exit;
+    }
+
+    @Override
+    public void setItemInfo(final String itemInfo) {
+        this.itemInfo.setText(itemInfo);
     }
 }
