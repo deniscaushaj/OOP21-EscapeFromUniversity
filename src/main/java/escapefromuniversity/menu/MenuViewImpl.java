@@ -95,8 +95,8 @@ public class MenuViewImpl implements MenuView {
         this.menuPanel.removeAll();
         this.menuPanel.revalidate();
         this.menuPanel.repaint();
-        this.menuPanel.add(this.command1);;
-        this.menuPanel.add(this.command2);;
+        this.menuPanel.add(this.command1);
+        this.menuPanel.add(this.command2);
         this.menuPanel.add(this.command3);
         this.menuPanel.add(this.btBack);
     }
