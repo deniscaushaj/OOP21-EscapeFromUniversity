@@ -10,4 +10,5 @@ public interface ShopController {
 
     Items getItemType();
 
+    void checkButtonsAvailability();
 }

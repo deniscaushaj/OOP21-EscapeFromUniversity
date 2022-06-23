@@ -6,7 +6,6 @@ import escapefromuniversity.model.quiz.Competition;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class ShopControllerImpl implements ShopController {
 import static escapefromuniversity.model.shop.ShopViewImpl.*;
 
 public class ShopControllerImpl implements ShopController, MouseListener {
@@ -23,6 +22,7 @@ public class ShopControllerImpl implements ShopController, MouseListener {
     public ShopControllerImpl() {
         this.shopView = new ShopViewImpl(this);
         this.initializeButtons();
+        this.checkButtonsAvailability();
     }
 
     private void initializeButtons() {
@@ -35,7 +35,7 @@ public class ShopControllerImpl implements ShopController, MouseListener {
 
     @Override
     public void closeShop() {
-
+        // TODO set gamestate SHOP
     }
 
     @Override
@@ -60,10 +60,11 @@ public class ShopControllerImpl implements ShopController, MouseListener {
             default: {
             }
         }
+        this.checkButtonsAvailability();
     }
 
     @Override
-    public void setItemType(Items itemType) {
+    public void setItemType(final Items itemType) {
         this.itemType = itemType;
     }
 
@@ -112,5 +113,21 @@ public class ShopControllerImpl implements ShopController, MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {
         this.shopView.setItemInfo("");
+    }
+
+    @Override
+    public void checkButtonsAvailability() {
+        if(!this.itemType.increaseDamage(this.player)) {
+            this.shopView.setButtonNotClickable(this.shopView.getBuyDamage());
+        }
+        if(!this.itemType.increaseArmor(this.player)) {
+            this.shopView.setButtonNotClickable(this.shopView.getBuyArmor());
+        }
+        if(!this.itemType.resetHealth(this.player)) {
+            this.shopView.setButtonNotClickable(this.shopView.getBuyLife());
+        }
+        if(!this.competition.isBonusAvailable()) {
+            this.shopView.setButtonNotClickable(this.shopView.getBuyChance());
+        }
     }
 }

@@ -5,15 +5,12 @@ import escapefromuniversity.utilities.OSFixes;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 public class ShopViewImpl extends JPanel implements ShopView {
 
     private final ShopController shopController;
     private final double windowRatio = WindowSet.getWindowRatio();
     private final JLabel creditsCounter = new JLabel("Credits", (Icon) this.creditsIcon, SwingConstants.CENTER);
-    private JTextArea itemInfo;
     private JTextArea itemInfo = new JTextArea("");
     private final JButton buyLife = new JButton("", this.creditsIcon);
     private final JButton buyArmor = new JButton("", this.creditsIcon);
@@ -32,7 +29,7 @@ public class ShopViewImpl extends JPanel implements ShopView {
     private final Rectangle buyDamagePos = new Rectangle((int) (60 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio));
     private final Rectangle buyChancePos = new Rectangle((int) (60 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio));
     private final Rectangle exitPos = new Rectangle((int) (60 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio));
-//    private final Rectangle iconspos
+//    TODO private final Rectangle iconspos
     public static final String buyLifeInfo = "Restores your HP to max.";
     public static final String buyArmorInfo = "Increases your armor.";
     public static final String buyDamageInfo = "Increases your damage.";
@@ -52,27 +49,7 @@ public class ShopViewImpl extends JPanel implements ShopView {
         this.buyDamage.setBounds(this.buyDamagePos);
         this.buyChance.setBounds(this.buyChancePos);
         this.exit.setBounds(this.exitPos);
-
-        this.buyLife.addActionListener(e -> {
-            this.shopController.buyItem();
-            this.shopController.setItemType(Items.RESET_HEALTH);
-        });
-        this.buyArmor.addActionListener(e -> {
-            this.shopController.buyItem();
-            this.shopController.setItemType(Items.INCREASE_ARMOR);
-        });
-        this.buyDamage.addActionListener(e -> {
-            this.shopController.buyItem();
-            this.shopController.setItemType(Items.INCREASE_DAMAGE);
-        });
-        this.buyChance.addActionListener(e -> {
-            this.shopController.buyItem();
-            this.shopController.setItemType(Items.DOUBLE_CHANCE);
-        });
-        this.exit.addActionListener(e -> this.shopController.closeShop());
-
-
-
+//      TODO altri settings
         this.add(this.creditsCounter);
         this.add(this.itemInfo);
         this.add(this.buyLife);
@@ -112,4 +89,11 @@ public class ShopViewImpl extends JPanel implements ShopView {
     public void setItemInfo(final String itemInfo) {
         this.itemInfo.setText(itemInfo);
     }
+
+    @Override
+    public void setButtonNotClickable(final JButton button) {
+        button.setOpaque(true);
+        button.setEnabled(false);
+    }
+
 }
