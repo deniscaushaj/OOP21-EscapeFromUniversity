@@ -61,7 +61,6 @@ public class LauncherController {
             LauncherView.launcherWindow.setScene(leaderboard);
             LeaderboardController leaderboardController = new LeaderboardController();
             loader.setController(leaderboardController);
-            leaderboardController.createLeaderboard();
         } catch (Exception e) {
             System.out.println(e);
         }
