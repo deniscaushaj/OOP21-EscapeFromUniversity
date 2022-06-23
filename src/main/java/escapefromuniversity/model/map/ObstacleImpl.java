@@ -14,9 +14,8 @@ import java.util.stream.Collectors;
  */
 public class ObstacleImpl implements Obstacle {
 
-    private static final String MAP_NAME = "final-map.tmx";
-
-    //TODO: Calcolare la posizione dell'hit-box come gameobject (48x48)
+    private static final int TILE_DIMENSION = 48;
+    private static final String MAP_NAME = "final-map.tsx";
 
     private List<ObstacleObject> getObstacleList(final String property, final GameObjectType obsType) throws ParserConfigurationException, IOException, SAXException {
         var map = new TMXMapParser(MAP_NAME);
@@ -27,7 +26,7 @@ public class ObstacleImpl implements Obstacle {
                                 .stream()
                                 .flatMap(ll -> ll
                                         .stream()
-                                        .map(x -> new ObstacleObject(obsType, new Point2D(0, 0), new Point2D(0, 0), x.byteValue()))
+                                        .map(x -> new ObstacleObject(obsType, calcTilePosInPixel(l, ll.indexOf(x)), x.byteValue()))
                                         .filter(d -> d.getByteValue() != 0)))
                 .collect(Collectors.toList());
     }
@@ -50,5 +49,13 @@ public class ObstacleImpl implements Obstacle {
     @Override
     public List<ObstacleObject> getFurnitureList() throws ParserConfigurationException, IOException, SAXException {
         return getObstacleList("furniture", GameObjectType.FURNITURE);
+    }
+
+    private Rectangle calcTilePosInPixel(final Layer layer, final int pos) {
+        var cols = layer.getWidth();
+        var x = pos % cols;
+        var y = pos / cols;
+        return new Rectangle(new Point2D(x * TILE_DIMENSION, y * TILE_DIMENSION),
+                             new Point2D((x + 1) * TILE_DIMENSION, (y + 1) * TILE_DIMENSION));
     }
 }
