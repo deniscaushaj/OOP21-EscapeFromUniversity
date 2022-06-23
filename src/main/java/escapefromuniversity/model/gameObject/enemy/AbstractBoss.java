@@ -177,7 +177,6 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
     @Override
     public void kill() {
         this.getRoom().getPlayer().setCredits(this.getRoom().getPlayer().getCredits() + credits);
-        this.getRoom().getPlayer().setFinalMark(passed);
         this.getRoom().deleteGameObject(this);
     }
 
@@ -185,7 +184,7 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
      * {@inheritDoc}
      */
     @Override
-    public void setQuizResult(final int result) {
-        this.getRoom().getPlayer().setFinalMark(result);
+    public void setQuizResult() {
+        this.getRoom().getPlayer().setFinalMark(passed);
     }
 }
