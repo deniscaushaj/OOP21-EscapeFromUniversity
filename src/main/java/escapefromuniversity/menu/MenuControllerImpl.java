@@ -11,6 +11,7 @@ import escapefromuniversity.model.GameState;
 public class MenuControllerImpl implements MenuController {
     private final GameController gameController;
     private final MenuView view;
+    private boolean activeMenu;
 
     /**
      * 
@@ -19,6 +20,7 @@ public class MenuControllerImpl implements MenuController {
     public MenuControllerImpl(final GameController gameController) {
         this.gameController = gameController;
         this.view = new MenuViewImpl(this);
+        this.activeMenu = false;
     }
 
     @Override
@@ -28,11 +30,13 @@ public class MenuControllerImpl implements MenuController {
 
     @Override
     public void exit() {
+        this.activeMenu = false;
         System.exit(0);
     }
 
     @Override
     public void resume() {
+        this.activeMenu = false;
         this.view.close();
         this.gameController.setGameState(GameState.PLAY);
     }
@@ -44,7 +48,10 @@ public class MenuControllerImpl implements MenuController {
 
     @Override
     public void startView() {
-        this.view.startView();
+        if (!this.activeMenu) {
+            this.activeMenu = true;
+            this.view.startView();
+        }
     }
 
 }
