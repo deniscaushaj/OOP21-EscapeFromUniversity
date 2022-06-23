@@ -1,8 +1,8 @@
 package escapefromuniversity.model.map;
 
 import escapefromuniversity.model.GameModel;
-import escapefromuniversity.model.enemy.Boss;
-import escapefromuniversity.model.player.Player;
+import escapefromuniversity.model.gameObject.enemy.Boss;
+import escapefromuniversity.model.gameObject.player.Player;
 
 import java.util.List;
 import java.util.Map;

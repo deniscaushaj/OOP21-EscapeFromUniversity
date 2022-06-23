@@ -33,7 +33,7 @@ public class ShopViewImpl extends JPanel implements ShopView {
     private final Rectangle exitPos = new Rectangle((int) (60 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio));
 //    private final Rectangle iconspos
 
-    public ShopViewImpl(final ShopController shopController) { // TODO chiamare con WindowSet.getWindowRatio()t
+    public ShopViewImpl(final ShopController shopController) {
         this.shopController = shopController;
         this.setFont(WindowSet.FONT);
         this.initializeShop();

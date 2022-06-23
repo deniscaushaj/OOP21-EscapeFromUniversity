@@ -3,9 +3,9 @@ package escapefromuniversity.model;
 import java.util.List;
 
 import escapefromuniversity.model.basics.Point2D;
-import escapefromuniversity.model.enemy.Boss;
+import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.GameObject;
-import escapefromuniversity.model.player.Player;
+import escapefromuniversity.model.gameObject.player.Player;
 
 public interface GameModel {
 	

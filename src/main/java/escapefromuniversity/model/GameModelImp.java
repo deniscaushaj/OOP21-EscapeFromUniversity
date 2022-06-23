@@ -5,11 +5,11 @@ import java.util.List;
 
 import escapefromuniversity.inGame.GameController;
 import escapefromuniversity.model.basics.Point2D;
-import escapefromuniversity.model.enemy.Boss;
+import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.map.MapManager;
 import escapefromuniversity.model.map.MapManagerImpl;
-import escapefromuniversity.model.player.Player;
+import escapefromuniversity.model.gameObject.player.Player;
 
 public class GameModelImp implements GameModel{
 	private final MapManager mapManager;

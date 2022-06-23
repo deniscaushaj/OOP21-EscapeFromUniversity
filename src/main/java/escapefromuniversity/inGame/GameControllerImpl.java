@@ -16,7 +16,7 @@ import escapefromuniversity.menu.MenuControllerImpl;
 import escapefromuniversity.model.GameModel;
 import escapefromuniversity.model.GameModelImp;
 import escapefromuniversity.model.GameState;
-import escapefromuniversity.model.enemy.Boss;
+import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.quiz.QuizController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

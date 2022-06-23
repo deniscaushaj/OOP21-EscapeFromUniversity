@@ -2,7 +2,7 @@ package escapefromuniversity.inGame;
 
 import escapefromuniversity.launcher.LauncherView;
 import escapefromuniversity.model.GameState;
-import escapefromuniversity.model.player.Sprite;
+import escapefromuniversity.model.gameObject.player.Sprite;
 import escapefromuniversity.utilities.OSFixes;
 import escapefromuniversity.utilities.WindowSet;
 

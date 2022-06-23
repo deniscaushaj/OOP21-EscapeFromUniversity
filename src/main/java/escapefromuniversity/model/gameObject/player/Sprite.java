@@ -1,4 +1,4 @@
-package escapefromuniversity.model.player;
+package escapefromuniversity.model.gameObject.player;
 
 import java.awt.*;
 

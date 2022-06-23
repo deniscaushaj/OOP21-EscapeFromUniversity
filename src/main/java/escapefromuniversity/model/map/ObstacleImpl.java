@@ -13,8 +13,13 @@ import java.util.stream.Collectors;
 public class ObstacleImpl implements Obstacle {
 
     private static final String MAP_NAME = "final-map.tmx";
+<<<<<<< HEAD
     //TODO: Posizione dell'hit-box (48x48)
     
+=======
+    //TODO: Calcolare la posizione dell'hit-box come gameobject (48x48)
+
+>>>>>>> 6dc00950b1128f9e321b9b015b6008c5ea810803
     @Override
     public List<Integer> getObstacleList() throws ParserConfigurationException, IOException, SAXException {
         var map = new TMXMapParser(MAP_NAME);

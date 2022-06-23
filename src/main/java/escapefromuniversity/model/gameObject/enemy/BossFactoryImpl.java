@@ -1,13 +1,13 @@
-package escapefromuniversity.model.enemy;
+package escapefromuniversity.model.gameObject.enemy;
 
 import java.util.LinkedList;
 import java.util.List;
 
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.basics.Vector2D;
-import escapefromuniversity.model.bullet.Bullet;
-import escapefromuniversity.model.bullet.BulletFactory;
-import escapefromuniversity.model.bullet.BulletFactoryImpl;
+import escapefromuniversity.model.gameObject.bullet.Bullet;
+import escapefromuniversity.model.gameObject.bullet.BulletFactory;
+import escapefromuniversity.model.gameObject.bullet.BulletFactoryImpl;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.map.Room;
 

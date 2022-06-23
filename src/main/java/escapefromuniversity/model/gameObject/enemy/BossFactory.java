@@ -1,4 +1,4 @@
-package escapefromuniversity.model.enemy;
+package escapefromuniversity.model.gameObject.enemy;
 
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.basics.Vector2D;

@@ -1,4 +1,4 @@
-package escapefromuniversity.model.bullet;
+package escapefromuniversity.model.gameObject.bullet;
 
 import escapefromuniversity.model.basics.Point2D;
 
