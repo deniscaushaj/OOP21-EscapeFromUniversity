@@ -12,12 +12,20 @@ public abstract class AbstractStaticGameObject implements StaticGameObject{
 	private final Point2D position;
 	private final HitBoxImpl box;
 	private Room room;
+	private Byte byteValue;
 	
 	public AbstractStaticGameObject(GameObjectType type, Point2D position, Point2D upperCorner, Room room) {
 		this.type = type;
 		this.position = position;
 		this.box = new HitBoxImpl(position, upperCorner);
 		this.room = room;
+	}
+
+	public AbstractStaticGameObject(GameObjectType type, Point2D position, Point2D upperCorner, Byte byteValue) {
+		this.type = type;
+		this.position = position;
+		this.box = new HitBoxImpl(position, upperCorner);
+		this.byteValue = byteValue;
 	}
 	
 	@Override
@@ -59,6 +67,8 @@ public abstract class AbstractStaticGameObject implements StaticGameObject{
 		return this.room;
 	}
 
-	
+	public Byte getByteValue(){
+		return this.byteValue;
+	}
 
 }
