@@ -35,7 +35,7 @@ public class GameControllerImpl implements GameController{
 		this.keyHandler = new KeyHandlerImpl(this.gameModel, this);
 		this.setGameState(GameState.PLAY);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */

@@ -64,6 +64,7 @@ public class BulletImpl extends AbstractDynamicGameObject implements Bullet {
         case BULLET:
             if (this.getType().getCollisionType().equals(GameCollisionType.IMMUNE_BULLET)) {
                 this.getRoom().deleteGameObject(gObj2);
+//                this.getRoom().deleteGameObject(this); TODO ci andrebbe anche questo?
             }
             break;
         case IMMUNE_BULLET:
