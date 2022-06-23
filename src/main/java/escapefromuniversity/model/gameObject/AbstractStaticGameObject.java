@@ -21,7 +21,14 @@ public abstract class AbstractStaticGameObject implements StaticGameObject{
 		this.room = room;
 	}
 
-	public AbstractStaticGameObject(GameObjectType type, Point2D position, Point2D upperCorner, Byte byteValue) {
+	/**
+	 * A constructor for an AbstractStaticGameObject for modelling an obstacle.
+	 * @param type the type of GameObject
+	 * @param position the upper-left corner
+	 * @param upperCorner the lower-right corner
+	 * @param byteValue the byte value of the object
+	 */
+	public AbstractStaticGameObject(final GameObjectType type, final Point2D position, final Point2D upperCorner, final Byte byteValue) {
 		this.type = type;
 		this.position = position;
 		this.box = new HitBoxImpl(position, upperCorner);
@@ -67,7 +74,11 @@ public abstract class AbstractStaticGameObject implements StaticGameObject{
 		return this.room;
 	}
 
-	public Byte getByteValue(){
+	/**
+	 * Returns the byte value of an object.
+	 * @return the byte value of an object
+	 */
+	public Byte getByteValue() {
 		return this.byteValue;
 	}
 

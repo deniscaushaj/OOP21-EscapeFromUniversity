@@ -7,18 +7,23 @@ import escapefromuniversity.model.gameObject.GameObjectType;
 
 public class ObstacleObject extends AbstractStaticGameObject {
 
-    private Byte byteValue;
-
     public ObstacleObject(GameObjectType type, Point2D position, Point2D upperCorner, Room room) {
         super(type, position, upperCorner, room);
     }
 
-    public ObstacleObject(GameObjectType type, Point2D position, Point2D upperCorner, Byte byteValue){
+    /**
+     * A constructor for an ObstacleObject.
+     * @param type the type of GameObject
+     * @param position the upper-left corner
+     * @param upperCorner the lower-right corner
+     * @param byteValue the byte value of the object
+     */
+    public ObstacleObject(final GameObjectType type, final Point2D position, final Point2D upperCorner, final Byte byteValue) {
         super(type, position, upperCorner, byteValue);
     }
 
     @Override
-    public void collisionWith(GameObject gObj2) {
+    public void collisionWith(final GameObject gObj2) {
 
     }
 }

@@ -8,7 +8,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 /**
  * An implementation of Obstacle interface.
@@ -19,8 +18,7 @@ public class ObstacleImpl implements Obstacle {
 
     //TODO: Calcolare la posizione dell'hit-box come gameobject (48x48)
 
-    @Override
-    public List<ObstacleObject> getObstacleList(String property, GameObjectType obsType) throws ParserConfigurationException, IOException, SAXException {
+    private List<ObstacleObject> getObstacleList(final String property, final GameObjectType obsType) throws ParserConfigurationException, IOException, SAXException {
         var map = new TMXMapParser(MAP_NAME);
         return map.parse().getLayers()
                 .stream()
@@ -34,19 +32,23 @@ public class ObstacleImpl implements Obstacle {
                 .collect(Collectors.toList());
     }
 
+    @Override
     public List<ObstacleObject> getWallsList() throws ParserConfigurationException, IOException, SAXException {
         return getObstacleList("walls", GameObjectType.WALL);
     }
 
+    @Override
     public List<ObstacleObject> getNPCList() throws ParserConfigurationException, IOException, SAXException {
         return getObstacleList("npc", GameObjectType.WALL);
     }
 
+    @Override
     public List<ObstacleObject> getDoorList() throws ParserConfigurationException, IOException, SAXException {
         return getObstacleList("door", GameObjectType.DOOR);
     }
 
-    public List<ObstacleObject> getFornitureList() throws ParserConfigurationException, IOException, SAXException {
-        return getObstacleList("forniture", GameObjectType.FORNITURE);
+    @Override
+    public List<ObstacleObject> getFurnitureList() throws ParserConfigurationException, IOException, SAXException {
+        return getObstacleList("furniture", GameObjectType.FURNITURE);
     }
 }
