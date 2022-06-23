@@ -4,8 +4,8 @@ import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
 import escapefromuniversity.inGame.GameController;
-import escapefromuniversity.model.enemy.Boss;
-import escapefromuniversity.model.enemy.Boss.BossState;
+import escapefromuniversity.model.gameObject.enemy.Boss;
+import escapefromuniversity.model.gameObject.enemy.Boss.BossState;
 import escapefromuniversity.model.quiz.Competition;
 import escapefromuniversity.model.quiz.CompetitionImporter;
 import escapefromuniversity.model.quiz.Quiz;

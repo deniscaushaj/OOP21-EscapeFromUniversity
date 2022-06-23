@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.basics.Vector2D;
-import escapefromuniversity.model.enemy.Boss;
-import escapefromuniversity.model.enemy.BossFactory;
-import escapefromuniversity.model.enemy.BossFactoryImpl;
+import escapefromuniversity.model.gameObject.enemy.Boss;
+import escapefromuniversity.model.gameObject.enemy.BossFactory;
+import escapefromuniversity.model.gameObject.enemy.BossFactoryImpl;
 import escapefromuniversity.model.map.Room;
 import escapefromuniversity.model.map.RoomImpl;
 

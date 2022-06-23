@@ -1,11 +1,11 @@
-package escapefromuniversity.model.player;
+package escapefromuniversity.model.gameObject.player;
 
 import escapefromuniversity.model.basics.GameCollisionType;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.basics.Vector2D;
-import escapefromuniversity.model.bullet.Bullet;
-import escapefromuniversity.model.bullet.BulletFactory;
-import escapefromuniversity.model.bullet.BulletFactoryImpl;
+import escapefromuniversity.model.gameObject.bullet.Bullet;
+import escapefromuniversity.model.gameObject.bullet.BulletFactory;
+import escapefromuniversity.model.gameObject.bullet.BulletFactoryImpl;
 import escapefromuniversity.model.gameObject.AbstractDynamicGameObject;
 import escapefromuniversity.model.gameObject.Direction;
 import escapefromuniversity.model.gameObject.GameObject;

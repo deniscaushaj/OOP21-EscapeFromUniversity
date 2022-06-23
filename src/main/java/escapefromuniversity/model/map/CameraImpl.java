@@ -1,7 +1,7 @@
 package escapefromuniversity.model.map;
 
 import escapefromuniversity.model.basics.Point2D;
-import escapefromuniversity.model.player.Player;
+import escapefromuniversity.model.gameObject.player.Player;
 
 public class CameraImpl implements Camera {
 

@@ -13,12 +13,11 @@ import escapefromuniversity.menu.MenuControllerImpl;
 import escapefromuniversity.model.GameModel;
 import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.gameObject.Direction;
-import escapefromuniversity.model.player.Player;
-import escapefromuniversity.model.player.PlayerMovement;
-import escapefromuniversity.model.player.PlayerMovementImpl;
+import escapefromuniversity.model.gameObject.player.Player;
+import escapefromuniversity.model.gameObject.player.PlayerMovement;
+import escapefromuniversity.model.gameObject.player.PlayerMovementImpl;
 import escapefromuniversity.model.shop.ShopController;
 import escapefromuniversity.model.shop.ShopControllerImpl;
-import escapefromuniversity.model.shop.ShopView;
 
 public class KeyHandlerImpl implements KeyHandler {
 

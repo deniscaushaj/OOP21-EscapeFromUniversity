@@ -1,6 +1,6 @@
 package escapefromuniversity.model.shop;
 
-import escapefromuniversity.model.player.Player;
+import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.model.quiz.Competition;
 
 import java.awt.event.MouseEvent;

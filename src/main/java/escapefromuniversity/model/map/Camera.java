@@ -1,6 +1,6 @@
 package escapefromuniversity.model.map;
 
-import escapefromuniversity.model.player.Player;
+import escapefromuniversity.model.gameObject.player.Player;
 
 /**
  * An interface for the camera of the game

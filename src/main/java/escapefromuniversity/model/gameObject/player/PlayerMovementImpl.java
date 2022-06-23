@@ -1,12 +1,5 @@
-package escapefromuniversity.model.player;
+package escapefromuniversity.model.gameObject.player;
 
-import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
-import escapefromuniversity.utilities.OSFixes;
 import escapefromuniversity.model.basics.Vector2D;
 import escapefromuniversity.model.gameObject.Direction;
 
