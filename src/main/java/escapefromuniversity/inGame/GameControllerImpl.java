@@ -22,17 +22,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
 public class GameControllerImpl implements GameController{
-	private final GameModel model;
-	private final GameView view;
+	private final GameModel gameModel;
+	private final GameView gameView;
 	private final KeyHandler keyHandler;
 	private GameState gameState;
 	private List<Integer> gameObjID = new LinkedList();
 	private final MenuController menuController = new MenuControllerImpl(this);
 
 	public GameControllerImpl() {
-		this.model = new GameModelImp(this);
-		this.view = new GameViewImpl(this);
-		this.keyHandler = new KeyHandlerImpl(this.model, this);
+		this.gameModel = new GameModelImp(this);
+		this.gameView = new GameViewImpl(this);
+		this.keyHandler = new KeyHandlerImpl(this.gameModel, this);
 		this.setGameState(GameState.PLAY);
 	}
 	
@@ -50,10 +50,10 @@ public class GameControllerImpl implements GameController{
 				long deltaTime = currentTime - lastTime;
 				executeInput();
 				this.updateModel(deltaTime);
-				this.view.update();
+				this.gameView.update();
 				break;
 			case QUIZ:
-				this.goQuiz(this.model.getCurrentBoss());
+				this.goQuiz(this.gameModel.getCurrentBoss());
 				break;
 			case MENU:
 				this.menuController.startView();
@@ -67,9 +67,9 @@ public class GameControllerImpl implements GameController{
 			lastTime = currentTime;
 		}
 		if(this.getGameState() == GameState.WIN) {
-			this.saveScore(this.model.finalMark());
+			this.saveScore(this.gameModel.finalMark());
 		}
-		this.view.update();
+		this.gameView.update();
 		
 	}
 	
@@ -79,12 +79,12 @@ public class GameControllerImpl implements GameController{
 	}
 	
 	private void updateModel(long deltaTime) {
-		this.model.updateGame((double) deltaTime);
+		this.gameModel.updateGame((double) deltaTime);
 		this.gameObjID = this.getGameObjectID();
 	}
 	
 	private List<Integer> getGameObjectID(){
-		return this.model.getAllGameObj().stream()
+		return this.gameModel.getAllGameObj().stream()
 				.map(obj -> obj.getID())
 				.collect(Collectors.toList());
 	}
@@ -94,7 +94,7 @@ public class GameControllerImpl implements GameController{
 	 */
 	@Override
 	public int getPlayerLife() {
-		return this.model.getPlayer().getLife();
+		return this.gameModel.getPlayer().getLife();
 	}
 
 	/**
@@ -102,7 +102,7 @@ public class GameControllerImpl implements GameController{
 	 */
 	@Override
 	public int getPlayerCredits() {
-		return this.model.getPlayer().getCredits();
+		return this.gameModel.getPlayer().getCredits();
 	}
 
 	/**

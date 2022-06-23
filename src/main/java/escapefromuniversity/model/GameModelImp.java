@@ -13,10 +13,10 @@ import escapefromuniversity.model.gameObject.player.Player;
 
 public class GameModelImp implements GameModel{
 	private final MapManager mapManager;
-	private final GameController controller;
+	private final GameController gameController;
 	
 	public GameModelImp(GameController gameController) {
-		this.controller = gameController;
+		this.gameController = gameController;
 		this.mapManager = new MapManagerImpl(this);
 	}
 
@@ -42,7 +42,7 @@ public class GameModelImp implements GameModel{
 	 */
 	@Override
 	public void isWin() {
-		this.controller.setGameState(GameState.WIN);
+		this.gameController.setGameState(GameState.WIN);
 	}
 
 	/**
@@ -50,7 +50,7 @@ public class GameModelImp implements GameModel{
 	 */
 	@Override
 	public void isLost() {
-		this.controller.setGameState(GameState.LOST);
+		this.gameController.setGameState(GameState.LOST);
 	}
 
 	/**
@@ -66,7 +66,7 @@ public class GameModelImp implements GameModel{
 	 */
 	@Override
 	public void goQuiz(Boss boss) {
-		this.controller.setGameState(GameState.QUIZ);
+		this.gameController.setGameState(GameState.QUIZ);
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class GameModelImp implements GameModel{
 	 */
 	@Override
 	public void goShop() {
-		this.controller.setGameState(GameState.SHOP);
+		this.gameController.setGameState(GameState.SHOP);
 	}
 
 	@Override
