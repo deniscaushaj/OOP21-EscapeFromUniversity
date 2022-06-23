@@ -16,8 +16,8 @@ public class ExamImpl implements Exam {
 	private final String subjectName;
 	private int currentQuiz;
 	private boolean bonusQuiz;
-	private final int MAXSCORE = 30;
-	private final int PASSEDSCORE = 18;
+	private final static int MAXSCORE = 30;
+	private final static int PASSEDSCORE = 18;
 	private Player player; // TODO initialize
 	
 	
