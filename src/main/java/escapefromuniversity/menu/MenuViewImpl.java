@@ -4,6 +4,7 @@ import static escapefromuniversity.utilities.LauncherResizer.screenHeight;
 import static escapefromuniversity.utilities.LauncherResizer.screenWidth;
 
 import java.awt.Rectangle;
+import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -42,12 +43,36 @@ public class MenuViewImpl implements MenuView {
     private final JLabel command2 = new JLabel("le freccette per sparare");
     private final JLabel command3 = new JLabel("avvicinarsi agli oggetti per interagire");
 
+    private final Color color = new Color(232, 198, 42);
+
     /**
      * 
      * @param controller
      */
     public MenuViewImpl(final MenuController controller) {
         this.controller = controller;
+        this.btExit.setBounds(this.retBtExit);
+        this.btResume.setBounds(this.retBtResume);
+        this.btCommand.setBounds(this.retBtCommand);
+        this.btExit.setFont(WindowSet.FONT);
+        this.btResume.setFont(WindowSet.FONT);
+        this.btCommand.setFont(WindowSet.FONT);
+        this.btBack.setBackground(this.color);
+        this.btCommand.setBackground(this.color);
+        this.btExit.setBackground(this.color);
+        this.btResume.setBackground(this.color);
+        this.btExit.addActionListener(e -> this.controller.exit());
+        this.btResume.addActionListener(e -> this.controller.resume());
+        this.btCommand.addActionListener(e -> this.controller.getCommand());
+        this.command1.setBounds(this.retBtTextCommand1);
+        this.command1.setFont(WindowSet.FONT);
+        this.command2.setBounds(this.retBtTextCommand2);
+        this.command2.setFont(WindowSet.FONT);
+        this.command3.setBounds(this.retBtTextCommand3);
+        this.command3.setFont(WindowSet.FONT);
+        this.btBack.setBounds(this.retBtBack);
+        this.btBack.setFont(WindowSet.FONT);
+        this.btBack.addActionListener(e -> this.controller.back());
     }
 
     @Override
@@ -55,15 +80,6 @@ public class MenuViewImpl implements MenuView {
         this.menuPanel.removeAll();
         this.menuPanel.revalidate();
         this.menuPanel.repaint();
-        this.btExit.setBounds(this.retBtExit);
-        this.btResume.setBounds(this.retBtResume);
-        this.btCommand.setBounds(this.retBtCommand);
-        this.btExit.setFont(WindowSet.FONT);
-        this.btResume.setFont(WindowSet.FONT);
-        this.btCommand.setFont(WindowSet.FONT);
-        this.btExit.addActionListener(e -> this.controller.exit());
-        this.btResume.addActionListener(e -> this.controller.resume());
-        this.btCommand.addActionListener(e -> this.controller.getCommand());
         this.menuPanel.add(this.btExit);
         this.menuPanel.add(this.btResume);
         this.menuPanel.add(this.btCommand);
@@ -79,18 +95,9 @@ public class MenuViewImpl implements MenuView {
         this.menuPanel.removeAll();
         this.menuPanel.revalidate();
         this.menuPanel.repaint();
-        this.command1.setBounds(this.retBtTextCommand1);
-        this.command1.setFont(WindowSet.FONT);
-        this.menuPanel.add(this.command1);
-        this.command2.setBounds(this.retBtTextCommand2);
-        this.command2.setFont(WindowSet.FONT);
-        this.menuPanel.add(this.command2);
-        this.command3.setBounds(this.retBtTextCommand3);
-        this.command3.setFont(WindowSet.FONT);
+        this.menuPanel.add(this.command1);;
+        this.menuPanel.add(this.command2);;
         this.menuPanel.add(this.command3);
-        this.btBack.setBounds(this.retBtBack);
-        this.btBack.setFont(WindowSet.FONT);
-        this.btBack.addActionListener(e -> this.controller.back());
         this.menuPanel.add(this.btBack);
     }
 
