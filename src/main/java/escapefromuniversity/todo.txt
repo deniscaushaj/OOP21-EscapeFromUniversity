@@ -2,9 +2,11 @@ gamestate win e lost??
 
 hud e windowset??
 
-hitbox
+TODO credits al quiz 18, credits al boss 12
 
-check gridpane null
+TODO rifare finalmark, salvare in una lista e fare la media in 110 alla fine
+
+hitbox
 
 view e control
 parlare con ema per javafx menu
