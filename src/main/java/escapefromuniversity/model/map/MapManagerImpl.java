@@ -12,8 +12,8 @@ public class MapManagerImpl implements MapManager {
     private final GameModel model;
     private Room currentRoom;
 
-    public MapManagerImpl(GameModel model) {
-        this.model = model;
+    public MapManagerImpl(GameModel gameModel) {
+        this.model = gameModel;
         List<Room> roomList = this.createRooms();
         this.doors = this.createDoors();
 

@@ -28,8 +28,8 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 	private static final long DELAY_CLOSE = 5000;
 	private final Map<Integer,Sprite> animations = new HashMap<>();
 
-	public GameViewImpl(GameController controller) {
-		this.controller = controller;	
+	public GameViewImpl(GameController gameController) {
+		this.controller = gameController;
 		this.window = new JFrame();
 		this.window.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.window.setUndecorated(true);
