@@ -1,11 +1,21 @@
 package escapefromuniversity.model.quiz;
 
+/**
+ * 
+ *
+ */
 public class AnswerImpl implements Answer {
-
+	
 	private final int id;
 	private final String text;
 	private final boolean correct;
 	
+	/**
+	 * 
+	 * @param id
+	 * @param text
+	 * @param correct
+	 */
 	public AnswerImpl(final int id, final String text, final boolean correct) {
 		this.id = id;
 		this.text = text;

@@ -6,8 +6,8 @@ import javafx.scene.control.Button;
 import escapefromuniversity.inGame.GameController;
 import escapefromuniversity.model.enemy.Boss;
 import escapefromuniversity.model.enemy.Boss.BossState;
-import escapefromuniversity.model.quiz.Competition;
-import escapefromuniversity.model.quiz.CompetitionImporter;
+import escapefromuniversity.model.quiz.Exam;
+import escapefromuniversity.model.quiz.ExamImporter;
 import escapefromuniversity.model.quiz.Quiz;
 import javafx.event.ActionEvent;
 
@@ -27,7 +27,7 @@ public class QuizController {
 	@FXML
 	private Button questionButton, nextButton, uno, due, tre, quattro;
 	
-	private Competition comp;
+	private Exam comp;
 	private Quiz currentQuiz;
 	private Boss boss;
 	private GameController gc;
@@ -37,7 +37,7 @@ public class QuizController {
 	 */
 	public QuizController() {
 		try {
-			this.comp = new CompetitionImporter("boss1.json").importCompetition();
+			this.comp = new ExamImporter("boss1.json").importExam();
 			if (this.comp.hasNextQuiz()) {
 				currentQuiz = this.comp.getNextQuiz();
 			}
@@ -55,7 +55,7 @@ public class QuizController {
 		this.boss = boss;
 		this.gc = gc;
 		try {
-			this.comp = new CompetitionImporter(boss.getType().toString()).importCompetition();
+			this.comp = new ExamImporter(boss.getType().toString()).importExam();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -89,7 +89,7 @@ public class QuizController {
 			nextButton.setDisable(true);
 			//this.boss.setQuizResult(this.comp.getScore());
 			if (this.comp.hasPassed()) {
-				questionButton.setText("Complimenti, il prof ti ha promosso!");
+				questionButton.setText("Complimenti, sei stato promosso ti ha promosso!");
 				questionButton.setTextFill(Color.DARKGREEN);
 				questionButton.setStyle("-fx-background-image:url('questionRight.png');");
 				this.boss.kill();

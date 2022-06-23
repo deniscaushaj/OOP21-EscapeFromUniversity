@@ -1,7 +1,7 @@
 package escapefromuniversity.model.shop;
 
 import escapefromuniversity.model.player.Player;
-import escapefromuniversity.model.quiz.Competition;
+import escapefromuniversity.model.quiz.Exam;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -11,7 +11,7 @@ public class ShopControllerImpl implements ShopController {
     private final ShopView shopView;
     private Items itemType;
     private Player player; // TODO initialize
-    private Competition competition; // TODO same
+    private Exam competition; // TODO same
 
     public ShopControllerImpl() {
         this.shopView = new ShopViewImpl(this);

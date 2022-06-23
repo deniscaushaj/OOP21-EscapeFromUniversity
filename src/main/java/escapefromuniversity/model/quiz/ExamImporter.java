@@ -8,36 +8,36 @@ import escapefromuniversity.model.quiz.*;
 import escapefromuniversity.utilities.OSFixes;
 
 /**
- * Useful object for creating a Competition by importing quizzes from a JSON file.
+ * Useful object for creating a exam by importing quizzes from a JSON file.
  *
  */
-public class CompetitionImporter {
+public class ExamImporter {
 	
 	private final String path;
 	
 	/**
 	 * 
-	 * @param path Path of the JSON file from which to import the competition.
+	 * @param path Path of the JSON file from which to import the exam.
 	 */
-	public CompetitionImporter(final String path) {
+	public ExamImporter(final String path) {
 		this.path = path;
 	}
 	
 	/**
 	 * 
-	 * @return The competition built by importing the
+	 * @return The exam built by importing the
 	 * @throws Exception
 	 */
-	public Competition importCompetition() throws Exception {
+	public Exam importExam() throws Exception {
 
-		final CompetitionBuilder competitionBuilder = new CompetitionImpl.Builder();
+		final ExamBuilder examBuilder = new ExamImpl.Builder();
 	
 		final JSONParser parser = new JSONParser();
 		final Object obj = parser.parse(new FileReader(OSFixes.getLocation("quiz", path)));
         final JSONObject jsonObject = (JSONObject) obj;
 
-		competitionBuilder.setTeacher(jsonObject.get("teacher").toString());
-		competitionBuilder.setSubject(jsonObject.get("subject").toString());
+		examBuilder.setTeacher(jsonObject.get("teacher").toString());
+		examBuilder.setSubject(jsonObject.get("subject").toString());
 
 		final JSONArray quizes = (JSONArray) jsonObject.get("quiz");
 
@@ -49,9 +49,9 @@ public class CompetitionImporter {
 			for (int j = 0; j < answers.size(); j++) {
 				quizBuilder.addAnwser(new AnswerImpl(j + 1, answers.get(j).toString(), j + 1 == correct));
 			}
-			competitionBuilder.addQuiz(quizBuilder.build());
+			examBuilder.addQuiz(quizBuilder.build());
 		}
-		return competitionBuilder.build();
+		return examBuilder.build();
 	}
 	
 }

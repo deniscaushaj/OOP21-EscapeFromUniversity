@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Implementation of the Competitio interface
+ * Implementation of the Exam interface
  *
  */
-public class CompetitionImpl implements Competition {
+public class ExamImpl implements Exam {
 	
-	private final Map<Integer, Quiz> competition;
+	private final Map<Integer, Quiz> exam;
 	private final String teacherName;
 	private final String subjectName;
 	private int currentQuiz;
@@ -18,14 +18,14 @@ public class CompetitionImpl implements Competition {
 	private final int PASSEDSCORE = 18;
 	
 	
-	private CompetitionImpl(final Map<Integer, Quiz> competition, final String teacherName, final String subjectName) {
-		this.competition = competition;
+	private ExamImpl(final Map<Integer, Quiz> exam, final String teacherName, final String subjectName) {
+		this.exam = exam;
 		this.teacherName = teacherName;
 		this.subjectName = subjectName;
 	}
 	
 	private int completedQuiz() {
-		return (int) this.competition.entrySet().stream().filter(q -> q.getValue().hasBeenAnswered()).count();
+		return (int) this.exam.entrySet().stream().filter(q -> q.getValue().hasBeenAnswered()).count();
 	}
 	
 	@Override
@@ -51,22 +51,22 @@ public class CompetitionImpl implements Competition {
 	@Override
 	public Quiz getNextQuiz() {
 		currentQuiz++;
-		return this.competition.get(currentQuiz);
+		return this.exam.get(currentQuiz);
 	}
 	
 	@Override
 	public boolean hasNextQuiz() {
-		return currentQuiz + 1 <= competition.size();
+		return currentQuiz + 1 <= exam.size();
 	}
 	
 	@Override
 	public double getProgress() {
-		return (float) ((float) (this.completedQuiz()) / competition.size());
+		return (float) ((float) (this.completedQuiz()) / exam.size());
 	}
 	
 	@Override
 	public int getScore() {
-		return (int) this.getMaxScore() / this.getTotal() * (int) this.competition.entrySet().stream().filter(q -> q.getValue().hasBeenAnswered() && q.getValue().hasAnsweredWell().get()).count();
+		return (int) this.getMaxScore() / this.getTotal() * (int) this.exam.entrySet().stream().filter(q -> q.getValue().hasBeenAnswered() && q.getValue().hasAnsweredWell().get()).count();
 	}
 	
 	@Override
@@ -76,7 +76,7 @@ public class CompetitionImpl implements Competition {
 	
 	@Override
 	public int getTotal() {
-		return competition.size();
+		return exam.size();
 	}
 	
 	@Override
@@ -85,48 +85,48 @@ public class CompetitionImpl implements Competition {
 	}
 	
 	/**
-	 * A Builder for a Competition.
+	 * A Builder for an Exam.
 	 *
 	 */
-	public static class Builder implements CompetitionBuilder {
-		private final Map<Integer, Quiz> competition = new HashMap<>();;
+	public static class Builder implements ExamBuilder {
+		private final Map<Integer, Quiz> exam = new HashMap<>();;
 		private String teacherName;
 		private String subjectName;
 
 		@Override
-		public CompetitionBuilder addQuiz(final Quiz quiz) {
-			if (this.competition.containsKey(quiz.getID())) {
+		public ExamBuilder addQuiz(final Quiz quiz) {
+			if (this.exam.containsKey(quiz.getID())) {
 				throw new IllegalStateException("There is already a quiz with id " + quiz.getID() + " in this package");
 			} else {
-				this.competition.put(quiz.getID(), quiz);
+				this.exam.put(quiz.getID(), quiz);
 			}
 			return this;
 		}
 
 		@Override
-		public CompetitionBuilder setTeacher(final String teacherName) {
+		public ExamBuilder setTeacher(final String teacherName) {
 			this.teacherName = teacherName;
 			return this;
 		}
 
 		@Override
-		public CompetitionBuilder setSubject(final String subjectName) {
+		public ExamBuilder setSubject(final String subjectName) {
 			this.subjectName = subjectName;
 			return this;
 		}
 
 		@Override
-		public Competition build() {
+		public Exam build() {
 			if (this.teacherName == null) {
 				throw new IllegalStateException("This competition does not have a correctly set teacher");
 			}
 			if (this.subjectName == null) {
 				throw new IllegalStateException("This competition does not have a correctly set subject");
 			}
-			if (this.competition.size() < 1) {
+			if (this.exam.size() < 1) {
 				throw new IllegalStateException("This competition must have at least one quiz");
 			}
-			return new CompetitionImpl(this.competition, this.teacherName, this.subjectName);
+			return new ExamImpl(this.exam, this.teacherName, this.subjectName);
 		}
 
 	}

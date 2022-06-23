@@ -1,20 +1,20 @@
 package escapefromuniversity.model.quiz;
 
 /**
- * A competition is an object with quizzes and related questions and answers.
+ * A exam is an object with quizzes and related questions and answers.
  *
  */
-public interface Competition {
-
+public interface Exam {
+	
 	/**
 	 * 
-	 * @return The name of the teacher against whom the competition is being held
+	 * @return The name of the teacher against whom the exam is being held
 	 */
 	String getTeacherName();
 
 	/**
 	 * 
-	 * @return The subject matter on which the competition quizzes are based
+	 * @return The subject matter on which the exam quizzes are based
 	 */
 	String getSubjectName();
 
@@ -56,7 +56,7 @@ public interface Competition {
 	
 	/**
 	 * 
-	 * @return Max score for a competition
+	 * @return Max score for a exam
 	 */
 	int getMaxScore();
 	

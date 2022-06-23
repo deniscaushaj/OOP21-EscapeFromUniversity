@@ -14,7 +14,7 @@ public class ObstacleImpl implements Obstacle {
 
     private static final String MAP_NAME = "final-map.tmx";
     //TODO: Posizione dell'hit-box (48x48)
-
+    
     @Override
     public List<Integer> getObstacleList() throws ParserConfigurationException, IOException, SAXException {
         var map = new TMXMapParser(MAP_NAME);

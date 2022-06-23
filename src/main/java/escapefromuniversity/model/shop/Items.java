@@ -1,7 +1,7 @@
 package escapefromuniversity.model.shop;
 
 import escapefromuniversity.model.player.Player;
-import escapefromuniversity.model.quiz.Competition;
+import escapefromuniversity.model.quiz.Exam;
 
 public enum Items {
 
@@ -60,7 +60,7 @@ public enum Items {
      * @param ans the answer given by the user
      * @param competition the current exam
      */
-    public void doubleChance(Competition competition){
+    public void doubleChance(Exam competition){
         if(!competition.isBonusAvailable()){
             competition.setBonusQuiz(true);
         }
