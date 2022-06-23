@@ -41,7 +41,7 @@ public class GameModelImp implements GameModel{
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void isWin() {
+	public void setWin() {
 		this.gameController.setGameState(GameState.WIN);
 	}
 
@@ -49,8 +49,18 @@ public class GameModelImp implements GameModel{
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void isLost() {
+	public void setLost() {
 		this.gameController.setGameState(GameState.LOST);
+	}
+
+	@Override
+	public void setShop() {
+		this.gameController.setGameState(GameState.SHOP);
+	}
+
+	@Override
+	public void setQuiz(Boss boss) {
+		this.gameController.setGameState(GameState.QUIZ);
 	}
 
 	/**
@@ -59,14 +69,6 @@ public class GameModelImp implements GameModel{
 	@Override
 	public Player getPlayer() {
 		return this.mapManager.getPlayer();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void goQuiz(Boss boss) {
-		this.gameController.setGameState(GameState.QUIZ);
 	}
 
 	/**
@@ -81,22 +83,14 @@ public class GameModelImp implements GameModel{
 		return null;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
-	public void goShop() {
-		this.gameController.setGameState(GameState.SHOP);
-	}
-
-	@Override
-	public int finalMark() {
+	public int getPlayerFinalMark() {
 		return this.getPlayer().getFinalMark();
 	}
 
 	@Override
 	public Boss getCurrentBoss() {
 		return null;
-	}
+	} // TODO change return
 
 }

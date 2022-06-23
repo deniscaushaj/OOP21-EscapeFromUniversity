@@ -16,10 +16,9 @@ import escapefromuniversity.menu.MenuControllerImpl;
 import escapefromuniversity.model.GameModel;
 import escapefromuniversity.model.GameModelImp;
 import escapefromuniversity.model.GameState;
-import escapefromuniversity.model.gameObject.enemy.Boss;
-import escapefromuniversity.quiz.QuizController;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import escapefromuniversity.model.shop.ShopController;
+import escapefromuniversity.model.shop.ShopControllerImpl;
+import escapefromuniversity.quiz.QuizView;
 
 public class GameControllerImpl implements GameController{
 	private final GameModel gameModel;
@@ -28,6 +27,7 @@ public class GameControllerImpl implements GameController{
 	private GameState gameState;
 	private List<Integer> gameObjID = new LinkedList();
 	private final MenuController menuController = new MenuControllerImpl(this);
+	private final ShopController shopController = new ShopControllerImpl();
 
 	public GameControllerImpl() {
 		this.gameModel = new GameModelImp(this);
@@ -47,19 +47,24 @@ public class GameControllerImpl implements GameController{
 			long currentTime = System.currentTimeMillis();
 			switch(this.getGameState()) {
 			case PLAY:
+			case FIGHT:
+			case GRADUATED:
 				long deltaTime = currentTime - lastTime;
 				executeInput();
 				this.updateModel(deltaTime);
 				this.gameView.update();
 				break;
 			case QUIZ:
-				this.goQuiz();
+				this.gameView.addPauseBG();
+				this.startQuiz();
 				break;
 			case MENU:
+				this.gameView.addPauseBG();
 				this.menuController.startView();
 				break;
 			case SHOP:
-				//shop
+				this.gameView.addPauseBG();
+				this.startShop();
 				break;
 			default:
 				break;
@@ -67,7 +72,7 @@ public class GameControllerImpl implements GameController{
 			lastTime = currentTime;
 		}
 		if(this.getGameState() == GameState.WIN) {
-			this.saveScore(this.gameModel.finalMark());
+			this.saveScore(this.gameModel.getPlayerFinalMark());
 		}
 		this.gameView.update();
 		
@@ -108,8 +113,14 @@ public class GameControllerImpl implements GameController{
 	/**
 	 * {@inheritDoc}
 	 */
-	private void goQuiz() {
+	@Override
+	public void startQuiz() {
 		QuizView.startQuizCompetition();
+	}
+
+	@Override
+	public void startShop() {
+//		TODO start shop
 	}
 
 	/**

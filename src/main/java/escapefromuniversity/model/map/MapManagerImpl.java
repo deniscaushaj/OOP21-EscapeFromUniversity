@@ -44,8 +44,8 @@ public class MapManagerImpl implements MapManager {
     }
 
     @Override
-    public void goQuiz(Boss boss) {
-        this.gameModel.goQuiz(boss);
+    public void setupQuiz(Boss boss) {
+        this.gameModel.setQuiz(boss);
     }
 
     @Override
@@ -56,8 +56,8 @@ public class MapManagerImpl implements MapManager {
     }
 
     @Override
-    public void goShop() {
-        this.gameModel.goShop();
+    public void setupShop() {
+        this.gameModel.setShop();
     }
 
 }

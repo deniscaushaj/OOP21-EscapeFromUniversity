@@ -23,8 +23,7 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 	private final JFrame window;
 	private JPanel pause;
 	private BufferedImage tempScreen;
-	private final WindowSet windowSet = new WindowSet();
-	private final GameHUDPanel gameHUD = new GameHUDPanel(windowSet.getWindowRatio());
+	private final GameHUDPanel gameHUD = new GameHUDPanel(WindowSet.getWindowRatio());
 	private static final long DELAY_CLOSE = 5000;
 	private final Map<Integer,Sprite> animations = new HashMap<>();
 
@@ -92,13 +91,15 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 		
 	}
 
-	public void addPauseBG () {
+	@Override
+	public void addPauseBG() {
 		Color color = new Color(0,0,0,205);
 		this.pause.setBackground(color);
 		this.window.add(this.pause);
 	}
 
-	public void removePauseBG () {
+	@Override
+	public void removePauseBG() {
 		this.window.remove(this.pause);
 	}
 

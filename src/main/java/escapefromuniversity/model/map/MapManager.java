@@ -11,10 +11,10 @@ public interface MapManager {
 
     Player getPlayer();
 
-    void goQuiz(Boss boss);
+    void setupQuiz(Boss boss);
 
     void setCurrentRoom(Door door);
 
-    void goShop();
+    void setupShop();
 
 }
