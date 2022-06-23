@@ -57,7 +57,6 @@ public enum Items {
 
     /**
      * Gives another chance to the player when the answer is incorrect.
-     * @param ans the answer given by the user
      * @param competition the current exam
      */
     public void doubleChance(Competition competition){
