@@ -53,7 +53,7 @@ public class GameControllerImpl implements GameController{
 				this.gameView.update();
 				break;
 			case QUIZ:
-				this.goQuiz(this.gameModel.getCurrentBoss());
+				this.goQuiz();
 				break;
 			case MENU:
 				this.menuController.startView();
@@ -108,16 +108,8 @@ public class GameControllerImpl implements GameController{
 	/**
 	 * {@inheritDoc}
 	 */
-	private void goQuiz(Boss boss) {
-		try {
-		    final FXMLLoader loader = new FXMLLoader(getClass().getResource("/layouts/Quiz.fxml"));
-			final Parent startRoot = loader.load();
-			final QuizController quizControl = loader.getController();
-			quizControl.setParameters(boss, this);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
+	private void goQuiz() {
+		QuizView.startQuizCompetition();
 	}
 
 	/**
