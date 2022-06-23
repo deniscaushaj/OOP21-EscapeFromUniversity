@@ -15,6 +15,10 @@ public class ShopControllerImpl implements ShopController, MouseListener {
     private Items itemType;
     private Player player; // TODO initialize
     private Competition competition; // TODO same
+    private static final int resetHealthCost = 6;
+    private static final int increaseArmorCost = 12;
+    private static final int increaseDamageCost = 12;
+    private static final int doubleChanceCost = 18;
 
     public ShopControllerImpl() {
         this.shopView = new ShopViewImpl(this);
@@ -39,15 +43,19 @@ public class ShopControllerImpl implements ShopController, MouseListener {
         switch(this.getItemType()) {
             case RESET_HEALTH:
                 this.itemType.resetHealth(this.player);
+                this.player.setCredits(this.player.getCredits() - resetHealthCost);
                 break;
             case INCREASE_ARMOR:
                 this.itemType.increaseArmor(this.player);
+                this.player.setCredits(this.player.getCredits() - increaseArmorCost);
                 break;
             case INCREASE_DAMAGE:
                 this.itemType.increaseDamage(this.player);
+                this.player.setCredits(this.player.getCredits() - increaseDamageCost);
                 break;
             case DOUBLE_CHANCE:
                 this.itemType.doubleChance(this.competition);
+                this.player.setCredits(this.player.getCredits() - doubleChanceCost);
                 break;
             default: {
             }
