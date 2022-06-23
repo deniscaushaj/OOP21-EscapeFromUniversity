@@ -113,9 +113,10 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
                 if (gObj2.getType().equals(GameObjectType.PLAYER)) {
                     if (this.bossState.equals(BossState.QUIZ)) {
                         this.getRoom().goQuiz(this);
+                    } else {
+                        final Player player = (Player) gObj2;
+                        player.takeDamage(this.getImpactDamage());
                     }
-                    final Player player = (Player) gObj2;
-                    player.takeDamage(this.getImpactDamage());
                 }
                 this.setPosition(this.getPreviousPosition());
                 break;
