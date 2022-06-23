@@ -9,11 +9,11 @@ import java.util.Map;
 
 public class MapManagerImpl implements MapManager {
     private final Map<Door,Door> doors;
-    private final GameModel model;
+    private final GameModel gameModel;
     private Room currentRoom;
 
-    public MapManagerImpl(GameModel model) {
-        this.model = model;
+    public MapManagerImpl(GameModel gameModel) {
+        this.gameModel = gameModel;
         List<Room> roomList = this.createRooms();
         this.doors = this.createDoors();
 
@@ -44,8 +44,8 @@ public class MapManagerImpl implements MapManager {
     }
 
     @Override
-    public void goQuiz(Boss boss) {
-        this.model.goQuiz(boss);
+    public void setupQuiz(Boss boss) {
+        this.gameModel.setQuiz(boss);
     }
 
     @Override
@@ -56,8 +56,8 @@ public class MapManagerImpl implements MapManager {
     }
 
     @Override
-    public void goShop() {
-        this.model.goShop();
+    public void setupShop() {
+        this.gameModel.setShop();
     }
 
 }

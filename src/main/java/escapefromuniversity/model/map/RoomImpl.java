@@ -66,7 +66,7 @@ public class RoomImpl implements Room {
 
 	@Override
 	public void goQuiz(final Boss boss) {
-		this.getMapManager().goQuiz(boss);
+		this.getMapManager().setupQuiz(boss);
 	}
 
 	@Override

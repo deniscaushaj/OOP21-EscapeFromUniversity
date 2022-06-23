@@ -19,17 +19,16 @@ import static escapefromuniversity.utilities.LauncherResizer.screenWidth;
 
 public class GameViewImpl extends JFrame implements GameView, KeyListener {
 
-	private GameController controller;
+	private GameController gameController;
 	private final JFrame window;
 	private JPanel pause;
 	private BufferedImage tempScreen;
-	private final WindowSet windowSet = new WindowSet();
-	private final GameHUDPanel gameHUD = new GameHUDPanel(windowSet.getWindowRatio());
+	private final GameHUDPanel gameHUD = new GameHUDPanel(WindowSet.getWindowRatio());
 	private static final long DELAY_CLOSE = 5000;
 	private final Map<Integer,Sprite> animations = new HashMap<>();
 
-	public GameViewImpl(GameController controller) {
-		this.controller = controller;	
+	public GameViewImpl(GameController gameController) {
+		this.gameController = gameController;
 		this.window = new JFrame();
 		this.window.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.window.setUndecorated(true);
@@ -47,7 +46,7 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 		this.tempScreen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g2d = (Graphics2D) this.tempScreen.getGraphics();
 
-		this.controller.setGameState(GameState.MENU);
+		this.gameController.setGameState(GameState.MENU);
 		drawToScreen();
 		drawToImage();
 	}
@@ -60,10 +59,7 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 
 	public void drawToImage () {
 //      g2d.setFont(null); TODO choose font
-		switch (this.controller.getGameState()) { //pauseBG forse non qua
-			case DIALOGUE:
-				this.addPauseBG();
-				break;
+		switch (this.gameController.getGameState()) { //pauseBG forse non qua
 			case FIGHT:
 				break;
 			case MENU:
@@ -81,10 +77,8 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 //				showShop
 				break;
 			case LOST:
-				this.end(this.controller.getGameState());
-				break;
 			case WIN:
-				this.end(this.controller.getGameState());
+				this.end(this.gameController.getGameState());
 				break;
 			default:
 				break;
@@ -97,13 +91,15 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 		
 	}
 
-	public void addPauseBG () {
+	@Override
+	public void addPauseBG() {
 		Color color = new Color(0,0,0,205);
 		this.pause.setBackground(color);
 		this.window.add(this.pause);
 	}
 
-	public void removePauseBG () {
+	@Override
+	public void removePauseBG() {
 		this.window.remove(this.pause);
 	}
 
@@ -113,27 +109,27 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent key) {
-		if(this.controller != null) {
-			this.controller.pressKey(key);
+		if(this.gameController != null) {
+			this.gameController.pressKey(key);
 		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent key) {
-		if(this.controller != null) {
-			this.controller.releaseKey(key);
+		if(this.gameController != null) {
+			this.gameController.releaseKey(key);
 		}
 	}
 
 	@Override
 	public void openMenu() {
-		this.controller.setGameState(GameState.MENU);
+		this.gameController.setGameState(GameState.MENU);
 	}
 	
 	private void end(GameState gameState) {
 		if(gameState == GameState.WIN) {
 			//aggiorna con immagine vittoria
-		}else {
+		}else if(gameState == GameState.LOST){
 			//aggiorna con immagine sconfitta
 		}
 		try {

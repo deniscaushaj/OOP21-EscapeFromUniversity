@@ -18,6 +18,7 @@ public class ExamImpl implements Exam {
 	private boolean bonusQuiz;
 	private final static int MAXSCORE = 30;
 	private final static int PASSEDSCORE = 18;
+	private final static int CREDITS = 18;
 	private Player player; // TODO initialize
 	
 	
@@ -136,7 +137,8 @@ public class ExamImpl implements Exam {
 
 	@Override
 	public void addCredits() {
-		this.player.setCredits(this.player.getCredits() + this.getScore());
+		this.player.setCredits(this.player.getCredits() + CREDITS);
+		this.player.setFinalMark(this.getScore());
 	}
 	
 	

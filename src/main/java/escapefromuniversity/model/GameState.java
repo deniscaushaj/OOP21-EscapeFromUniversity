@@ -19,9 +19,9 @@ public enum GameState {
      */   
     FIGHT,
     /**
-     * Identifies the dialogue state.
+     * Identifies the graduated state.
      */   
-    DIALOGUE,
+    GRADUATED,
     /**
      * Identifies the shop state.
      */   

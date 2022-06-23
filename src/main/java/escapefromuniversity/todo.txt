@@ -1,10 +1,8 @@
 gamestate win e lost??
 
-hud e windowset??
+grafica shop
 
-TODO credits al quiz 18, credits al boss 12
-
-TODO rifare finalmark, salvare in una lista e fare la media in 110 alla fine
+collision with door, game state graduated
 
 hitbox
 

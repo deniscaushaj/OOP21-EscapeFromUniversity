@@ -13,10 +13,10 @@ import escapefromuniversity.model.gameObject.player.Player;
 
 public class GameModelImp implements GameModel{
 	private final MapManager mapManager;
-	private final GameController controller;
+	private final GameController gameController;
 	
-	public GameModelImp(GameController controller) {
-		this.controller = controller;
+	public GameModelImp(GameController gameController) {
+		this.gameController = gameController;
 		this.mapManager = new MapManagerImpl(this);
 	}
 
@@ -41,16 +41,26 @@ public class GameModelImp implements GameModel{
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void isWin() {
-		this.controller.setGameState(GameState.WIN);
+	public void setWin() {
+		this.gameController.setGameState(GameState.WIN);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void isLost() {
-		this.controller.setGameState(GameState.LOST);
+	public void setLost() {
+		this.gameController.setGameState(GameState.LOST);
+	}
+
+	@Override
+	public void setShop() {
+		this.gameController.setGameState(GameState.SHOP);
+	}
+
+	@Override
+	public void setQuiz(Boss boss) {
+		this.gameController.setGameState(GameState.QUIZ);
 	}
 
 	/**
@@ -59,14 +69,6 @@ public class GameModelImp implements GameModel{
 	@Override
 	public Player getPlayer() {
 		return this.mapManager.getPlayer();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void goQuiz(Boss boss) {
-		this.controller.setGameState(GameState.QUIZ);
 	}
 
 	/**
@@ -81,22 +83,14 @@ public class GameModelImp implements GameModel{
 		return null;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
-	public void goShop() {
-		this.controller.setGameState(GameState.SHOP);
-	}
-
-	@Override
-	public int finalMark() {
+	public int getPlayerFinalMark() {
 		return this.getPlayer().getFinalMark();
 	}
 
 	@Override
 	public Boss getCurrentBoss() {
 		return null;
-	}
+	} // TODO change return
 
 }

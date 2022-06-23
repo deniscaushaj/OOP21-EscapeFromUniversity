@@ -9,7 +9,6 @@ import escapefromuniversity.model.gameObject.player.Player;
 
 public interface GameModel {
 	
-	
 	/**
 	 * 
 	 * @return a list of all GameObject in game.
@@ -21,29 +20,25 @@ public interface GameModel {
 	 * @param deltaTime : time since the last update.
 	 */
 	void updateGame(double deltaTime);
+
+	void setWin();
 	
-	
-	void isWin();
-	
-	
-	void isLost();
-	
+	void setLost();
+
+	void setShop();
+
+	void setQuiz(Boss boss);
+
 	/**
 	 * 
 	 * @return the Player object.
 	 */
 	Player getPlayer();
 	
-	
 	Point2D getPositionOfID(int id);
 	
-	void goQuiz(Boss boss);
-	
-	void goShop();
-	
-	int finalMark();
+	int getPlayerFinalMark();
 	
 	Boss getCurrentBoss();
-	
 
 }

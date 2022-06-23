@@ -16,27 +16,26 @@ import escapefromuniversity.menu.MenuControllerImpl;
 import escapefromuniversity.model.GameModel;
 import escapefromuniversity.model.GameModelImp;
 import escapefromuniversity.model.GameState;
-import escapefromuniversity.model.gameObject.enemy.Boss;
-import escapefromuniversity.quiz.QuizController;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import escapefromuniversity.model.shop.ShopController;
+import escapefromuniversity.model.shop.ShopControllerImpl;
+import escapefromuniversity.quiz.QuizView;
 
 public class GameControllerImpl implements GameController{
-	private final GameModel model;
-	private final GameView view;
+	private final GameModel gameModel;
+	private final GameView gameView;
 	private final KeyHandler keyHandler;
 	private GameState gameState;
 	private List<Integer> gameObjID = new LinkedList();
 	private final MenuController menuController = new MenuControllerImpl(this);
+	private final ShopController shopController = new ShopControllerImpl();
 
 	public GameControllerImpl() {
-		this.model = new GameModelImp(this);
-		this.view = new GameViewImpl(this);
-		this.keyHandler = new KeyHandlerImpl(this.model, this);
+		this.gameModel = new GameModelImp(this);
+		this.gameView = new GameViewImpl(this);
+		this.keyHandler = new KeyHandlerImpl(this.gameModel, this);
 		this.setGameState(GameState.PLAY);
 	}
 	
-
 	/**
 	 * {@inheritDoc}
 	 */
@@ -47,29 +46,42 @@ public class GameControllerImpl implements GameController{
 			long currentTime = System.currentTimeMillis();
 			switch (this.getGameState()) {
 			case PLAY:
+			case FIGHT:
+			case GRADUATED:
 				long deltaTime = currentTime - lastTime;
 				executeInput();
 				this.updateModel(deltaTime);
-				this.view.update();
+				this.gameView.update();
 				break;
 			case QUIZ:
-				this.goQuiz(this.model.getCurrentBoss());
+				this.gameView.addPauseBG();
+				this.startQuiz();
 				break;
 			case MENU:
+				this.gameView.addPauseBG();
 				this.menuController.startView();
 				break;
 			case SHOP:
-				//shop
+				this.gameView.addPauseBG();
+				this.startShop();
 				break;
 			default:
 				break;
 			}
 			lastTime = currentTime;
 		}
+<<<<<<< HEAD
 		if (this.getGameState() == GameState.WIN) {
 			this.saveScore(this.model.finalMark());
 		}
 		this.view.update();
+=======
+		if(this.getGameState() == GameState.WIN) {
+			this.saveScore(this.gameModel.getPlayerFinalMark());
+		}
+		this.gameView.update();
+		
+>>>>>>> 28b48d560cae2d45051231d63b55518ba541de03
 	}
 	
 	
@@ -77,6 +89,7 @@ public class GameControllerImpl implements GameController{
 		return this.getGameState() != GameState.LOST && this.getGameState() != GameState.WIN;
 	}
 	
+<<<<<<< HEAD
 	private void updateModel(final long deltaTime) {
 		this.model.updateGame((double) deltaTime);
 		this.gameObjID = this.getGameObjectID();
@@ -84,6 +97,15 @@ public class GameControllerImpl implements GameController{
 	
 	private List<Integer> getGameObjectID() {
 		return this.model.getAllGameObj().stream()
+=======
+	private void updateModel(long deltaTime) {
+		this.gameModel.updateGame((double) deltaTime);
+		this.gameObjID = this.getGameObjectID();
+	}
+	
+	private List<Integer> getGameObjectID(){
+		return this.gameModel.getAllGameObj().stream()
+>>>>>>> 28b48d560cae2d45051231d63b55518ba541de03
 				.map(obj -> obj.getID())
 				.collect(Collectors.toList());
 	}
@@ -93,7 +115,7 @@ public class GameControllerImpl implements GameController{
 	 */
 	@Override
 	public int getPlayerLife() {
-		return this.model.getPlayer().getLife();
+		return this.gameModel.getPlayer().getLife();
 	}
 
 	/**
@@ -101,9 +123,10 @@ public class GameControllerImpl implements GameController{
 	 */
 	@Override
 	public int getPlayerCredits() {
-		return this.model.getPlayer().getCredits();
+		return this.gameModel.getPlayer().getCredits();
 	}
 
+<<<<<<< HEAD
 	private void goQuiz(final Boss boss) {
 		try {
 		    final FXMLLoader loader = new FXMLLoader(getClass().getResource("/layouts/Quiz.fxml"));
@@ -113,6 +136,19 @@ public class GameControllerImpl implements GameController{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+=======
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void startQuiz() {
+		QuizView.startQuizCompetition();
+	}
+
+	@Override
+	public void startShop() {
+//		TODO start shop
+>>>>>>> 28b48d560cae2d45051231d63b55518ba541de03
 	}
 
 	/**
