@@ -36,7 +36,6 @@ public class GameControllerImpl implements GameController{
 		this.setGameState(GameState.PLAY);
 	}
 	
-
 	/**
 	 * {@inheritDoc}
 	 */
