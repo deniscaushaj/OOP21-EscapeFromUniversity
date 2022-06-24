@@ -1,4 +1,4 @@
-package escapefromuniversity.model.shop;
+package escapefromuniversity.inGame;
 
 import javax.swing.*;
 
