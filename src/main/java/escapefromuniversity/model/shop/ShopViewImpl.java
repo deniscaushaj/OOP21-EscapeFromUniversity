@@ -96,4 +96,9 @@ public class ShopViewImpl extends JPanel implements ShopView {
         button.setEnabled(false);
     }
 
+    @Override
+    public void close() {
+        this.setVisible(false);
+    }
+
 }

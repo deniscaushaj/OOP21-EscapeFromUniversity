@@ -17,4 +17,6 @@ public interface ShopView {
     void setItemInfo(String itemInfo);
 
     void setButtonNotClickable(JButton button);
+
+    void close();
 }
