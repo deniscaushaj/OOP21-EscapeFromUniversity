@@ -1,6 +1,9 @@
 package escapefromuniversity.model.map;
 
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * A class which models a Layer.
@@ -11,19 +14,20 @@ public class Layer {
     private final String name;
     private final List<List<Integer>> data;
     private final int width;
+    private final int height;
 
     /**
      * A constructor for the layer.
      * @param properties the list of properties of a layer
      * @param name the name of the layer
      * @param data the list of data of a layer
-     * @param width the width of the layer
      */
-    public Layer(final List<String> properties, final String name, final List<List<Integer>> data, final int width) {
+    public Layer(final List<String> properties, final String name, final List<List<Integer>> data) {
         this.properties = properties;
         this.name = name;
         this.data = List.copyOf(data);
-        this.width = width;
+        this.width = data.get(0).size();
+        this.height = data.size();
     }
 
     /**
@@ -56,6 +60,23 @@ public class Layer {
      */
     public int getWidth() {
         return this.width;
+    }
+
+    /**
+     * Returns the width of the layer.
+     * @return the width of the layer
+     */
+    public int getHeight() {
+        return this.height;
+    }
+
+    public List<Tile> getTiles() {
+        return IntStream.range(0, this.getHeight())
+                .mapToObj(y -> IntStream.range(0, this.getWidth())
+                        .mapToObj(x -> new Tile(x, y, this.data.get(y).get(x)))
+                        .filter(Tile::isVisible))
+                .flatMap(Function.identity())
+                .collect(Collectors.toList());
     }
 
     @Override
