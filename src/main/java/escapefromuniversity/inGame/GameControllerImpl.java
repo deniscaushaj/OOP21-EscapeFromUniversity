@@ -24,7 +24,12 @@ import escapefromuniversity.quiz.QuizView;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
-public class GameControllerImpl implements GameController{
+/**
+ * 
+ * class control game.
+ *
+ */
+public class GameControllerImpl implements GameController {
 	private final GameModel gameModel;
 	private final GameView gameView;
 	private final KeyHandler keyHandler;
@@ -33,6 +38,9 @@ public class GameControllerImpl implements GameController{
 	private final MenuController menuController = new MenuControllerImpl(this);
 	private final ShopController shopController = new ShopControllerImpl();
 
+	/**
+	 * 
+	 */
 	public GameControllerImpl() {
 		this.gameModel = new GameModelImp(this);
 		this.gameView = new GameViewImpl(this);
@@ -46,9 +54,9 @@ public class GameControllerImpl implements GameController{
     @Override
     public void gameLoop() {
         long lastTime = System.currentTimeMillis();
-        while(continueGame()) {
+        while (continueGame()) {
             long currentTime = System.currentTimeMillis();
-            switch(this.getGameState()) {
+            switch (this.getGameState()) {
             case PLAY:
             case FIGHT:
             case GRADUATED:
@@ -74,24 +82,22 @@ public class GameControllerImpl implements GameController{
             }
             lastTime = currentTime;
         }
-        if(this.getGameState() == GameState.WIN) {
+        if (this.getGameState() == GameState.WIN) {
             this.saveScore(this.gameModel.getPlayerFinalMark());
         }
         this.gameView.update();
-        
     }
-    
-    
+
     private boolean continueGame() {
         return this.getGameState() != GameState.LOST && this.getGameState() != GameState.WIN;
     }
-    
-    private void updateModel(long deltaTime) {
+
+    private void updateModel(final long deltaTime) {
         this.gameModel.updateGame((double) deltaTime);
         this.gameObjID = this.getGameObjectID();
     }
-    
-    private List<Integer> getGameObjectID(){
+
+    private List<Integer> getGameObjectID() {
         return this.gameModel.getAllGameObj().stream()
                 .map(obj -> obj.getID())
                 .collect(Collectors.toList());
@@ -134,7 +140,7 @@ public class GameControllerImpl implements GameController{
      * {@inheritDoc}
      */
     @Override
-    public GameState getGameState () {
+    public GameState getGameState() {
         return gameState;
     }
 
@@ -142,7 +148,7 @@ public class GameControllerImpl implements GameController{
      * {@inheritDoc}
      */
     @Override
-    public void setGameState(GameState gameState) {
+    public void setGameState(final GameState gameState) {
         this.gameState = gameState;
     }
 
@@ -165,8 +171,8 @@ public class GameControllerImpl implements GameController{
     public void releaseKey(final KeyEvent key) {
         this.keyHandler.setKey(key.getKeyCode(), false);
     }
-    
-    private void saveScore(int mark) {
+
+    private void saveScore(final int mark) {
         try {
             WriteFile w = new WriteFile("score", "score.txt");
             DateTimeFormatter dtf4 = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
