@@ -3,11 +3,26 @@
 <?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import escapefromuniversity.view.ResizableCanvas?>
 
-<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1" fx:controller="escapefromuniversity.model.map.MapLoader">
-   <children>
-      <Button fx:id="myButton" onMouseClicked="#myButtonOnClickHandler" mnemonicParsing="false" text="Button" />
-      <Slider fx:id="zoomSlider" showTickLabels="true" showTickMarks="true" min="1" max="30" majorTickUnit="1"/>
-      <Canvas fx:id="gameCanvas" height="1000.0" width="1000.0" />
-   </children>
+<!--<VBox fx:id="vbox" xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="escapefromuniversity.model.map.MapLoader">
+   <Button fx:id="myButton" onMouseClicked="#myButtonOnClickHandler" mnemonicParsing="false" text="Button"/>
+   <Slider fx:id="radiusSlider" showTickLabels="true" showTickMarks="true" min="1" max="200" majorTickUnit="1"/>
+   <Slider fx:id="xSlider" showTickLabels="true" showTickMarks="true" min="1" max="200" majorTickUnit="1"/>
+   <Slider fx:id="ySlider" showTickLabels="true" showTickMarks="true" min="1" max="200" majorTickUnit="1"/>
+   <HBox fx:id="hbox">
+      <ResizableCanvas fx:id="gameCanvas" width="600" height="200"/>
+   </HBox>
 </VBox>
+-->
+<BorderPane xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1"
+            prefHeight="600"
+            prefWidth="600"
+            fx:controller="escapefromuniversity.model.map.MapLoader">
+   <center>
+      <ResizableCanvas fx:id="gameCanvas"
+                       focusTraversable="true"
+                       onKeyPressed="#onKeyPressed" />
+   </center>
+</BorderPane>
