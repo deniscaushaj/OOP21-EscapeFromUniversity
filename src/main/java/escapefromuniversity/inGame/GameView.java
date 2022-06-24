@@ -28,4 +28,6 @@ public interface GameView {
      * 
      */
     void openMenu();
+
+    void end(GameState gameState);
 }

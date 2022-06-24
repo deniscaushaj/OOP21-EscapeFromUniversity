@@ -101,8 +101,9 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 	public void openMenu() {
 		this.gameController.setGameState(GameState.MENU);
 	}
-	
-	private void end(GameState gameState) {
+
+	@Override
+	public void end(GameState gameState) {
 		if(gameState == GameState.WIN) {
 			//aggiorna con immagine vittoria
 		}else if(gameState == GameState.LOST){
