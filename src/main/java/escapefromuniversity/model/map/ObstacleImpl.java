@@ -7,7 +7,9 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * An implementation of Obstacle interface.
@@ -22,12 +24,8 @@ public class ObstacleImpl implements Obstacle {
         return map.parse().getLayers()
                 .stream()
                 .filter(l -> l.getProperties().contains(property))
-                .flatMap(l -> l.getData()
-                                .stream()
-                                .flatMap(ll -> ll
-                                        .stream()
-                                        .map(x -> new ObstacleObject(obsType, calcTilePosInPixel(l, ll.indexOf(x)), x.byteValue()))
-                                        .filter(d -> d.getByteValue() != 0)))
+                .flatMap(l -> l.getTiles().stream())
+                .map(t -> new ObstacleObject(obsType, this.calcTilePosInPixel(t.getX(), t.getY())))
                 .collect(Collectors.toList());
     }
 
@@ -51,11 +49,8 @@ public class ObstacleImpl implements Obstacle {
         return getObstacleList("furniture", GameObjectType.FURNITURE);
     }
 
-    private Rectangle calcTilePosInPixel(final Layer layer, final int pos) {
-        var cols = layer.getWidth();
-        var x = pos % cols;
-        var y = pos / cols;
+    private Rectangle calcTilePosInPixel(final int x, final int y) {
         return new Rectangle(new Point2D(x * TILE_DIMENSION, y * TILE_DIMENSION),
-                             new Point2D((x + 1) * TILE_DIMENSION, (y + 1) * TILE_DIMENSION));
+                new Point2D((x + 1) * TILE_DIMENSION, (y + 1) * TILE_DIMENSION));
     }
 }
