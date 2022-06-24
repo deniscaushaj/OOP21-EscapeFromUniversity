@@ -28,6 +28,8 @@ public interface GameController {
      */
     int getPlayerCredits();
 
+    void startQuiz();
+
     /**
      * 
      */
