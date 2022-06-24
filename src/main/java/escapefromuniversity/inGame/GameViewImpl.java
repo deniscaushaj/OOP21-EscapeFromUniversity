@@ -2,10 +2,8 @@ package escapefromuniversity.inGame;
 
 import escapefromuniversity.launcher.LauncherView;
 import escapefromuniversity.model.GameState;
-import escapefromuniversity.model.gameObject.player.Sprite;
 import escapefromuniversity.utilities.OSFixes;
 import escapefromuniversity.utilities.WindowSet;
-import javafx.stage.Window;
 
 import javax.swing.*;
 import java.awt.*;
@@ -45,51 +43,28 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 
 		this.pause = new JPanel();
 		this.tempScreen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_ARGB);
-		Graphics2D g2d = (Graphics2D) this.tempScreen.getGraphics();
+		Graphics2D g2d = this.tempScreen.createGraphics();
 		g2d.setFont(WindowSet.FONT);
 
-		this.gameController.setGameState(GameState.MENU);
 		drawToScreen();
 		drawToImage();
 	}
 
 	public void drawToScreen() {
-		Graphics g = getGraphics();
+		Graphics g = this.window.getGraphics();
 		g.drawImage(this.tempScreen, 0, 0, screenWidth, screenHeight, null);
+		
 //		g.dispose();
 	}
 
 	public void drawToImage () {
-		switch (this.gameController.getGameState()) { //pauseBG forse non qua
-			case FIGHT:
-				break;
-			case MENU:
-				this.addPauseBG();
-				break;
-			case PLAY:
-				this.removePauseBG();
-				break;
-			case QUIZ:
-				this.addPauseBG();
-//				new QuizView().start();	stage?? togliere startcompetition
-				break;
-			case SHOP:
-				this.addPauseBG();
-//				showShop
-				break;
-			case LOST:
-			case WIN:
-				this.end(this.gameController.getGameState());
-				break;
-			default:
-				break;
-		}
+		// camera, hud, dynamic
+
 	}
 
 	@Override
 	public void update() {
-		this.drawToImage();
-		
+
 	}
 
 	@Override

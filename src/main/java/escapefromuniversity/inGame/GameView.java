@@ -1,5 +1,7 @@
 package escapefromuniversity.inGame;
 
+import escapefromuniversity.model.GameState;
+
 /**
  * 
  * interface of game view.
