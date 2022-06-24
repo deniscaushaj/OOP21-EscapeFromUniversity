@@ -13,13 +13,13 @@ public enum Items {
      */
     INCREASE_DAMAGE, INCREASE_ARMOR, RESET_HEALTH, DOUBLE_CHANCE;
 
-    private static final int DAMAGE_BUFF = 10;
-    private static final int ARMOR_BUFF = 10;
+    private static final int DAMAGE_BUFF = 5;
+    private static final int ARMOR_BUFF = 5;
 
     /**
      * Increase player's attack.
      * @param player the player
-     * @return true if current damage is less then max damage, false otherwise
+     * @return {@code true} if current damage is less than max damage, {@code false} otherwise
      */
     public boolean increaseDamage(final Player player) {
         var maxDam = player.getMaxDamage();
@@ -34,7 +34,7 @@ public enum Items {
     /**
      * Increase player's armor.
      * @param player the player
-     * @return true if current armor is less than max armor, false otherwise
+     * @return {@code true} if current armor is less than max armor, {@code false} otherwise
      */
     public boolean increaseArmor(final Player player) {
         var maxDef = player.getMaxArmor();
@@ -49,7 +49,7 @@ public enum Items {
     /**
      * Reset player's health.
      * @param player the player
-     * @return true if current life is less than max life, false otherwise
+     * @return {@code true} if current life is less than max life, {@code false} otherwise
      */
     public boolean resetHealth(final Player player) {
         var maxLife = player.getMaxLife();
