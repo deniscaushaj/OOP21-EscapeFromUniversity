@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import escapefromuniversity.inGame.GameController;
-import escapefromuniversity.inGame.GameView;
-import escapefromuniversity.inGame.GameViewImpl;
+import escapefromuniversity.inGame.*;
 import escapefromuniversity.menu.MenuController;
 import escapefromuniversity.menu.MenuControllerImpl;
 import escapefromuniversity.model.GameModel;
@@ -16,27 +14,27 @@ import escapefromuniversity.model.gameObject.Direction;
 import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.model.gameObject.player.PlayerMovement;
 import escapefromuniversity.model.gameObject.player.PlayerMovementImpl;
-import escapefromuniversity.inGame.ShopController;
-import escapefromuniversity.inGame.ShopControllerImpl;
 
 public class KeyHandlerImpl implements KeyHandler {
 
     private final GameController gameController;
-    private final GameView gameView;
+    private final ControllerView controllerView;
     private final Player player;
     private final PlayerMovement playerMovement;
     private final ShopController shopController;
     private final MenuController menuController;
+    private GameKeyListener gameKeyListener;
     private Optional<Command<Integer, Boolean, Optional<Direction>>> command;
     private final List<Command<Integer, Boolean, Optional<Direction>>> keyList = new ArrayList<>();
 
     public KeyHandlerImpl(final GameModel gameModel, final GameController gameController) {
         this.gameController = gameController;
-        this.gameView = new GameViewImpl(this.gameController);
+        this.controllerView = new ControllerViewImpl(this.gameController);
         this.player = gameModel.getPlayer();
         this.playerMovement = new PlayerMovementImpl(this.player);
         this.shopController = new ShopControllerImpl(this.gameController);
         this.menuController = new MenuControllerImpl(this.gameController);
+        this.gameKeyListener = new GameKeyListener(this.gameController);
         this.createKeyList();
     }
 
@@ -95,7 +93,7 @@ public class KeyHandlerImpl implements KeyHandler {
 
     private void playCommands(int keyCode) {
         if (keyCode == KeyEvent.VK_ESCAPE) {
-            this.gameView.openMenu();
+            this.gameKeyListener.openMenu();
         } else if (keyCode == KeyEvent.VK_A || keyCode == KeyEvent.VK_LEFT) {
             this.playerMovement.move(Direction.LEFT);
             this.player.setLastDirection(Direction.LEFT);
