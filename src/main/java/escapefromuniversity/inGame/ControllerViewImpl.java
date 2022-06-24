@@ -45,11 +45,14 @@ public class ControllerViewImpl implements ControllerView{
         });
     }
 
+
     public void updateView() {
+        /*
         final var gc = gameCanvas.getGraphicsContext2D();
         final CanvasDrawerImpl canvas = new CanvasDrawerImpl(gc);
         this.drawerMap(canvas);
         this.drawerObject(canvas);
+        */
     }
 
     public void remuveSpriteAnimation(int id) {

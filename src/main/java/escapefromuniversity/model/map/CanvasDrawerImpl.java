@@ -25,6 +25,7 @@ public class CanvasDrawerImpl implements CanvasDrawer {
         this.canvas = canvas;
         this.gc = canvas.getGraphicsContext2D();
         this.imagesCache = new HashMap<>();
+        gc.setImageSmoothing(false);
     }
 
     private Image getImageFromCacheOrLoad(final String filename) {
