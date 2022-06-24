@@ -6,6 +6,9 @@ import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
 import escapefromuniversity.model.map.Rectangle;
 
+/**
+ * Implements the interface {@link Sprite}.
+ */
 public class SpriteImpl implements Sprite {
 
     private State state;
@@ -18,12 +21,20 @@ public class SpriteImpl implements Sprite {
     private final Rectangle characterRectangle = new Rectangle(new Point2D(0, 0), new Point2D(50, 70));
     private final Rectangle bulletRectangle = new Rectangle(new Point2D(0, 0), new Point2D(15, 15));
 
+    /**
+     * Instantiates the sprite.
+     * @param state the current state of the sprite.
+     * @param objType the dynamic game object of which it's willing to get the sprite.
+     */
     public SpriteImpl(State state, GameObjectType objType) {
         this.state = state;
         this.objType = objType;
         this.tileCount = 1;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean checkUpdate() {
         final long currentTime = System.currentTimeMillis();
@@ -35,6 +46,9 @@ public class SpriteImpl implements Sprite {
         return false;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setFilepath() {
         if(this.objType.equals(GameObjectType.BOSS1) || this.objType.equals(GameObjectType.BOSS2)
@@ -57,17 +71,22 @@ public class SpriteImpl implements Sprite {
         this.filepath = this.folder + this.filename;
     }
 
+    /* Completes the filepath with all the parts of the filename. */
     private void setupSpriteFilepath() {
         this.filename = this.folder;
         this.setSpriteDirection();
         this.setSpriteNumber();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String getFilepath() {
         return this.filepath;
     }
 
+    /* Sets the sprite state to complete its filepath. */
     private void setSpriteDirection() {
         switch (this.state) {
             case UP:
@@ -87,6 +106,7 @@ public class SpriteImpl implements Sprite {
         }
     }
 
+    /* Sets the sprite number to complete its filepath. */
     private void setSpriteNumber() {
         switch(this.tileCount) {
             case 1:
@@ -103,11 +123,17 @@ public class SpriteImpl implements Sprite {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
 	@Override
 	public void setState(State state) {
 		this.state = state;
 	}
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Rectangle getRectangle() {
         if (this.objType.getCollisionType().equals(GameCollisionType.ENTITY)) {
