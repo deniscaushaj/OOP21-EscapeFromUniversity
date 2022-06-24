@@ -1,5 +1,6 @@
 package escapefromuniversity.inGame;
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,8 +10,15 @@ import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
 import escapefromuniversity.model.map.CanvasDrawerImpl;
+import escapefromuniversity.utilities.OSFixes;
+import escapefromuniversity.utilities.WindowSet;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
+
+import javax.swing.*;
+
+import static escapefromuniversity.utilities.LauncherResizer.screenHeight;
+import static escapefromuniversity.utilities.LauncherResizer.screenWidth;
 
 public class ControllerViewImpl implements ControllerView{
     private final GameController gameController;
@@ -77,4 +85,45 @@ public class ControllerViewImpl implements ControllerView{
         LauncherView.createLauncher();
         //      System.exit(0);
     }
+
+//    TODO: !!
+//    private GameController gameController;
+//    private GameKeyListener gameKeyListener;
+//    private final JFrame window;
+//    private JPanel pause;
+//    private final GameHUDPanel gameHUD = new GameHUDPanel(WindowSet.getWindowRatio());
+//    private static final long DELAY_CLOSE = 5000;
+//
+//    public GameViewImpl(GameController gameController) {
+//        this.gameController = gameController;
+//        this.gameKeyListener = new GameKeyListener(this.gameController);
+//        this.window = new JFrame();
+//        this.window.setDefaultCloseOperation(EXIT_ON_CLOSE);
+//        this.window.setUndecorated(true);
+//        this.window.setSize(screenWidth, screenHeight);
+//        this.window.setResizable(false);
+//        this.window.setTitle("Escape From University");
+//        String logo = OSFixes.getLocation("images", "logo.png"); // TODO change icon
+//        this.window.setIconImage(Toolkit.getDefaultToolkit().getImage(logo));
+//        this.window.setVisible(true);
+//        //	private final JPanel gamePanel;
+//
+//        this.window.addKeyListener(this.gameKeyListener);
+//
+//        this.pause = new JPanel();
+//
+//    }
+//
+//
+//    @Override
+//    public void addPauseBG() {
+//        Color color = new Color(0,0,0,205);
+//        this.pause.setBackground(color);
+//        this.window.add(this.pause);
+//    }
+//
+//    @Override
+//    public void removePauseBG() {
+//        this.window.remove(this.pause);
+//    }
 }
