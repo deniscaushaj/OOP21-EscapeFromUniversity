@@ -127,7 +127,7 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
         this.spriteAnimations.remove(id);
     }
 
-    public void updateSpriteAnimation(int id, Point2D position, long deltaTime) {
+    public void updateSpriteAnimation(int id, Point2D position) {
         this.spriteAnimations.get(id).setPosition(position);
         this.spriteAnimations.get(id).getSprite();
     }

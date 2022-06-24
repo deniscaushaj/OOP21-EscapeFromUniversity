@@ -50,7 +50,7 @@ public interface GameView {
      * @param position
      * @param deltaTime
      */
-    void updateSpriteAnimation(int id, Point2D position, long deltaTime);
+    void updateSpriteAnimation(int id, Point2D position);
 
     /**
      * 
