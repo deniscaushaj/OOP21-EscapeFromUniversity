@@ -29,8 +29,8 @@ public class LauncherController {
     @FXML
     void newGame(ActionEvent event) {
 
-    	MenuController menu = new MenuControllerImpl(null);
-    	menu.startView();
+    	//MenuController menu = new MenuControllerImpl(null);
+    	//menu.startView();
 //        GameViewImpl.startGame();
 
 //        GameControllerImpl gameController = new GameControllerImpl();

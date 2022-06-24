@@ -29,7 +29,7 @@ public final class LauncherView extends Application{
         launcher = new Scene(startRoot, sceneWidth, sceneHeight);
         stage.setTitle("Escape From University");
         stage.setScene(launcher);
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.centerOnScreen();
         Image logo = new Image("file:" + OSFixes.getLocation("images", "logo.png")); // TODO change icon
         stage.getIcons().add(logo);
