@@ -6,53 +6,62 @@ import java.awt.event.KeyEvent;
 
 /**
  * 
- * interface game control.
+ * This is the interface of the game. It contains all the methods to make the model and the view work.
  *
  */
 public interface GameController {
 
     /**
-     * main game loop.
+     * The main loop of the game.
      */
     void gameLoop();
 
     /**
-     * 
-     * @return life of player
+     * Returns the current life of the player.
+     * @return the current life of the player.
      */
     int getPlayerLife();
 
     /**
-     * 
-     * @return credits of player
+     * Returns the current credits of the player.
+     * @return the current credits of the player.
      */
     int getPlayerCredits();
 
+    /**
+     * Launches the view of an exam's quiz.
+     */
     void startQuiz();
 
     /**
-     * 
-     * @return current gameState.
+     * Returns the current game state.
+     * @return the current game state.
      */
     GameState getGameState();
 
     /**
-     * 
-     * @param gameState : new gameState.
+     * Sets a new game state.
+     * @param gameState the new game state to set.
      */
     void setGameState(GameState gameState);
 
     /**
-     * 
-     * @param key
+     * Returns the previous game state.
+     * @return the previous game state.
+     */
+    GameState getPrevGameState();
+
+    /**
+     * Makes the key handler manage the key pressed.
+     * @param key the keyboard button pressed.
      */
     void pressKey(KeyEvent key);
 
     /**
-     * 
-     * @param key
+     * Makes the key handler manage the key released.
+     * @param key the keyboard button released.
      */
     void releaseKey(KeyEvent key);
 
-    GameState getPrevGameState();
+
 }

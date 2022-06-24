@@ -20,9 +20,7 @@ import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.quiz.QuizView;
 
 /**
- * 
- * class control game.
- *
+ * Implements all the methods defined in its interface {@link GameController}.
  */
 public class GameControllerImpl implements GameController {
 	private final GameModel gameModel;
@@ -36,7 +34,7 @@ public class GameControllerImpl implements GameController {
 	private final ShopController shopController = new ShopControllerImpl(this);
 
 	/**
-	 * 
+	 * Instantiates a new GameController and initializes the corresponding GameModel and GameView and KeyHandler making the game start.
 	 */
 	public GameControllerImpl() {
 		this.gameModel = new GameModelImp(this);
@@ -88,31 +86,36 @@ public class GameControllerImpl implements GameController {
         this.controllerView.end(this.getGameState());
     }
 
+    /* Checks if the player has won the game or if he lost and returns {@code true} if the game is not finished, {@code false} otherwise. */
     private boolean continueGame() {
         return this.getGameState() != GameState.LOST && this.getGameState() != GameState.WIN;
     }
 
+    /* Calls the update method in the model. */
     private void updateModel(final long deltaTime) {
         this.gameModel.updateGame((double) deltaTime);
     }
 
+    /* Returns a list with all the IDs of the game objects. */
     private List<Integer> getGameObjectID() {
         return this.gameModel.getAllGameObj().stream()
                 .map(obj -> obj.getID())
                 .collect(Collectors.toList());
     }
 
+    /* Updates the view. */
     private void updateView() {
-        this.chekSpriteAnimation();
+        this.checkSpriteAnimation();
         this.gameObjID = this.getGameObjectID();
         this.controllerView.updateView();
     }
 
-    private void chekSpriteAnimation() {
+    /*  */
+    private void checkSpriteAnimation() {
         final List<Integer> ids = this.getGameObjectID();
         for (final Integer id : ids) {
             if (!this.gameObjID.contains(id)) {
-                this.controllerView.remuveSpriteAnimation(id);
+                this.controllerView.removeSpriteAnimation(id);
             } else {
                 if (!this.controllerView.containThisID(id)) {
                     final Point2D position = null;
@@ -140,9 +143,21 @@ public class GameControllerImpl implements GameController {
         return this.gameModel.getPlayer().getCredits();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void startQuiz() {
         QuizView.startQuizCompetition();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setGameState(final GameState gameState) {
+        this.prevGameState = this.gameState;
+        this.gameState = gameState;
     }
 
     /**
@@ -157,16 +172,11 @@ public class GameControllerImpl implements GameController {
      * {@inheritDoc}
      */
     @Override
-    public void setGameState(final GameState gameState) {
-        this.prevGameState = this.gameState;
-        this.gameState = gameState;
-    }
-
-    @Override
     public GameState getPrevGameState() {
         return prevGameState;
     }
 
+    /* Calls the key handler to execute a command. */
     private void executeInput() {
         this.keyHandler.executeCommand();
     }
@@ -187,6 +197,7 @@ public class GameControllerImpl implements GameController {
         this.keyHandler.setKey(key.getKeyCode(), false);
     }
 
+    /* Saves the final mark and its date and time in the leaderboard text file. */
     private void saveScore(final int mark) {
         try {
             WriteFile w = new WriteFile("score", "score.txt");
