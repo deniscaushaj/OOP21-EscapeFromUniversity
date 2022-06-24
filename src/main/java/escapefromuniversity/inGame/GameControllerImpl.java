@@ -85,7 +85,7 @@ public class GameControllerImpl implements GameController {
         if (this.getGameState() == GameState.WIN) {
             this.saveScore(this.gameModel.getPlayerFinalMark());
         }
-        //this.gameView.end(this.getGameState());
+        this.controllerView.end(this.getGameState());
     }
 
     private boolean continueGame() {

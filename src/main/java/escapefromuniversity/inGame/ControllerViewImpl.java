@@ -3,6 +3,8 @@ package escapefromuniversity.inGame;
 import java.util.HashMap;
 import java.util.Map;
 
+import escapefromuniversity.launcher.LauncherView;
+import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
@@ -59,5 +61,20 @@ public class ControllerViewImpl implements ControllerView{
 
     public boolean containThisID(int id) {
         return this.spriteAnimations.containsKey(id);
+    }
+    
+    public void end(final GameState gameState) {
+        if (gameState == GameState.WIN){
+            //aggiorna con immagine vittoria
+        } else if (gameState == GameState.LOST){
+            //aggiorna con immagine sconfitta
+        }
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        LauncherView.createLauncher();
+        //      System.exit(0);
     }
 }
