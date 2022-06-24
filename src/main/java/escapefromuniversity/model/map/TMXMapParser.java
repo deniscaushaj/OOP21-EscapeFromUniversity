@@ -109,7 +109,6 @@ public class TMXMapParser {
         final var children = nodelistToStreamParse(lNode.getChildNodes()).collect(Collectors.toList());
         final var data = children.stream().filter(e -> "data".equals(e.getNodeName())).findFirst().get();
         final var name = lNode.getAttributes().getNamedItem("name").getTextContent();
-        final var width = Integer.parseInt(lNode.getAttributes().getNamedItem("width").getTextContent());
 
         List<String> list = new ArrayList<>();
         final var control = children.stream().filter(e -> "properties".equals(e.getNodeName())).findFirst();
@@ -130,7 +129,7 @@ public class TMXMapParser {
                         .collect(Collectors.toUnmodifiableList()))
                 .collect(Collectors.toUnmodifiableList());
 
-        return new Layer(list, name, dataList, width);
+        return new Layer(list, name, dataList);
     }
 
     /**
