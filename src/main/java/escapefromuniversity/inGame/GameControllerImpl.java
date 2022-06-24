@@ -105,13 +105,13 @@ public class GameControllerImpl implements GameController {
                 .collect(Collectors.toList());
     }
 
-    private void chekSpriteAnimation(long deltaTime) {
+    private void chekSpriteAnimation() {
         final List<Integer> ids = this.getGameObjectID();
-        for(final Integer id : ids) {
-            if(!this.gameObjID.contains(id)) {
+        for (final Integer id : ids) {
+            if (!this.gameObjID.contains(id)) {
                 this.controllerView.remuveSpriteAnimation(id);
-            }else {
-                if(this.controllerView.containThisID(id)) {
+            } else {
+                if (this.controllerView.containThisID(id)) {
                     //final Point2D position = new 
                     this.controllerView.updateSpriteAnimation(id, null);
                 }

@@ -10,7 +10,7 @@ public interface ControllerView {
 
     void remuveSpriteAnimation(int id);
 
-    void updateSpriteAnimation(int id, Point2D position);
+    void updateSpriteAnimation(int id, Point2D position, State state);
 
     void addSpriteAnimation(int id, State state, GameObjectType type, int height, int width);
 

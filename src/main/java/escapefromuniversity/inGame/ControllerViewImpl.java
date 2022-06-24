@@ -39,7 +39,7 @@ public class ControllerViewImpl implements ControllerView{
         this.spriteAnimations.remove(id);
     }
 
-    public void updateSpriteAnimation(int id, Point2D position) {
+    public void updateSpriteAnimation(int id, Point2D position, State state) {
         this.spriteAnimations.get(id).setPosition(position);
         this.spriteAnimations.get(id).getSprite();
     }
