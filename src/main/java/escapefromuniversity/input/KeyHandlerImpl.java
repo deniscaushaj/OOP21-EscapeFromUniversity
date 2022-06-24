@@ -35,7 +35,7 @@ public class KeyHandlerImpl implements KeyHandler {
         this.gameView = new GameViewImpl(this.gameController);
         this.player = gameModel.getPlayer();
         this.playerMovement = new PlayerMovementImpl(this.player);
-        this.shopController = new ShopControllerImpl();
+        this.shopController = new ShopControllerImpl(this.gameController);
         this.menuController = new MenuControllerImpl(this.gameController);
         this.createKeyList();
     }
