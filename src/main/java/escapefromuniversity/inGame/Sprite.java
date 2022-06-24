@@ -15,7 +15,5 @@ public interface Sprite {
     
     void setState(State state);
 
-    Rectangle getCharacterRectangle();
-
-    Rectangle getBulletRectangle();
+    Rectangle getRectangle();
 }
