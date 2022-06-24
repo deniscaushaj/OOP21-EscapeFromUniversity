@@ -6,6 +6,9 @@ import escapefromuniversity.utilities.OSFixes;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * The implementation of {@link ShopView} that extends also {@link JPanel} to add all the shop components to the screen.
+ */
 public class ShopViewImpl extends JPanel implements ShopView {
 
     private final ShopController shopController;
@@ -44,12 +47,17 @@ public class ShopViewImpl extends JPanel implements ShopView {
     public static final String buyDamageInfo = "Increases your damage.";
     public static final String buyChanceInfo = "Gives you a second chance when attending an exam quiz.";
 
+    /**
+     * Instantiates the view of the shop and initializes its window.
+     * @param shopController the shop controller to assign to this shop view.
+     */
     public ShopViewImpl(final ShopController shopController) {
         this.shopController = shopController;
         this.setFont(WindowSet.FONT);
         this.initializeShop();
     }
 
+    /* Initializes and sets up all the shop screen components. */
     private void initializeShop() {
         this.creditsCounter.setBounds(this.creditsCounterPos);
         this.itemInfo.setBounds(this.itemInfoPos);
@@ -75,42 +83,66 @@ public class ShopViewImpl extends JPanel implements ShopView {
         this.setVisible(true);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public JButton getBuyLife() {
         return this.buyLife;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public JButton getBuyArmor() {
         return this.buyArmor;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public JButton getBuyDamage() {
         return this.buyDamage;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public JButton getBuyChance() {
         return this.buyChance;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public JButton getExit() {
         return this.exit;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setItemInfo(final String itemInfo) {
         this.itemInfo.setText(itemInfo);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setButtonNotClickable(final JButton button) {
         button.setOpaque(true);
         button.setEnabled(false);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void close() {
         this.setVisible(false);
