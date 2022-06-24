@@ -11,8 +11,8 @@ public class Point2D {
 		 this.x = x;
 		 this.y = y;
 	 }
-	 
-	 @Override
+
+	@Override
 	public int hashCode() {
 		return Objects.hash(x, y);
 	}
