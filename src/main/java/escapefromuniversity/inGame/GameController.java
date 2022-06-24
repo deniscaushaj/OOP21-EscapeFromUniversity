@@ -32,11 +32,6 @@ public interface GameController {
 
     /**
      * 
-     */
-    void startShop();
-
-    /**
-     * 
      * @return current gameState.
      */
     GameState getGameState();

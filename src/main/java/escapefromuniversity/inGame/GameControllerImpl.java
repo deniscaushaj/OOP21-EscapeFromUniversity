@@ -16,13 +16,9 @@ import escapefromuniversity.menu.MenuControllerImpl;
 import escapefromuniversity.model.GameModel;
 import escapefromuniversity.model.GameModelImp;
 import escapefromuniversity.model.GameState;
-import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.shop.ShopController;
 import escapefromuniversity.model.shop.ShopControllerImpl;
-import escapefromuniversity.quiz.QuizController;
 import escapefromuniversity.quiz.QuizView;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 
 /**
  * 
@@ -36,7 +32,7 @@ public class GameControllerImpl implements GameController {
 	private GameState gameState;
 	private List<Integer> gameObjID = new LinkedList();
 	private final MenuController menuController = new MenuControllerImpl(this);
-	private final ShopController shopController = new ShopControllerImpl();
+	private final ShopController shopController = new ShopControllerImpl(this);
 
 	/**
 	 * 
@@ -71,11 +67,13 @@ public class GameControllerImpl implements GameController {
                 break;
             case MENU:
                 this.gameView.addPauseBG();
+                executeInput();
                 this.menuController.startView();
                 break;
             case SHOP:
                 this.gameView.addPauseBG();
-                this.startShop();
+                executeInput();
+                this.shopController.startView();
                 break;
             default:
                 break;
@@ -85,7 +83,7 @@ public class GameControllerImpl implements GameController {
         if (this.getGameState() == GameState.WIN) {
             this.saveScore(this.gameModel.getPlayerFinalMark());
         }
-        this.gameView.update();
+        this.gameView.end(this.getGameState());
     }
 
     private boolean continueGame() {
@@ -123,11 +121,6 @@ public class GameControllerImpl implements GameController {
     @Override
     public void startQuiz() {
         QuizView.startQuizCompetition();
-    }
-
-    @Override
-    public void startShop() {
-//      TODO start shop
     }
 
     /**
