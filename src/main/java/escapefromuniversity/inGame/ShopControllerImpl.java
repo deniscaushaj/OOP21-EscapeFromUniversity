@@ -9,6 +9,9 @@ import java.awt.event.MouseListener;
 
 import static escapefromuniversity.inGame.ShopViewImpl.*;
 
+/**
+ *
+ */
 public class ShopControllerImpl implements ShopController, MouseListener {
 
     private ShopView shopView;
@@ -22,12 +25,19 @@ public class ShopControllerImpl implements ShopController, MouseListener {
     private static final int increaseDamageCost = 12;
     private static final int doubleChanceCost = 18;
 
+    /**
+     * Instantiates the controller of the shop and initializes its buttons.
+     * @param gameController the game controller to link to the shop controller.
+     */
     public ShopControllerImpl(GameController gameController) {
         this.gameController = gameController;
         this.initializeButtons();
         this.checkButtonsAvailability();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void startView() {
         if(!this.isActive) {
@@ -36,6 +46,7 @@ public class ShopControllerImpl implements ShopController, MouseListener {
         }
     }
 
+    /* Initializes the shop screen buttons with their mouse listeners. */
     private void initializeButtons() {
         this.shopView.getExit().addMouseListener(this);
         this.shopView.getBuyLife().addMouseListener(this);
@@ -44,6 +55,9 @@ public class ShopControllerImpl implements ShopController, MouseListener {
         this.shopView.getBuyDamage().addMouseListener(this);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void closeShop() {
         this.gameController.setGameState(this.gameController.getPrevGameState());
@@ -51,9 +65,9 @@ public class ShopControllerImpl implements ShopController, MouseListener {
         this.isActive = false;
     }
 
-    @Override
-    public void buyItem() {
-        switch(this.getItemType()) {
+    /* Buys an item. */
+    private void buyItem() {
+        switch(this.itemType) {
             case RESET_HEALTH:
                 this.itemType.resetHealth(this.player);
                 this.player.setCredits(this.player.getCredits() - resetHealthCost);
@@ -76,39 +90,41 @@ public class ShopControllerImpl implements ShopController, MouseListener {
         this.checkButtonsAvailability();
     }
 
-    @Override
-    public void setItemType(final Items itemType) {
-        this.itemType = itemType;
-    }
-
-    @Override
-    public Items getItemType() {
-        return this.itemType;
-    }
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
         Object source = e.getSource();
         if (this.shopView.getExit().equals(source)) {
             this.closeShop();
         } else if (this.shopView.getBuyLife().equals(source)) {
-            this.setItemType(Items.RESET_HEALTH);
+            this.itemType = Items.RESET_HEALTH;
         } else if (this.shopView.getBuyArmor().equals(source)) {
-            this.setItemType(Items.INCREASE_ARMOR);
+            this.itemType = Items.INCREASE_ARMOR;
         } else if (this.shopView.getBuyDamage().equals(source)) {
-            this.setItemType(Items.INCREASE_DAMAGE);
+            this.itemType = Items.INCREASE_DAMAGE;
         } else if (this.shopView.getBuyChance().equals(source)) {
-            this.setItemType(Items.DOUBLE_CHANCE);
+            this.itemType = Items.DOUBLE_CHANCE;
         }
         this.buyItem();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void mousePressed(MouseEvent e) {}
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void mouseReleased(MouseEvent e) {}
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void mouseEntered(MouseEvent e) {
         Object source = e.getSource();
@@ -123,13 +139,16 @@ public class ShopControllerImpl implements ShopController, MouseListener {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void mouseExited(MouseEvent e) {
         this.shopView.setItemInfo("");
     }
 
-    @Override
-    public void checkButtonsAvailability() {
+    /* Checks if the items can be bought and sets them not clickable in case they cannot. */
+    private void checkButtonsAvailability() {
         if(!this.itemType.increaseDamage(this.player) && this.player.getCredits() < increaseDamageCost) {
             this.shopView.setButtonNotClickable(this.shopView.getBuyDamage());
         }
