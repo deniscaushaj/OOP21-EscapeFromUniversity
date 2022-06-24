@@ -16,8 +16,8 @@ import escapefromuniversity.model.gameObject.Direction;
 import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.model.gameObject.player.PlayerMovement;
 import escapefromuniversity.model.gameObject.player.PlayerMovementImpl;
-import escapefromuniversity.model.shop.ShopController;
-import escapefromuniversity.model.shop.ShopControllerImpl;
+import escapefromuniversity.inGame.ShopController;
+import escapefromuniversity.inGame.ShopControllerImpl;
 
 public class KeyHandlerImpl implements KeyHandler {
 

@@ -6,6 +6,7 @@ import java.util.Map;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
+import escapefromuniversity.model.map.CanvasDrawerImpl;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 
@@ -16,23 +17,29 @@ public class ControllerViewImpl implements ControllerView{
     @FXML
     private Canvas gameCanvas;
 
-    //final var gc = gameCanvas.getGraphicsContext2D();
 
     public ControllerViewImpl(GameController gameController) {
         this.gameController = gameController;
     }
 
-    private void drawerMap() {
+    private void drawerMap(CanvasDrawerImpl canvas) {
 
     }
 
-    private void drawerObject() {
-
+    private void drawerObject(CanvasDrawerImpl canvas) {
+        this.spriteAnimations.entrySet().stream().forEach(e -> {
+            final SpriteAnimation animation = e.getValue();
+            if (animation.isVisible()) {
+                canvas.drawImage(animation.getSprite().getFilepath(), animation.getSprite().getRectangle(), animation.getPosition());
+            }
+        });
     }
 
     public void updateView() {
-        this.drawerMap();
-        this.drawerObject();
+        final var gc = gameCanvas.getGraphicsContext2D();
+        final CanvasDrawerImpl canvas = new CanvasDrawerImpl(gc);
+        this.drawerMap(canvas);
+        this.drawerObject(canvas);
     }
 
     public void remuveSpriteAnimation(int id) {

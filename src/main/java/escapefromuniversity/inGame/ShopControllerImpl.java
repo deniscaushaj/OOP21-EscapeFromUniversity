@@ -1,13 +1,13 @@
-package escapefromuniversity.model.shop;
+package escapefromuniversity.inGame;
 
-import escapefromuniversity.inGame.GameController;
 import escapefromuniversity.model.quiz.Exam;
 import escapefromuniversity.model.gameObject.player.Player;
+import escapefromuniversity.model.shop.Items;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import static escapefromuniversity.model.shop.ShopViewImpl.*;
+import static escapefromuniversity.inGame.ShopViewImpl.*;
 
 public class ShopControllerImpl implements ShopController, MouseListener {
 
@@ -130,16 +130,16 @@ public class ShopControllerImpl implements ShopController, MouseListener {
 
     @Override
     public void checkButtonsAvailability() {
-        if(!this.itemType.increaseDamage(this.player)) {
+        if(!this.itemType.increaseDamage(this.player) && this.player.getCredits() < increaseDamageCost) {
             this.shopView.setButtonNotClickable(this.shopView.getBuyDamage());
         }
-        if(!this.itemType.increaseArmor(this.player)) {
+        if(!this.itemType.increaseArmor(this.player) && this.player.getCredits() < increaseArmorCost) {
             this.shopView.setButtonNotClickable(this.shopView.getBuyArmor());
         }
-        if(!this.itemType.resetHealth(this.player)) {
+        if(!this.itemType.resetHealth(this.player) && this.player.getCredits() < resetHealthCost) {
             this.shopView.setButtonNotClickable(this.shopView.getBuyLife());
         }
-        if(!this.competition.isBonusAvailable()) {
+        if(!this.competition.isBonusAvailable() && this.player.getCredits() < doubleChanceCost) {
             this.shopView.setButtonNotClickable(this.shopView.getBuyChance());
         }
     }

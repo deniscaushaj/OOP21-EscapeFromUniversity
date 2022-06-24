@@ -1,5 +1,6 @@
 package escapefromuniversity.inGame;
 
+import escapefromuniversity.model.basics.GameCollisionType;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
@@ -108,13 +109,14 @@ public class SpriteImpl implements Sprite {
 	}
 
     @Override
-    public Rectangle getCharacterRectangle() {
-        return this.characterRectangle;
+    public Rectangle getRectangle() {
+        if (this.objType.getCollisionType().equals(GameCollisionType.ENTITY)) {
+            return this.characterRectangle;
+        } else if (this.objType.getCollisionType().equals(GameCollisionType.BULLET)) {
+            return this.bulletRectangle;
+        }
+        return null;
     }
 
-    @Override
-    public Rectangle getBulletRectangle() {
-        return this.bulletRectangle;
-    }
 
 }

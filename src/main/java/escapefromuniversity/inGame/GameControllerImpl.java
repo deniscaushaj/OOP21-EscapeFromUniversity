@@ -17,9 +17,6 @@ import escapefromuniversity.model.GameModel;
 import escapefromuniversity.model.GameModelImp;
 import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.basics.Point2D;
-import escapefromuniversity.model.gameObject.State;
-import escapefromuniversity.model.shop.ShopController;
-import escapefromuniversity.model.shop.ShopControllerImpl;
 import escapefromuniversity.quiz.QuizView;
 
 /**
