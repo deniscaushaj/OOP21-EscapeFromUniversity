@@ -15,8 +15,9 @@ public interface Camera {
 
     /**
      * .
-     * @param player the current player
-     * @return the screened rectangle
+     * @return the projected rectangle
      */
-    Rectangle zoom(Player player);
+    Rectangle calcMapProjection();
+
+
 }
