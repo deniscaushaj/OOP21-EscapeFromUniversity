@@ -10,17 +10,20 @@ public class Layer {
     private final List<String> properties;
     private final String name;
     private final List<List<Integer>> data;
+    private final int width;
 
     /**
-     * Constructor.
-     * @param properties The list of properties of a layer
+     * A constructor for the layer.
+     * @param properties the list of properties of a layer
      * @param name the name of the layer
      * @param data the list of data of a layer
+     * @param width the width of the layer
      */
-    public Layer(final List<String> properties, final String name, final List<List<Integer>> data) {
+    public Layer(final List<String> properties, final String name, final List<List<Integer>> data, final int width) {
         this.properties = properties;
         this.name = name;
         this.data = List.copyOf(data);
+        this.width = width;
     }
 
     /**
@@ -45,6 +48,14 @@ public class Layer {
      */
     public String getName() {
         return this.name;
+    }
+
+    /**
+     * Returns the width of the layer.
+     * @return the width of the layer
+     */
+    public int getWidth() {
+        return this.width;
     }
 
     @Override

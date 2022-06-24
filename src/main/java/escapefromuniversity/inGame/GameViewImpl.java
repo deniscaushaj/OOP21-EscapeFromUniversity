@@ -5,6 +5,7 @@ import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.gameObject.player.Sprite;
 import escapefromuniversity.utilities.OSFixes;
 import escapefromuniversity.utilities.WindowSet;
+import javafx.stage.Window;
 
 import javax.swing.*;
 import java.awt.*;
@@ -45,6 +46,7 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 		this.pause = new JPanel();
 		this.tempScreen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g2d = (Graphics2D) this.tempScreen.getGraphics();
+		g2d.setFont(WindowSet.FONT);
 
 		this.gameController.setGameState(GameState.MENU);
 		drawToScreen();
@@ -54,11 +56,10 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 	public void drawToScreen() {
 		Graphics g = getGraphics();
 		g.drawImage(this.tempScreen, 0, 0, screenWidth, screenHeight, null);
-		g.dispose();
+//		g.dispose();
 	}
 
 	public void drawToImage () {
-//      g2d.setFont(null); TODO choose font
 		switch (this.gameController.getGameState()) { //pauseBG forse non qua
 			case FIGHT:
 				break;

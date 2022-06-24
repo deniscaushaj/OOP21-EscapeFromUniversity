@@ -21,8 +21,9 @@ public class TileDrawerImpl implements TileDrawer {
 
     @Override
     public void drawTileByID(final int id, final Rectangle pos) {
-        if (id == 0)
+        if (id == 0) {
             return;
+        }
         var ts = this.searchTileset(id);
         var tPos = calcTPos(id, ts);
         var tileHeight = this.map.getTileHeight();

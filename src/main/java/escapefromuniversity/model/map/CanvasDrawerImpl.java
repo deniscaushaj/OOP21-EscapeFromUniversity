@@ -15,7 +15,7 @@ public class CanvasDrawerImpl implements CanvasDrawer {
     private final Map<String, Image> imagesCache;
 
     /**
-     * Constructor.
+     * A constructor for CanvasDrawerImpl.
      * @param gc the graphics of the canvas
      */
     public CanvasDrawerImpl(final GraphicsContext gc) {
@@ -24,8 +24,9 @@ public class CanvasDrawerImpl implements CanvasDrawer {
     }
 
     private Image getImageFromCacheOrLoad(final String filename) {
-        if (!imagesCache.containsKey(filename))
+        if (!imagesCache.containsKey(filename)) {
             imagesCache.put(filename, new Image(ClassLoader.getSystemResourceAsStream(filename)));
+        }
         return imagesCache.get(filename);
     }
 

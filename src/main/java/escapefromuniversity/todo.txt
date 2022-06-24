@@ -1,5 +1,3 @@
-gamestate win e lost??
-
 grafica shop
 
 collision with door, game state graduated

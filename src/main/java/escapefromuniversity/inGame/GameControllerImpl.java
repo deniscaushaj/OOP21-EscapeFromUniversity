@@ -59,7 +59,7 @@ public class GameControllerImpl implements GameController{
                 break;
             case QUIZ:
                 this.gameView.addPauseBG();
-                this.startQuiz();
+                this.goQuiz(this.gameModel.getCurrentBoss());
                 break;
             case MENU:
                 this.gameView.addPauseBG();
@@ -96,6 +96,7 @@ public class GameControllerImpl implements GameController{
                 .map(obj -> obj.getID())
                 .collect(Collectors.toList());
     }
+
 
     /**
      * {@inheritDoc}

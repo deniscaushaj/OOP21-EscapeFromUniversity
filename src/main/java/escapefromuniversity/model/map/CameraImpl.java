@@ -7,7 +7,7 @@ public class CameraImpl implements Camera {
 
     //TODO: capire come calcolare le coordinate del rettangolo da considerare. Forse basta usare lo slider e settare un valore fisso.
     @Override
-    public Rectangle zoom(Player player) {
+    public Rectangle zoom(final Player player) {
         var pos = player.getObjectPosition();
         return new Rectangle(new Point2D(0,0), new Point2D(0,0)); //TODO
     }
