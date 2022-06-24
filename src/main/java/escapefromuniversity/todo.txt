@@ -2,10 +2,7 @@ grafica shop
 
 collision with door, game state graduated
 
+update sprite boss e bullet
 hitbox
-
-view e control
-parlare con ema per javafx menu
-g2 e bufferedimage
 
 controllare indentazione, todo, javadoc, intellij warnings.
