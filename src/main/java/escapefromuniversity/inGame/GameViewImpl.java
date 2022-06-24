@@ -16,9 +16,10 @@ import java.util.Map;
 import static escapefromuniversity.utilities.LauncherResizer.screenHeight;
 import static escapefromuniversity.utilities.LauncherResizer.screenWidth;
 
-public class GameViewImpl extends JFrame implements GameView, KeyListener {
+public class GameViewImpl extends JFrame implements GameView {
 
 	private GameController gameController;
+	private GameKeyListener gameKeyListener;
 	private final JFrame window;
 	private JPanel pause;
 	private BufferedImage tempScreen;
@@ -28,6 +29,7 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 
 	public GameViewImpl(GameController gameController) {
 		this.gameController = gameController;
+		this.gameKeyListener = new GameKeyListener(this.gameController);
 		this.window = new JFrame();
 		this.window.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.window.setUndecorated(true);
@@ -39,7 +41,7 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 		this.window.setVisible(true);
 		//	private final JPanel gamePanel;
 
-		this.window.addKeyListener(this);
+		this.window.addKeyListener(this.gameKeyListener);
 
 		this.pause = new JPanel();
 		this.tempScreen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_ARGB);
@@ -77,24 +79,6 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
 	@Override
 	public void removePauseBG() {
 		this.window.remove(this.pause);
-	}
-
-	@Override
-	public void keyTyped(KeyEvent key) {
-	}
-
-	@Override
-	public void keyPressed(KeyEvent key) {
-		if(this.gameController != null) {
-			this.gameController.pressKey(key);
-		}
-	}
-
-	@Override
-	public void keyReleased(KeyEvent key) {
-		if(this.gameController != null) {
-			this.gameController.releaseKey(key);
-		}
 	}
 
 	@Override
