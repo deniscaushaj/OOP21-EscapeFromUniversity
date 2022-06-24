@@ -10,7 +10,7 @@ import java.awt.event.MouseListener;
 import static escapefromuniversity.inGame.ShopViewImpl.*;
 
 /**
- *
+ * The implementation of {@link ShopController} interface that implements also {@link MouseListener} to add a listener to the buttons.
  */
 public class ShopControllerImpl implements ShopController, MouseListener {
 
