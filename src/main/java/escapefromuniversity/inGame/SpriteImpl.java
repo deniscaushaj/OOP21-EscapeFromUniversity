@@ -1,13 +1,9 @@
 package escapefromuniversity.inGame;
 
+import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
-import escapefromuniversity.utilities.OSFixes;
-
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
+import escapefromuniversity.model.map.Rectangle;
 
 public class SpriteImpl implements Sprite {
 
@@ -18,6 +14,8 @@ public class SpriteImpl implements Sprite {
     private String filename;
     private int tileCount;
     private int lastUpdate;
+    private final Rectangle characterRectangle = new Rectangle(new Point2D(0, 0), new Point2D(50, 70));
+    private final Rectangle bulletRectangle = new Rectangle(new Point2D(0, 0), new Point2D(15, 15));
 
     public SpriteImpl(State state, GameObjectType objType) {
         this.state = state;
@@ -108,5 +106,15 @@ public class SpriteImpl implements Sprite {
 	public void setState(State state) {
 		this.state = state;
 	}
+
+    @Override
+    public Rectangle getCharacterRectangle() {
+        return this.characterRectangle;
+    }
+
+    @Override
+    public Rectangle getBulletRectangle() {
+        return this.bulletRectangle;
+    }
 
 }

@@ -3,6 +3,7 @@ package escapefromuniversity.inGame;
 import java.awt.*;
 
 import escapefromuniversity.model.gameObject.State;
+import escapefromuniversity.model.map.Rectangle;
 
 public interface Sprite {
 
@@ -14,4 +15,7 @@ public interface Sprite {
     
     void setState(State state);
 
+    Rectangle getCharacterRectangle();
+
+    Rectangle getBulletRectangle();
 }
