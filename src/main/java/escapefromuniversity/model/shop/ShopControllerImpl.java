@@ -1,5 +1,6 @@
 package escapefromuniversity.model.shop;
 
+import escapefromuniversity.inGame.GameController;
 import escapefromuniversity.model.quiz.Exam;
 import escapefromuniversity.model.gameObject.player.Player;
 
@@ -10,19 +11,29 @@ import static escapefromuniversity.model.shop.ShopViewImpl.*;
 
 public class ShopControllerImpl implements ShopController, MouseListener {
 
-    private final ShopView shopView;
+    private ShopView shopView;
+    private final GameController gameController;
     private Items itemType;
     private Player player; // TODO initialize
     private Exam competition; // TODO same
+    private boolean isActive;
     private static final int resetHealthCost = 6;
     private static final int increaseArmorCost = 12;
     private static final int increaseDamageCost = 12;
     private static final int doubleChanceCost = 18;
 
-    public ShopControllerImpl() {
-        this.shopView = new ShopViewImpl(this);
+    public ShopControllerImpl(GameController gameController) {
+        this.gameController = gameController;
         this.initializeButtons();
         this.checkButtonsAvailability();
+    }
+
+    @Override
+    public void startView() {
+        if(!this.isActive) {
+            this.shopView = new ShopViewImpl(this);
+            this.isActive = true;
+        }
     }
 
     private void initializeButtons() {
@@ -35,7 +46,9 @@ public class ShopControllerImpl implements ShopController, MouseListener {
 
     @Override
     public void closeShop() {
-        // TODO set gamestate SHOP
+        this.gameController.setGameState(this.gameController.getPrevGameState());
+        this.shopView.close();
+        this.isActive = false;
     }
 
     @Override

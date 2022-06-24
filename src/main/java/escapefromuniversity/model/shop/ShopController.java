@@ -2,6 +2,8 @@ package escapefromuniversity.model.shop;
 
 public interface ShopController {
 
+    void startView();
+
     void closeShop();
 
     void buyItem();
