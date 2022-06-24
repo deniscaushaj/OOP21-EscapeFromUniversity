@@ -64,7 +64,7 @@ public class GameControllerImpl implements GameController {
                 long deltaTime = currentTime - lastTime;
                 executeInput();
                 this.updateModel(deltaTime);
-                //this.gameView.update();
+                this.updateView();
                 break;
             case QUIZ:
                 //this.gameView.addPauseBG();
@@ -97,13 +97,18 @@ public class GameControllerImpl implements GameController {
 
     private void updateModel(final long deltaTime) {
         this.gameModel.updateGame((double) deltaTime);
-        this.gameObjID = this.getGameObjectID();
     }
 
     private List<Integer> getGameObjectID() {
         return this.gameModel.getAllGameObj().stream()
                 .map(obj -> obj.getID())
                 .collect(Collectors.toList());
+    }
+
+    private void updateView() {
+        this.chekSpriteAnimation();
+        this.gameObjID = this.getGameObjectID();
+        this.controllerView.updateView();
     }
 
     private void chekSpriteAnimation() {
@@ -116,7 +121,7 @@ public class GameControllerImpl implements GameController {
                     final Point2D position = null;
                     this.controllerView.updateSpriteAnimation(id, position, this.gameModel.getStateID(id));
                 } else {
-                    this.controllerView.addSpriteAnimation(id, null, null, getPlayerLife(), getPlayerCredits());
+                    this.controllerView.addSpriteAnimation(id, this.gameModel.getStateID(id), this.gameModel.getTypeID(id), 0, 0);
                 }
             }
         }
