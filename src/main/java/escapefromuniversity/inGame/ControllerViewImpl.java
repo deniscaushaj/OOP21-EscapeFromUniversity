@@ -52,7 +52,7 @@ public class ControllerViewImpl implements ControllerView{
         this.drawerObject(canvas);
     }
 
-    public void remuveSpriteAnimation(int id) {
+    public void removeSpriteAnimation(int id) {
         this.spriteAnimations.remove(id);
     }
 

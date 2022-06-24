@@ -9,7 +9,7 @@ public interface ControllerView {
 
     void updateView();
 
-    void remuveSpriteAnimation(int id);
+    void removeSpriteAnimation(int id);
 
     void updateSpriteAnimation(int id, Point2D position, State state);
 
