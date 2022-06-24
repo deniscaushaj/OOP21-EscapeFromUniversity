@@ -18,7 +18,7 @@ public class MapController {
         final var parser = new TMXMapParser("final-map.tmx");
         try {
             var map = parser.parse();
-            var drawer = new TileDrawerImpl(map, new CanvasDrawerImpl(gc));
+            var drawer = new TileDrawerImpl(map, new CanvasDrawerImpl(new Canvas()));
 
             map.getLayers().forEach(l -> {
                 for (int i = 0; i < map.getWidth(); i++) {
