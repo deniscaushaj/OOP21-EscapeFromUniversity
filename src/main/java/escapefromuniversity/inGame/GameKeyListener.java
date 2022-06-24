@@ -1,5 +1,7 @@
 package escapefromuniversity.inGame;
 
+import escapefromuniversity.model.GameState;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -27,6 +29,10 @@ public class GameKeyListener implements KeyListener {
         if(this.gameController != null) {
             this.gameController.releaseKey(key);
         }
+    }
+
+    public void openMenu() {
+        this.gameController.setGameState(GameState.MENU);
     }
 
 }
