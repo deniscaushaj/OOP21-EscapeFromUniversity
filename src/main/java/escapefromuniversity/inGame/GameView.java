@@ -61,4 +61,6 @@ public interface GameView {
      * @param width
      */
     void addSpriteAnimation(int id, State state, GameObjectType type, int height, int width);
+    
+    boolean containThisID(int id);
 }

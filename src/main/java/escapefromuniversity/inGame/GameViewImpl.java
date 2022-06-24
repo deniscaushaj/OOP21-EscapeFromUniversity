@@ -126,16 +126,21 @@ public class GameViewImpl extends JFrame implements GameView, KeyListener {
     public void remuveSpriteAnimation(int id) {
         this.spriteAnimations.remove(id);
     }
-    
+
     public void updateSpriteAnimation(int id, Point2D position, long deltaTime) {
         this.spriteAnimations.get(id).setPosition(position);
         this.spriteAnimations.get(id).getSprite();
     }
-    
+
     public void addSpriteAnimation(int id, State state, GameObjectType type, int height, int width) {
         final Sprite sprite = new SpriteImpl(state, type);
         final SpriteAnimation animation = new SpriteAnimation(sprite, height, width);
         this.spriteAnimations.put(id, animation);
+    }
+
+    @Override
+    public boolean containThisID(int id) {
+        return this.spriteAnimations.containsKey(id);
     }
 
 }
