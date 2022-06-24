@@ -23,7 +23,6 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
     private static final int START_ARMOR = 0;
     private static final Direction START_DIRECTION = Direction.DOWN;
     private static final Point2D HIT_BOX_PLAYER = new Point2D(50,70);
-    //	TODO eventual MAX_STATS or START_STATS
     private int life;
     private int credits;
     private int damage;

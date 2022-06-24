@@ -20,7 +20,7 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
     private long shootLastTime;
     private BossState bossState;
     private Point2D previousPosition;
-    private int impactDamage;
+    private final int impactDamage;
     private static final int credits = 12;
     private static final int passed = 18;
 
