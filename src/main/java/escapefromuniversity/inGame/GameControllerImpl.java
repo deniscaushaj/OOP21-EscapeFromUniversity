@@ -30,6 +30,7 @@ public class GameControllerImpl implements GameController {
 	private final GameView gameView;
 	private final KeyHandler keyHandler;
 	private GameState gameState;
+    private GameState prevGameState;
 	private List<Integer> gameObjID = new LinkedList();
 	private final MenuController menuController = new MenuControllerImpl(this);
 	private final ShopController shopController = new ShopControllerImpl(this);
@@ -136,7 +137,13 @@ public class GameControllerImpl implements GameController {
      */
     @Override
     public void setGameState(final GameState gameState) {
+        this.prevGameState = this.gameState;
         this.gameState = gameState;
+    }
+
+    @Override
+    public GameState getPrevGameState() {
+        return prevGameState;
     }
 
     private void executeInput() {

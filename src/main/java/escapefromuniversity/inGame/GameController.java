@@ -54,4 +54,5 @@ public interface GameController {
      */
     void releaseKey(KeyEvent key);
 
+    GameState getPrevGameState();
 }
