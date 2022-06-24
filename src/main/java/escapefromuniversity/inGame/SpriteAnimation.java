@@ -1,6 +1,7 @@
 package escapefromuniversity.inGame;
 
 import escapefromuniversity.model.basics.Point2D;
+import escapefromuniversity.model.map.Rectangle;
 
 import java.awt.*;
 
@@ -23,7 +24,8 @@ public class SpriteAnimation {
     }
 
     public void setPosition(Point2D position) {
-        this.position = new Rectangle((int) position.getX(), (int) position.getX(), (int) (position.getX() + this.width), (int) (position.getY() + this.height));
+        Point2D size = position.sum(new Point2D(this.width, this.height));
+        this.position = new Rectangle(position, size);
     }
 
     public Rectangle getPosition() {
