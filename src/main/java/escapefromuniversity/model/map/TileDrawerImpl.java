@@ -31,7 +31,7 @@ public class TileDrawerImpl implements TileDrawer {
         this.canvasDrawer.drawImage(ts.getFileName(),
                 new Rectangle(
                     new Point2D(tPos.getX() * tileWidth, tPos.getY() * tileHeight),
-                    new Point2D((tPos.getX() * tileWidth) + tileWidth, (tPos.getY() * tileHeight) + tileHeight)),
+                    new Point2D((tPos.getX() + 1) * tileWidth, (tPos.getY() + 1) * tileHeight)),
                 pos);
     }
 
