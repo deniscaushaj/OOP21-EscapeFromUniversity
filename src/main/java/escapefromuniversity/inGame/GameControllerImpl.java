@@ -17,6 +17,7 @@ import escapefromuniversity.model.GameModel;
 import escapefromuniversity.model.GameModelImp;
 import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.basics.Point2D;
+import escapefromuniversity.model.gameObject.State;
 import escapefromuniversity.model.shop.ShopController;
 import escapefromuniversity.model.shop.ShopControllerImpl;
 import escapefromuniversity.quiz.QuizView;
@@ -111,9 +112,11 @@ public class GameControllerImpl implements GameController {
             if (!this.gameObjID.contains(id)) {
                 this.controllerView.remuveSpriteAnimation(id);
             } else {
-                if (this.controllerView.containThisID(id)) {
-                    //final Point2D position = new 
-                    this.controllerView.updateSpriteAnimation(id, null);
+                if (!this.controllerView.containThisID(id)) {
+                    final Point2D position = null;
+                    this.controllerView.updateSpriteAnimation(id, position, this.gameModel.getStateID(id));
+                } else {
+                    this.controllerView.addSpriteAnimation(id, null, null, getPlayerLife(), getPlayerCredits());
                 }
             }
         }

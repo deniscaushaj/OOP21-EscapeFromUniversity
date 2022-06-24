@@ -7,6 +7,7 @@ import escapefromuniversity.inGame.GameController;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.GameObject;
+import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
 import escapefromuniversity.model.map.MapManager;
 import escapefromuniversity.model.map.MapManagerImpl;
@@ -96,6 +97,12 @@ public class GameModelImp implements GameModel{
 
     @Override
     public State getStateID(int id) {
+        return null;
+    }
+
+    @Override
+    public GameObjectType getTypeID(int id) {
+        // TODO Auto-generated method stub
         return null;
     }
 
