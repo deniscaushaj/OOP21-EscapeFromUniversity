@@ -16,6 +16,7 @@ import escapefromuniversity.menu.MenuControllerImpl;
 import escapefromuniversity.model.GameModel;
 import escapefromuniversity.model.GameModelImp;
 import escapefromuniversity.model.GameState;
+import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.shop.ShopController;
 import escapefromuniversity.model.shop.ShopControllerImpl;
 import escapefromuniversity.quiz.QuizView;
@@ -27,7 +28,8 @@ import escapefromuniversity.quiz.QuizView;
  */
 public class GameControllerImpl implements GameController {
 	private final GameModel gameModel;
-	private final GameView gameView;
+	//private final GameView gameView;
+	private final ControllerView controllerView;
 	private final KeyHandler keyHandler;
 	private GameState gameState;
     private GameState prevGameState;
@@ -40,7 +42,8 @@ public class GameControllerImpl implements GameController {
 	 */
 	public GameControllerImpl() {
 		this.gameModel = new GameModelImp(this);
-		this.gameView = new GameViewImpl(this);
+		this.controllerView = new ControllerViewImpl(this);
+		//this.gameView = new GameViewImpl(this);
 		this.keyHandler = new KeyHandlerImpl(this.gameModel, this);
 		this.setGameState(GameState.PLAY);
 	}
@@ -60,19 +63,19 @@ public class GameControllerImpl implements GameController {
                 long deltaTime = currentTime - lastTime;
                 executeInput();
                 this.updateModel(deltaTime);
-                this.gameView.update();
+                //this.gameView.update();
                 break;
             case QUIZ:
-                this.gameView.addPauseBG();
+                //this.gameView.addPauseBG();
                 this.startQuiz();
                 break;
             case MENU:
-                this.gameView.addPauseBG();
+                //this.gameView.addPauseBG();
                 executeInput();
                 this.menuController.startView();
                 break;
             case SHOP:
-                this.gameView.addPauseBG();
+                //this.gameView.addPauseBG();
                 executeInput();
                 this.shopController.startView();
                 break;
@@ -84,7 +87,7 @@ public class GameControllerImpl implements GameController {
         if (this.getGameState() == GameState.WIN) {
             this.saveScore(this.gameModel.getPlayerFinalMark());
         }
-        this.gameView.end(this.getGameState());
+        //this.gameView.end(this.getGameState());
     }
 
     private boolean continueGame() {
@@ -102,6 +105,19 @@ public class GameControllerImpl implements GameController {
                 .collect(Collectors.toList());
     }
 
+    private void chekSpriteAnimation(long deltaTime) {
+        final List<Integer> ids = this.getGameObjectID();
+        for(final Integer id : ids) {
+            if(!this.gameObjID.contains(id)) {
+                this.controllerView.remuveSpriteAnimation(id);
+            }else {
+                if(this.controllerView.containThisID(id)) {
+                    //final Point2D position = new 
+                    this.controllerView.updateSpriteAnimation(id, null);
+                }
+            }
+        }
+    }
 
     /**
      * {@inheritDoc}
