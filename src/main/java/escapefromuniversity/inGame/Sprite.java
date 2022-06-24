@@ -8,9 +8,9 @@ public interface Sprite {
 
     boolean checkUpdate();
 
-    void setImage();
+    void setFilepath();
 
-    Image getImage();
+    String getFilepath();
     
     void setState(State state);
 
