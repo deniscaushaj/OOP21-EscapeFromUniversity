@@ -63,11 +63,11 @@ public enum Items {
 
     /**
      * Gives another chance to the player when the answer is incorrect.
-     * @param competition the current exam
+     * @param exam the current exam
      */
-    public void doubleChance(final Exam competition) {
-        if (!competition.isBonusAvailable()) {
-            competition.setBonusQuiz(true);
+    public void doubleChance(final Exam exam) {
+        if (!exam.isBonusAvailable()) {
+            exam.setBonusQuiz(true);
         }
     }
 }

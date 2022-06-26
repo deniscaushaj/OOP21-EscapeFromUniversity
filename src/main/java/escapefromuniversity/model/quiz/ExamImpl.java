@@ -1,31 +1,28 @@
 package escapefromuniversity.model.quiz;
 
-import escapefromuniversity.model.gameObject.player.Player;
-
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Implementation of the Exam interface
+ * Implementation of the Exam interface.
  *
  */
-public class ExamImpl implements Exam {
+public final class ExamImpl implements Exam {
 	
 	private final Map<Integer, Quiz> exam;
 	private final String teacherName;
 	private final String subjectName;
+	private final int credits;
 	private int currentQuiz;
 	private boolean bonusQuiz;
-	private final static int MAXSCORE = 30;
-	private final static int PASSEDSCORE = 18;
-	private final static int CREDITS = 18;
-	private Player player; // TODO initialize
+	private static final  int MAXSCORE = 30;
+	private static final int PASSEDSCORE = 18;	
 	
-	
-	private ExamImpl(final Map<Integer, Quiz> exam, final String teacherName, final String subjectName) {
+	private ExamImpl(final Map<Integer, Quiz> exam, final String teacherName, final String subjectName, final int credits) {
 		this.exam = exam;
 		this.teacherName = teacherName;
 		this.subjectName = subjectName;
+		this.credits = credits;
 	}
 	
 	private int completedQuiz() {
@@ -84,6 +81,11 @@ public class ExamImpl implements Exam {
 	}
 	
 	@Override
+	public int getCredits() {
+		return this.credits;
+	}
+	
+	@Override
 	public boolean hasPassed() {
 		return this.getScore() > PASSEDSCORE;
 	}
@@ -93,7 +95,8 @@ public class ExamImpl implements Exam {
 	 *
 	 */
 	public static class Builder implements ExamBuilder {
-		private final Map<Integer, Quiz> exam = new HashMap<>();;
+		private final Map<Integer, Quiz> exam = new HashMap<>();
+		private int credits;
 		private String teacherName;
 		private String subjectName;
 
@@ -114,6 +117,12 @@ public class ExamImpl implements Exam {
 		}
 
 		@Override
+		public ExamBuilder setCredits(final int credits) {
+			this.credits = credits;
+			return this;
+		}
+
+		@Override
 		public ExamBuilder setSubject(final String subjectName) {
 			this.subjectName = subjectName;
 			return this;
@@ -124,24 +133,18 @@ public class ExamImpl implements Exam {
 			if (this.teacherName == null) {
 				throw new IllegalStateException("This competition does not have a correctly set teacher");
 			}
+			if (this.credits == 0) {
+				throw new IllegalStateException("This competition does not have a correctly set credits");
+			}
 			if (this.subjectName == null) {
 				throw new IllegalStateException("This competition does not have a correctly set subject");
 			}
 			if (this.exam.size() < 1) {
 				throw new IllegalStateException("This competition must have at least one quiz");
 			}
-			return new ExamImpl(this.exam, this.teacherName, this.subjectName);
+			return new ExamImpl(this.exam, this.teacherName, this.subjectName, credits);
 		}
 
 	}
-
-	@Override
-	public void addCredits() {
-		this.player.setCredits(this.player.getCredits() + CREDITS);
-		this.player.setFinalMark(this.getScore());
-	}
-	
-	
-	
 	
 }

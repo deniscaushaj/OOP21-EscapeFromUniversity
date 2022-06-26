@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
- * 
+ * QuizImpl is the implementation of the Quiz interface .
  *
  */
 public class QuizImpl implements Quiz {

@@ -1,11 +1,20 @@
 package escapefromuniversity.model.quiz;
 
+/**
+ * QuestionImpl is the implementation of the Question interface .
+ *
+ */
 public class QuestionImpl implements Question {
 	
 	private final int id;
 	private final String text;
 	
-	public QuestionImpl(int id, String text) {
+	/**
+	 * 
+	 * @param id The numeric ID of the question.
+	 * @param text The actual text of the question.
+	 */ 
+	public QuestionImpl(final int id, final String text) {
 		this.id = id;
 		this.text = text;
 	}
