@@ -43,9 +43,9 @@ public interface Boss extends Enemy {
 
     /**
      * 
-     * @param result : point in quiz.
+     * @param result : result of quiz.
      */
-    void setQuizResult();
+    void setQuizResult(int result);
 
     /**
      * delete this object.
