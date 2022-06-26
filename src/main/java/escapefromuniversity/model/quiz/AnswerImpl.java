@@ -1,7 +1,7 @@
 package escapefromuniversity.model.quiz;
 
 /**
- * 
+ * AnswerImpl is the implementation of the Answer interface .
  *
  */
 public class AnswerImpl implements Answer {
@@ -12,9 +12,9 @@ public class AnswerImpl implements Answer {
 	
 	/**
 	 * 
-	 * @param id
-	 * @param text
-	 * @param correct
+	 * @param id Response identification number.
+	 * @param text Actual text of the response we are representing.
+	 * @param correct Set to true if it is a correct answer.
 	 */
 	public AnswerImpl(final int id, final String text, final boolean correct) {
 		this.id = id;
