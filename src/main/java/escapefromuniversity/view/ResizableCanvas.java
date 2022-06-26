@@ -31,7 +31,7 @@ public class ResizableCanvas extends Canvas {
 
     @Override
     public void resize(double width, double height) {
-        var size = Math.floor(Math.min(width, height) / 48) * 48;
+        var size = Math.floor(Math.min(width, height));
         this.setWidth(size);
         this.setHeight(size);
     }
