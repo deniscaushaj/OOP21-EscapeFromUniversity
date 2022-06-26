@@ -6,14 +6,24 @@ import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.map.Room;
 
+/**
+ * Implementation of Shop interface.
+ */
 public class ShopImpl extends AbstractStaticGameObject implements Shop {
-
-    public ShopImpl(GameObjectType type, Point2D position, Point2D upperCorner, Room room) {
+	
+	/**
+	 * Constructor of a ShopImpl
+	 * @param type The type of the game object.
+	 * @param position The position of the game object represented with a Point2Dthe position of the game object represented with a Point2D.
+	 * @param upperCorner
+	 * @param room
+	 */
+    public ShopImpl(final GameObjectType type, final Point2D position, final Point2D upperCorner, final Room room) {
         super(type, position, upperCorner, room);
     }
 
     @Override
-    public void collisionWith(GameObject gObj2) {
+    public void collisionWith(final GameObject gObj2) {
         if (gObj2.getType() == GameObjectType.PLAYER) {
             this.getRoom().getMapManager().setupShop();
         }

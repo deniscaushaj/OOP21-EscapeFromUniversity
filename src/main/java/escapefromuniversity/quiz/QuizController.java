@@ -16,10 +16,10 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.paint.Color;
 
 /**
- * 
- *
+ * The controller of the quiz exam.
  */
 public class QuizController {
+	
 	@FXML
 	private Label profLabel, subjectLabel, scoreLabel;
 	@FXML

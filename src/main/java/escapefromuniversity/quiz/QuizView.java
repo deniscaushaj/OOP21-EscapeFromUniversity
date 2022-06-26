@@ -14,19 +14,26 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+/**
+ * The view of the quiz exam.
+ */
 public final class QuizView extends Application{
-
-	static Stage quizWindow;
-	static Scene quiz;
-	static Pane content;
 	
-	public final void start(Stage stage) throws Exception {
-		FXMLLoader loader = new FXMLLoader();
-		URL fileLocation = new File(OSFixes.getLocation("layouts","Quiz.fxml")).toURI().toURL();
+	private static Stage quizWindow;
+	private static Scene quiz;
+	private static Pane content;
+	
+	/**
+	 * Start method for star the view.
+	 * @param stage The stage.
+	 */
+	public void start(final Stage stage) throws Exception {
+		final FXMLLoader loader = new FXMLLoader();
+		final URL fileLocation = new File(OSFixes.getLocation("layouts", "Quiz.fxml")).toURI().toURL();
 		loader.setLocation(fileLocation);
-		Parent startRoot = loader.load();
-		LauncherResizer launcherResizer = new LauncherResizer();
-		launcherResizer.setSceneSize(screenWidth, screenHeight);
+		final Parent startRoot = loader.load();
+		final LauncherResizer launcherResizer = new LauncherResizer();
+		launcherResizer.setSceneSize(SCREENWIDTH, SCRENHEIGHT);
 		quiz = new Scene(startRoot, sceneWidth, sceneHeight);
         stage.setTitle("Test Quiz");
         stage.setScene(quiz);
@@ -36,6 +43,9 @@ public final class QuizView extends Application{
         quizWindow = stage;
 	}
 	
+	/**
+	 * Start the windows.
+	 */
 	public static void startQuizCompetition() {
         launch();
     }

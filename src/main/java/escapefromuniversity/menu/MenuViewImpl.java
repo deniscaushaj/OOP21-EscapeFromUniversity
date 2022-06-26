@@ -1,6 +1,6 @@
 package escapefromuniversity.menu;
 
-import static escapefromuniversity.utilities.LauncherResizer.screenHeight;
+import static escapefromuniversity.utilities.LauncherResizer.SCRENHEIGHT;
 import static escapefromuniversity.utilities.LauncherResizer.screenWidth;
 
 import java.awt.Rectangle;
@@ -106,7 +106,7 @@ public class MenuViewImpl implements MenuView {
         this.window.setTitle("EscapeFromUniversity");
         this.window.setResizable(false);
         this.window.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        this.window.setSize((int) (screenWidth * windowRatio), (int) (screenHeight * windowRatio));
+        this.window.setSize((int) (screenWidth * windowRatio), (int) (SCRENHEIGHT * windowRatio));
         this.menuPanel = new JLayeredPane();
         this.menuPanel.setOpaque(false);
         this.window.getContentPane().add(menuPanel);
