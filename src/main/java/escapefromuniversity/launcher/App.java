@@ -1,6 +1,10 @@
 package escapefromuniversity.launcher;
-
-public final class App{
+/**
+ * 
+ * app.
+ *
+ */
+public final class App {
 
 	private App() { }
 

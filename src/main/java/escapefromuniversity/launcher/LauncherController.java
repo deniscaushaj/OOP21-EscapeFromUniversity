@@ -29,8 +29,8 @@ public class LauncherController {
     @FXML
     void newGame(ActionEvent event) {
 
-    	//MenuController menu = new MenuControllerImpl(null);
-    	//menu.startView();
+    	MenuController menu = new MenuControllerImpl(null);
+    	menu.startView();
 //        GameViewImpl.startGame();
 
 //        GameControllerImpl gameController = new GameControllerImpl();
@@ -38,7 +38,7 @@ public class LauncherController {
 //        LauncherView.launcherWindow.close();  //this.creditsButton.getScene().getWindow().hide();
 //        Platform.exit();
 
-
+/*
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			URL fileLocation = new File(OSFixes.getLocation("layouts","Game.fxml")).toURI().toURL();
@@ -48,15 +48,15 @@ public class LauncherController {
 			LauncherView.launcherWindow.setScene(game);
 		} catch (Exception e) {
 			System.out.println(e);
-		}
+		}*/
     }
 
     @FXML
     void leaderboard(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader();
-            URL fileLocation = new File(OSFixes.getLocation("layouts","Leaderboard.fxml")).toURI().toURL();
-            loader.setLocation(fileLocation);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/layouts/Leaderboard.fxml"));
+            //URL fileLocation = new File(OSFixes.getLocation("layouts","Leaderboard.fxml")).toURI().toURL();
+            //loader.setLocation(fileLocation);
             Parent leaderboardRoot = loader.load();
             Scene leaderboard = new Scene(leaderboardRoot, sceneWidth, sceneHeight);
             LauncherView.launcherWindow.setScene(leaderboard);
@@ -70,9 +70,9 @@ public class LauncherController {
     @FXML
     void credits(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader();
-            URL fileLocation = new File(OSFixes.getLocation("layouts","Credits.fxml")).toURI().toURL();
-            loader.setLocation(fileLocation);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/layouts/Credits.fxml"));
+            //URL fileLocation = new File(OSFixes.getLocation("layouts","Credits.fxml")).toURI().toURL();
+            //loader.setLocation(fileLocation);
             Parent creditsRoot = loader.load();
             Scene credits = new Scene(creditsRoot, sceneWidth, sceneHeight);
             LauncherView.launcherWindow.setScene(credits);

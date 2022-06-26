@@ -20,9 +20,9 @@ public final class LauncherView extends Application{
     static Scene launcher;
 
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader();
-        URL fileLocation = new File(OSFixes.getLocation("layouts","Launcher.fxml")).toURI().toURL();
-        loader.setLocation(fileLocation);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/layouts/Launcher.fxml"));
+        //URL fileLocation = new File(OSFixes.getLocation("layouts","Launcher.fxml")).toURI().toURL();
+        //loader.setLocation(fileLocation);
         Parent startRoot = loader.load();
         LauncherResizer launcherResizer = new LauncherResizer();
         launcherResizer.setSceneSize(screenWidth, screenHeight);
