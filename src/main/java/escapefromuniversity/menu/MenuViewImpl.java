@@ -1,7 +1,7 @@
 package escapefromuniversity.menu;
 
-import static escapefromuniversity.utilities.LauncherResizer.SCRENHEIGHT;
-import static escapefromuniversity.utilities.LauncherResizer.screenWidth;
+import static escapefromuniversity.utilities.LauncherResizer.SCREENHEIGHT;
+import static escapefromuniversity.utilities.LauncherResizer.SCREENWIDTH;
 
 import java.awt.Rectangle;
 import java.awt.Color;
@@ -26,13 +26,13 @@ public class MenuViewImpl implements MenuView {
 
     private final double windowRatio = WindowSet.getWindowRatio();
 
-    private final Rectangle retBtExit = new Rectangle((int) (screenWidth / 3 * windowRatio), (int) (300 * windowRatio), (int) (screenWidth / 3 * windowRatio), (int) (90 * windowRatio));
-    private final Rectangle retBtResume = new Rectangle((int) (screenWidth / 3 * windowRatio), (int) (400 * windowRatio), (int) (screenWidth / 3 * windowRatio), (int) (90 * windowRatio));
-    private final Rectangle retBtCommand = new Rectangle((int) (screenWidth / 3 * windowRatio), (int) (500 * windowRatio), (int) (screenWidth / 3 * windowRatio), (int) (90 * windowRatio));
-    private final Rectangle retBtBack = new Rectangle((int) (screenWidth / 3 * windowRatio), (int) (500 * windowRatio), (int) (screenWidth / 3 * windowRatio), (int) (90 * windowRatio));
-    private final Rectangle retBtTextCommand1 = new Rectangle((int) (screenWidth / 3 * windowRatio), (int) (10 * windowRatio), (int) (screenWidth / 3 * windowRatio), (int) (90 * windowRatio));
-    private final Rectangle retBtTextCommand2 = new Rectangle((int) (screenWidth / 3 * windowRatio), (int) (110 * windowRatio), (int) (screenWidth / 3 * windowRatio), (int) (90 * windowRatio));
-    private final Rectangle retBtTextCommand3 = new Rectangle((int) (screenWidth / 3 * windowRatio), (int) (210 * windowRatio), (int) (screenWidth / 2 * windowRatio), (int) (90 * windowRatio));
+    private final Rectangle retBtExit = new Rectangle((int) (SCREENWIDTH / 3 * windowRatio), (int) (300 * windowRatio), (int) (SCREENWIDTH / 3 * windowRatio), (int) (90 * windowRatio));
+    private final Rectangle retBtResume = new Rectangle((int) (SCREENWIDTH / 3 * windowRatio), (int) (400 * windowRatio), (int) (SCREENWIDTH / 3 * windowRatio), (int) (90 * windowRatio));
+    private final Rectangle retBtCommand = new Rectangle((int) (SCREENWIDTH / 3 * windowRatio), (int) (500 * windowRatio), (int) (SCREENWIDTH / 3 * windowRatio), (int) (90 * windowRatio));
+    private final Rectangle retBtBack = new Rectangle((int) (SCREENWIDTH / 3 * windowRatio), (int) (500 * windowRatio), (int) (SCREENWIDTH / 3 * windowRatio), (int) (90 * windowRatio));
+    private final Rectangle retBtTextCommand1 = new Rectangle((int) (SCREENWIDTH / 3 * windowRatio), (int) (10 * windowRatio), (int) (SCREENWIDTH / 3 * windowRatio), (int) (90 * windowRatio));
+    private final Rectangle retBtTextCommand2 = new Rectangle((int) (SCREENWIDTH / 3 * windowRatio), (int) (110 * windowRatio), (int) (SCREENWIDTH / 3 * windowRatio), (int) (90 * windowRatio));
+    private final Rectangle retBtTextCommand3 = new Rectangle((int) (SCREENWIDTH / 3 * windowRatio), (int) (210 * windowRatio), (int) (SCREENWIDTH / 2 * windowRatio), (int) (90 * windowRatio));
 
     private final JButton btExit = new JButton("EXIT");
     private final JButton btResume = new JButton("RESUME");
@@ -106,7 +106,7 @@ public class MenuViewImpl implements MenuView {
         this.window.setTitle("EscapeFromUniversity");
         this.window.setResizable(false);
         this.window.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        this.window.setSize((int) (screenWidth * windowRatio), (int) (SCRENHEIGHT * windowRatio));
+        this.window.setSize((int) (SCREENWIDTH * windowRatio), (int) (SCREENHEIGHT * windowRatio));
         this.menuPanel = new JLayeredPane();
         this.menuPanel.setOpaque(false);
         this.window.getContentPane().add(menuPanel);

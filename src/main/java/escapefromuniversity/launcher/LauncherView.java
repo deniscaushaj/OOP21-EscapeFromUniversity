@@ -2,9 +2,6 @@ package escapefromuniversity.launcher;
 
 import static escapefromuniversity.utilities.LauncherResizer.*;
 
-import java.io.File;
-import java.net.URL;
-
 import escapefromuniversity.utilities.LauncherResizer;
 import escapefromuniversity.utilities.OSFixes;
 import javafx.application.Application;
@@ -25,7 +22,7 @@ public final class LauncherView extends Application{
         //loader.setLocation(fileLocation);
         Parent startRoot = loader.load();
         LauncherResizer launcherResizer = new LauncherResizer();
-        launcherResizer.setSceneSize(screenWidth, screenHeight);
+        launcherResizer.setSceneSize(SCREENWIDTH, SCREENHEIGHT);
         launcher = new Scene(startRoot, sceneWidth, sceneHeight);
         stage.setTitle("Escape From University");
         stage.setScene(launcher);

@@ -14,7 +14,7 @@ public class LauncherResizer {
 	/**
 	 * The screen height.
 	 */
-	public static final int SCRENHEIGHT = (int) Screen.getPrimary().getBounds().getHeight();
+	public static final int SCREENHEIGHT = (int) Screen.getPrimary().getBounds().getHeight();
 	/**
 	 * The scene width.
 	 */

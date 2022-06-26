@@ -33,7 +33,7 @@ public final class QuizView extends Application{
 		loader.setLocation(fileLocation);
 		final Parent startRoot = loader.load();
 		final LauncherResizer launcherResizer = new LauncherResizer();
-		launcherResizer.setSceneSize(SCREENWIDTH, SCRENHEIGHT);
+		launcherResizer.setSceneSize(SCREENWIDTH, SCREENHEIGHT);
 		quiz = new Scene(startRoot, sceneWidth, sceneHeight);
         stage.setTitle("Test Quiz");
         stage.setScene(quiz);

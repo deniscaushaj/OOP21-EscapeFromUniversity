@@ -2,7 +2,7 @@ package escapefromuniversity.utilities;
 
 import java.awt.*;
 
-import static escapefromuniversity.utilities.LauncherResizer.SCRENHEIGHT;
+import static escapefromuniversity.utilities.LauncherResizer.SCREENHEIGHT;
 import static escapefromuniversity.utilities.LauncherResizer.SCREENWIDTH;
 
 public class WindowSet {
@@ -13,7 +13,7 @@ public class WindowSet {
 	public static final double RATIO = 0.777;
 
 	
-	private static final double windowRatio = Math.min((double) (SCRENHEIGHT) / (double) (NATIVE_HEIGHT), (double) (SCREENWIDTH) / (double) (NATIVE_WIDTH));
+	private static final double windowRatio = Math.min((double) (SCREENHEIGHT) / (double) (NATIVE_HEIGHT), (double) (SCREENWIDTH) / (double) (NATIVE_WIDTH));
 	
 	public static double getWindowRatio() {
 		return windowRatio;
