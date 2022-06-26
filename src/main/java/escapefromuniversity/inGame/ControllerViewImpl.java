@@ -1,6 +1,6 @@
 package escapefromuniversity.inGame;
 
-import java.awt.*;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,33 +10,36 @@ import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
 import escapefromuniversity.model.map.CanvasDrawerImpl;
-import escapefromuniversity.utilities.OSFixes;
-import escapefromuniversity.utilities.WindowSet;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 
-import javax.swing.*;
+/**
+ * 
+ * class  of controller of game view.
+ *
+ */
+public class ControllerViewImpl implements ControllerView {
 
-import static escapefromuniversity.utilities.LauncherResizer.screenHeight;
-import static escapefromuniversity.utilities.LauncherResizer.screenWidth;
-
-public class ControllerViewImpl implements ControllerView{
+    private static final long TIME_TO_END = 5000;
     private final GameController gameController;
-    private final Map<Integer,SpriteAnimation> spriteAnimations = new HashMap<>();
+    private final Map<Integer, SpriteAnimation> spriteAnimations = new HashMap<>();
 
     @FXML
     private Canvas gameCanvas;
 
-
-    public ControllerViewImpl(GameController gameController) {
+    /**
+     * 
+     * @param gameController
+     */
+    public ControllerViewImpl(final GameController gameController) {
         this.gameController = gameController;
     }
 
-    private void drawerMap(CanvasDrawerImpl canvas) {
+    private void drawerMap(final CanvasDrawerImpl canvas) {
 
     }
 
-    private void drawerObject(CanvasDrawerImpl canvas) {
+    private void drawerObject(final CanvasDrawerImpl canvas) {
         this.spriteAnimations.entrySet().stream().forEach(e -> {
             final SpriteAnimation animation = e.getValue();
             if (animation.isVisible()) {
@@ -45,7 +48,9 @@ public class ControllerViewImpl implements ControllerView{
         });
     }
 
-
+    /**
+     * {@inheritDoc}
+     */
     public void updateView() {
         /*
         final var gc = gameCanvas.getGraphicsContext2D();
@@ -55,25 +60,40 @@ public class ControllerViewImpl implements ControllerView{
         */
     }
 
-    public void removeSpriteAnimation(int id) {
+    /**
+     * {@inheritDoc}
+     */
+    public void removeSpriteAnimation(final int id) {
         this.spriteAnimations.remove(id);
     }
 
-    public void updateSpriteAnimation(int id, Point2D position, State state) {
+    /**
+     * {@inheritDoc}
+     */
+    public void updateSpriteAnimation(final int id, final Point2D position, final State state) {
         this.spriteAnimations.get(id).setPosition(position);
         this.spriteAnimations.get(id).getSprite();
     }
 
-    public void addSpriteAnimation(int id, State state, GameObjectType type, int height, int width) {
+    /**
+     * {@inheritDoc}
+     */
+    public void addSpriteAnimation(final int id, final State state, final GameObjectType type, final int height, final int width) {
         final Sprite sprite = new SpriteImpl(state, type);
         final SpriteAnimation animation = new SpriteAnimation(sprite, height, width);
         this.spriteAnimations.put(id, animation);
     }
 
-    public boolean containThisID(int id) {
+    /**
+     * {@inheritDoc}
+     */
+    public boolean containThisID(final int id) {
         return this.spriteAnimations.containsKey(id);
     }
-    
+
+    /**
+     * {@inheritDoc}
+     */
     public void end(final GameState gameState) {
         if (gameState == GameState.WIN){
             //aggiorna con immagine vittoria
@@ -81,7 +101,7 @@ public class ControllerViewImpl implements ControllerView{
             //aggiorna con immagine sconfitta
         }
         try {
-            Thread.sleep(5000);
+            Thread.sleep(TIME_TO_END);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
