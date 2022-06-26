@@ -7,9 +7,7 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 /**
  * An implementation of Obstacle interface.
@@ -17,10 +15,15 @@ import java.util.stream.IntStream;
 public class ObstacleImpl implements Obstacle {
 
     private static final int TILE_DIMENSION = 48;
-    private static final String MAP_NAME = "final-map.tsx";
+    private static final String MAP_NAME = "final-map.tmx";
+    private final TMXMapParser map;
+
+    public ObstacleImpl() {
+        map = new TMXMapParser(MAP_NAME);
+    }
 
     private List<ObstacleObject> getObstacleList(final String property, final GameObjectType obsType) throws ParserConfigurationException, IOException, SAXException {
-        var map = new TMXMapParser(MAP_NAME);
+        //var map = new TMXMapParser(MAP_NAME);
         return map.parse().getLayers()
                 .stream()
                 .filter(l -> l.getProperties().contains(property))
