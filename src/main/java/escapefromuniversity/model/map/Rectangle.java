@@ -89,7 +89,7 @@ public class Rectangle {
      * @return the position of  bottom-left point
      */
     public Point2D getBottomLeft() {
-        return new Point2D(getTopLeft().getX(), getBottomLeft().getY());
+        return new Point2D(getTopLeft().getX(), getBottomRight().getY());
     }
 
     /**
