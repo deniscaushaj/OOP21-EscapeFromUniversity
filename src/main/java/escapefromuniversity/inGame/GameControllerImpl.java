@@ -29,7 +29,7 @@ public class GameControllerImpl implements GameController {
 	private final KeyHandler keyHandler;
 	private GameState gameState;
     private GameState prevGameState;
-	private List<Integer> gameObjID = new LinkedList();
+	private List<Integer> gameObjID = new LinkedList<>();
 	private final MenuController menuController = new MenuControllerImpl(this);
 	private final ShopController shopController = new ShopControllerImpl(this);
 

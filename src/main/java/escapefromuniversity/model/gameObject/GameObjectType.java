@@ -15,12 +15,12 @@ public enum GameObjectType {
 	FURNITURE(GameCollisionType.OBSTACLE),
 	NPC(GameCollisionType.OBSTACLE),
 	BULLET_PLAYER(GameCollisionType.BULLET),
-	BULLET_BOSS_1(GameCollisionType.BULLET),
+	BULLET_BOSS_1(GameCollisionType.IMMUNE_BULLET),
 	BULLET_BOSS_2(GameCollisionType.BULLET),
 	BULLET_BOSS_3(GameCollisionType.BULLET),
-	BULLET_BOSS_4(GameCollisionType.BULLET),
+	BULLET_BOSS_4(GameCollisionType.IMMUNE_BULLET),
 	BULLET_BOSS_5(GameCollisionType.BULLET),
-	BULLET_BOSS_6(GameCollisionType.BULLET);
+	BULLET_BOSS_6(GameCollisionType.IMMUNE_BULLET);
 	
 	private GameCollisionType collisionType;
 
