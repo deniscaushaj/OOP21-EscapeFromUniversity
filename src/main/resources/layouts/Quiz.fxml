@@ -15,18 +15,40 @@
    <children>
       <VBox alignment="CENTER" cacheShape="false" centerShape="false" prefHeight="400.0" prefWidth="600.0" spacing="15.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="-17.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label contentDisplay="RIGHT" text="Score">
-               <font>
-                  <Font name="System Bold Italic" size="18.0" />
-               </font>
-               <graphic>
-                  <Label fx:id="scoreLabel" text="0">
+            <HBox alignment="CENTER" prefHeight="24.0" prefWidth="600.0">
+               <children>
+                  <Label contentDisplay="RIGHT" text="CFU: ">
                      <font>
                         <Font name="System Bold Italic" size="18.0" />
                      </font>
                   </Label>
-               </graphic>
-            </Label>
+                  <Label fx:id="creditsLabel" contentDisplay="RIGHT" text="0">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label contentDisplay="RIGHT" text=" | Grade: ">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="gradeLabel" contentDisplay="RIGHT" text="0">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label contentDisplay="RIGHT" text=" su ">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="maxGradeLabel" contentDisplay="RIGHT" text="0">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
             <Label fx:id="profLabel" contentDisplay="RIGHT" text="Cognome">
                <font>
                   <Font name="System Bold Italic" size="18.0" />

@@ -66,12 +66,12 @@ public final class ExamImpl implements Exam {
 	}
 	
 	@Override
-	public int getScore() {
-		return (int) this.getMaxScore() / this.getTotal() * (int) this.exam.entrySet().stream().filter(q -> q.getValue().hasBeenAnswered() && q.getValue().hasAnsweredWell().get()).count();
+	public int getGrade() {
+		return (int) this.getMaxGrade() / this.getTotal() * (int) this.exam.entrySet().stream().filter(q -> q.getValue().hasBeenAnswered() && q.getValue().hasAnsweredWell().get()).count();
 	}
 	
 	@Override
-	public int getMaxScore() {
+	public int getMaxGrade() {
 		return MAXSCORE;
 	}
 	
@@ -87,7 +87,7 @@ public final class ExamImpl implements Exam {
 	
 	@Override
 	public boolean hasPassed() {
-		return this.getScore() > PASSEDSCORE;
+		return this.getGrade() > PASSEDSCORE;
 	}
 	
 	/**

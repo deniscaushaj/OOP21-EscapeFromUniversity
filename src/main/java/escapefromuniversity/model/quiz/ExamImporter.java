@@ -38,6 +38,7 @@ public class ExamImporter {
 
 		examBuilder.setTeacher(jsonObject.get("teacher").toString());
 		examBuilder.setSubject(jsonObject.get("subject").toString());
+		examBuilder.setCredits((int) (long) jsonObject.get("cfu"));
 
 		final JSONArray quizes = (JSONArray) jsonObject.get("quiz");
 
