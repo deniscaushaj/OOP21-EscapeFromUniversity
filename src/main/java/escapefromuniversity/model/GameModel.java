@@ -9,42 +9,83 @@ import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
 import escapefromuniversity.model.gameObject.player.Player;
 
+/**
+ * 
+ * model of game.
+ *
+ */
 public interface GameModel {
-	
-	/**
-	 * 
-	 * @return a list of all GameObject in game.
-	 */
-	List<GameObject> getAllGameObj();
-	
-	/**
-	 * 
-	 * @param deltaTime : time since the last update.
-	 */
-	void updateGame(double deltaTime);
 
-	void setWin();
-	
-	void setLost();
+    /**
+     * 
+     * @return a list of all GameObject in game.
+     */
+    List<GameObject> getAllDynamicGameObj();
 
-	void setShop();
+    /**
+     * 
+     * @param deltaTime : time since the last update.
+     */
+    void updateGame(double deltaTime);
 
-	void setQuiz(Boss boss);
+    /**
+     * 
+     */
+    void setWin();
 
-	/**
-	 * 
-	 * @return the Player object.
-	 */
-	Player getPlayer();
-	
-	Point2D getPositionOfID(int id);
-	
-	int getPlayerFinalMark();
-	
-	Boss getCurrentBoss();
-	
-	State getStateID(int id);
-	
-	GameObjectType getTypeID(int id);
+    /**
+     * 
+     */
+    void setLost();
+
+    /**
+     * 
+     */
+    void setShop();
+
+    /**
+     * 
+     * @param boss
+     */
+    void setQuiz(Boss boss);
+
+    /**
+     * 
+     * @return the Player object.
+     */
+    Player getPlayer();
+
+    /**
+     * 
+     * @param id of object.
+     * @return Point2D of position.
+     */
+    Point2D getPositionOfID(int id);
+
+    /**
+     * 
+     * @return final mark.
+     */
+    int getPlayerFinalMark();
+
+    /**
+     * 
+     * @return actual boss.
+     */
+    Boss getCurrentBoss();
+
+    /**
+     * 
+     * @param id of object.
+     * @return state.
+     */
+    State getStateID(int id);
+
+    /**
+     * 
+     * @param id of object.
+     * @return type.
+     */
+    GameObjectType getTypeID(int id);
 
 }
