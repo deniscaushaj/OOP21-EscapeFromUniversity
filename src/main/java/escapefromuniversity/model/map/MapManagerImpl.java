@@ -10,11 +10,10 @@ import java.util.Map;
 public class MapManagerImpl implements MapManager {
     private final Map<Door,Door> doors;
     private final GameModel gameModel;
-    private Room currentRoom;
+    private final Map map;
 
     public MapManagerImpl(GameModel gameModel) {
         this.gameModel = gameModel;
-        List<Room> roomList = this.createRooms();
         this.doors = this.createDoors();
 
     }
