@@ -12,9 +12,11 @@ import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.map.Room;
 
+/**
+ * The implementation of the {@link Player} interface. It also extends {@link AbstractDynamicGameObject}
+ */
 public class PlayerImpl extends AbstractDynamicGameObject implements Player{
 
-    // TODO values to be changed:
     private static final int MAX_LIFE = 100;
     private static final int MAX_DAMAGE = 30;
     private static final int MAX_ARMOR = 20;
@@ -38,11 +40,12 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
     private final BulletFactory bulletFactory;
 
     /**
-     * @param type
-     * @param position
-     * @param speed
-     * @param direction
-     * @param shootDelay
+     * Instantiates the player.
+     * @param type the game object type: a player.
+     * @param position the position of the player.
+     * @param speed the movement speed of the player.
+     * @param direction the direction of the player.
+     * @param shootDelay the shoot delay of the player.
      */
     public PlayerImpl(GameObjectType type, Point2D position, int speed, Vector2D direction, int shootDelay, Room room) {
         super(type, position, HIT_BOX_PLAYER, speed, direction, room);
@@ -58,6 +61,9 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
         this.bulletFactory = new BulletFactoryImpl();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void collisionWith(GameObject gObj2) {
         if (this.collisionWithCheck(gObj2)) {
@@ -68,6 +74,9 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void update(double deltaTime) {
         if (this.shooting) {
@@ -77,60 +86,99 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
         this.move(deltaTime);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getMaxLife() {
         return MAX_LIFE;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getMaxDamage() {return MAX_DAMAGE;}
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getMaxArmor() {
         return MAX_ARMOR;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getLife() {
         return this.life;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getCredits() {
         return this.credits;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getDamage() {return this.damage;}
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getArmor() {return this.armor;}
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getFinalMark() {
         return this.finalMark;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setLife(final int life) {
         this.life = life;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setCredits(final int credits) {
         this.credits = credits;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setDamage(final int damage) {
         this.damage = damage;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setArmor(final int armor) {
         this.armor = armor;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setFinalMark(final int newMark) {
         this.finalMark = (this.finalMark * this.passed + newMark);
@@ -139,31 +187,49 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
         this.finalMark = this.finalMark * 110 / 30;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void resetLife() {
         this.setLife(this.getMaxLife());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setDamageBuff(final int damage) {
         this.setDamage(this.getDamage() + damage);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setArmorBuff(final int armor) {
         this.setArmor(this.getArmor() + armor);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setRoom(Room room) {
         this.room = room;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void takeDamage(final int damage) {
         this.setLife(this.getLife() + this.getArmor() - damage);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean canShoot() {
         final long currentTime = System.currentTimeMillis();
@@ -174,6 +240,9 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
         return false;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setShoot(final boolean shooting, final Direction direction) {
         if (this.canShoot()) {
@@ -182,6 +251,9 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void shoot() {
         final Bullet bullet = bulletFactory.createPlayerBullet(this.getObjectPosition(), this.shotDirection, this.damage, this.room);
@@ -189,27 +261,41 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
         this.shooting = false;
     }
 
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setLastDirection(Direction direction) {
         this.direction = direction;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Direction getLastDirection() {
         return this.direction;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void passedExam() {
         this.passed ++;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean isDead() {
         return this.life <= 0;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean isGraduated() {
         return this.passed >= 6;

@@ -4,62 +4,115 @@ import escapefromuniversity.model.gameObject.Direction;
 import escapefromuniversity.model.gameObject.DynamicGameObject;
 import escapefromuniversity.model.map.Room;
 
+/**
+ * The interface of the player, containing all the methods related to its stats, direction and state.
+ */
 public interface Player extends DynamicGameObject{
 
 	/**
-	 * @return the max life of the Player.
+	 * Returns the max life of the player.
+	 * @return the max life of the player.
 	 */
 	int getMaxLife();
 
+	/**
+	 * Returns the max damage of the player.
+	 * @return the max damage of the player.
+	 */
 	int getMaxDamage();
 
+	/**
+	 * Returns the max armor of the player.
+	 * @return the max armor of the player.
+	 */
 	int getMaxArmor();
 
 	/**
+	 * Returns the current life of the player.
 	 * @return the current life of the Player.
 	 */
 	int getLife();
 
 	/**
+	 * Returns the current credits of the player.
 	 * @return the current credits of the Player.
 	 */
 	int getCredits();
 
+	/**
+	 * Returns the current damage of the player.
+	 * @return the current damage of the player.
+	 */
 	int getDamage();
 
+	/**
+	 * Returns the current armor of the player.
+	 * @return the current armor of the player.
+	 */
 	int getArmor();
 
+	/**
+	 * Returns the final mark of the player.
+	 * @return the final mark of the player.
+	 */
 	int getFinalMark();
 
 	/**
+	 * Sets the life of the player.
 	 * @param life to set for the Player.
 	 */
 	void setLife(int life);
 
 	/**
+	 * Sets the credits of the player.
 	 * @param credits to set for the Player.
 	 */
 	void setCredits(int credits);
 
+	/**
+	 * Sets the damage of the player.
+	 * @param damage to set for the player.
+	 */
 	void setDamage(int damage);
 
+	/**
+	 * Sets the armor of the player.
+	 * @param armor to set for the player.
+	 */
 	void setArmor(int armor);
 
+	/**
+	 * Calculates the final mark based on the previous final mark and a new mark.
+	 * @param newMark the new mark to add the final mark.
+	 */
 	void setFinalMark(int newMark);
 
+	/**
+	 * Restores the life of the player to full.
+	 */
 	void resetLife();
 
+	/**
+	 * Increases the damage of the player based on a damage buff.
+	 * @param damage the damage buff to add to player's damage.
+	 */
 	void setDamageBuff(int damage);
 
+	/**
+	 * Increases the armor of the player based on an armor buff.
+	 * @param armor the armor buff to add to player's armor.
+	 */
 	void setArmorBuff(int armor);
 
 	/**
-	 * @param damage to inflict to the Player's life.
+	 * Decreases player's life based on some damage taken.
+	 * @param damage to inflict to the player's life.
 	 */
 	void takeDamage(int damage);
 
 	/**
-	 * @return {@code true} if the Player can shoot.
+	 * Checks if the player can shoot (if its shoot delay time has already elapsed).
+	 * @return {@code true} if the player can shoot, {@code false} otherwise.
 	 */
 	boolean canShoot();
 
@@ -71,12 +124,20 @@ public interface Player extends DynamicGameObject{
 	void setShoot(boolean shooting, Direction direction);
 
 	/**
-	 * Makes the Player shoot.
+	 * Makes the player shoot.
 	 */
 	void shoot();
 
+	/**
+	 * Saves the last direction of the player.
+	 * @param direction the direction to save.
+	 */
 	void setLastDirection(Direction direction);
 
+	/**
+	 * Returns the last direction of the player.
+	 * @return the last direction of the player.
+	 */
 	Direction getLastDirection();
 
 	/**
@@ -85,16 +146,20 @@ public interface Player extends DynamicGameObject{
 	void passedExam();
 
 	/**
-	 * @return {@code true} if the Player is dead.
+	 * @return {@code true} if the player is dead.
 	 */
 	boolean isDead();
 
 	/**
-	 * @return {@code true} if the Player is graduated.
+	 * @return {@code true} if the player is graduated.
 	 */
 	boolean isGraduated();
 
 
+	/**
+	 * Sets the room of the player.
+	 * @param room the room to set.
+	 */
 	void setRoom(Room room);
 
 }
