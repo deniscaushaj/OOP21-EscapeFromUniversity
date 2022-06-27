@@ -7,7 +7,7 @@ public interface MapManager {
 
     void update(double deltaTime);
 
-    Map getMap();
+    Mapp getMap();
 
     Player getPlayer();
 

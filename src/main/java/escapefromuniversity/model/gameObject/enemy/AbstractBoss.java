@@ -5,7 +5,7 @@ import escapefromuniversity.model.basics.Vector2D;
 import escapefromuniversity.model.gameObject.AbstractDynamicGameObject;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;
-import escapefromuniversity.model.map.Room;
+import escapefromuniversity.model.map.Mapp;
 import escapefromuniversity.model.gameObject.player.Player;
 
 /**
@@ -33,10 +33,10 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
      * @param life
      * @param shootDelay
      * @param impactDamage
-     * @param room
+     * @param map
      */
-    public AbstractBoss(final int speed, final Point2D position, final Point2D upperCorner, final Vector2D direction, final GameObjectType type, final int life, final long shootDelay, final int impactDamage, final String exam, final Room room) {
-        super(type, position, upperCorner, speed, direction, room);
+    public AbstractBoss(final int speed, final Point2D position, final Point2D upperCorner, final Vector2D direction, final GameObjectType type, final int life, final long shootDelay, final int impactDamage, final String exam, final Mapp map) {
+        super(type, position, upperCorner, speed, direction, map);
         this.life = life;
         this.shootDelay = shootDelay;
         this.bossState = BossState.QUIZ;
@@ -113,7 +113,7 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
             case ENTITY:
                 if (gObj2.getType().equals(GameObjectType.PLAYER)) {
                     if (this.bossState.equals(BossState.QUIZ)) {
-                        this.getRoom().goQuiz(this);
+                        this.getMap().goQuiz(this);
                     } else {
                         final Player player = (Player) gObj2;
                         player.takeDamage(this.getImpactDamage());
@@ -139,7 +139,7 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
      * {@inheritDoc}
      */
     protected Vector2D newDirection() {
-        Point2D playerPos = this.getRoom().getPlayer().getObjectPosition();
+        Point2D playerPos = this.getMap().getPlayer().getObjectPosition();
         return new Vector2D(this.getObjectPosition().getX() - playerPos.getX(),
                 this.getObjectPosition().getY() - playerPos.getY()).normal();
     }
@@ -177,7 +177,7 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
      */
     @Override
     public void kill() {
-        this.getRoom().deleteGameObject(this);
+        this.getMap().deleteGameObject(this);
     }
 
     /**
@@ -185,7 +185,7 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
      */
     @Override
     public void setQuizResult(final int result) {
-        this.getRoom().getPlayer().setFinalMark(result);
+        this.getMap().getPlayer().setFinalMark(result);
     }
 
     /**
@@ -193,7 +193,7 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
      */
     @Override
     public void setQuizCredit(final int credits) {
-        this.getRoom().getPlayer().setCredits(this.getRoom().getPlayer().getCredits() + credits);
+        this.getMap().getPlayer().setCredits(this.getMap().getPlayer().getCredits() + credits);
     }
 
     /**

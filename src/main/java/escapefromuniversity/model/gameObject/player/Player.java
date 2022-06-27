@@ -2,7 +2,7 @@ package escapefromuniversity.model.gameObject.player;
 
 import escapefromuniversity.model.gameObject.Direction;
 import escapefromuniversity.model.gameObject.DynamicGameObject;
-import escapefromuniversity.model.map.Room;
+import escapefromuniversity.model.map.Mapp;
 
 public interface Player extends DynamicGameObject{
 
@@ -95,6 +95,6 @@ public interface Player extends DynamicGameObject{
 	boolean isGraduated();
 
 
-	void setRoom(Room room);
+	void setMap(Mapp map);
 
 }

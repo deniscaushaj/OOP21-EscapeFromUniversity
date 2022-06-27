@@ -4,41 +4,40 @@ import escapefromuniversity.model.GameModel;
 import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.player.Player;
 
-import java.util.List;
 import java.util.Map;
 
 public class MapManagerImpl implements MapManager {
     private final Map<Door,Door> doors;
     private final GameModel gameModel;
-    private final Map map;
+    private final Mapp map;
 
     public MapManagerImpl(GameModel gameModel) {
         this.gameModel = gameModel;
         this.doors = this.createDoors();
-
+        this.map = this.createMap();
     }
 
     @Override
-    public void update(double deltaTime) {
-        this.currentRoom.update(deltaTime);
+    public void update(final double deltaTime) {
+        this.map.update(deltaTime);
     }
 
     @Override
-    public Room getRoom() {
-        return this.currentRoom;
+    public Mapp getMap() {
+        return this.map;
     }
 
     @Override
     public Player getPlayer() {
-        return this.currentRoom.getPlayer();
+        return this.map.getPlayer();
     }
 
-    private List<Room> createRooms() {
+    private Mapp createMap() {
         return null;
 
     }
 
-    private Map<Door, Door> createDoors(){
+    private Map<Door, Door> createDoors() {
         return null;
     }
 
@@ -49,9 +48,9 @@ public class MapManagerImpl implements MapManager {
 
     @Override
     public void setCurrentRoom(Door door) {
-        this.currentRoom.getPlayer().setRoom(door.getRoom());
-        this.currentRoom = doors.get(door).getRoom();
-        this.currentRoom.getPlayer().setPosition(doors.get(door).getPos());
+        //this.map.getPlayer().setMap(door.getMap());
+        this.map = doors.get(door).getMap();
+        this.map.getPlayer().setPosition(doors.get(door).getPos());
     }
 
     @Override

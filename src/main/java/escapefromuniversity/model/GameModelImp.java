@@ -37,7 +37,7 @@ public class GameModelImp implements GameModel {
      */
     @Override
     public List<DynamicGameObject> getAllDynamicGameObj() {
-        return new LinkedList<DynamicGameObject>(this.mapManager.getRoom().getAllDynamicGameObject());
+        return new LinkedList<DynamicGameObject>(this.mapManager.getMap().getAllDynamicGameObject());
     }
 
     /**
@@ -45,7 +45,7 @@ public class GameModelImp implements GameModel {
      */
     @Override
     public void updateGame(final double deltaTime) {
-        this.mapManager.getRoom().update(deltaTime);
+        this.mapManager.getMap().update(deltaTime);
     }
 
     /**
@@ -87,7 +87,7 @@ public class GameModelImp implements GameModel {
      * {@inheritDoc}
      */
     public Point2D getPositionOfID(final int id) {
-        for (final DynamicGameObject obj : this.mapManager.getRoom().getAllDynamicGameObject()) {
+        for (final DynamicGameObject obj : this.mapManager.getMap().getAllDynamicGameObject()) {
             if (obj.getID() == id) {
                 return obj.getObjectPosition();
             }
@@ -107,7 +107,7 @@ public class GameModelImp implements GameModel {
 
     @Override
     public State getStateID(final int id) {
-        for (final DynamicGameObject obj : this.mapManager.getRoom().getAllDynamicGameObject()) {
+        for (final DynamicGameObject obj : this.mapManager.getMap().getAllDynamicGameObject()) {
             if (obj.getID() == id) {
                 return obj.getState();
             }
@@ -117,7 +117,7 @@ public class GameModelImp implements GameModel {
 
     @Override
     public GameObjectType getTypeID(final int id) {
-        for (final DynamicGameObject obj : this.mapManager.getRoom().getAllDynamicGameObject()) {
+        for (final DynamicGameObject obj : this.mapManager.getMap().getAllDynamicGameObject()) {
             if (obj.getID() == id) {
                 return obj.getType();
             }

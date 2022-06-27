@@ -10,7 +10,7 @@ import escapefromuniversity.model.gameObject.AbstractDynamicGameObject;
 import escapefromuniversity.model.gameObject.Direction;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;
-import escapefromuniversity.model.map.Room;
+import escapefromuniversity.model.map.Mapp;
 
 public class PlayerImpl extends AbstractDynamicGameObject implements Player{
 
@@ -44,8 +44,8 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
      * @param direction
      * @param shootDelay
      */
-    public PlayerImpl(GameObjectType type, Point2D position, int speed, Vector2D direction, int shootDelay, Room room) {
-        super(type, position, HIT_BOX_PLAYER, speed, direction, room);
+    public PlayerImpl(GameObjectType type, Point2D position, int speed, Vector2D direction, int shootDelay, Mapp map) {
+        super(type, position, HIT_BOX_PLAYER, speed, direction, map);
         this.life = MAX_LIFE;
         this.credits = START_CREDITS;
         this.damage = START_DAMAGE;
@@ -155,8 +155,8 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
     }
 
     @Override
-    public void setRoom(Room room) {
-        this.room = room;
+    public void setMap(Mapp map) {
+        this.map = map;
     }
 
     @Override
@@ -184,8 +184,8 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
 
     @Override
     public void shoot() {
-        final Bullet bullet = bulletFactory.createPlayerBullet(this.getObjectPosition(), this.shotDirection, this.damage, this.room);
-        this.getRoom().addDynamicGameObject(bullet);
+        final Bullet bullet = bulletFactory.createPlayerBullet(this.getObjectPosition(), this.shotDirection, this.damage, this.map);
+        this.getMap().addDynamicGameObject(bullet);
         this.shooting = false;
     }
 

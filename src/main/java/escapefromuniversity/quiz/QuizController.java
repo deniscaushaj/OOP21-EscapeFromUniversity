@@ -76,7 +76,7 @@ public class QuizController {
 		} else {
 			nextButton.setDisable(true);
 			this.boss.setQuizResult(this.exam.getGrade());
-			this.boss.setQuizCredits(this.exam.getCredits());
+			this.boss.setQuizCredit(this.exam.getCredits());
 			if (this.exam.hasPassed()) {
 				questionButton.setText("Complimenti, sei stato PROMOSSO!");
 				questionButton.setTextFill(Color.DARKGREEN);

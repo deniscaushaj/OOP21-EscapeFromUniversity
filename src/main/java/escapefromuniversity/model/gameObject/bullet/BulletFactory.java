@@ -2,7 +2,7 @@ package escapefromuniversity.model.gameObject.bullet;
 
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.basics.Vector2D;
-import escapefromuniversity.model.map.Room;
+import escapefromuniversity.model.map.Mapp;
 
 /**
  * 
@@ -15,57 +15,57 @@ public interface BulletFactory {
      * @param startPosition : initial position of the bullet
      * @param direction : the direction the bullet will go
      * @param damage : the damage of Player Bullet
-     * @param room : belonging room
+     * @param map : belonging map
      * @return player bullet.
      */
-    Bullet createPlayerBullet(Point2D startPosition, Vector2D direction, int damage, Room room);
+    Bullet createPlayerBullet(Point2D startPosition, Vector2D direction, int damage, Mapp map);
 
     /**
      * @param startPosition : initial position of the bullet
      * @param direction : the direction the bullet will go
-     * @param room : belonging room
+     * @param map : belonging map
      * @return boss1 bullet.
      */
-    Bullet createBoss1Bullet(Point2D startPosition, Vector2D direction, Room room);
+    Bullet createBoss1Bullet(Point2D startPosition, Vector2D direction, Mapp map);
 
     /**
      * @param startPosition : initial position of the bullet
      * @param direction : the direction the bullet will go
-     * @param room : belonging room
+     * @param map : belonging map
      * @return boss2 bullet.
      */
-    Bullet createBoss2Bullet(Point2D startPosition, Vector2D direction, Room room);
+    Bullet createBoss2Bullet(Point2D startPosition, Vector2D direction, Mapp map);
 
     /**
      * @param startPosition : initial position of the bullet
      * @param direction : the direction the bullet will go
-     * @param room : belonging room
+     * @param map : belonging map
      * @return boss3 bullet.
      */
-    Bullet createBoss3Bullet(Point2D startPosition, Vector2D direction, Room room);
+    Bullet createBoss3Bullet(Point2D startPosition, Vector2D direction, Mapp map);
 
     /**
      * @param startPosition : initial position of the bullet
      * @param direction : the direction the bullet will go
-     * @param room : belonging room
+     * @param map : belonging map
      * @return boss4 bullet.
      */
-    Bullet createBoss4Bullet(Point2D startPosition, Vector2D direction, Room room);
+    Bullet createBoss4Bullet(Point2D startPosition, Vector2D direction, Mapp map);
 
     /**
      * @param startPosition : initial position of the bullet
      * @param direction : the direction the bullet will go
-     * @param room : belonging room
+     * @param map : belonging map
      * @return boss5 bullet.
      */
-    Bullet createBoss5Bullet(Point2D startPosition, Vector2D direction, Room room);
+    Bullet createBoss5Bullet(Point2D startPosition, Vector2D direction, Mapp map);
 
     /**
      * @param startPosition : initial position of the bullet
      * @param direction : the direction the bullet will go
-     * @param room : belonging room
+     * @param map : belonging map
      * @return boss6 bullet.
      */
-    Bullet createBoss6Bullet(Point2D startPosition, Vector2D direction, Room room);
+    Bullet createBoss6Bullet(Point2D startPosition, Vector2D direction, Mapp map);
 
 }

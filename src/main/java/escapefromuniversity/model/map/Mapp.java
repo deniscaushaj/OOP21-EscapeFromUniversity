@@ -8,7 +8,7 @@ import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.StaticGameObject;
 import escapefromuniversity.model.gameObject.player.Player;
 
-public interface Map {
+public interface Mapp {
 
     void update(double deltaTime);
 

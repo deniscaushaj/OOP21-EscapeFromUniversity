@@ -9,7 +9,7 @@ import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.StaticGameObject;
 import escapefromuniversity.model.gameObject.player.Player;
 
-public class MapImpl implements Map {
+public class MapImpl implements Mapp {
     private final List<StaticGameObject> staticGameObjects = new LinkedList<>();
     private final List<DynamicGameObject> dynamicGameObjects = new LinkedList<>();
     private final MapManager mapManager;

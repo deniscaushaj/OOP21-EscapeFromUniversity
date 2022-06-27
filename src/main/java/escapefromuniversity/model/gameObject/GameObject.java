@@ -1,6 +1,6 @@
 package escapefromuniversity.model.gameObject;
 
-import escapefromuniversity.model.map.Room;
+import escapefromuniversity.model.map.Mapp;
 import escapefromuniversity.model.basics.HitBox;
 import escapefromuniversity.model.basics.Point2D;
 
@@ -56,7 +56,7 @@ public interface GameObject {
 	 * Get the room of this object.
 	 * @return The room of the Game Object
 	 */
-	Room getRoom();
+	Mapp getMap();
 	
 	
 }

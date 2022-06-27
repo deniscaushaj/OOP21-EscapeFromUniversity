@@ -11,8 +11,8 @@ import escapefromuniversity.model.gameObject.GameObjectType;
 public class DoorImpl extends AbstractStaticGameObject implements Door {
     private final Point2D pos;
 
-    public DoorImpl(GameObjectType type, Point2D position, Point2D upperCorner, Room room, Point2D pos) {
-        super(type, position, upperCorner, room);
+    public DoorImpl(GameObjectType type, Point2D position, Point2D upperCorner, Mapp map, Point2D pos) {
+        super(type, position, upperCorner, map);
         this.pos = pos;
     }
 
@@ -24,7 +24,7 @@ public class DoorImpl extends AbstractStaticGameObject implements Door {
     @Override
     public void collisionWith(GameObject gObj2) {
         if (gObj2.getType() == GameObjectType.PLAYER) {
-            this.getRoom().getMapManager().setCurrentRoom(this);
+            this.getMap().getMapManager().setCurrentRoom(this);
         }
     }
 }

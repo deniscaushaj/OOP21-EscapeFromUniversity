@@ -1,7 +1,7 @@
 package escapefromuniversity.model.gameObject;
 
 import escapefromuniversity.model.map.Rectangle;
-import escapefromuniversity.model.map.Room;
+import escapefromuniversity.model.map.Mapp;
 import escapefromuniversity.model.basics.HitBox;
 import escapefromuniversity.model.basics.HitBoxImpl;
 import escapefromuniversity.model.basics.Point2D;
@@ -12,14 +12,14 @@ public abstract class AbstractStaticGameObject implements StaticGameObject{
 	private final GameObjectType type;
 	private final Point2D position;
 	private final HitBoxImpl box;
-	private Room room;
+	private Mapp map;
 	private Rectangle rectangle;
 	
-	public AbstractStaticGameObject(GameObjectType type, Point2D position, Point2D upperCorner, Room room) {
+	public AbstractStaticGameObject(GameObjectType type, Point2D position, Point2D upperCorner, Mapp map) {
 		this.type = type;
 		this.position = position;
 		this.box = new HitBoxImpl(position, upperCorner);
-		this.room = room;
+		this.map = map;
 	}
 	
 	@Override
@@ -57,8 +57,8 @@ public abstract class AbstractStaticGameObject implements StaticGameObject{
 	}
 	
 	@Override
-	public Room getRoom() {
-		return this.room;
+	public Mapp getMap() {
+		return this.map;
 	}
 
 	public Rectangle getRectangle() {
