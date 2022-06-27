@@ -109,6 +109,7 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
             switch (gObj2.getType().getCollisionType()) {
             case OBSTACLE:
                 this.setPosition(this.getPreviousPosition());
+                this.setDirection(getDirection().multiplication(-1));
                 break;
             case ENTITY:
                 if (gObj2.getType().equals(GameObjectType.PLAYER)) {
@@ -140,8 +141,8 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
      */
     protected Vector2D newDirection() {
         Point2D playerPos = this.getRoom().getPlayer().getObjectPosition();
-        return new Vector2D((this.getObjectPosition().getX() - playerPos.getX()) / this.getObjectPosition().module(playerPos),
-                (this.getObjectPosition().getY() - playerPos.getY()) / this.getObjectPosition().module(playerPos));
+        return new Vector2D(this.getObjectPosition().getX() - playerPos.getX(),
+                this.getObjectPosition().getY() - playerPos.getY()).normal();
     }
 
     /**
