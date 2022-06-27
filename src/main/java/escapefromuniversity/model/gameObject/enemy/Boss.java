@@ -28,6 +28,12 @@ public interface Boss extends Enemy {
      * @return damage of collision with boss.
      */
     int getImpactDamage();
+    
+    /**
+     * 
+     * @return the boss exam file.
+     */
+    String getBossExam();
 
     /**
      * 

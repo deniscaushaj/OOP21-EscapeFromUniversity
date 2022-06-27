@@ -53,5 +53,15 @@ final class BossConstant {
     protected static final int BOSS_4_SPEED = 15;
     protected static final int BOSS_5_SPEED = 15;
     protected static final int BOSS_6_SPEED = 10;
+    
+    /**
+     * constant boss exam.
+     */
+    protected static final String BOSS_1_EXAM = "1_sistemioperativi.json";
+    protected static final String BOSS_2_EXAM = "2_basididati.json";
+    protected static final String BOSS_3_EXAM = "boss3.json";
+    protected static final String BOSS_4_EXAM = "boss4.json";
+    protected static final String BOSS_5_EXAM = "boss5.json";
+    protected static final String BOSS_6_EXAM = "boss6.json";
 
 }

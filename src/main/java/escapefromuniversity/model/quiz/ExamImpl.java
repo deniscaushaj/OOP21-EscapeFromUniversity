@@ -87,7 +87,7 @@ public final class ExamImpl implements Exam {
 	
 	@Override
 	public boolean hasPassed() {
-		return this.getGrade() > PASSEDSCORE;
+		return this.getGrade() >= PASSEDSCORE;
 	}
 	
 	/**

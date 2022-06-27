@@ -8,7 +8,7 @@ import escapefromuniversity.model.basics.Vector2D;
 import escapefromuniversity.model.map.Room;
 
 public abstract class AbstractDynamicGameObject implements DynamicGameObject {
-
+	
 	private int id;
 	private final GameObjectType type;
 	private final int speed;
