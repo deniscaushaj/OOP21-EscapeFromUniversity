@@ -53,7 +53,7 @@ final class BossConstant {
     protected static final int BOSS_4_SPEED = 15;
     protected static final int BOSS_5_SPEED = 15;
     protected static final int BOSS_6_SPEED = 10;
-    
+
     /**
      * constant boss exam.
      */

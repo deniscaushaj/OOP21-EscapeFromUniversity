@@ -9,7 +9,7 @@ import java.awt.event.KeyEvent;
  * This is the interface of the game. It contains all the methods to make the model and the view work.
  *
  */
-public interface GameController {
+public interface GameController extends Controller {
 
     /**
      * The main loop of the game.
