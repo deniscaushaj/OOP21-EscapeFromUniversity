@@ -3,10 +3,10 @@ package escapefromuniversity.model;
 import java.util.List;
 
 import escapefromuniversity.model.basics.Point2D;
-import escapefromuniversity.model.gameObject.enemy.Boss;
-import escapefromuniversity.model.gameObject.GameObject;
+import escapefromuniversity.model.gameObject.DynamicGameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
+import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.player.Player;
 
 /**
@@ -20,7 +20,7 @@ public interface GameModel {
      * 
      * @return a list of all GameObject in game.
      */
-    List<GameObject> getAllDynamicGameObj();
+    List<DynamicGameObject> getAllDynamicGameObj();
 
     /**
      * 

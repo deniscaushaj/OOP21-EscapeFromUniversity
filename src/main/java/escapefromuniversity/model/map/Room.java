@@ -18,7 +18,7 @@ public interface Room {
 
     void addStaticGameObject(StaticGameObject sGObj);
 
-    List<GameObject> getAllGameObject();
+    List<DynamicGameObject> getAllDynamicGameObject();
     
     Player getPlayer();
     

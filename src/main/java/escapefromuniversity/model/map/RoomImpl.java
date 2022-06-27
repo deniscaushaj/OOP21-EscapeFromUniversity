@@ -50,11 +50,8 @@ public class RoomImpl implements Room {
     }
 
     @Override
-    public List<GameObject> getAllGameObject() {
-        final List<GameObject> gameObjects = new LinkedList<>();
-        gameObjects.addAll(this.dynamicGameObjects);
-        gameObjects.addAll(this.staticGameObjects);
-        return gameObjects;
+    public List<DynamicGameObject> getAllDynamicGameObject() {
+        return this.dynamicGameObjects;
     }
 
 	@Override
