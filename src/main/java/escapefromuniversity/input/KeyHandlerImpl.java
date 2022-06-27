@@ -21,7 +21,7 @@ import escapefromuniversity.model.gameObject.player.PlayerMovementImpl;
 public class KeyHandlerImpl implements KeyHandler {
 
     private final GameController gameController;
-    private final ControllerView controllerView;
+    private final GameView gameView;
     private final Player player;
     private final PlayerMovement playerMovement;
     private final ShopController shopController;
@@ -37,7 +37,7 @@ public class KeyHandlerImpl implements KeyHandler {
      */
     public KeyHandlerImpl(final GameModel gameModel, final GameController gameController) {
         this.gameController = gameController;
-        this.controllerView = new ControllerViewImpl(this.gameController);
+        this.gameView = new GameViewImpl(this.gameController);
         this.player = gameModel.getPlayer();
         this.playerMovement = new PlayerMovementImpl(this.player);
         this.shopController = new ShopControllerImpl(this.gameController);

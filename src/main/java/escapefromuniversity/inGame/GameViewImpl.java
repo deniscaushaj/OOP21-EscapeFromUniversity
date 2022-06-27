@@ -18,7 +18,7 @@ import javafx.scene.canvas.Canvas;
  * class  of controller of game view.
  *
  */
-public class ControllerViewImpl implements ControllerView {
+public class GameViewImpl implements GameView {
 
     private static final long TIME_TO_END = 5000;
     private final GameController gameController;
@@ -31,7 +31,7 @@ public class ControllerViewImpl implements ControllerView {
      * 
      * @param gameController
      */
-    public ControllerViewImpl(final GameController gameController) {
+    public GameViewImpl(final GameController gameController) {
         this.gameController = gameController;
     }
 

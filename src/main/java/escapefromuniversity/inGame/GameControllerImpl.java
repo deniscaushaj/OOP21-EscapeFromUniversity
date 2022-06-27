@@ -24,7 +24,7 @@ import escapefromuniversity.quiz.QuizView;
  */
 public class GameControllerImpl implements GameController {
     private final GameModel gameModel;
-    private final ControllerView controllerView;
+    private final GameView gameView;
     private final KeyHandler keyHandler;
     private GameState gameState;
     private GameState prevGameState;
@@ -37,7 +37,7 @@ public class GameControllerImpl implements GameController {
 	 */
 	public GameControllerImpl() {
 		this.gameModel = new GameModelImp(this);
-		this.controllerView = new ControllerViewImpl(this);
+		this.gameView = new GameViewImpl(this);
 		//this.gameView = new GameViewImpl(this);
 		this.keyHandler = new KeyHandlerImpl(this.gameModel, this);
 		this.setGameState(GameState.PLAY);
@@ -83,7 +83,7 @@ public class GameControllerImpl implements GameController {
         if (this.getGameState() == GameState.WIN) {
             this.saveScore(this.gameModel.getPlayerFinalMark());
         }
-        this.controllerView.end(this.getGameState());
+        this.gameView.end(this.getGameState());
     }
 
     /* Checks if the player has won the game or if he lost and returns {@code true} if the game is not finished, {@code false} otherwise. */
@@ -107,7 +107,7 @@ public class GameControllerImpl implements GameController {
     private void updateView() {
         this.checkSpriteAnimation();
         this.gameObjID = this.getGameObjectID();
-        this.controllerView.updateView();
+        this.gameView.updateView();
     }
 
     /*  */
@@ -115,13 +115,13 @@ public class GameControllerImpl implements GameController {
         final List<Integer> ids = this.getGameObjectID();
         for (final Integer id : ids) {
             if (!this.gameObjID.contains(id)) {
-                this.controllerView.removeSpriteAnimation(id);
+                this.gameView.removeSpriteAnimation(id);
             } else {
-                if (!this.controllerView.containThisID(id)) {
+                if (!this.gameView.containThisID(id)) {
                     final Point2D position = null;
-                    this.controllerView.updateSpriteAnimation(id, position, this.gameModel.getStateID(id));
+                    this.gameView.updateSpriteAnimation(id, position, this.gameModel.getStateID(id));
                 } else {
-                    this.controllerView.addSpriteAnimation(id, this.gameModel.getStateID(id), this.gameModel.getTypeID(id), 0, 0);
+                    this.gameView.addSpriteAnimation(id, this.gameModel.getStateID(id), this.gameModel.getTypeID(id), 0, 0);
                 }
             }
         }
