@@ -11,7 +11,7 @@ import java.awt.event.KeyListener;
  */
 public class GameKeyListener implements KeyListener {
 
-    private GameController gameController;
+    private final GameController gameController;
 
     /**
      * Instantiates the key listener and assigns to it a game controller.
