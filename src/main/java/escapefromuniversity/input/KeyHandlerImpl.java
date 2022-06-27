@@ -23,7 +23,7 @@ public class KeyHandlerImpl implements KeyHandler {
     private final PlayerMovement playerMovement;
     private final ShopController shopController;
     private final MenuController menuController;
-    private GameKeyListener gameKeyListener;
+    private final GameKeyListener gameKeyListener;
     private Optional<Command<Integer, Boolean, Optional<Direction>>> command;
     private final List<Command<Integer, Boolean, Optional<Direction>>> keyList = new ArrayList<>();
 
