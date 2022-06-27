@@ -58,4 +58,10 @@ public interface Boss extends Enemy {
      */
     void kill();
 
+    /**
+     * 
+     * @param credits
+     */
+    void setQuizCredit(int credits);
+
 }
