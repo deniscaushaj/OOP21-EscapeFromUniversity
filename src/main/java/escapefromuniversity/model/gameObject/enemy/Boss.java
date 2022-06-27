@@ -28,6 +28,12 @@ public interface Boss extends Enemy {
      * @return damage of collision with boss.
      */
     int getImpactDamage();
+    
+    /**
+     * 
+     * @return the boss exam file.
+     */
+    String getBossExam();
 
     /**
      * 
@@ -51,5 +57,11 @@ public interface Boss extends Enemy {
      * delete this object.
      */
     void kill();
+
+    /**
+     * 
+     * @param credits
+     */
+    void setQuizCredit(int credits);
 
 }

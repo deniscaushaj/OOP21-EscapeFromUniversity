@@ -21,8 +21,7 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
     private BossState bossState;
     private Point2D previousPosition;
     private final int impactDamage;
-    private static final int CREDITS = 12;
-    private static final int PASSED = 18;
+    private final String exam;
 
     /**
      * 
@@ -36,12 +35,13 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
      * @param impactDamage
      * @param room
      */
-    public AbstractBoss(final int speed, final Point2D position, final Point2D upperCorner, final Vector2D direction, final GameObjectType type, final int life, final long shootDelay, final int impactDamage, final Room room) {
+    public AbstractBoss(final int speed, final Point2D position, final Point2D upperCorner, final Vector2D direction, final GameObjectType type, final int life, final long shootDelay, final int impactDamage, final String exam, final Room room) {
         super(type, position, upperCorner, speed, direction, room);
         this.life = life;
         this.shootDelay = shootDelay;
         this.bossState = BossState.QUIZ;
         this.impactDamage = impactDamage;
+        this.exam = exam;
     }
 
     /**
@@ -82,7 +82,6 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
     public void takeDamage(final int damage) {
         this.life = this.life - damage;
         if (this.life <= 0) {
-            this.setQuizResult(PASSED);
             this.kill();
         }
     }
@@ -178,7 +177,6 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
      */
     @Override
     public void kill() {
-        this.getRoom().getPlayer().setCredits(this.getRoom().getPlayer().getCredits() + CREDITS);
         this.getRoom().deleteGameObject(this);
     }
 
@@ -188,5 +186,21 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
     @Override
     public void setQuizResult(final int result) {
         this.getRoom().getPlayer().setFinalMark(result);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setQuizCredit(final int credits) {
+        this.getRoom().getPlayer().setCredits(this.getRoom().getPlayer().getCredits() + credits);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getBossExam() {
+    	return this.exam;
     }
 }

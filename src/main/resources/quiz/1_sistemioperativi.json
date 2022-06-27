@@ -1,6 +1,7 @@
 {
     "teacher": "BOSS1",
     "subject": "Sistemi Operativi",
+    "cfu": 18,
     "quiz": [
       {
         "question": "Quale comando di bash ci permette di navigare tra le directory?",
@@ -26,11 +27,6 @@
         "question": "Quando un processo non ottiene mai la CPU si chiama:",
         "answers": ["Starvation", "Busywaiting", "Deadlock", "Liveness"],
         "correct": 1
-      },
-      {
-        "question": "Quale di questi è un algoritmo si sostituzione delle pagine?",
-        "answers": ["LRA", "FIFA", "Second-Chance", "Belady"],
-        "correct": 3
       },
       {
         "question": "Quale di questi è un algoritmo si sostituzione delle pagine?",

@@ -21,7 +21,7 @@ import javafx.scene.paint.Color;
 public class QuizController {
 	
 	@FXML
-	private Label profLabel, subjectLabel, creditsLabel, gradeLabel, maxGradeLabel;
+	private Label profLabel, subjectLabel, creditsLabel, gradeLabel, maxGradeLabel, provaLabel;
 	@FXML
 	private ProgressBar progressBar;
 	@FXML
@@ -35,29 +35,14 @@ public class QuizController {
 	/**
 	 * Constructor.
 	 */
-	public QuizController() {
+	public QuizController(final Boss boss) {
 		try {
-			this.exam = new ExamImporter("boss1.json").importExam();
+			System.out.println("La varibiale vale: " + path);
+			this.exam = new ExamImporter(path).importExam();
 			if (this.exam.hasNextQuiz()) {
 				currentQuiz = this.exam.getNextQuiz();
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	/**
-	 * 
-	 * @param boss The boss against whom the quiz competition is based
-	 * @param gc The calling GameController
-	 */
-	public void setParameters(final Boss boss, final GameController gc) {
-		this.boss = boss;
-		this.gc = gc;
-		try {
-			this.exam = new ExamImporter(boss.getType().toString()).importExam();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -90,7 +75,8 @@ public class QuizController {
 			this.initialize();
 		} else {
 			nextButton.setDisable(true);
-			//this.boss.setQuizResult(this.comp.getScore());
+			this.boss.setQuizResult(this.exam.getGrade());
+			this.boss.setQuizCredits(this.exam.getCredits());
 			if (this.exam.hasPassed()) {
 				questionButton.setText("Complimenti, sei stato PROMOSSO!");
 				questionButton.setTextFill(Color.DARKGREEN);

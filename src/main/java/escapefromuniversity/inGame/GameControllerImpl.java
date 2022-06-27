@@ -23,15 +23,14 @@ import escapefromuniversity.quiz.QuizView;
  * Implements all the methods defined in its interface {@link GameController}.
  */
 public class GameControllerImpl implements GameController {
-	private final GameModel gameModel;
-	//private final GameView gameView;
-	private final ControllerView controllerView;
-	private final KeyHandler keyHandler;
-	private GameState gameState;
+    private final GameModel gameModel;
+    private final ControllerView controllerView;
+    private final KeyHandler keyHandler;
+    private GameState gameState;
     private GameState prevGameState;
-	private List<Integer> gameObjID = new LinkedList<>();
-	private final MenuController menuController = new MenuControllerImpl(this);
-	private final ShopController shopController = new ShopControllerImpl(this);
+    private List<Integer> gameObjID = new LinkedList<>();
+    private final MenuController menuController = new MenuControllerImpl(this);
+    private final ShopController shopController = new ShopControllerImpl(this);
 
 	/**
 	 * Instantiates a new GameController and initializes the corresponding GameModel and GameView and KeyHandler making the game start.
@@ -44,7 +43,7 @@ public class GameControllerImpl implements GameController {
 		this.setGameState(GameState.PLAY);
         this.keyHandler.setAllInactive();
 	}
-	
+
     /**
      * {@inheritDoc}
      */
@@ -99,7 +98,7 @@ public class GameControllerImpl implements GameController {
 
     /* Returns a list with all the IDs of the game objects. */
     private List<Integer> getGameObjectID() {
-        return this.gameModel.getAllGameObj().stream()
+        return this.gameModel.getAllDynamicGameObj().stream()
                 .map(obj -> obj.getID())
                 .collect(Collectors.toList());
     }

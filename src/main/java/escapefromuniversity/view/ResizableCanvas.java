@@ -21,18 +21,17 @@ public class ResizableCanvas extends Canvas {
 
     @Override
     public double minWidth(double height) {
-        return 1D;
+        return 1;
     }
 
     @Override
     public double minHeight(double width) {
-        return 1D;
+        return 1;
     }
 
     @Override
     public void resize(double width, double height) {
-        var size = Math.floor(Math.min(width, height));
-        this.setWidth(size);
-        this.setHeight(size);
+        this.setWidth(width);
+        this.setHeight(height);
     }
 }

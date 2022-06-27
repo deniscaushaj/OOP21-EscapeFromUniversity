@@ -47,6 +47,10 @@ public class CanvasDrawerImpl implements CanvasDrawer {
         return this.canvas.getHeight();
     }
 
+    public double getScreenRatio() {
+        return this.getWidth() / this.getHeight();
+    }
+
     @Override
     public void drawImage(final String filename, final Rectangle imagePos, final Rectangle drawPos) {
         this.gc.drawImage(this.getImageFromCacheOrLoad(filename),
