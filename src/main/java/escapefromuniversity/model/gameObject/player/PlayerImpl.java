@@ -63,7 +63,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
         if (this.collisionWithCheck(gObj2)) {
             if (gObj2.getType().getCollisionType() == GameCollisionType.ENTITY
                     || gObj2.getType().getCollisionType() == GameCollisionType.OBSTACLE) {
-                this.setPosition(this.getPreviousPosition());
+                this.setPosition(this.prevPosition);
             }
         }
     }
@@ -73,7 +73,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
         if (this.shooting) {
             this.shoot();
         }
-        this.setPreviousPosition(this.getObjectPosition());
+        this.prevPosition = this.getObjectPosition();
         this.move(deltaTime);
     }
 
@@ -189,13 +189,6 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
         this.shooting = false;
     }
 
-    private void setPreviousPosition (final Point2D prevPos) {
-        this.prevPosition = prevPos;
-    }
-
-    private Point2D getPreviousPosition () {
-        return this.prevPosition;
-    }
 
     @Override
     public void setLastDirection(Direction direction) {
