@@ -1,7 +1,7 @@
 package escapefromuniversity.model.basics;
 
 public class HitBoxImpl implements HitBox{
-
+	
 	private final Point2D upperRightCorner;
 	private final Point2D bottomLeftCorner;
 	
@@ -54,16 +54,15 @@ public class HitBoxImpl implements HitBox{
 	}
 
 	@Override
-	public boolean isColliding(HitBox box) {
-		return (box.getUpperRightCorner().getX() >= (this.getUpperRightCorner().getX()-this.getWidth())
-				&& box.getUpperRightCorner().getX() <=  this.getUpperRightCorner().getX()) || 
-				(box.getUpperRightCorner().getY() >= (this.getUpperRightCorner().getY()-this.getHeight())
-				&& box.getUpperRightCorner().getY() <=  this.getUpperRightCorner().getY()) ||
-				(box.getBottomLeftCorner().getX() >= this.getBottomLeftCorner().getX() 
-				&& box.getBottomLeftCorner().getX() <= (this.getBottomLeftCorner().getX()+this.getWidth())) ||
-				(box.getBottomLeftCorner().getY() >= this.getBottomLeftCorner().getY() 
-				&& box.getBottomLeftCorner().getY() <= this.getBottomLeftCorner().getY()+this.getHeight());
-				
+	public boolean isColliding(final HitBox box) {
+		return (box.getUpperRightCorner().getX() >= (this.getUpperRightCorner().getX() - this.getWidth())
+				&& box.getUpperRightCorner().getX() <=  this.getUpperRightCorner().getX()) 
+				|| (box.getUpperRightCorner().getY() >= (this.getUpperRightCorner().getY() - this.getHeight())
+				&& box.getUpperRightCorner().getY() <=  this.getUpperRightCorner().getY())
+				|| (box.getBottomLeftCorner().getX() >= this.getBottomLeftCorner().getX() 
+				&& box.getBottomLeftCorner().getX() <= (this.getBottomLeftCorner().getX() + this.getWidth()))
+				|| (box.getBottomLeftCorner().getY() >= this.getBottomLeftCorner().getY() 
+				&& box.getBottomLeftCorner().getY() <= this.getBottomLeftCorner().getY() + this.getHeight());
 	}
 	
 	

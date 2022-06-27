@@ -21,13 +21,13 @@ import javafx.scene.paint.Color;
 public class QuizController {
 	
 	@FXML
-	private Label profLabel, subjectLabel, scoreLabel;
+	private Label profLabel, subjectLabel, creditsLabel, gradeLabel, maxGradeLabel;
 	@FXML
 	private ProgressBar progressBar;
 	@FXML
 	private Button questionButton, nextButton, uno, due, tre, quattro;
 	
-	private Exam comp;
+	private Exam exam;
 	private Quiz currentQuiz;
 	private Boss boss;
 	private GameController gc;
@@ -37,9 +37,9 @@ public class QuizController {
 	 */
 	public QuizController() {
 		try {
-			this.comp = new ExamImporter("boss1.json").importExam();
-			if (this.comp.hasNextQuiz()) {
-				currentQuiz = this.comp.getNextQuiz();
+			this.exam = new ExamImporter("boss1.json").importExam();
+			if (this.exam.hasNextQuiz()) {
+				currentQuiz = this.exam.getNextQuiz();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -55,7 +55,7 @@ public class QuizController {
 		this.boss = boss;
 		this.gc = gc;
 		try {
-			this.comp = new ExamImporter(boss.getType().toString()).importExam();
+			this.exam = new ExamImporter(boss.getType().toString()).importExam();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,12 +64,15 @@ public class QuizController {
 	
 	@FXML
 	void initialize() {
+		creditsLabel.setText("" + this.exam.getCredits());
+		gradeLabel.setText("" + this.exam.getGrade());
+		maxGradeLabel.setText("" + this.exam.getMaxGrade());
 		questionButton.setStyle("-fx-background-image:url('question.png');");
 		setDisableToAll(false);
-		progressBar.setProgress(this.comp.getProgress());
+		progressBar.setProgress(this.exam.getProgress());
 		questionButton.setTextFill(Color.BLACK);
-		profLabel.setText(this.comp.getTeacherName());
-		subjectLabel.setText(this.comp.getSubjectName());
+		profLabel.setText(this.exam.getTeacherName());
+		subjectLabel.setText(this.exam.getSubjectName());
 		questionButton.setText(this.currentQuiz.getQuestion().getText());
 		uno.setText(this.currentQuiz.getAllAnwsers().get(1).getText());
 		due.setText(this.currentQuiz.getAllAnwsers().get(2).getText());
@@ -81,20 +84,20 @@ public class QuizController {
 	// Event Listener on Button[#nextButton].onAction
 	@FXML
 	public void next(final ActionEvent event) {
-		progressBar.setProgress(this.comp.getProgress());
-		if (this.comp.hasNextQuiz()) {
-			currentQuiz = this.comp.getNextQuiz();
+		progressBar.setProgress(this.exam.getProgress());
+		if (this.exam.hasNextQuiz()) {
+			currentQuiz = this.exam.getNextQuiz();
 			this.initialize();
 		} else {
 			nextButton.setDisable(true);
 			//this.boss.setQuizResult(this.comp.getScore());
-			if (this.comp.hasPassed()) {
-				questionButton.setText("Complimenti, sei stato promosso ti ha promosso!");
+			if (this.exam.hasPassed()) {
+				questionButton.setText("Complimenti, sei stato PROMOSSO!");
 				questionButton.setTextFill(Color.DARKGREEN);
 				questionButton.setStyle("-fx-background-image:url('questionRight.png');");
 				this.boss.kill();
 			} else {
-				questionButton.setText("Noo, sei stato bocciato!");
+				questionButton.setText("Noo, sei stato BOCCIATO!");
 				questionButton.setTextFill(Color.DARKRED);
 				questionButton.setStyle("-fx-background-image:url('questionWrong.png');");
 				this.boss.setBossState(BossState.FIGHT);
@@ -117,7 +120,9 @@ public class QuizController {
 	    		answerUpdate(4);
 	    	}
 			nextButton.setDisable(false);
-			scoreLabel.setText(this.comp.getScore() + " su " + this.comp.getMaxScore());
+			creditsLabel.setText("" + this.exam.getCredits());
+			gradeLabel.setText("" + this.exam.getGrade());
+			maxGradeLabel.setText("" + this.exam.getMaxGrade());
     	} catch (Exception e) {
     		System.out.println(e);
     	}

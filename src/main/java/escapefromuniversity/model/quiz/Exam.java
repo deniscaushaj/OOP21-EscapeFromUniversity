@@ -52,13 +52,13 @@ public interface Exam {
 	 * 
 	 * @return Score representing quizzes answered correctly
 	 */
-	int getScore();
+	int getGrade();
 	
 	/**
 	 * 
 	 * @return Max score for a exam
 	 */
-	int getMaxScore();
+	int getMaxGrade();
 	
 	/**
 	 * 
