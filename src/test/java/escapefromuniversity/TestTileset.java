@@ -8,6 +8,7 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,7 +23,7 @@ public class TestTileset {
 
     @Test
     public void testTilesetName() {
-        List<String> tilesetNames = mapProp.getTilesets().stream().map(Tileset::getFileName).toList();
+        List<String> tilesetNames = mapProp.getTilesets().stream().map(Tileset::getFileName).collect(Collectors.toList());
         assertTrue(tilesetNames.contains("tilesets/Characters_MV.png"));
         assertTrue(tilesetNames.contains("tilesets/grass.png"));
         assertTrue(tilesetNames.contains("tilesets/Room_Builder_free_48x48.png"));
