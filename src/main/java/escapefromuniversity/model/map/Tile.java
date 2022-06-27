@@ -30,7 +30,7 @@ public class Tile {
         return this.value != 0;
     }
 
-    public Point2D getPoint() {
+    public Point2D getPosition() {
         return new Point2D(this.x, this.y);
     }
 }

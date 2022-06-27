@@ -9,6 +9,7 @@ import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.util.stream.Stream;
 
 public class MapLoader {
 
@@ -25,9 +26,9 @@ public class MapLoader {
     private Canvas gameCanvas;
 
     public MapLoader() {
-        this.camera = () -> {
+        this.camera = ratio -> {
             var center = new Point2D(x, y);
-            return new Rectangle(center.sum(new Point2D(-radius, -radius)), center.sum(new Point2D(radius, radius)));
+            return new Rectangle(center.sum(new Point2D(-radius, -radius / ratio)), center.sum(new Point2D(radius, radius / ratio)));
         };
         final var parser = new TMXMapParser("final-map.tmx");
         try {
@@ -41,22 +42,31 @@ public class MapLoader {
     protected void initialize() {
         this.canvasDrawer = new CanvasDrawerImpl(gameCanvas);
         this.tileDrawer = new TileDrawerImpl(map, this.canvasDrawer);
+        this.drawLayers();
     }
 
-    public void drawLayers(final MapProperties map, final Camera cam, final TileDrawer drawer) {
-        var canvasSize = gameCanvas.getWidth();
-        var proj = cam.calcMapProjection();
-        var ratio = canvasSize / proj.getWidth();
-
-        map.getLayers().stream().flatMap(l -> l.getTiles().stream())
+    private Stream<Tile> getTilesToDraw(final Rectangle proj) {
+        return this.map.getLayers().stream().flatMap(l -> l.getTiles().stream())
                 .filter(t -> t.getX() - proj.getMinX() > -1 && t.getX() - proj.getMaxX() < 1 &&
-                        t.getY() - proj.getMinY() > -1 && t.getY() - proj.getMaxY() < 1).forEach(t -> {
+                        t.getY() - proj.getMinY() > -1 && t.getY() - proj.getMaxY() < 1);
+    }
 
-                    var point = t.getPoint().sum(proj.getTopLeft().multiplication(-1));
-                    drawer.drawTileByID(t.getValue(), new Rectangle(
-                            point.multiplication(ratio),
-                            point.sum(new Point2D(1, 1)).multiplication(ratio)));
-                });
+    private Rectangle calcProjectedTilePosition(final Tile tile, final Rectangle proj) {
+        // Translate top-left point to center the projection on the canvas.
+        var point = tile.getPosition().subtract(proj.getTopLeft());
+        // The size of projection rectangle can be different from the canvas size, so calculate the zoom factor.
+        var projZoom = this.canvasDrawer.getWidth() / proj.getWidth();
+        return new Rectangle(
+                point.multiplication(projZoom),
+                point.sum(new Point2D(1, 1)).multiplication(projZoom));
+    }
+
+    public void drawLayers() {
+        var proj = this.camera.calcMapProjection(this.canvasDrawer.getScreenRatio());
+        this.canvasDrawer.clear();
+        getTilesToDraw(proj).forEach(t -> {
+            this.tileDrawer.drawTileByID(t.getValue(), this.calcProjectedTilePosition(t, proj));
+        });
     }
 
     @FXML
@@ -79,7 +89,6 @@ public class MapLoader {
         if (evt.getCode().equals(KeyCode.E)) {
             radius -= 1;
         }
-        this.canvasDrawer.clear();
-        this.drawLayers(this.map, this.camera, this.tileDrawer);
+        this.drawLayers();
     }
 }

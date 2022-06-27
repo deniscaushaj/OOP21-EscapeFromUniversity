@@ -17,7 +17,7 @@ public interface Camera {
      * .
      * @return the projected rectangle
      */
-    Rectangle calcMapProjection();
+    Rectangle calcMapProjection(double ratio);
 
 
 }

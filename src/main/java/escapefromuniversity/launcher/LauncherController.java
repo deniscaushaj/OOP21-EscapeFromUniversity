@@ -29,8 +29,8 @@ public class LauncherController {
     @FXML
     void newGame(ActionEvent event) {
 
-    	MenuController menu = new MenuControllerImpl(null);
-    	menu.startView();
+    	//MenuController menu = new MenuControllerImpl(null);
+    	//menu.startView();
 //        GameViewImpl.startGame();
 
 //        GameControllerImpl gameController = new GameControllerImpl();
@@ -38,17 +38,14 @@ public class LauncherController {
 //        LauncherView.launcherWindow.close();  //this.creditsButton.getScene().getWindow().hide();
 //        Platform.exit();
 
-/*
 		try {
-			FXMLLoader loader = new FXMLLoader();
-			URL fileLocation = new File(OSFixes.getLocation("layouts","Game.fxml")).toURI().toURL();
-			loader.setLocation(fileLocation);
+			FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/Game.fxml"));
 			Parent gameRoot = loader.load();
 			Scene game = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
 			LauncherView.launcherWindow.setScene(game);
 		} catch (Exception e) {
 			System.out.println(e);
-		}*/
+		}
     }
 
     @FXML
