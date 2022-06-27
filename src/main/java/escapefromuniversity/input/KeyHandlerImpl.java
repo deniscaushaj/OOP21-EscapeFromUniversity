@@ -15,6 +15,9 @@ import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.model.gameObject.player.PlayerMovement;
 import escapefromuniversity.model.gameObject.player.PlayerMovementImpl;
 
+/**
+ * The implementation of {@link KeyHandler}. Contains all the methods to check the keys pressed and execute commands.
+ */
 public class KeyHandlerImpl implements KeyHandler {
 
     private final GameController gameController;
@@ -27,6 +30,11 @@ public class KeyHandlerImpl implements KeyHandler {
     private Optional<Command<Integer, Boolean, Optional<Direction>>> command;
     private final List<Command<Integer, Boolean, Optional<Direction>>> keyList = new ArrayList<>();
 
+    /**
+     * Instantiates the key handler.
+     * @param gameModel
+     * @param gameController
+     */
     public KeyHandlerImpl(final GameModel gameModel, final GameController gameController) {
         this.gameController = gameController;
         this.controllerView = new ControllerViewImpl(this.gameController);
@@ -38,6 +46,7 @@ public class KeyHandlerImpl implements KeyHandler {
         this.createKeyList();
     }
 
+    /* Creates a list with all the possible keyboard buttons that can be detected and used inside the game. */
     private void createKeyList() {
         this.keyList.add(new Command<>(KeyEvent.VK_W, false, Optional.of(Direction.UP)));
         this.keyList.add(new Command<>(KeyEvent.VK_A, false, Optional.of(Direction.LEFT)));
@@ -52,11 +61,18 @@ public class KeyHandlerImpl implements KeyHandler {
         this.keyList.add(new Command<>(KeyEvent.VK_ESCAPE, false, Optional.empty()));
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Command<Integer, Boolean, Optional<Direction>>> getKeyList() {
         return this.keyList;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public void executeCommand() {
         this.keyList.forEach(key -> {
             int keyCode;
@@ -91,6 +107,7 @@ public class KeyHandlerImpl implements KeyHandler {
         }
     }
 
+    /* Handles all the possible keyboard commands while playing. */
     private void playCommands(int keyCode) {
         if (keyCode == KeyEvent.VK_ESCAPE) {
             this.gameKeyListener.openMenu();
@@ -109,12 +126,14 @@ public class KeyHandlerImpl implements KeyHandler {
         }
     }
 
+    /* Handles also the possible keyboard command while fighting. */
     private void fightCommands(int keyCode) {
         if(keyCode == KeyEvent.VK_SPACE) {
             this.player.setShoot(true, this.player.getLastDirection());
         }
     }
 
+    /* Handles the possible keyboard command while in a menu. */
     private void menuCommands(int keyCode) {
         if (keyCode == KeyEvent.VK_ESCAPE) {
             if(this.gameController.getGameState().equals(GameState.MENU)) {
@@ -125,6 +144,10 @@ public class KeyHandlerImpl implements KeyHandler {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public void setKey(final int key, final boolean clicked) {
         final Optional<Command<Integer, Boolean, Optional<Direction>>> command = this.keyList.stream()
                 .filter(obj -> obj.getKey() == key)
@@ -132,15 +155,20 @@ public class KeyHandlerImpl implements KeyHandler {
         command.ifPresent(integerBooleanOptionalCommand -> integerBooleanOptionalCommand.setClicked(clicked));
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setAllInactive() {
         this.keyList.forEach(k -> k.setClicked(false));
     }
 
+    /* Finds a key in the key list. */
     private Optional<Command<Integer, Boolean, Optional<Direction>>> findKey(final int key) {
         return this.keyList.stream().filter(obj -> obj.getKey() == key).findFirst();
     }
 
+    /* Checks if the vertical movement keys are being pressed and returns true if non is active. */
     private boolean checkVerticalKeys() {
         if (this.command.isPresent()) {
             return !this.findKey(KeyEvent.VK_S).get().getClicked() && !this.findKey(KeyEvent.VK_W).get().getClicked();
@@ -148,9 +176,10 @@ public class KeyHandlerImpl implements KeyHandler {
         return false;
     }
 
+    /* Checks if the horizontal movement keys are being pressed and returns true if non is active. */
     private boolean checkHorizontalKeys() {
         if (this.command.isPresent()) {
-            return  !this.findKey(KeyEvent.VK_D).get().getClicked() && !this.findKey(KeyEvent.VK_A).get().getClicked();
+            return !this.findKey(KeyEvent.VK_D).get().getClicked() && !this.findKey(KeyEvent.VK_A).get().getClicked();
         }
         return false;
     }
