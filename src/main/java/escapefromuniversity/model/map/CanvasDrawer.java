@@ -11,6 +11,8 @@ public interface CanvasDrawer {
 
     public double getHeight();
 
+    public double getScreenRatio();
+
     /**
      * Draws a tile.
      *
