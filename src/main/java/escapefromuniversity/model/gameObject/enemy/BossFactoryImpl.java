@@ -19,6 +19,8 @@ import escapefromuniversity.model.map.Room;
 public class BossFactoryImpl implements BossFactory {
 
     private final BulletFactory bulletCreate = new BulletFactoryImpl();
+    private static final Vector2D VECTOR1 = new Vector2D(50, 50);
+    private static final Vector2D VECTOR2 = new Vector2D(-50, -50);
 
 
     /**
@@ -49,8 +51,8 @@ public class BossFactoryImpl implements BossFactory {
                 final List<Bullet> bullets = new LinkedList<>();
                 final Point2D startPosition = new Point2D(this.getObjectPosition().getX(), this.getObjectPosition().getY() + this.getObjectHitBox().getHeight());
                 bullets.add(bulletCreate.createBoss2Bullet(this.getObjectPosition(), this.getDirection(), room));
-                bullets.add(bulletCreate.createBoss2Bullet(startPosition.sum(new Vector2D(10, 10)), this.getDirection(), room));
-                bullets.add(bulletCreate.createBoss2Bullet(startPosition.sum(new Vector2D(-10, -10)), this.getDirection(), room));
+                bullets.add(bulletCreate.createBoss2Bullet(startPosition.sum(VECTOR1), this.getDirection(), room));
+                bullets.add(bulletCreate.createBoss2Bullet(startPosition.sum(VECTOR2), this.getDirection(), room));
                 bullets.forEach(bul -> {
                     this.getRoom().addDynamicGameObject(bul);
                 });
@@ -71,10 +73,10 @@ public class BossFactoryImpl implements BossFactory {
                 final Point2D startPosition = new Point2D(this.getObjectPosition().getX(), this.getObjectPosition().getY() + this.getObjectHitBox().getHeight());
                 bullets.add(bulletCreate.createBoss3Bullet(startPosition, new Vector2D(0, 1), room));
                 bullets.add(bulletCreate.createBoss3Bullet(startPosition, new Vector2D(0, -1), room));
-                bullets.add(bulletCreate.createBoss3Bullet(startPosition, new Vector2D(1, 1), room));
-                bullets.add(bulletCreate.createBoss3Bullet(startPosition, new Vector2D(-1, 1), room));
-                bullets.add(bulletCreate.createBoss3Bullet(startPosition, new Vector2D(1, -1), room));
-                bullets.add(bulletCreate.createBoss3Bullet(startPosition, new Vector2D(-1, -1), room));
+                bullets.add(bulletCreate.createBoss3Bullet(startPosition, new Vector2D(1, 1).normal(), room));
+                bullets.add(bulletCreate.createBoss3Bullet(startPosition, new Vector2D(-1, 1).normal(), room));
+                bullets.add(bulletCreate.createBoss3Bullet(startPosition, new Vector2D(1, -1).normal(), room));
+                bullets.add(bulletCreate.createBoss3Bullet(startPosition, new Vector2D(-1, -1).normal(), room));
                 bullets.add(bulletCreate.createBoss3Bullet(startPosition, new Vector2D(1, 0), room));
                 bullets.add(bulletCreate.createBoss3Bullet(startPosition, new Vector2D(1, 0), room));
                 bullets.forEach(bul -> {
