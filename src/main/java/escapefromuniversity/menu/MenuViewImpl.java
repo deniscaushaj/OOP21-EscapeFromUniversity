@@ -43,7 +43,8 @@ public class MenuViewImpl implements MenuView {
     private final JLabel command2 = new JLabel("le freccette per sparare");
     private final JLabel command3 = new JLabel("avvicinarsi agli oggetti per interagire");
 
-    private final Color color = new Color(232, 198, 42);
+    private final Color colorButton = new Color(232, 198, 42);
+    private final Color colorBackground = new Color(255, 254, 145);
 
     /**
      * 
@@ -57,10 +58,10 @@ public class MenuViewImpl implements MenuView {
         this.btExit.setFont(WindowSet.FONT);
         this.btResume.setFont(WindowSet.FONT);
         this.btCommand.setFont(WindowSet.FONT);
-        this.btBack.setBackground(this.color);
-        this.btCommand.setBackground(this.color);
-        this.btExit.setBackground(this.color);
-        this.btResume.setBackground(this.color);
+        this.btBack.setBackground(this.colorButton);
+        this.btCommand.setBackground(this.colorButton);
+        this.btExit.setBackground(this.colorButton);
+        this.btResume.setBackground(this.colorButton);
         this.btExit.addActionListener(e -> this.controller.exit());
         this.btResume.addActionListener(e -> this.controller.resume());
         this.btCommand.addActionListener(e -> this.controller.getCommand());
@@ -80,6 +81,7 @@ public class MenuViewImpl implements MenuView {
         this.menuPanel.removeAll();
         this.menuPanel.revalidate();
         this.menuPanel.repaint();
+        this.menuPanel.setForeground(colorBackground);
         this.menuPanel.add(this.btExit);
         this.menuPanel.add(this.btResume);
         this.menuPanel.add(this.btCommand);
@@ -109,6 +111,7 @@ public class MenuViewImpl implements MenuView {
         this.window.setSize((int) (SCREENWIDTH * windowRatio), (int) (SCREENHEIGHT * windowRatio));
         this.menuPanel = new JLayeredPane();
         this.menuPanel.setOpaque(false);
+        this.menuPanel.setForeground(colorBackground);
         this.window.getContentPane().add(menuPanel);
         this.window.setVisible(true);
         this.startMenu();

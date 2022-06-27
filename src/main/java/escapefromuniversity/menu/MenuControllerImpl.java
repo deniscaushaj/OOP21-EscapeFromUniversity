@@ -1,7 +1,6 @@
 package escapefromuniversity.menu;
 
 import escapefromuniversity.inGame.GameController;
-import escapefromuniversity.model.GameState;
 
 /**
  * 
