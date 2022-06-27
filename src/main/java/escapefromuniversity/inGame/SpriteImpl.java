@@ -37,8 +37,53 @@ public class SpriteImpl implements Sprite {
      */
     @Override
     public boolean checkUpdate() {
+        int updateDelay = 0;
+        switch (this.objType) {
+            case PLAYER:
+                updateDelay = 1200;
+                break;
+            case BOSS1:
+                updateDelay = 4000;
+                break;
+            case BOSS2:
+                updateDelay = 3500;
+                break;
+            case BOSS3:
+                updateDelay = 5000;
+                break;
+            case BOSS4:
+                updateDelay = 4500;
+                break;
+            case BOSS5:
+                updateDelay = 4500;
+                break;
+            case BOSS6:
+                updateDelay = 5000;
+                break;
+            case BULLET_PLAYER:
+                updateDelay = 3000;
+                break;
+            case BULLET_BOSS_1:
+                updateDelay = 3000;
+                break;
+            case BULLET_BOSS_2:
+                updateDelay = 3500;
+                break;
+            case BULLET_BOSS_3:
+                updateDelay = 3500;
+                break;
+            case BULLET_BOSS_4:
+                updateDelay = 3000;
+                break;
+            case BULLET_BOSS_5:
+                updateDelay = 2500;
+                break;
+            case BULLET_BOSS_6:
+                updateDelay = 2000;
+                break;
+            default: {}
+        }
         final long currentTime = System.currentTimeMillis();
-        final int updateDelay = 1200;
         if (currentTime - this.lastUpdate >= updateDelay) {
             this.lastUpdate = (int) currentTime;
             return true;

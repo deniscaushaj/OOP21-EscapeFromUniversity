@@ -6,9 +6,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 /**
- * Implements fields and methods to open web urls and filepaths working on every OS supported.
- *
- * @author marco
+ * Utility class containing fields and methods to open web urls and file paths working on every OS supported.
  */
 public class OSFixes {
 

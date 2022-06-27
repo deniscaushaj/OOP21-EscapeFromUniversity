@@ -10,7 +10,7 @@ import escapefromuniversity.model.gameObject.State;
  * interface of controller of game view.
  *
  */
-public interface ControllerView {
+public interface GameView {
 
     /**
      * 

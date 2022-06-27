@@ -16,6 +16,14 @@ public final class LauncherView extends Application{
     static Stage launcherWindow;
     static Scene launcher;
 
+    /**
+     * Loads the launcher fxml file and sets it up.
+     * @param stage the primary stage for this application, onto which
+     *              the application scene can be set.
+     *              Applications may create other stages, if needed, but they will not be
+     *              primary stages.
+     * @throws Exception
+     */
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/layouts/Launcher.fxml"));
         //URL fileLocation = new File(OSFixes.getLocation("layouts","Launcher.fxml")).toURI().toURL();
@@ -34,6 +42,9 @@ public final class LauncherView extends Application{
         launcherWindow = stage;
     }
 
+    /**
+     * Calls the starter method of the launcher view.
+     */
     public static void createLauncher() {
         launch();
     }

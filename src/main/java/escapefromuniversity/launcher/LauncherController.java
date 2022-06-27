@@ -21,11 +21,15 @@ import javafx.scene.input.MouseEvent;
 import static escapefromuniversity.utilities.LauncherResizer.sceneWidth;
 import static escapefromuniversity.utilities.LauncherResizer.sceneHeight;
 
+/**
+ * The controller of the fxml file that displays the launcher window.
+ */
 public class LauncherController {
 
     @FXML
     private Button creditsButton, exitButton, leaderboardButton, newGameButton;
 
+    /* Starts the game. */
     @FXML
     void newGame(ActionEvent event) {
 
@@ -48,6 +52,7 @@ public class LauncherController {
 		}
     }
 
+    /* Opens the leaderboard scene. */
     @FXML
     void leaderboard(ActionEvent event) {
         try {
@@ -64,6 +69,7 @@ public class LauncherController {
         }
     }
 
+    /* Opens the leaderboard scene. */
     @FXML
     void credits(ActionEvent event) {
         try {
@@ -78,6 +84,7 @@ public class LauncherController {
         }
     }
 
+    /* Closes the launcher. */
     @FXML
     void exit(MouseEvent event) {
         Platform.exit();

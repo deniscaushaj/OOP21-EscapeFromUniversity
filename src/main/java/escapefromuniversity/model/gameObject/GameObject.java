@@ -40,8 +40,8 @@ public interface GameObject {
 	GameObjectType getType();
 	
 	/**
-	 * 
-	 * @param gObj2 Another game object to check if is colliding
+	 * Manages the collision between two game objects.
+	 * @param gObj2 another game object with which it's happening the collision.
 	 */
 	void collisionWith(GameObject gObj2);
 	

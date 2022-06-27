@@ -3,8 +3,7 @@ package escapefromuniversity.menu;
 import static escapefromuniversity.utilities.LauncherResizer.SCREENHEIGHT;
 import static escapefromuniversity.utilities.LauncherResizer.SCREENWIDTH;
 
-import java.awt.Rectangle;
-import java.awt.Color;
+import java.awt.*;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -39,12 +38,13 @@ public class MenuViewImpl implements MenuView {
     private final JButton btCommand = new JButton("COMMAND");
     private final JButton btBack = new JButton("BACK");
 
-    private final JLabel command1 = new JLabel("A/W/S/D : per muoverso");
-    private final JLabel command2 = new JLabel("le freccette per sparare");
-    private final JLabel command3 = new JLabel("avvicinarsi agli oggetti per interagire");
+    private final JLabel command1 = new JLabel("<html>W / ↑ : move up<br> A / ← : move left<br> S / ↓ : move down<br> D / → : move right</html>");
+    private final JLabel command2 = new JLabel("Spacebar : shoot");
+    private final JLabel command3 = new JLabel("Esc : open menu");
 
     private final Color colorButton = new Color(232, 198, 42);
     private final Color colorBackground = new Color(255, 254, 145);
+    private final Font font = new Font("Everson Mono", Font.PLAIN, 20);
 
     /**
      * 
@@ -66,11 +66,11 @@ public class MenuViewImpl implements MenuView {
         this.btResume.addActionListener(e -> this.controller.resume());
         this.btCommand.addActionListener(e -> this.controller.getCommand());
         this.command1.setBounds(this.retBtTextCommand1);
-        this.command1.setFont(WindowSet.FONT);
+        this.command1.setFont(this.font);
         this.command2.setBounds(this.retBtTextCommand2);
-        this.command2.setFont(WindowSet.FONT);
+        this.command2.setFont(this.font);
         this.command3.setBounds(this.retBtTextCommand3);
-        this.command3.setFont(WindowSet.FONT);
+        this.command3.setFont(this.font);
         this.btBack.setBounds(this.retBtBack);
         this.btBack.setFont(WindowSet.FONT);
         this.btBack.addActionListener(e -> this.controller.back());

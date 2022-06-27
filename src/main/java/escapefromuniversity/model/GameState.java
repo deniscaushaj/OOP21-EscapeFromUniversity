@@ -1,9 +1,7 @@
 package escapefromuniversity.model;
 
 /**
- * 
- * enum represents the game states.
- *
+ * An enum that contains all the possible game states.
  */
 public enum GameState {
 
