@@ -79,20 +79,19 @@ public class Point2D {
 
     /**
      * 
-     * @param vector
-     * @return new Pioint2D.
-     */
-    public Point2D sum(final Vector2D vector) {
-        return new Point2D(this.x + vector.getX(), this.y + vector.getY());
-    }
-
-    /**
-     * 
      * @param point
      * @return new Pioint2D.
      */
     public Point2D sum(final Point2D point) {
         return new Point2D(this.x + point.getX(), this.y + point.getY());
+    }
+
+    /**
+     * @param point the point to subtract from.
+     * @return the result of the subtraction.
+     */
+    public Point2D subtract(final Point2D point) {
+        return new Point2D(this.x - point.getX(), this.y - point.getY());
     }
 
     /**
