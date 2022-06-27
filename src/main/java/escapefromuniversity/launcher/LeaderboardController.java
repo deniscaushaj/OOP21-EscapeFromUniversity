@@ -17,6 +17,9 @@ import java.io.IOException;
 
 import static escapefromuniversity.launcher.LauncherView.*;
 
+/**
+ * The controller of the fxml file that displays the leaderboard.
+ */
 public class LeaderboardController {
 
     @FXML
@@ -30,6 +33,9 @@ public class LeaderboardController {
         launcherWindow.setScene(launcher);
     }
 
+    /**
+     * Initializes the leaderboard.
+     */
     @FXML
     public void initialize() throws IOException {
         ReadFile reader = new ReadFile("score", "score.txt");

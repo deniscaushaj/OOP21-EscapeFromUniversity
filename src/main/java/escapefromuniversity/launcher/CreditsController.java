@@ -8,6 +8,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 
+/**
+ * The controller class of the fxml file that displays the credits screen.
+ */
 public class CreditsController {
 	
     @FXML
@@ -16,11 +19,13 @@ public class CreditsController {
     @FXML
     private Hyperlink daniel, denis, emanuele, marco, tileset;
 
+    /* Closes the credits scene and opens the launcher scene. */
     @FXML
     void back(ActionEvent event) {
     	LauncherView.launcherWindow.setScene(LauncherView.launcher);
     }
-    
+
+    /* Opens in the predefined browser all the credits links. */
     @FXML
     void openLink(ActionEvent event) throws URISyntaxException {
     	if (event.getSource().equals(daniel)) {
