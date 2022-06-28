@@ -9,7 +9,7 @@ public interface DynamicGameObject extends StaticGameObject{
 	 * 
 	 * @return the speed of the dynamic game object
 	 */
-	int getSpeed();
+	double getSpeed();
 	
 	
 	/**

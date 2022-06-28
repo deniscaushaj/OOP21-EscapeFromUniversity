@@ -11,14 +11,14 @@ public abstract class AbstractDynamicGameObject implements DynamicGameObject {
 	
 	private int id;
 	private final GameObjectType type;
-	private final int speed;
+	private final double speed;
 	private Vector2D direction;
 	private Point2D position;
     private final Point2D hitboxSize;
     protected Mapp map;
     private State state;
 
-	public AbstractDynamicGameObject(final GameObjectType type, final Point2D position, Point2D hitboxSize, final int speed, final Vector2D direction, Mapp map) {
+	public AbstractDynamicGameObject(final GameObjectType type, final Point2D position, Point2D hitboxSize, final double speed, final Vector2D direction, Mapp map) {
 		this.type = type;
 		this.position = position;
 		this.speed = speed;
@@ -47,7 +47,7 @@ public abstract class AbstractDynamicGameObject implements DynamicGameObject {
     }
 
     @Override
-    public int getSpeed() {
+    public double getSpeed() {
         return this.speed;
     }
 
