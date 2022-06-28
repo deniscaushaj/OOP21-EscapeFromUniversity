@@ -31,7 +31,7 @@ public final class QuizView extends Application{
 		final FXMLLoader loader = new FXMLLoader();
 		final URL fileLocation = new File(OSFixes.getLocation("layouts", "Quiz.fxml")).toURI().toURL();
 		loader.setLocation(fileLocation);
-		loader.setController(new QuizController());
+		//loader.setController(new QuizController());
 		final Parent startRoot = loader.load();
 		final LauncherResizer launcherResizer = new LauncherResizer();
 		launcherResizer.setSceneSize(SCREENWIDTH, SCREENHEIGHT);

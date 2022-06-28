@@ -35,7 +35,7 @@ public class QuizController {
 	/**
 	 * Constructor.
 	 */
-	public QuizController(final Boss boss) {
+	public QuizController(final Boss boss, final String path) {
 		try {
 			System.out.println("La varibiale vale: " + path);
 			this.exam = new ExamImporter(path).importExam();

@@ -19,15 +19,16 @@ public class MapImpl implements Mapp {
     	this.mapManager = mapManager;
     }
 
+
     @Override
     public void update(final double deltaTime) {
         final List<DynamicGameObject> listDGObj = new LinkedList<>(List.copyOf(this.dynamicGameObjects));
-        listDGObj.iterator().forEachRemaining(obj -> { obj.update(deltaTime);});
+        /*listDGObj.iterator().forEachRemaining(obj -> { obj.update(deltaTime);});
         listDGObj.iterator().forEachRemaining(obj -> {
             for (final GameObject obj2 : this.getAllGameObject()) {
                 obj.collisionWith(obj2);
             }
-        });
+        });*/
     }
     
     private List<GameObject> getAllGameObject() {

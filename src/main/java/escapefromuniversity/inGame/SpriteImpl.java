@@ -113,7 +113,7 @@ public class SpriteImpl implements Sprite {
             this.folder = "bullet";
             this.filename = "player_bullet.png";
         }
-        this.filepath = this.folder + this.filename;
+        this.filepath = this.folder + "/" + this.filename;
     }
 
     /* Completes the filepath with all the parts of the filename. */
@@ -121,6 +121,7 @@ public class SpriteImpl implements Sprite {
         this.filename = this.folder;
         this.setSpriteDirection();
         this.setSpriteNumber();
+        this.filename += ".png";
     }
 
     /**
@@ -157,12 +158,15 @@ public class SpriteImpl implements Sprite {
             case 1:
                 this.filename = this.filename.concat("_1");
                 this.tileCount++;
+                break;
             case 2:
                 this.filename = this.filename.concat("_2");
                 this.tileCount++;
+                break;
             case 3:
                 this.filename = this.filename.concat("_3");
                 this.tileCount = 1;
+                break;
             default: {
             }
         }
