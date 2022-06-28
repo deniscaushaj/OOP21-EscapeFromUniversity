@@ -62,11 +62,7 @@ public class GameViewImpl implements GameView {
             return new Rectangle(center.sum(new Point2D(-RADIUS, -RADIUS / ratio)), center.sum(new Point2D(RADIUS, RADIUS / ratio)));
         };
         final var parser = new TMXMapParser("final-map.tmx");
-        try {
-            this.map = parser.parse();
-        } catch (ParserConfigurationException | SAXException | IOException e) {
-            throw new RuntimeException(e);
-        }
+        this.map = parser.parse();
         this.layersController =  new LayersControllerImpl(map, player);
     }
 
