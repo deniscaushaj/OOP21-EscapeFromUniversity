@@ -2,7 +2,7 @@ package escapefromuniversity.model.gameObject.player;
 
 import escapefromuniversity.model.gameObject.Direction;
 import escapefromuniversity.model.gameObject.DynamicGameObject;
-import escapefromuniversity.model.map.Mapp;
+import escapefromuniversity.model.GameInit;
 
 /**
  * The interface of the player, containing all the methods related to its stats, direction and state.
@@ -167,7 +167,7 @@ public interface Player extends DynamicGameObject{
 	 */
 	boolean isGraduated();
 
-	void setMap(Mapp map);
+	void setMap(GameInit map);
 
 
 }

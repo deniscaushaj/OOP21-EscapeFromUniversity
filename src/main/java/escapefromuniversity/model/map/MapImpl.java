@@ -3,13 +3,14 @@ package escapefromuniversity.model.map;
 import java.util.LinkedList;
 import java.util.List;
 
+import escapefromuniversity.model.GameInit;
 import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.DynamicGameObject;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.StaticGameObject;
 import escapefromuniversity.model.gameObject.player.Player;
 
-public class MapImpl implements Mapp {
+public class MapImpl implements GameInit {
     private final List<StaticGameObject> staticGameObjects = new LinkedList<>();
     private final List<DynamicGameObject> dynamicGameObjects = new LinkedList<>();
     private final MapManager mapManager;

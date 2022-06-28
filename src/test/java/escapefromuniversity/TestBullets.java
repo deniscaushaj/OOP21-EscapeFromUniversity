@@ -7,7 +7,7 @@ import escapefromuniversity.model.basics.Vector2D;
 import escapefromuniversity.model.gameObject.bullet.Bullet;
 import escapefromuniversity.model.gameObject.bullet.BulletFactory;
 import escapefromuniversity.model.gameObject.bullet.BulletFactoryImpl;
-import escapefromuniversity.model.map.Mapp;
+import escapefromuniversity.model.GameInit;
 import escapefromuniversity.model.map.MapImpl;
 
 /**
@@ -36,7 +36,7 @@ public class TestBullets {
 
     @Test
     public void testCreateBulletPlayer() {
-        Mapp map = new MapImpl(null);
+        GameInit map = new MapImpl(null);
         final Vector2D vec = new Vector2D(0, 1);
         final Point2D pos = new Point2D(0, 0);
         int damage = 10;
@@ -52,7 +52,7 @@ public class TestBullets {
 
     @Test
     public void testCreateBulletBoss1() {
-        Mapp map = new MapImpl(null);
+        GameInit map = new MapImpl(null);
         final Vector2D vec = new Vector2D(0, 1);
         final Point2D pos = new Point2D(0, 0);
         Bullet bul = bullets.createBoss1Bullet(pos, vec, map);
@@ -67,7 +67,7 @@ public class TestBullets {
 
     @Test
     public void testCreateBulletBoss2() {
-        Mapp map = new MapImpl(null);
+        GameInit map = new MapImpl(null);
         final Vector2D vec = new Vector2D(0, 1);
         final Point2D pos = new Point2D(0, 0);
         Bullet bul = bullets.createBoss2Bullet(pos, vec, map);
@@ -82,7 +82,7 @@ public class TestBullets {
 
     @Test
     public void testCreateBulletBoss3() {
-        Mapp map = new MapImpl(null);
+        GameInit map = new MapImpl(null);
         final Vector2D vec = new Vector2D(0, 1);
         final Point2D pos = new Point2D(0, 0);
         Bullet bul = bullets.createBoss3Bullet(pos, vec, map);
@@ -97,7 +97,7 @@ public class TestBullets {
 
     @Test
     public void testCreateBulletBoss4() {
-        Mapp map = new MapImpl(null);
+        GameInit map = new MapImpl(null);
         final Vector2D vec = new Vector2D(0, 1);
         final Point2D pos = new Point2D(0, 0);
         Bullet bul = bullets.createBoss4Bullet(pos, vec, map);
@@ -112,7 +112,7 @@ public class TestBullets {
 
     @Test
     public void testCreateBulletBoss5() {
-        Mapp map = new MapImpl(null);
+        GameInit map = new MapImpl(null);
         final Vector2D vec = new Vector2D(0, 1);
         final Point2D pos = new Point2D(0, 0);
         Bullet bul = bullets.createBoss5Bullet(pos, vec, map);
@@ -127,7 +127,7 @@ public class TestBullets {
 
     @Test
     public void testCreateBulletBoss6() {
-        Mapp map = new MapImpl(null);
+        GameInit map = new MapImpl(null);
         final Vector2D vec = new Vector2D(0, 1);
         final Point2D pos = new Point2D(0, 0);
         Bullet bul = bullets.createBoss6Bullet(pos, vec, map);

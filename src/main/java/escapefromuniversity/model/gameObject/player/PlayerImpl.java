@@ -10,7 +10,7 @@ import escapefromuniversity.model.gameObject.AbstractDynamicGameObject;
 import escapefromuniversity.model.gameObject.Direction;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;
-import escapefromuniversity.model.map.Mapp;
+import escapefromuniversity.model.GameInit;
 
 /**
  * The implementation of the {@link Player} interface. It also extends {@link AbstractDynamicGameObject}
@@ -48,7 +48,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
      * @param direction the direction of the player.
      * @param shootDelay the shoot delay of the player.
      */
-    public PlayerImpl(GameObjectType type, Point2D position, int speed, Vector2D direction, int shootDelay, Mapp map) {
+    public PlayerImpl(GameObjectType type, Point2D position, int speed, Vector2D direction, int shootDelay, GameInit map) {
         super(type, position, HIT_BOX_PLAYER, speed, direction, map);
         this.life = MAX_LIFE;
         this.credits = START_CREDITS;
@@ -233,7 +233,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
      * {@inheritDoc}
      */
     @Override
-    public void setMap(Mapp map) {
+    public void setMap(GameInit map) {
         this.map = map;
     }
 

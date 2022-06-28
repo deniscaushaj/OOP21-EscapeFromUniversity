@@ -5,7 +5,7 @@ import escapefromuniversity.model.basics.Vector2D;
 import escapefromuniversity.model.gameObject.AbstractDynamicGameObject;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;
-import escapefromuniversity.model.map.Mapp;
+import escapefromuniversity.model.GameInit;
 import escapefromuniversity.model.gameObject.player.Player;
 
 /**
@@ -35,7 +35,7 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
      * @param impactDamage
      * @param map
      */
-    public AbstractBoss(final double speed, final Point2D position, final Point2D upperCorner, final Vector2D direction, final GameObjectType type, final int life, final long shootDelay, final int impactDamage, final String exam, final Mapp map) {
+    public AbstractBoss(final double speed, final Point2D position, final Point2D upperCorner, final Vector2D direction, final GameObjectType type, final int life, final long shootDelay, final int impactDamage, final String exam, final GameInit map) {
         super(type, position, upperCorner, speed, direction, map);
         this.life = life;
         this.shootDelay = shootDelay;
