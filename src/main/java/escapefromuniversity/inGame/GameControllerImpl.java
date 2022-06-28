@@ -39,7 +39,7 @@ public class GameControllerImpl implements GameController {
 		this.gameModel = new GameModelImpl(this);
 		this.gameView = new GameViewImpl(this);
         this.shopController = new ShopControllerImpl(this, this.gameModel);
-		this.keyHandler = new KeyHandlerImpl(this.gameModel, this, this.shopController, this.menuController, this.gameView);
+		this.keyHandler = new KeyHandlerImpl(this.gameModel, this, this.shopController, this.menuController);
 		this.setGameState(GameState.PLAY);
         this.keyHandler.setAllInactive();
 	}
