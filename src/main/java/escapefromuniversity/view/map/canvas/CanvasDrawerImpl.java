@@ -1,5 +1,7 @@
-package escapefromuniversity.model.map;
+package escapefromuniversity.view.map.canvas;
 
+import escapefromuniversity.model.map.Rectangle;
+import escapefromuniversity.view.map.canvas.CanvasDrawer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;

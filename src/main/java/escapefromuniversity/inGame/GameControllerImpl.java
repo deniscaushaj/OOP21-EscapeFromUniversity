@@ -16,7 +16,7 @@ import escapefromuniversity.launcher.LeaderboardController;
 import escapefromuniversity.menu.MenuController;
 import escapefromuniversity.menu.MenuControllerImpl;
 import escapefromuniversity.model.GameModel;
-import escapefromuniversity.model.GameModelImp;
+import escapefromuniversity.model.GameModelImpl;
 import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.basics.Vector2D;
@@ -36,20 +36,20 @@ public class GameControllerImpl implements GameController {
     private final GameModel gameModel;
     private final GameView gameView;
     private final KeyHandler keyHandler;
+    private final ShopController shopController;
+    private final MenuController menuController = new MenuControllerImpl(this);
     private GameState gameState;
     private GameState prevGameState;
     private List<Integer> gameObjID = new LinkedList<>();
-    private final MenuController menuController = new MenuControllerImpl(this);
-    private final ShopController shopController = new ShopControllerImpl(this);
 
 	/**
 	 * Instantiates a new GameController and initializes the corresponding GameModel and GameView and KeyHandler making the game start.
 	 */
 	public GameControllerImpl() {
-		this.gameModel = new GameModelImp(this);
+		this.gameModel = new GameModelImpl(this);
 		this.gameView = new GameViewImpl(this);
-		//this.gameView = new GameViewImpl(this);
-		this.keyHandler = new KeyHandlerImpl(this.gameModel, this);
+        this.shopController = new ShopControllerImpl(this, this.gameModel);
+		this.keyHandler = new KeyHandlerImpl(this.gameModel, this, this.shopController, this.menuController);
 		this.setGameState(GameState.PLAY);
         this.keyHandler.setAllInactive();
 	}
@@ -67,6 +67,7 @@ public class GameControllerImpl implements GameController {
             case PLAY:
             case FIGHT:
             case GRADUATED:
+            case SHOP_ROOM:
                 long deltaTime = currentTime - lastTime;
                 executeInput();
                 this.updateModel(deltaTime);
@@ -82,7 +83,7 @@ public class GameControllerImpl implements GameController {
                 executeInput();
                 this.menuController.startView();
                 break;
-            case SHOP:
+            case SHOP_MENU:
                 //this.gameView.addPauseBG();
                 executeInput();
                 this.shopController.startView();
@@ -98,7 +99,7 @@ public class GameControllerImpl implements GameController {
         this.gameView.end(this.getGameState());
     }
 
-    /* Checks if the player has won the game or if he lost and returns {@code true} if the game is not finished, {@code false} otherwise. */
+    /* Checks if the player has won the game or if he lost and returns true if the game is not finished, false otherwise. */
     private boolean continueGame() {
         return this.getGameState() != GameState.LOST && this.getGameState() != GameState.WIN;
     }

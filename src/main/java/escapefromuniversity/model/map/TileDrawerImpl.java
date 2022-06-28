@@ -3,6 +3,7 @@ package escapefromuniversity.model.map;
 import java.util.Comparator;
 
 import escapefromuniversity.model.basics.Point2D;
+import escapefromuniversity.view.map.canvas.CanvasDrawer;
 
 public class TileDrawerImpl implements TileDrawer {
 
@@ -42,13 +43,6 @@ public class TileDrawerImpl implements TileDrawer {
      * @return the position of the tile
      */
     private Point2D calcTPos(final int id, final Tileset ts) {
-        /*
-         * Per calcolare la posizione del tile che mi serve devo fare la get delle colonne e delle righe del tileset giusto.
-         * In questo modo posso determinare in base all'id la posizione.
-         * Es:
-         * ID = 50; ROWS = 7; COLS = 25
-         * POS = {1, 24}
-         * */
         var cols = ts.getColumns();
         var idOffset = id - ts.getFirstTileId();
         var x = idOffset % cols;
@@ -58,10 +52,6 @@ public class TileDrawerImpl implements TileDrawer {
 
     @Override
     public Tileset searchTileset(final int id) {
-        /*
-        * Voglio prendere da MapProperties la lista di Tileset per poter cercare quello che contiene l'id di cui ho bisogno
-        * e poi poter prendere l'immagine PNG
-        * */
         return map.getTilesets().stream()
                 .filter(t -> t.getFirstTileId() <= id)
                 .max(Comparator.comparingInt(Tileset::getFirstTileId))

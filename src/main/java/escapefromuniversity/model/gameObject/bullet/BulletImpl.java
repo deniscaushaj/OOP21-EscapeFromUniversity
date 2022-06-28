@@ -28,7 +28,7 @@ public class BulletImpl extends AbstractDynamicGameObject implements Bullet {
      * @param damage
      * @param map
      */
-    public BulletImpl(final GameObjectType type, final Point2D position, final int speed, final Vector2D direction, final int damage, final Mapp map) {
+    public BulletImpl(final GameObjectType type, final Point2D position, final double speed, final Vector2D direction, final int damage, final Mapp map) {
         super(type, position, position.sum(BulletConstant.BULLET_BOX_SIZE), speed, direction, map);
         this.damage = damage;
     }

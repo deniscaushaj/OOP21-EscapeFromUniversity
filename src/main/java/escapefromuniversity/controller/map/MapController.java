@@ -1,7 +1,7 @@
-package escapefromuniversity.map;
+package escapefromuniversity.controller.map;
 
 import escapefromuniversity.model.basics.Point2D;
-import escapefromuniversity.model.map.CanvasDrawerImpl;
+import escapefromuniversity.view.map.canvas.CanvasDrawerImpl;
 import escapefromuniversity.model.map.Rectangle;
 import escapefromuniversity.model.map.TMXMapParser;
 import escapefromuniversity.model.map.TileDrawerImpl;

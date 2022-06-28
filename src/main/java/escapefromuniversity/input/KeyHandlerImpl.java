@@ -21,7 +21,6 @@ import escapefromuniversity.model.gameObject.player.PlayerMovementImpl;
 public class KeyHandlerImpl implements KeyHandler {
 
     private final GameController gameController;
-    private final GameView gameView;
     private final Player player;
     private final PlayerMovement playerMovement;
     private final ShopController shopController;
@@ -34,14 +33,15 @@ public class KeyHandlerImpl implements KeyHandler {
      * Instantiates the key handler.
      * @param gameModel
      * @param gameController
+     * @param shopController
+     * @param menuController
      */
-    public KeyHandlerImpl(final GameModel gameModel, final GameController gameController) {
+    public KeyHandlerImpl(final GameModel gameModel, final GameController gameController, final ShopController shopController, final MenuController menuController) {
         this.gameController = gameController;
-        this.gameView = new GameViewImpl(this.gameController);
+        this.shopController = shopController;
+        this.menuController = menuController;
         this.player = gameModel.getPlayer();
         this.playerMovement = new PlayerMovementImpl(this.player);
-        this.shopController = new ShopControllerImpl(this.gameController);
-        this.menuController = new MenuControllerImpl(this.gameController);
         this.gameKeyListener = new GameKeyListener(this.gameController);
         this.createKeyList();
     }
@@ -86,11 +86,12 @@ public class KeyHandlerImpl implements KeyHandler {
                             this.playCommands(keyCode);
                             break;
                         case MENU:
-                        case SHOP:
+                        case SHOP_MENU:
                             this.menuCommands(keyCode);
                             break;
                         case PLAY:
                         case GRADUATED:
+                        case SHOP_ROOM:
                             this.playCommands(keyCode);
                             break;
                         default: {
@@ -138,7 +139,7 @@ public class KeyHandlerImpl implements KeyHandler {
         if (keyCode == KeyEvent.VK_ESCAPE) {
             if(this.gameController.getGameState().equals(GameState.MENU)) {
                 this.menuController.resume();
-            } else if(this.gameController.getGameState().equals(GameState.SHOP)) {
+            } else if(this.gameController.getGameState().equals(GameState.SHOP_MENU)) {
                 this.shopController.closeShop();
             }
         }

@@ -18,7 +18,7 @@ import escapefromuniversity.model.map.MapManagerImpl;
  * class implement GameModel.
  *
  */
-public class GameModelImp implements GameModel {
+public class GameModelImpl implements GameModel {
     private final MapManager mapManager;
     private final GameController gameController;
     private Boss currentBoss;
@@ -27,7 +27,7 @@ public class GameModelImp implements GameModel {
      * 
      * @param gameController
      */
-    public GameModelImp(final GameController gameController) {
+    public GameModelImpl(final GameController gameController) {
         this.gameController = gameController;
         this.mapManager = new MapManagerImpl(this);
     }
@@ -66,7 +66,7 @@ public class GameModelImp implements GameModel {
 
     @Override
     public void setShop() {
-        this.gameController.setGameState(GameState.SHOP);
+        this.gameController.setGameState(GameState.SHOP_MENU);
     }
 
     @Override
@@ -87,12 +87,8 @@ public class GameModelImp implements GameModel {
      * {@inheritDoc}
      */
     public Point2D getPositionOfID(final int id) {
-        for (final DynamicGameObject obj : this.mapManager.getMap().getAllDynamicGameObject()) {
-            if (obj.getID() == id) {
-                return obj.getObjectPosition();
-            }
-        }
-        return null;
+        DynamicGameObject a = this.mapManager.getMap().getAllDynamicGameObject().stream().filter(e -> e.getID() == id).findFirst().orElse(null);
+        return a.getObjectPosition();
     }
 
     @Override
@@ -107,22 +103,14 @@ public class GameModelImp implements GameModel {
 
     @Override
     public State getStateID(final int id) {
-        for (final DynamicGameObject obj : this.mapManager.getMap().getAllDynamicGameObject()) {
-            if (obj.getID() == id) {
-                return obj.getState();
-            }
-        }
-        return null;
+        DynamicGameObject a = this.mapManager.getMap().getAllDynamicGameObject().stream().filter(e -> e.getID() == id).findFirst().orElse(null);
+        return a.getState();
     }
 
     @Override
     public GameObjectType getTypeID(final int id) {
-        for (final DynamicGameObject obj : this.mapManager.getMap().getAllDynamicGameObject()) {
-            if (obj.getID() == id) {
-                return obj.getType();
-            }
-        }
-        return null;
+        DynamicGameObject a = this.mapManager.getMap().getAllDynamicGameObject().stream().filter(e -> e.getID() == id).findFirst().orElse(null);
+        return a.getType();
     }
 
 }

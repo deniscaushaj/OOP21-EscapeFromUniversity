@@ -9,8 +9,7 @@ import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
-import escapefromuniversity.model.map.CanvasDrawerImpl;
-import javafx.application.Application;
+import escapefromuniversity.view.map.canvas.CanvasDrawerImpl;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 

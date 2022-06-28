@@ -35,7 +35,7 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
      * @param impactDamage
      * @param map
      */
-    public AbstractBoss(final int speed, final Point2D position, final Point2D upperCorner, final Vector2D direction, final GameObjectType type, final int life, final long shootDelay, final int impactDamage, final String exam, final Mapp map) {
+    public AbstractBoss(final double speed, final Point2D position, final Point2D upperCorner, final Vector2D direction, final GameObjectType type, final int life, final long shootDelay, final int impactDamage, final String exam, final Mapp map) {
         super(type, position, upperCorner, speed, direction, map);
         this.life = life;
         this.shootDelay = shootDelay;

@@ -4,6 +4,7 @@ package escapefromuniversity.model.map;
  * A class which models a tileset.
  */
 public class Tileset {
+
     private final String fileName;
     private final int tilesCount;
     private final int columns;
