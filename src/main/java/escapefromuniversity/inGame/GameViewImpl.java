@@ -1,14 +1,26 @@
 package escapefromuniversity.inGame;
 
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
 import escapefromuniversity.launcher.LauncherView;
 import escapefromuniversity.model.GameState;
+import escapefromuniversity.model.basics.HitBox;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
+import escapefromuniversity.model.map.Camera;
+import escapefromuniversity.model.map.MapProperties;
+import escapefromuniversity.model.map.Rectangle;
+import escapefromuniversity.model.map.TMXMapParser;
+import escapefromuniversity.model.map.TileDrawer;
+import escapefromuniversity.view.map.canvas.CanvasDrawer;
 import escapefromuniversity.view.map.canvas.CanvasDrawerImpl;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
@@ -22,6 +34,13 @@ public class GameViewImpl implements GameView {
 
     private static final long TIME_TO_END = 5000;
     private final GameController gameController;
+    private final MapProperties map;
+    private CanvasDrawer canvasDrawer;
+    private TileDrawer tileDrawer;
+    private final Camera camera;
+    private static final double X = 30;
+    private static final double Y = 30;
+    private static final double RADIUS = 10;
     private final Map<Integer, SpriteAnimation> spriteAnimations = new HashMap<>();
 
     @FXML
@@ -30,9 +49,20 @@ public class GameViewImpl implements GameView {
     /**
      * 
      * @param gameController
+     * @param playerHitBox
      */
-    public GameViewImpl(final GameController gameController) {
+    public GameViewImpl(final GameController gameController, final HitBox playerHitBox) {
         this.gameController = gameController;
+        this.camera = ratio -> {
+            var center = playerHitBox.getBottomLeftCorner().sum(playerHitBox.getUpperRightCorner()).multiplication(0.5);
+            return new Rectangle(center.sum(new Point2D(-RADIUS, -RADIUS / ratio)), center.sum(new Point2D(RADIUS, RADIUS / ratio)));
+        };
+        final var parser = new TMXMapParser("final-map.tmx");
+        try {
+            this.map = parser.parse();
+        } catch (ParserConfigurationException | SAXException | IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void drawerMap(final CanvasDrawerImpl canvas) {

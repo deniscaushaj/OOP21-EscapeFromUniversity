@@ -49,7 +49,7 @@ public class GameControllerImpl implements GameController {
 	 */
 	public GameControllerImpl() throws ParserConfigurationException, IOException, SAXException {
 		this.gameModel = new GameModelImpl(this);
-		this.gameView = new GameViewImpl(this);
+		this.gameView = new GameViewImpl(this, this.gameModel.getPlayer().getObjectHitBox());
         this.shopController = new ShopControllerImpl(this, this.gameModel);
 		this.keyHandler = new KeyHandlerImpl(this.gameModel, this, this.shopController, this.menuController);
 		this.setGameState(GameState.PLAY);
@@ -77,16 +77,14 @@ public class GameControllerImpl implements GameController {
                 break;
             case QUIZ:
             	BossFactoryImpl fabbrica = new BossFactoryImpl();
-            	Boss bossUno = fabbrica.createBoss1(new Point2D(0,0), new Vector2D(0,0), null);
+            	Boss bossUno = fabbrica.createBoss1(new Point2D(0, 0), new Vector2D(0,0), null);
                 this.startQuiz(bossUno);
                 break;
             case MENU:
-                //this.gameView.addPauseBG();
                 executeInput();
                 this.menuController.startView();
                 break;
             case SHOP_MENU:
-                //this.gameView.addPauseBG();
                 executeInput();
                 this.shopController.startView();
                 break;

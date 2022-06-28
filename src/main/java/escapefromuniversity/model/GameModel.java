@@ -2,6 +2,7 @@ package escapefromuniversity.model;
 
 import java.util.List;
 
+import escapefromuniversity.model.basics.HitBox;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.gameObject.DynamicGameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;
