@@ -1,6 +1,7 @@
 package escapefromuniversity;
 
 import escapefromuniversity.model.map.*;
+import escapefromuniversity.view.map.canvas.CanvasDrawerImpl;
 import javafx.scene.canvas.Canvas;
 import org.junit.jupiter.api.Test;
 import org.xml.sax.SAXException;

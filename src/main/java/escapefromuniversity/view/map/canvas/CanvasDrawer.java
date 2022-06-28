@@ -1,4 +1,6 @@
-package escapefromuniversity.model.map;
+package escapefromuniversity.view.map.canvas;
+
+import escapefromuniversity.model.map.Rectangle;
 
 /**
  * An interface which draws a canvas.

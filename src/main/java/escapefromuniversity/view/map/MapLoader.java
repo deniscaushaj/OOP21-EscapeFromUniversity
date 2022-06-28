@@ -1,12 +1,15 @@
-package escapefromuniversity.model.map;
+package escapefromuniversity.view.map;
 
 import escapefromuniversity.inGame.SpriteImpl;
-import escapefromuniversity.map.LayersControllerImpl;
+import escapefromuniversity.controller.map.LayersControllerImpl;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
 import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.model.gameObject.player.PlayerImpl;
+import escapefromuniversity.model.map.*;
+import escapefromuniversity.view.map.canvas.CanvasDrawer;
+import escapefromuniversity.view.map.canvas.CanvasDrawerImpl;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyCode;
@@ -94,16 +97,16 @@ public class MapLoader {
     @FXML
     public final void onKeyPressed(final KeyEvent evt) {
         if (evt.getCode().equals(KeyCode.A)) {
-            x -= 0.67;
+            x -= 0.25;
         }
         if (evt.getCode().equals(KeyCode.D)) {
-            x += 0.67;
+            x += 0.25;
         }
         if (evt.getCode().equals(KeyCode.W)) {
-            y -= 0.67;
+            y -= 0.25;
         }
         if (evt.getCode().equals(KeyCode.S)) {
-            y += 0.67;
+            y += 0.25;
         }
         if (evt.getCode().equals(KeyCode.Q)) {
             radius += 1;

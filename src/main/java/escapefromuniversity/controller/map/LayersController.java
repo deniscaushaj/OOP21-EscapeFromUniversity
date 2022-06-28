@@ -1,4 +1,4 @@
-package escapefromuniversity.map;
+package escapefromuniversity.controller.map;
 
 import escapefromuniversity.model.map.Layer;
 

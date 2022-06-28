@@ -1,4 +1,4 @@
-package escapefromuniversity.view;
+package escapefromuniversity.view.map.canvas;
 
 import javafx.scene.canvas.Canvas;
 

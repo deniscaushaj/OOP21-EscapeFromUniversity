@@ -1,4 +1,4 @@
-package escapefromuniversity.map;
+package escapefromuniversity.controller.map;
 
 import escapefromuniversity.inGame.GameController;
 import escapefromuniversity.inGame.GameControllerImpl;
