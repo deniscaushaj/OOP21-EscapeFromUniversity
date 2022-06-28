@@ -26,11 +26,11 @@ public class GameControllerImpl implements GameController {
     private final GameModel gameModel;
     private final GameView gameView;
     private final KeyHandler keyHandler;
+    private final ShopController shopController;
+    private final MenuController menuController = new MenuControllerImpl(this);
     private GameState gameState;
     private GameState prevGameState;
     private List<Integer> gameObjID = new LinkedList<>();
-    private final MenuController menuController = new MenuControllerImpl(this);
-    private final ShopController shopController = new ShopControllerImpl(this, this.gameModel);
 
 	/**
 	 * Instantiates a new GameController and initializes the corresponding GameModel and GameView and KeyHandler making the game start.
@@ -38,7 +38,7 @@ public class GameControllerImpl implements GameController {
 	public GameControllerImpl() {
 		this.gameModel = new GameModelImp(this);
 		this.gameView = new GameViewImpl(this);
-		//this.gameView = new GameViewImpl(this);
+        this.shopController = new ShopControllerImpl(this, this.gameModel);
 		this.keyHandler = new KeyHandlerImpl(this.gameModel, this, this.shopController, this.menuController, this.gameView);
 		this.setGameState(GameState.PLAY);
         this.keyHandler.setAllInactive();
