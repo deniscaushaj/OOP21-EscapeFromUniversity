@@ -8,13 +8,11 @@ public interface MapManager {
 
     void update(double deltaTime);
 
-    GameInit getMap();
+    GameInit getGameInit();
 
     Player getPlayer();
 
     void setupQuiz(Boss boss);
-
-    void setCurrentRoom(Door door);
 
     void setupShop();
 

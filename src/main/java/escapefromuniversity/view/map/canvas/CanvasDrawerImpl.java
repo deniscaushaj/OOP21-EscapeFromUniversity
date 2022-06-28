@@ -60,4 +60,9 @@ public class CanvasDrawerImpl implements CanvasDrawer {
                 Math.round(drawPos.getMinX()-1), Math.round(drawPos.getMinY()-1),
                 Math.round(drawPos.getWidth()+2), Math.round(drawPos.getHeight()+2));
     }
+
+    @Override
+    public void drawImage(final String filename, final Rectangle drawPos) {
+        this.gc.drawImage(this.getImageFromCacheOrLoad(filename), drawPos.getMinX(), drawPos.getMinY(), drawPos.getWidth(), drawPos.getHeight());
+    }
 }

@@ -8,6 +8,7 @@ import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.StaticGameObject;
 import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.model.map.MapManager;
+import escapefromuniversity.model.map.MapProperties;
 
 public interface GameInit {
 
@@ -24,6 +25,8 @@ public interface GameInit {
     Player getPlayer();
     
     MapManager getMapManager();
+
+    MapProperties getMap();
     
     void goQuiz(Boss boss);
 }

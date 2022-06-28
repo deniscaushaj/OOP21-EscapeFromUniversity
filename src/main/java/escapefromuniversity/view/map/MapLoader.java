@@ -42,11 +42,7 @@ public class MapLoader {
             return new Rectangle(center.sum(new Point2D(-radius, -radius / ratio)), center.sum(new Point2D(radius, radius / ratio)));
         };
         final var parser = new TMXMapParser("final-map.tmx");
-        try {
-            this.map = parser.parse();
-        } catch (ParserConfigurationException | SAXException | IOException e) {
-            throw new RuntimeException(e);
-        }
+        this.map = parser.parse();
         this.layersController =  new LayersControllerImpl(map, fakePlayer);
     }
 
@@ -86,26 +82,26 @@ public class MapLoader {
 
         var playerSprite = new SpriteImpl(State.LEFT, fakePlayer.getType());
         playerSprite.setFilepath();
-        this.canvasDrawer.drawImage(playerSprite.getFilepath(), playerSprite.getRectangle(),
+        this.canvasDrawer.drawImage(playerSprite.getFilepath(),
                 this.calcProjectedRectangle(new Rectangle(
-                        fakePlayer.getObjectHitBox().getBottomLeftCorner().sum(new Point2D(0, -fakePlayer.getObjectHitBox().getHeight())),
-                        fakePlayer.getObjectHitBox().getUpperRightCorner().sum(new Point2D(0, -fakePlayer.getObjectHitBox().getHeight()))
+                        fakePlayer.getObjectHitBox().getBottomLeftCorner(),
+                        fakePlayer.getObjectHitBox().getUpperRightCorner()
                 ), proj));
     }
 
     @FXML
     public final void onKeyPressed(final KeyEvent evt) throws ParserConfigurationException, IOException, SAXException {
         if (evt.getCode().equals(KeyCode.A)) {
-            x -= 0.66;
+            x -= 1.66;
         }
         if (evt.getCode().equals(KeyCode.D)) {
-            x += 0.66;
+            x += 1.66;
         }
         if (evt.getCode().equals(KeyCode.W)) {
-            y -= 0.66;
+            y -= 1.66;
         }
         if (evt.getCode().equals(KeyCode.S)) {
-            y += 0.66;
+            y += 1.66;
         }
         if (evt.getCode().equals(KeyCode.Q)) {
             radius += 1;

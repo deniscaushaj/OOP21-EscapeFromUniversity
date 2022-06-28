@@ -35,7 +35,7 @@ public class LayersControllerImpl {
         return this.getProperties(player.getObjectPosition()).contains("corridor");
     }
 
-    private boolean isShop() {
+    public boolean isShop() {
         return this.getProperties(player.getObjectPosition()).contains("shop");
     }
 
@@ -47,6 +47,10 @@ public class LayersControllerImpl {
                 .orElse(Set.of());
     }
 
+    public void update() {
+
+    }
+
     public Stream<Layer> getVisibleLayers() throws ParserConfigurationException, IOException, SAXException {
         final List<String> allowed = new ArrayList<>();
         if (isCorridor()) {
@@ -54,10 +58,6 @@ public class LayersControllerImpl {
         }
         if (isRoom()) {
             allowed.add("room");
-            if (isShop()) {
-                var gameCont = new GameControllerImpl();
-                gameCont.setGameState(GameState.SHOP_ROOM);
-            }
         }
         return this.map.getLayers().stream().filter(l -> allowed.stream().anyMatch(p -> l.getProperties().contains(p)));
     }

@@ -15,7 +15,7 @@ public class ObstacleObject extends AbstractStaticGameObject {
      * @param position the upper-left corner
      */
     public ObstacleObject(final GameObjectType type, final Rectangle position) {
-        super(type, position.getBottomLeft(), position.getTopRight(), null);
+        super(type, position.getTopLeft(), position.getBottomRight(), null);
     }
 
     @Override

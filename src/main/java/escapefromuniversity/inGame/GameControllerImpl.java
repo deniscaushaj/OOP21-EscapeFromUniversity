@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import escapefromuniversity.WriteFile;
+import escapefromuniversity.controller.map.LayersControllerImpl;
 import escapefromuniversity.input.KeyHandler;
 import escapefromuniversity.input.KeyHandlerImpl;
 import escapefromuniversity.launcher.LauncherView;
@@ -20,6 +21,7 @@ import escapefromuniversity.model.GameModelImpl;
 import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.basics.Vector2D;
+import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.enemy.BossFactoryImpl;
 import escapefromuniversity.quiz.QuizController;
@@ -40,6 +42,7 @@ public class GameControllerImpl implements GameController {
     private final KeyHandler keyHandler;
     private final ShopController shopController;
     private final MenuController menuController = new MenuControllerImpl(this);
+    private final LayersControllerImpl layersController;
     private GameState gameState;
     private GameState prevGameState;
     private List<Integer> gameObjID = new LinkedList<>();
@@ -47,10 +50,11 @@ public class GameControllerImpl implements GameController {
 	/**
 	 * Instantiates a new GameController and initializes the corresponding GameModel and GameView and KeyHandler making the game start.
 	 */
-	public GameControllerImpl() throws ParserConfigurationException, IOException, SAXException {
+	public GameControllerImpl() {
 		this.gameModel = new GameModelImpl(this);
 		this.gameView = new GameViewImpl(this, this.gameModel.getPlayer());
         this.shopController = new ShopControllerImpl(this, this.gameModel);
+        this.layersController = new LayersControllerImpl(this.gameModel.getMap(), this.gameModel.getPlayer());
 		this.keyHandler = new KeyHandlerImpl(this.gameModel, this, this.shopController, this.menuController);
 		this.setGameState(GameState.PLAY);
         this.keyHandler.setAllInactive();
@@ -112,7 +116,7 @@ public class GameControllerImpl implements GameController {
     /* Returns a list with all the IDs of the game objects. */
     private List<Integer> getGameObjectID() {
         return this.gameModel.getAllDynamicGameObj().stream()
-                .map(obj -> obj.getID())
+                .map(GameObject::getID)
                 .collect(Collectors.toList());
     }
 
@@ -121,6 +125,9 @@ public class GameControllerImpl implements GameController {
         this.checkSpriteAnimation();
         this.gameObjID = this.getGameObjectID();
         this.gameView.updateView();
+        if (layersController.isShop()) {
+            this.setGameState(GameState.SHOP_ROOM);
+        }
     }
 
     /*  */
