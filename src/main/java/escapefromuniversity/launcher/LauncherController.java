@@ -69,7 +69,7 @@ public class LauncherController {
         }
     }
 
-    /* Opens the leaderboard scene. */
+    /* Opens the leaderboard scene.*/
     @FXML
     void credits(ActionEvent event) {
         try {

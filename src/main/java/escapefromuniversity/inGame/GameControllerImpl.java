@@ -11,13 +11,23 @@ import java.util.stream.Collectors;
 import escapefromuniversity.WriteFile;
 import escapefromuniversity.input.KeyHandler;
 import escapefromuniversity.input.KeyHandlerImpl;
+import escapefromuniversity.launcher.LauncherView;
+import escapefromuniversity.launcher.LeaderboardController;
 import escapefromuniversity.menu.MenuController;
 import escapefromuniversity.menu.MenuControllerImpl;
 import escapefromuniversity.model.GameModel;
 import escapefromuniversity.model.GameModelImp;
 import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.basics.Point2D;
+import escapefromuniversity.model.basics.Vector2D;
+import escapefromuniversity.model.gameObject.enemy.Boss;
+import escapefromuniversity.model.gameObject.enemy.BossFactoryImpl;
+import escapefromuniversity.quiz.QuizController;
 import escapefromuniversity.quiz.QuizView;
+import escapefromuniversity.utilities.LauncherResizer;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 
 /**
  * Implements all the methods defined in its interface {@link GameController}.
@@ -49,6 +59,7 @@ public class GameControllerImpl implements GameController {
      */
     @Override
     public void gameLoop() {
+    	
         long lastTime = System.currentTimeMillis();
         while (continueGame()) {
             long currentTime = System.currentTimeMillis();
@@ -62,8 +73,9 @@ public class GameControllerImpl implements GameController {
                 this.updateView();
                 break;
             case QUIZ:
-                //this.gameView.addPauseBG();
-                this.startQuiz();
+            	BossFactoryImpl fabbrica = new BossFactoryImpl();
+            	Boss bossUno = fabbrica.createBoss1(new Point2D(0,0), new Vector2D(0,0), null);
+                this.startQuiz(bossUno);
                 break;
             case MENU:
                 //this.gameView.addPauseBG();
@@ -147,8 +159,21 @@ public class GameControllerImpl implements GameController {
      * {@inheritDoc}
      */
     @Override
-    public void startQuiz() {
-        QuizView.startQuizCompetition();
+    public void startQuiz(final Boss boss) {
+        //QuizView.startQuizCompetition();
+    	try {
+			FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/Quiz.fxml"));
+			Parent gameRoot;
+			gameRoot = loader.load();
+			Scene quiz = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
+			LauncherView.launcherWindow.setScene(quiz);
+			final QuizController quizController = new QuizController(boss, this.gameModel.getPlayer());
+            loader.setController(quizController);
+           
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     /**

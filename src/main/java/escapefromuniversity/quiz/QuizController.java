@@ -8,6 +8,7 @@ import escapefromuniversity.model.quiz.Exam;
 import escapefromuniversity.model.quiz.ExamImporter;
 import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.enemy.Boss.BossState;
+import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.model.quiz.Quiz;
 import javafx.event.ActionEvent;
 
@@ -35,10 +36,9 @@ public class QuizController {
 	/**
 	 * Constructor.
 	 */
-	public QuizController(final Boss boss, final String path) {
+	public QuizController(final Boss boss, Player player) {
 		try {
-			System.out.println("La varibiale vale: " + path);
-			this.exam = new ExamImporter(path).importExam();
+			this.exam = new ExamImporter(boss.getBossExam()).importExam();
 			if (this.exam.hasNextQuiz()) {
 				currentQuiz = this.exam.getNextQuiz();
 			}

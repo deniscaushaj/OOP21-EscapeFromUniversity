@@ -1,6 +1,7 @@
 package escapefromuniversity.inGame;
 
 import escapefromuniversity.model.GameState;
+import escapefromuniversity.model.gameObject.enemy.Boss;
 
 import java.awt.event.KeyEvent;
 
@@ -31,7 +32,7 @@ public interface GameController {
     /**
      * Launches the view of an exam's quiz.
      */
-    void startQuiz();
+    void startQuiz(Boss boss);
 
     /**
      * Returns the current game state.

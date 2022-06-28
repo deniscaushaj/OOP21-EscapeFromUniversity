@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 public final class LauncherView extends Application{
 
-    static Stage launcherWindow;
+    public static Stage launcherWindow;
     static Scene launcher;
 
     /**
