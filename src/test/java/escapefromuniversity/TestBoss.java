@@ -1,6 +1,7 @@
 package escapefromuniversity;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 import escapefromuniversity.model.basics.Point2D;
@@ -8,9 +9,14 @@ import escapefromuniversity.model.basics.Vector2D;
 import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.enemy.BossFactory;
 import escapefromuniversity.model.gameObject.enemy.BossFactoryImpl;
-import escapefromuniversity.model.map.Room;
-import escapefromuniversity.model.map.RoomImpl;
+import escapefromuniversity.model.map.MapImpl;
+import escapefromuniversity.model.map.Mapp;
 
+/**
+ * 
+ * test for bullet.
+ *
+ */
 public class TestBoss {
 
     private static final int BOSS_1_LIFE = 200;
@@ -31,12 +37,12 @@ public class TestBoss {
 
     @Test
     public void testCreateBoss1() {
-        Room room = new RoomImpl(null);
+        Mapp map = new MapImpl(null);
         final Vector2D vec = new Vector2D(0, 1);
         final Point2D pos = new Point2D(0, 0);
-        Boss boss = bosses.createBoss1(pos, vec, room);
-        room.addDynamicGameObject(boss);
-        assertEquals(boss.getRoom(), room);
+        Boss boss = bosses.createBoss1(pos, vec, map);
+        map.addDynamicGameObject(boss);
+        assertEquals(boss.getMap(), map);
         assertEquals(boss.getObjectPosition(), pos);
         assertEquals(boss.getLife(), BOSS_1_LIFE);
         assertEquals(boss.getImpactDamage(), BOSS_1_DAMAGE);
@@ -44,64 +50,64 @@ public class TestBoss {
 
     @Test
     public void testCreateBoss2() {
-        Room room = new RoomImpl(null);
+        Mapp room = new MapImpl(null);
         final Vector2D vec = new Vector2D(0, 1);
         final Point2D pos = new Point2D(0, 0);
         Boss boss = bosses.createBoss2(pos, vec, room);
         room.addDynamicGameObject(boss);
-        assertEquals(boss.getRoom(), room);
+        assertEquals(boss.getMap(), room);
         assertEquals(boss.getObjectPosition(), pos);
         assertEquals(boss.getLife(), BOSS_2_LIFE);
         assertEquals(boss.getImpactDamage(), BOSS_2_DAMAGE);
     }
-    
+
     @Test
     public void testCreateBoss3() {
-        Room room = new RoomImpl(null);
+        Mapp room = new MapImpl(null);
         final Vector2D vec = new Vector2D(0, 1);
         final Point2D pos = new Point2D(0, 0);
         Boss boss = bosses.createBoss3(pos, vec, room);
         room.addDynamicGameObject(boss);
-        assertEquals(boss.getRoom(), room);
+        assertEquals(boss.getMap(), room);
         assertEquals(boss.getObjectPosition(), pos);
         assertEquals(boss.getLife(), BOSS_3_LIFE);
         assertEquals(boss.getImpactDamage(), BOSS_3_DAMAGE);
     }
-    
+
     @Test
     public void testCreateBoss4() {
-        Room room = new RoomImpl(null);
+        Mapp room = new MapImpl(null);
         final Vector2D vec = new Vector2D(0, 1);
         final Point2D pos = new Point2D(0, 0);
         Boss boss = bosses.createBoss4(pos, vec, room);
         room.addDynamicGameObject(boss);
-        assertEquals(boss.getRoom(), room);
+        assertEquals(boss.getMap(), room);
         assertEquals(boss.getObjectPosition(), pos);
         assertEquals(boss.getLife(), BOSS_4_LIFE);
         assertEquals(boss.getImpactDamage(), BOSS_4_DAMAGE);
     }
-    
+
     @Test
     public void testCreateBoss5() {
-        Room room = new RoomImpl(null);
+        Mapp room = new MapImpl(null);
         final Vector2D vec = new Vector2D(0, 1);
         final Point2D pos = new Point2D(0, 0);
         Boss boss = bosses.createBoss5(pos, vec, room);
         room.addDynamicGameObject(boss);
-        assertEquals(boss.getRoom(), room);
+        assertEquals(boss.getMap(), room);
         assertEquals(boss.getObjectPosition(), pos);
         assertEquals(boss.getLife(), BOSS_5_LIFE);
         assertEquals(boss.getImpactDamage(), BOSS_5_DAMAGE);
     }
-    
+
     @Test
     public void testCreateBoss6() {
-        Room room = new RoomImpl(null);
+        Mapp room = new MapImpl(null);
         final Vector2D vec = new Vector2D(0, 1);
         final Point2D pos = new Point2D(0, 0);
         Boss boss = bosses.createBoss6(pos, vec, room);
         room.addDynamicGameObject(boss);
-        assertEquals(boss.getRoom(), room);
+        assertEquals(boss.getMap(), room);
         assertEquals(boss.getObjectPosition(), pos);
         assertEquals(boss.getLife(), BOSS_6_LIFE);
         assertEquals(boss.getImpactDamage(), BOSS_6_DAMAGE);
