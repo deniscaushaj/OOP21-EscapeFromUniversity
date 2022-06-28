@@ -14,10 +14,14 @@ public class MapImpl implements GameInit {
     private final List<StaticGameObject> staticGameObjects = new LinkedList<>();
     private final List<DynamicGameObject> dynamicGameObjects = new LinkedList<>();
     private final MapManager mapManager;
-    
-    
+    private final MapProperties mapProperties;
+
+    private final static String TMX_MAP_PATH = "final-map.tmx";
+
+
     public MapImpl(final MapManager mapManager) {
     	this.mapManager = mapManager;
+        this.mapProperties = new TMXMapParser(TMX_MAP_PATH).parse();
     }
 
 
@@ -78,4 +82,9 @@ public class MapImpl implements GameInit {
 	public MapManager getMapManager() {
 		return this.mapManager;
 	}
+
+    @Override
+    public MapProperties getMap() {
+        return this.mapProperties;
+    }
 }
