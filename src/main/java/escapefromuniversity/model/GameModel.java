@@ -8,6 +8,7 @@ import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
 import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.player.Player;
+import escapefromuniversity.model.map.MapProperties;
 
 /**
  * 
@@ -54,6 +55,8 @@ public interface GameModel {
      * @return the Player object.
      */
     Player getPlayer();
+
+    MapProperties getMap();
 
     /**
      * 
