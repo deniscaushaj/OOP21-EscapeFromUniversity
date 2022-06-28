@@ -6,9 +6,11 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
@@ -30,16 +32,23 @@ public class TMXMapParser {
     /**
      * Parsing of the TMX file returning the map properties.
      * @return the map properties
-     * @throws ParserConfigurationException indicates a serious configuration error.
-     * @throws SAXException encapsulate a general SAX error or warning
-     * @throws IOException signals that an I/O exception of some sort has occurred
      */
-    public MapProperties parse() throws ParserConfigurationException, SAXException, IOException {
+    public MapProperties parse() {
         //Building a new document
         final var factory = DocumentBuilderFactory.newInstance();
-        final var builder = factory.newDocumentBuilder();
+        final DocumentBuilder builder;
+        try {
+            builder = factory.newDocumentBuilder();
+        } catch (ParserConfigurationException e) {
+            throw new RuntimeException(e);
+        }
         //Generating a node from a document
-        final var doc = builder.parse(ClassLoader.getSystemResourceAsStream(mapName));
+        final Document doc;
+        try {
+            doc = builder.parse(ClassLoader.getSystemResourceAsStream(mapName));
+        } catch (SAXException | IOException e) {
+            throw new RuntimeException(e);
+        }
         final var mapNode = doc.getElementsByTagName("map").item(0);
         //Getting all the attributes of the map
         final var attributes = mapNode.getAttributes();
