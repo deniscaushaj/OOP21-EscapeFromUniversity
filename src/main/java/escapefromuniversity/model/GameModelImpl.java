@@ -87,12 +87,8 @@ public class GameModelImpl implements GameModel {
      * {@inheritDoc}
      */
     public Point2D getPositionOfID(final int id) {
-        for (final DynamicGameObject obj : this.mapManager.getMap().getAllDynamicGameObject()) {
-            if (obj.getID() == id) {
-                return obj.getObjectPosition();
-            }
-        }
-        return null;
+        DynamicGameObject a = this.mapManager.getMap().getAllDynamicGameObject().stream().filter(e -> e.getID() == id).findFirst().orElse(null);
+        return a.getObjectPosition();
     }
 
     @Override
@@ -107,22 +103,14 @@ public class GameModelImpl implements GameModel {
 
     @Override
     public State getStateID(final int id) {
-        for (final DynamicGameObject obj : this.mapManager.getMap().getAllDynamicGameObject()) {
-            if (obj.getID() == id) {
-                return obj.getState();
-            }
-        }
-        return null;
+        DynamicGameObject a = this.mapManager.getMap().getAllDynamicGameObject().stream().filter(e -> e.getID() == id).findFirst().orElse(null);
+        return a.getState();
     }
 
     @Override
     public GameObjectType getTypeID(final int id) {
-        for (final DynamicGameObject obj : this.mapManager.getMap().getAllDynamicGameObject()) {
-            if (obj.getID() == id) {
-                return obj.getType();
-            }
-        }
-        return null;
+        DynamicGameObject a = this.mapManager.getMap().getAllDynamicGameObject().stream().filter(e -> e.getID() == id).findFirst().orElse(null);
+        return a.getType();
     }
 
 }
