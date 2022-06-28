@@ -73,6 +73,7 @@ public class ShopViewImpl extends JPanel implements ShopView {
 
 
 //      TODO altri settings
+//      TODO aggiungere this alla view del gioco
         this.add(this.creditsCounter);
         this.add(this.itemInfo);
         this.add(this.buyLife);

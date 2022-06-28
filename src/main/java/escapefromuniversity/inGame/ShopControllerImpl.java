@@ -32,8 +32,6 @@ public class ShopControllerImpl implements ShopController, MouseListener {
     public ShopControllerImpl(GameController gameController, GameModel gameModel) {
         this.gameController = gameController;
         this.player = gameModel.getPlayer();
-        this.initializeButtons();
-        this.checkButtonsAvailability();
     }
 
     /**
@@ -44,6 +42,8 @@ public class ShopControllerImpl implements ShopController, MouseListener {
         if(!this.isActive) {
             this.shopView = new ShopViewImpl(this);
             this.isActive = true;
+            this.initializeButtons();
+            this.checkButtonsAvailability();
         }
     }
 
@@ -66,7 +66,7 @@ public class ShopControllerImpl implements ShopController, MouseListener {
         this.isActive = false;
     }
 
-    /* Buys an item. */
+    /* Buys an item from the shop. */
     private void buyItem() {
         switch(this.itemType) {
             case RESET_HEALTH:
