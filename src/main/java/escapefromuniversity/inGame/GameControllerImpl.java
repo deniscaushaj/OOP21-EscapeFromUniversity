@@ -87,7 +87,7 @@ public class GameControllerImpl implements GameController {
         this.gameView.end(this.getGameState());
     }
 
-    /* Checks if the player has won the game or if he lost and returns {@code true} if the game is not finished, {@code false} otherwise. */
+    /* Checks if the player has won the game or if he lost and returns true if the game is not finished, false otherwise. */
     private boolean continueGame() {
         return this.getGameState() != GameState.LOST && this.getGameState() != GameState.WIN;
     }
