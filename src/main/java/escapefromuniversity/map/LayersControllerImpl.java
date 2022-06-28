@@ -1,5 +1,8 @@
 package escapefromuniversity.map;
 
+import escapefromuniversity.inGame.GameController;
+import escapefromuniversity.inGame.GameControllerImpl;
+import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.model.map.Layer;
@@ -27,6 +30,14 @@ public class LayersControllerImpl {
 
     public boolean isCorridor() {
         return this.getProperties(player.getObjectPosition()).contains("corridor");
+    }
+
+    public void isShop() {
+        var pos = this.getProperties(player.getObjectPosition()).contains("shop");
+        var gameCont = new GameControllerImpl();
+        if (pos) {
+            gameCont.setGameState(GameState.SHOP);
+        }
     }
 
     private Set<String> getProperties(Point2D position) {
