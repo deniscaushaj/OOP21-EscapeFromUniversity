@@ -27,7 +27,7 @@ public class ObstacleImpl implements Obstacle {
         return map.parse().getLayers()
                 .stream()
                 .filter(l -> l.getProperties().contains(property))
-                .flatMap(l -> l.getTiles().stream())
+                .flatMap(l -> l.getVisibleTiles().stream())
                 .map(t -> new ObstacleObject(obsType, this.calcTilePosInPixel(t.getX(), t.getY())))
                 .collect(Collectors.toList());
     }
