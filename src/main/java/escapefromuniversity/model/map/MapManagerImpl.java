@@ -9,7 +9,7 @@ import java.util.Map;
 public class MapManagerImpl implements MapManager {
     private final Map<Door,Door> doors;
     private final GameModel gameModel;
-    private final Mapp map;
+    private Mapp map;
 
     public MapManagerImpl(GameModel gameModel) {
         this.gameModel = gameModel;
