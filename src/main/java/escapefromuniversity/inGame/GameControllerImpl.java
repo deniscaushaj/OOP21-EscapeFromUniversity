@@ -49,7 +49,7 @@ public class GameControllerImpl implements GameController {
 	 */
 	public GameControllerImpl() throws ParserConfigurationException, IOException, SAXException {
 		this.gameModel = new GameModelImpl(this);
-		this.gameView = new GameViewImpl(this, this.gameModel.getPlayer().getObjectHitBox());
+		this.gameView = new GameViewImpl(this, this.gameModel.getPlayer());
         this.shopController = new ShopControllerImpl(this, this.gameModel);
 		this.keyHandler = new KeyHandlerImpl(this.gameModel, this, this.shopController, this.menuController);
 		this.setGameState(GameState.PLAY);
