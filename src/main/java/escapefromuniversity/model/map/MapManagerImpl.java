@@ -1,17 +1,33 @@
 package escapefromuniversity.model.map;
 
+import escapefromuniversity.model.GameInit;
 import escapefromuniversity.model.GameModel;
+import escapefromuniversity.model.basics.Point2D;
+import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.player.Player;
+import escapefromuniversity.model.gameObject.player.PlayerImpl;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class MapManagerImpl implements MapManager {
     private final Map<Door,Door> doors;
     private final GameModel gameModel;
-    private Mapp map;
+    private GameInit map;
+    private static final Point2D STARTING_POS = new Point2D(83, 147);
+    private static final double PLAYER_SPEED = 0.25;
+    private static final int PLAYER_SHOOT_DELAY = 500 ;
 
-    public MapManagerImpl(GameModel gameModel) {
+    public MapManagerImpl(GameModel gameModel) throws ParserConfigurationException, IOException, SAXException {
         this.gameModel = gameModel;
         this.doors = this.createDoors();
         this.map = this.createMap();
@@ -23,7 +39,7 @@ public class MapManagerImpl implements MapManager {
     }
 
     @Override
-    public Mapp getMap() {
+    public GameInit getMap() {
         return this.map;
     }
 
@@ -32,9 +48,25 @@ public class MapManagerImpl implements MapManager {
         return this.map.getPlayer();
     }
 
-    private Mapp createMap() {
-        return null;
+    public Point2D getStartingPosition() {
+        return new Point2D(STARTING_POS);
+    }
 
+    private void loadObject() throws ParserConfigurationException, IOException, SAXException {
+        List<ObstacleObject> furniture = new ObstacleImpl().getFurnitureList();
+        List<ObstacleObject> doors = new ObstacleImpl().getDoorList();
+        List<ObstacleObject> npc = new ObstacleImpl().getNPCList();
+        List<ObstacleObject> walls = new ObstacleImpl().getWallsList();
+        var obs = Stream.of(furniture, doors, npc, walls).flatMap(Collection::stream);
+        obs.forEach(o -> {
+            this.map.addStaticGameObject(o);
+        });
+    }
+
+    private GameInit createMap() throws ParserConfigurationException, IOException, SAXException {
+        Player player = new PlayerImpl(GameObjectType.PLAYER, getStartingPosition(), PLAYER_SPEED, null, PLAYER_SHOOT_DELAY, this.map);
+        loadObject();
+        return new MapImpl(this);
     }
 
     private Map<Door, Door> createDoors() {

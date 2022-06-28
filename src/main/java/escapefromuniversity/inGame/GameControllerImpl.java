@@ -28,6 +28,8 @@ import escapefromuniversity.utilities.LauncherResizer;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import org.xml.sax.SAXException;
+import javax.xml.parsers.ParserConfigurationException;
 
 /**
  * Implements all the methods defined in its interface {@link GameController}.
@@ -45,7 +47,7 @@ public class GameControllerImpl implements GameController {
 	/**
 	 * Instantiates a new GameController and initializes the corresponding GameModel and GameView and KeyHandler making the game start.
 	 */
-	public GameControllerImpl() {
+	public GameControllerImpl() throws ParserConfigurationException, IOException, SAXException {
 		this.gameModel = new GameModelImpl(this);
 		this.gameView = new GameViewImpl(this);
         this.shopController = new ShopControllerImpl(this, this.gameModel);

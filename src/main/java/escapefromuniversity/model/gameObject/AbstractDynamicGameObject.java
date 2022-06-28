@@ -5,7 +5,7 @@ import escapefromuniversity.model.basics.HitBoxImpl;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.basics.Vector2D;
 
-import escapefromuniversity.model.map.Mapp;
+import escapefromuniversity.model.GameInit;
 
 public abstract class AbstractDynamicGameObject implements DynamicGameObject {
 	
@@ -15,10 +15,10 @@ public abstract class AbstractDynamicGameObject implements DynamicGameObject {
 	private Vector2D direction;
 	private Point2D position;
     private final Point2D hitboxSize;
-    protected Mapp map;
+    protected GameInit map;
     private State state;
 
-	public AbstractDynamicGameObject(final GameObjectType type, final Point2D position, Point2D hitboxSize, final double speed, final Vector2D direction, Mapp map) {
+	public AbstractDynamicGameObject(final GameObjectType type, final Point2D position, Point2D hitboxSize, final double speed, final Vector2D direction, GameInit map) {
 		this.type = type;
 		this.position = position;
 		this.speed = speed;
@@ -95,7 +95,7 @@ public abstract class AbstractDynamicGameObject implements DynamicGameObject {
         return new HitBoxImpl(this.position, this.position.sum(this.hitboxSize));
     }
 
-    public Mapp getMap() {
+    public GameInit getMap() {
         return this.map;
     }
 

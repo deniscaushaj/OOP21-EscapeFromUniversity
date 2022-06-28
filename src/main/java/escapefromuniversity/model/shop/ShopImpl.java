@@ -4,7 +4,7 @@ import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.gameObject.AbstractStaticGameObject;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;
-import escapefromuniversity.model.map.Mapp;
+import escapefromuniversity.model.GameInit;
 
 /**
  * Implementation of Shop interface.
@@ -18,7 +18,7 @@ public class ShopImpl extends AbstractStaticGameObject implements Shop {
 	 * @param upperCorner
 	 * @param room
 	 */
-    public ShopImpl(final GameObjectType type, final Point2D position, final Point2D upperCorner, final Mapp map) {
+    public ShopImpl(final GameObjectType type, final Point2D position, final Point2D upperCorner, final GameInit map) {
         super(type, position, upperCorner, map);
     }
 

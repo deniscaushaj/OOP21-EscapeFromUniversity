@@ -10,7 +10,7 @@ import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.enemy.BossFactory;
 import escapefromuniversity.model.gameObject.enemy.BossFactoryImpl;
 import escapefromuniversity.model.map.MapImpl;
-import escapefromuniversity.model.map.Mapp;
+import escapefromuniversity.model.GameInit;
 
 /**
  * 
@@ -37,7 +37,7 @@ public class TestBoss {
 
     @Test
     public void testCreateBoss1() {
-        Mapp map = new MapImpl(null);
+        GameInit map = new MapImpl(null);
         final Vector2D vec = new Vector2D(0, 1);
         final Point2D pos = new Point2D(0, 0);
         Boss boss = bosses.createBoss1(pos, vec, map);
@@ -50,7 +50,7 @@ public class TestBoss {
 
     @Test
     public void testCreateBoss2() {
-        Mapp room = new MapImpl(null);
+        GameInit room = new MapImpl(null);
         final Vector2D vec = new Vector2D(0, 1);
         final Point2D pos = new Point2D(0, 0);
         Boss boss = bosses.createBoss2(pos, vec, room);
@@ -63,7 +63,7 @@ public class TestBoss {
 
     @Test
     public void testCreateBoss3() {
-        Mapp room = new MapImpl(null);
+        GameInit room = new MapImpl(null);
         final Vector2D vec = new Vector2D(0, 1);
         final Point2D pos = new Point2D(0, 0);
         Boss boss = bosses.createBoss3(pos, vec, room);
@@ -76,7 +76,7 @@ public class TestBoss {
 
     @Test
     public void testCreateBoss4() {
-        Mapp room = new MapImpl(null);
+        GameInit room = new MapImpl(null);
         final Vector2D vec = new Vector2D(0, 1);
         final Point2D pos = new Point2D(0, 0);
         Boss boss = bosses.createBoss4(pos, vec, room);
@@ -89,7 +89,7 @@ public class TestBoss {
 
     @Test
     public void testCreateBoss5() {
-        Mapp room = new MapImpl(null);
+        GameInit room = new MapImpl(null);
         final Vector2D vec = new Vector2D(0, 1);
         final Point2D pos = new Point2D(0, 0);
         Boss boss = bosses.createBoss5(pos, vec, room);
@@ -102,7 +102,7 @@ public class TestBoss {
 
     @Test
     public void testCreateBoss6() {
-        Mapp room = new MapImpl(null);
+        GameInit room = new MapImpl(null);
         final Vector2D vec = new Vector2D(0, 1);
         final Point2D pos = new Point2D(0, 0);
         Boss boss = bosses.createBoss6(pos, vec, room);
