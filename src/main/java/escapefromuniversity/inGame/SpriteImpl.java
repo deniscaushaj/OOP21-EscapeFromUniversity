@@ -121,7 +121,7 @@ public class SpriteImpl implements Sprite {
         this.filename = this.folder;
         this.setSpriteDirection();
         this.setSpriteNumber();
-        this.filename += ".png";
+        this.filename = this.filename.concat(".png");
     }
 
     /**
