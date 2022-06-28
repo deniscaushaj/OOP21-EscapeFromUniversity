@@ -32,7 +32,6 @@ public class MapLoader {
     private final Player fakePlayer = new PlayerImpl(GameObjectType.PLAYER, new Point2D(x, y), 0, null, 0, null);
     private final LayersControllerImpl layersController;
 
-
     @FXML
     private Canvas gameCanvas;
 
@@ -57,7 +56,7 @@ public class MapLoader {
         this.tileDrawer = new TileDrawerImpl(map, this.canvasDrawer);
     }
 
-    private Stream<Tile> getTilesToDraw(final Rectangle proj) {
+    private Stream<Tile> getTilesToDraw(final Rectangle proj) throws ParserConfigurationException, IOException, SAXException {
         return this.layersController.getVisibleLayers().flatMap(l -> l.getVisibleTiles().stream())
                 .filter(t -> t.getX() - proj.getMinX() > -1 && t.getX() - proj.getMaxX() < 1 &&
                         t.getY() - proj.getMinY() > -1 && t.getY() - proj.getMaxY() < 1);
@@ -77,7 +76,7 @@ public class MapLoader {
                 this.calcProjectedPosition(rect.getBottomRight(), proj));
     }
 
-    public void drawLayers() {
+    public void drawLayers() throws ParserConfigurationException, IOException, SAXException {
         var proj = this.camera.calcMapProjection(this.canvasDrawer.getScreenRatio());
         this.canvasDrawer.clear();
         getTilesToDraw(proj).forEach(t -> {
@@ -95,18 +94,18 @@ public class MapLoader {
     }
 
     @FXML
-    public final void onKeyPressed(final KeyEvent evt) {
+    public final void onKeyPressed(final KeyEvent evt) throws ParserConfigurationException, IOException, SAXException {
         if (evt.getCode().equals(KeyCode.A)) {
-            x -= 0.25;
+            x -= 0.66;
         }
         if (evt.getCode().equals(KeyCode.D)) {
-            x += 0.25;
+            x += 0.66;
         }
         if (evt.getCode().equals(KeyCode.W)) {
-            y -= 0.25;
+            y -= 0.66;
         }
         if (evt.getCode().equals(KeyCode.S)) {
-            y += 0.25;
+            y += 0.66;
         }
         if (evt.getCode().equals(KeyCode.Q)) {
             radius += 1;

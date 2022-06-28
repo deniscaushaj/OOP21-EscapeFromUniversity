@@ -7,7 +7,10 @@ import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.model.map.Layer;
 import escapefromuniversity.model.map.MapProperties;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -44,7 +47,7 @@ public class LayersControllerImpl {
                 .orElse(Set.of());
     }
 
-    public Stream<Layer> getVisibleLayers() {
+    public Stream<Layer> getVisibleLayers() throws ParserConfigurationException, IOException, SAXException {
         final List<String> allowed = new ArrayList<>();
         if (isCorridor()) {
             allowed.add("corridor");

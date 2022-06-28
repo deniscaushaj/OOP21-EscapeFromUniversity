@@ -1,5 +1,6 @@
 package escapefromuniversity.model;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,6 +13,9 @@ import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.model.map.MapManager;
 import escapefromuniversity.model.map.MapManagerImpl;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
 
 /**
  * 
@@ -27,7 +31,7 @@ public class GameModelImpl implements GameModel {
      * 
      * @param gameController
      */
-    public GameModelImpl(final GameController gameController) {
+    public GameModelImpl(final GameController gameController) throws ParserConfigurationException, IOException, SAXException {
         this.gameController = gameController;
         this.mapManager = new MapManagerImpl(this);
     }
