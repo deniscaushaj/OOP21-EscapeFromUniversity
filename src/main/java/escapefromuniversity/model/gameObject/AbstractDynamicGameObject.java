@@ -14,17 +14,17 @@ public abstract class AbstractDynamicGameObject implements DynamicGameObject {
 	private final double speed;
 	private Vector2D direction;
 	private Point2D position;
-    private final Point2D hitboxSize;
+    private final Point2D hitBoxSize;
     protected GameInit map;
     private State state;
 
-	public AbstractDynamicGameObject(final GameObjectType type, final Point2D position, Point2D hitboxSize, final double speed, final Vector2D direction, GameInit map) {
+	public AbstractDynamicGameObject(final GameObjectType type, final Point2D position, Point2D hitBoxSize, final double speed, final Vector2D direction, GameInit map) {
 		this.type = type;
 		this.position = position;
 		this.speed = speed;
 		this.direction = direction;
 		this.map = map;
-		this.hitboxSize = hitboxSize;
+		this.hitBoxSize = hitBoxSize;
 	}
 	
 	public Point2D getObjectPosition() {
