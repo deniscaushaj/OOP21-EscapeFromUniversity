@@ -24,20 +24,16 @@ public class LayersControllerImpl {
         this.player = player;
     }
 
-    public boolean isRoom() {
+    private boolean isRoom() {
         return this.getProperties(player.getObjectPosition()).contains("room");
     }
 
-    public boolean isCorridor() {
+    private boolean isCorridor() {
         return this.getProperties(player.getObjectPosition()).contains("corridor");
     }
 
-    public void isShop() {
-        var pos = this.getProperties(player.getObjectPosition()).contains("shop");
-        var gameCont = new GameControllerImpl();
-        if (pos) {
-            gameCont.setGameState(GameState.SHOP);
-        }
+    private boolean isShop() {
+        return this.getProperties(player.getObjectPosition()).contains("shop");
     }
 
     private Set<String> getProperties(Point2D position) {
@@ -55,6 +51,10 @@ public class LayersControllerImpl {
         }
         if (isRoom()) {
             allowed.add("room");
+            if (isShop()) {
+                var gameCont = new GameControllerImpl();
+                gameCont.setGameState(GameState.SHOP_ROOM);
+            }
         }
         return this.map.getLayers().stream().filter(l -> allowed.stream().anyMatch(p -> l.getProperties().contains(p)));
     }
