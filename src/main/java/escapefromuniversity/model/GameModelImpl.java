@@ -18,7 +18,7 @@ import escapefromuniversity.model.map.MapManagerImpl;
  * class implement GameModel.
  *
  */
-public class GameModelImp implements GameModel {
+public class GameModelImpl implements GameModel {
     private final MapManager mapManager;
     private final GameController gameController;
     private Boss currentBoss;
@@ -27,7 +27,7 @@ public class GameModelImp implements GameModel {
      * 
      * @param gameController
      */
-    public GameModelImp(final GameController gameController) {
+    public GameModelImpl(final GameController gameController) {
         this.gameController = gameController;
         this.mapManager = new MapManagerImpl(this);
     }

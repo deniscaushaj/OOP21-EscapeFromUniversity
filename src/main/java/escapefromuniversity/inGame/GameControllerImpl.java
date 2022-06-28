@@ -14,7 +14,7 @@ import escapefromuniversity.input.KeyHandlerImpl;
 import escapefromuniversity.menu.MenuController;
 import escapefromuniversity.menu.MenuControllerImpl;
 import escapefromuniversity.model.GameModel;
-import escapefromuniversity.model.GameModelImp;
+import escapefromuniversity.model.GameModelImpl;
 import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.quiz.QuizView;
@@ -36,7 +36,7 @@ public class GameControllerImpl implements GameController {
 	 * Instantiates a new GameController and initializes the corresponding GameModel and GameView and KeyHandler making the game start.
 	 */
 	public GameControllerImpl() {
-		this.gameModel = new GameModelImp(this);
+		this.gameModel = new GameModelImpl(this);
 		this.gameView = new GameViewImpl(this);
         this.shopController = new ShopControllerImpl(this, this.gameModel);
 		this.keyHandler = new KeyHandlerImpl(this.gameModel, this, this.shopController, this.menuController, this.gameView);
