@@ -1,4 +1,4 @@
-package escapefromuniversity.mapController;
+package escapefromuniversity.map;
 
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.map.CanvasDrawerImpl;
