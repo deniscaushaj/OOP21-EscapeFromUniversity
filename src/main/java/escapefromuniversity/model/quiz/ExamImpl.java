@@ -14,7 +14,6 @@ public final class ExamImpl implements Exam {
 	private final String subjectName;
 	private final int credits;
 	private int currentQuiz;
-	private boolean bonusQuiz;
 	private static final  int MAXSCORE = 30;
 	private static final int PASSEDSCORE = 18;	
 	
@@ -38,17 +37,7 @@ public final class ExamImpl implements Exam {
 	public String getSubjectName() {
 		return this.subjectName;
 	}
-	
-	@Override
-	public void setBonusQuiz(final boolean state) {
-		this.bonusQuiz = state;
-	}
 
-	@Override
-	public boolean isBonusAvailable() {
-		return !this.bonusQuiz;
-	}
-	
 	@Override
 	public Quiz getNextQuiz() {
 		currentQuiz++;

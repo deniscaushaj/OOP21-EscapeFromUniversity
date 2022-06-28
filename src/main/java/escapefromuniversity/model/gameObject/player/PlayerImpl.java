@@ -34,6 +34,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
     private final long shootDelay;
     private long lastShot;
     private boolean shooting;
+    private boolean bonusQuiz;
     private Point2D prevPosition;
     private Vector2D shotDirection;
     private Direction direction;
@@ -57,6 +58,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
         this.passed = 0;
         this.shootDelay = shootDelay;
         this.shooting = false;
+        this.bonusQuiz = false;
         this.lastShot = System.currentTimeMillis();
         this.bulletFactory = new BulletFactoryImpl();
     }
@@ -209,6 +211,22 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
     @Override
     public void setArmorBuff(final int armor) {
         this.setArmor(this.getArmor() + armor);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void setBonusQuiz(final boolean state) {
+        this.bonusQuiz = state;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean hasBonusQuiz() {
+        return this.bonusQuiz;
     }
 
     /**

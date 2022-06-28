@@ -105,6 +105,18 @@ public interface Player extends DynamicGameObject{
 	void setArmorBuff(int armor);
 
 	/**
+	 * Sets the bonus quiz buff.
+	 * @param state {@code false} if the buff is being used, {@code true} if it's being bought.
+	 */
+	void setBonusQuiz(boolean state);
+
+	/**
+	 * Checks if the bonus quiz buff is active.
+	 * @return {@code true} if the player has the quiz bonus, {@code false} otherwise.
+	 */
+	boolean hasBonusQuiz();
+
+	/**
 	 * Decreases player's life based on some damage taken.
 	 * @param damage to inflict to the player's life.
 	 */

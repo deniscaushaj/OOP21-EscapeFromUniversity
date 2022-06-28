@@ -1,6 +1,5 @@
 package escapefromuniversity.model.shop;
 
-import escapefromuniversity.model.quiz.Exam;
 import escapefromuniversity.model.gameObject.player.Player;
 
 /**
@@ -62,12 +61,12 @@ public enum Items {
     }
 
     /**
-     * Gives another chance to the player when the answer is incorrect.
-     * @param exam the current exam
+     * Gives an extra correct answer during the next exam.
+     * @param player the player
      */
-    public void doubleChance(final Exam exam) {
-        if (!exam.isBonusAvailable()) {
-            exam.setBonusQuiz(true);
+    public void doubleChance(final Player player) {
+        if (!player.hasBonusQuiz()) {
+            player.setBonusQuiz(true);
         }
     }
 }

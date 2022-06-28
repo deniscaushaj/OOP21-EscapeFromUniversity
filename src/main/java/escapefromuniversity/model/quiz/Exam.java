@@ -20,18 +20,6 @@ public interface Exam {
 
 	/**
 	 * 
-	 * @param state If set to true enables the use of a bonus answer to the quiz
-	 */
-	void setBonusQuiz(boolean state);
-	
-	/**
-	 * 
-	 * @return True if bonus response is available 
-	 */
-	boolean isBonusAvailable();
-
-	/**
-	 * 
 	 * @return Next quiz if available
 	 */
 	Quiz getNextQuiz();
