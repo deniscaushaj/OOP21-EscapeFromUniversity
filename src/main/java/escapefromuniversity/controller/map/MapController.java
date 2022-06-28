@@ -16,20 +16,16 @@ public class MapController {
     public MapController(){
         final var gc = new Canvas().getGraphicsContext2D();
         final var parser = new TMXMapParser("final-map.tmx");
-        try {
-            var map = parser.parse();
-            var drawer = new TileDrawerImpl(map, new CanvasDrawerImpl(new Canvas()));
+        var map = parser.parse();
+        var drawer = new TileDrawerImpl(map, new CanvasDrawerImpl(new Canvas()));
 
-            map.getLayers().forEach(l -> {
-                for (int i = 0; i < map.getWidth(); i++) {
-                    for (int j = 0; j < map.getHeight(); j++) {
-                        drawer.drawTileByID(l.getData().get(i).get(j),
-                                new Rectangle(new Point2D(i * 20, j * 20), new Point2D((i+1) * 20, (j+1) * 20)));
-                    }
+        map.getLayers().forEach(l -> {
+            for (int i = 0; i < map.getWidth(); i++) {
+                for (int j = 0; j < map.getHeight(); j++) {
+                    drawer.drawTileByID(l.getData().get(i).get(j),
+                            new Rectangle(new Point2D(i * 20, j * 20), new Point2D((i+1) * 20, (j+1) * 20)));
                 }
-            });
-        } catch (ParserConfigurationException | SAXException | IOException e) {
-            throw new RuntimeException(e);
-        }
+            }
+        });
     }
 }
