@@ -37,12 +37,12 @@ final class BossConstant {
     /**
      * constant boss shoot delay in milliseconds.
      */
-    protected static final long BOSS_1_SHOOT_DELAY = 50;
-    protected static final long BOSS_2_SHOOT_DELAY = 250;
-    protected static final long BOSS_3_SHOOT_DELAY = 300;
-    protected static final long BOSS_4_SHOOT_DELAY = 200;
-    protected static final long BOSS_5_SHOOT_DELAY = 250;
-    protected static final long BOSS_6_SHOOT_DELAY = 150;
+    protected static final long BOSS_1_SHOOT_DELAY = 500;
+    protected static final long BOSS_2_SHOOT_DELAY = 2500;
+    protected static final long BOSS_3_SHOOT_DELAY = 3000;
+    protected static final long BOSS_4_SHOOT_DELAY = 2000;
+    protected static final long BOSS_5_SHOOT_DELAY = 2500;
+    protected static final long BOSS_6_SHOOT_DELAY = 1500;
 
     /**
      * constant boss speed.
