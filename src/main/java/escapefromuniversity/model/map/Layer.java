@@ -1,6 +1,8 @@
 package escapefromuniversity.model.map;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -10,7 +12,7 @@ import java.util.stream.IntStream;
  */
 public class Layer {
 
-    private final List<String> properties;
+    private final Set<String> properties;
     private final String name;
     private final List<List<Integer>> data;
     private final int width;
@@ -22,10 +24,10 @@ public class Layer {
      * @param name the name of the layer
      * @param data the list of data of a layer
      */
-    public Layer(final List<String> properties, final String name, final List<List<Integer>> data) {
-        this.properties = properties;
+    public Layer(final Set<String> properties, final String name, final List<List<Integer>> data) {
+        this.properties = Collections.unmodifiableSet(properties);
         this.name = name;
-        this.data = List.copyOf(data);
+        this.data = Collections.unmodifiableList(data);
         this.width = data.get(0).size();
         this.height = data.size();
     }
@@ -35,14 +37,14 @@ public class Layer {
      * @return the list of data of the layer.
      */
     public List<List<Integer>> getData() {
-        return List.copyOf(data);
+        return data;
     }
 
     /**
      * Returns the properties of the layer.
      * @return the properties of the layer
      */
-    public List<String> getProperties() {
+    public Set<String> getProperties() {
         return this.properties;
     }
 
@@ -70,10 +72,14 @@ public class Layer {
         return this.height;
     }
 
-    public List<Tile> getTiles() {
+    public Tile getTileFromPosition(int x, int y) {
+        return new Tile(x, y, this.data.get(y).get(x));
+    }
+
+    public List<Tile> getVisibleTiles() {
         return IntStream.range(0, this.getHeight())
                 .mapToObj(y -> IntStream.range(0, this.getWidth())
-                        .mapToObj(x -> new Tile(x, y, this.data.get(y).get(x)))
+                        .mapToObj(x -> this.getTileFromPosition(x, y))
                         .filter(Tile::isVisible))
                 .flatMap(Function.identity())
                 .collect(Collectors.toList());

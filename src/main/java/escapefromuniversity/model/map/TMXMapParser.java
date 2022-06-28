@@ -1,9 +1,7 @@
 package escapefromuniversity.model.map;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -110,15 +108,15 @@ public class TMXMapParser {
         final var data = children.stream().filter(e -> "data".equals(e.getNodeName())).findFirst().get();
         final var name = lNode.getAttributes().getNamedItem("name").getTextContent();
 
-        List<String> list = new ArrayList<>();
+        Set<String> set = new HashSet<>();
         final var control = children.stream().filter(e -> "properties".equals(e.getNodeName())).findFirst();
         if (control.isPresent()) {
             final var propsNode = control.get();
-            list = nodelistToStreamParse(propsNode.getChildNodes())
+            set = nodelistToStreamParse(propsNode.getChildNodes())
                     .filter(p -> "property".equals(p.getNodeName()))
                 .filter(e -> "true".equals(e.getAttributes().getNamedItem("value").getTextContent()))
                 .map(e -> e.getAttributes().getNamedItem("name").getTextContent())
-                .collect(Collectors.toList());
+                .collect(Collectors.toUnmodifiableSet());
         }
         final var rows = data.getTextContent().split("\n");
         final var dataList = Arrays.stream(rows)
@@ -129,7 +127,7 @@ public class TMXMapParser {
                         .collect(Collectors.toUnmodifiableList()))
                 .collect(Collectors.toUnmodifiableList());
 
-        return new Layer(list, name, dataList);
+        return new Layer(set, name, dataList);
     }
 
     /**
