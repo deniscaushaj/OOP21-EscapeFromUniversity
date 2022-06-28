@@ -29,6 +29,7 @@ public class ShopControllerImpl implements ShopController, MouseListener {
     /**
      * Instantiates the controller of the shop and initializes its buttons.
      * @param gameController the game controller to link to the shop controller.
+     * @param gameModel      the game model.
      */
     public ShopControllerImpl(GameController gameController, GameModel gameModel) {
         this.gameController = gameController;

@@ -34,6 +34,9 @@ public class KeyHandlerImpl implements KeyHandler {
      * Instantiates the key handler.
      * @param gameModel
      * @param gameController
+     * @param shopController
+     * @param menuController
+     * @param gameView
      */
     public KeyHandlerImpl(final GameModel gameModel, final GameController gameController, final ShopController shopController, final MenuController menuController, final GameView gameView) {
         this.gameController = gameController;
