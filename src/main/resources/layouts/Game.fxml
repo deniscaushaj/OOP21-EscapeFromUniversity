@@ -6,7 +6,7 @@
 <?import escapefromuniversity.view.map.canvas.ResizableCanvas?>
 
 <!--<VBox fx:id="vbox" xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="escapefromuniversity.view.map.MapLoader">
+      fx:controller="escapefromuniversity.inGame.GameViewImpl.java">
    <Button fx:id="myButton" onMouseClicked="#myButtonOnClickHandler" mnemonicParsing="false" text="Button"/>
    <Slider fx:id="radiusSlider" showTickLabels="true" showTickMarks="true" min="1" max="200" majorTickUnit="1"/>
    <Slider fx:id="xSlider" showTickLabels="true" showTickMarks="true" min="1" max="200" majorTickUnit="1"/>

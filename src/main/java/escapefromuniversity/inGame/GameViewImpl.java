@@ -37,24 +37,25 @@ import javafx.scene.canvas.Canvas;
 public class GameViewImpl implements GameView {
 
     private static final long TIME_TO_END = 5000;
-    private final GameController gameController;
-    private final MapProperties map;
+    private GameController gameController;
+    private MapProperties map;
     private CanvasDrawer canvasDrawer;
     private TileDrawer tileDrawer;
-    private final Camera camera;
+    private Camera camera;
     private static final double RADIUS = 10;
-    private final Map<Integer, SpriteAnimation> spriteAnimations = new HashMap<>();
-    private final LayersControllerImpl layersController;
+    private Map<Integer, SpriteAnimation> spriteAnimations = new HashMap<>();
+    private LayersControllerImpl layersController;
 
     @FXML
     private Canvas gameCanvas;
 
     /**
      * 
-     * @param gameController
-     * @param player
      */
-    public GameViewImpl(final GameController gameController, final Player player) {
+    public GameViewImpl() {
+    }
+    
+    public void loaderComponent(final GameController gameController, final Player player) {
         this.gameController = gameController;
         this.camera = ratio -> {
             var playerHitBox = player.getObjectHitBox();

@@ -4,6 +4,7 @@ import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
+import escapefromuniversity.model.gameObject.player.Player;
 
 /**
  * 
@@ -53,5 +54,12 @@ public interface GameView {
      * @param gameState : win or lost.
      */
     void end(GameState gameState);
+
+    /**
+     * 
+     * @param gameController
+     * @param player
+     */
+    void loaderComponent(GameController gameController, Player player);
 
 }

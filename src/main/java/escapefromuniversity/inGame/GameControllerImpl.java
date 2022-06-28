@@ -38,7 +38,7 @@ import javax.xml.parsers.ParserConfigurationException;
  */
 public class GameControllerImpl implements GameController {
     private final GameModel gameModel;
-    private final GameView gameView;
+    private GameView gameView;
     private final KeyHandler keyHandler;
     private final ShopController shopController;
     private final MenuController menuController = new MenuControllerImpl(this);
@@ -52,12 +52,22 @@ public class GameControllerImpl implements GameController {
 	 */
 	public GameControllerImpl() {
 		this.gameModel = new GameModelImpl(this);
-		this.gameView = new GameViewImpl(this, this.gameModel.getPlayer());
+		//this.gameView = new GameViewImpl(this, this.gameModel.getPlayer());
         this.shopController = new ShopControllerImpl(this, this.gameModel);
         this.layersController = new LayersControllerImpl(this.gameModel.getMap(), this.gameModel.getPlayer());
 		this.keyHandler = new KeyHandlerImpl(this.gameModel, this, this.shopController, this.menuController);
 		this.setGameState(GameState.PLAY);
         this.keyHandler.setAllInactive();
+        try {
+            final FXMLLoader loader = new FXMLLoader(getClass().getResource("layouts/Game.fxml"));
+            Parent gameRoot = loader.load();
+            this.gameView = loader.getController();
+            Scene game = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
+            LauncherView.launcherWindow.setScene(game);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        this.gameView.loaderComponent(this, this.gameModel.getPlayer());
 	}
 
     /**

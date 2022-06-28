@@ -1,5 +1,7 @@
 package escapefromuniversity.launcher;
 
+import escapefromuniversity.inGame.GameController;
+import escapefromuniversity.inGame.GameControllerImpl;
 import escapefromuniversity.menu.MenuController;
 import escapefromuniversity.menu.MenuControllerImpl;
 import escapefromuniversity.utilities.LauncherResizer;
@@ -37,19 +39,19 @@ public class LauncherController {
     	//menu.startView();
 //        GameViewImpl.startGame();
 
-//        GameControllerImpl gameController = new GameControllerImpl();
-//        gameController.gameLoop();
+        GameController gameController = new GameControllerImpl();
+        gameController.gameLoop();
 //        LauncherView.launcherWindow.close();  //this.creditsButton.getScene().getWindow().hide();
 //        Platform.exit();
 
-		try {
+		/*try {
 			FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/Game.fxml"));
 			Parent gameRoot = loader.load();
 			Scene game = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
 			LauncherView.launcherWindow.setScene(game);
 		} catch (Exception e) {
 			System.out.println(e);
-		}
+		}*/
     }
 
     /* Opens the leaderboard scene. */
