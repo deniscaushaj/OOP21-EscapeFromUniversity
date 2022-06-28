@@ -11,6 +11,8 @@ import escapefromuniversity.model.gameObject.bullet.BulletFactoryImpl;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.map.Mapp;
 
+import static escapefromuniversity.model.gameObject.enemy.BossConstant.*;
+
 /**
  * 
  * implementation of interface BossFactory.
@@ -28,7 +30,7 @@ public class BossFactoryImpl implements BossFactory {
      */
     @Override
     public Boss createBoss1(final Point2D position, final Vector2D direction, final Mapp map) {
-        return new AbstractBoss(BossConstant.BOSS_1_SPEED, position, BossConstant.BOSS_BOX_SIZE, direction, GameObjectType.BOSS1, BossConstant.BOSS_1_LIFE, BossConstant.BOSS_1_SHOOT_DELAY, BossConstant.BOSS_1_DAMAGE, BossConstant.BOSS_1_EXAM, map) {
+        return new AbstractBoss(BOSS_1_SPEED, position, BOSS_BOX_SIZE, direction, GameObjectType.BOSS1, BOSS_1_LIFE, BOSS_1_SHOOT_DELAY, BOSS_1_DAMAGE, BOSS_1_EXAM, map) {
 
             @Override
             void shoot() {
@@ -44,7 +46,7 @@ public class BossFactoryImpl implements BossFactory {
      */
     @Override
     public Boss createBoss2(final Point2D position, final Vector2D direction, final Mapp map) {
-        return new AbstractBoss(BossConstant.BOSS_2_SPEED, position, BossConstant.BOSS_BOX_SIZE, direction, GameObjectType.BOSS2, BossConstant.BOSS_2_LIFE, BossConstant.BOSS_2_SHOOT_DELAY, BossConstant.BOSS_2_DAMAGE, BossConstant.BOSS_2_EXAM, map) {
+        return new AbstractBoss(BOSS_2_SPEED, position, BOSS_BOX_SIZE, direction, GameObjectType.BOSS2, BOSS_2_LIFE, BOSS_2_SHOOT_DELAY, BOSS_2_DAMAGE, BOSS_2_EXAM, map) {
 
             @Override
             void shoot() {
@@ -65,7 +67,7 @@ public class BossFactoryImpl implements BossFactory {
      */
     @Override
     public Boss createBoss3(final Point2D position, final Vector2D direction, final Mapp map) {
-        return new AbstractBoss(BossConstant.BOSS_3_SPEED, position, BossConstant.BOSS_BOX_SIZE, direction, GameObjectType.BOSS3, BossConstant.BOSS_3_LIFE, BossConstant.BOSS_3_SHOOT_DELAY, BossConstant.BOSS_3_DAMAGE, BossConstant.BOSS_3_EXAM, map) {
+        return new AbstractBoss(BOSS_3_SPEED, position, BOSS_BOX_SIZE, direction, GameObjectType.BOSS3, BOSS_3_LIFE, BOSS_3_SHOOT_DELAY, BOSS_3_DAMAGE, BOSS_3_EXAM, map) {
 
             @Override
             void shoot() {
@@ -91,7 +93,7 @@ public class BossFactoryImpl implements BossFactory {
      */
     @Override
     public Boss createBoss4(final Point2D position, final Vector2D direction, final Mapp map) {
-        return new AbstractBoss(BossConstant.BOSS_4_SPEED, position, BossConstant.BOSS_BOX_SIZE, direction, GameObjectType.BOSS4, BossConstant.BOSS_4_LIFE, BossConstant.BOSS_4_SHOOT_DELAY, BossConstant.BOSS_4_DAMAGE, BossConstant.BOSS_4_EXAM, map) {
+        return new AbstractBoss(BOSS_4_SPEED, position, BOSS_BOX_SIZE, direction, GameObjectType.BOSS4, BOSS_4_LIFE, BOSS_4_SHOOT_DELAY, BOSS_4_DAMAGE, BOSS_4_EXAM, map) {
 
             @Override
             void shoot() {
@@ -107,7 +109,7 @@ public class BossFactoryImpl implements BossFactory {
      */
     @Override
     public Boss createBoss5(final Point2D position, final Vector2D direction, final Mapp map) {
-        return new AbstractBoss(BossConstant.BOSS_5_SPEED, position, BossConstant.BOSS_BOX_SIZE, direction, GameObjectType.BOSS5, BossConstant.BOSS_5_LIFE, BossConstant.BOSS_5_SHOOT_DELAY, BossConstant.BOSS_5_DAMAGE, BossConstant.BOSS_5_EXAM, map) {
+        return new AbstractBoss(BOSS_5_SPEED, position, BOSS_BOX_SIZE, direction, GameObjectType.BOSS5, BOSS_5_LIFE, BOSS_5_SHOOT_DELAY, BOSS_5_DAMAGE, BOSS_5_EXAM, map) {
 
             @Override
             void shoot() {
@@ -123,7 +125,7 @@ public class BossFactoryImpl implements BossFactory {
      */
     @Override
     public Boss createBoss6(final Point2D position, final Vector2D direction, final Mapp map) {
-        return new AbstractBoss(BossConstant.BOSS_6_SPEED, position, BossConstant.BOSS_BOX_SIZE, direction, GameObjectType.BOSS6, BossConstant.BOSS_6_LIFE, BossConstant.BOSS_6_SHOOT_DELAY, BossConstant.BOSS_6_DAMAGE, BossConstant.BOSS_6_EXAM, map) {
+        return new AbstractBoss(BOSS_6_SPEED, position, BOSS_BOX_SIZE, direction, GameObjectType.BOSS6, BOSS_6_LIFE, BOSS_6_SHOOT_DELAY, BOSS_6_DAMAGE, BOSS_6_EXAM, map) {
 
             @Override
             void shoot() {
