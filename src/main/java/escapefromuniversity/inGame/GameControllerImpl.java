@@ -30,7 +30,7 @@ public class GameControllerImpl implements GameController {
     private GameState prevGameState;
     private List<Integer> gameObjID = new LinkedList<>();
     private final MenuController menuController = new MenuControllerImpl(this);
-    private final ShopController shopController = new ShopControllerImpl(this);
+    private final ShopController shopController = new ShopControllerImpl(this, this.gameModel);
 
 	/**
 	 * Instantiates a new GameController and initializes the corresponding GameModel and GameView and KeyHandler making the game start.

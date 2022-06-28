@@ -1,5 +1,6 @@
 package escapefromuniversity.inGame;
 
+import escapefromuniversity.model.GameModel;
 import escapefromuniversity.model.quiz.Exam;
 import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.model.shop.Items;
@@ -17,8 +18,8 @@ public class ShopControllerImpl implements ShopController, MouseListener {
     private ShopView shopView;
     private final GameController gameController;
     private Items itemType;
-    private Player player; // TODO initialize
-    private Exam competition; // TODO same
+    private final Player player;
+    private Exam exam; // TODO same
     private boolean isActive;
     private static final int resetHealthCost = 6;
     private static final int increaseArmorCost = 12;
@@ -29,8 +30,9 @@ public class ShopControllerImpl implements ShopController, MouseListener {
      * Instantiates the controller of the shop and initializes its buttons.
      * @param gameController the game controller to link to the shop controller.
      */
-    public ShopControllerImpl(GameController gameController) {
+    public ShopControllerImpl(GameController gameController, GameModel gameModel) {
         this.gameController = gameController;
+        this.player = gameModel.getPlayer();
         this.initializeButtons();
         this.checkButtonsAvailability();
     }
@@ -81,7 +83,7 @@ public class ShopControllerImpl implements ShopController, MouseListener {
                 this.player.setCredits(this.player.getCredits() - increaseDamageCost);
                 break;
             case DOUBLE_CHANCE:
-                this.itemType.doubleChance(this.competition);
+                this.itemType.doubleChance(this.exam);
                 this.player.setCredits(this.player.getCredits() - doubleChanceCost);
                 break;
             default: {
@@ -158,7 +160,7 @@ public class ShopControllerImpl implements ShopController, MouseListener {
         if(!this.itemType.resetHealth(this.player) && this.player.getCredits() < resetHealthCost) {
             this.shopView.setButtonNotClickable(this.shopView.getBuyLife());
         }
-        if(!this.competition.isBonusAvailable() && this.player.getCredits() < doubleChanceCost) {
+        if(!this.exam.isBonusAvailable() && this.player.getCredits() < doubleChanceCost) {
             this.shopView.setButtonNotClickable(this.shopView.getBuyChance());
         }
     }
