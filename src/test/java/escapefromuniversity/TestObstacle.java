@@ -2,7 +2,7 @@ package escapefromuniversity;
 
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.map.Obstacle;
-import escapefromuniversity.model.map.ObstacleImpl;
+import escapefromuniversity.model.map.ObstaclesFactory;
 import org.junit.jupiter.api.Test;
 import org.xml.sax.SAXException;
 
@@ -16,7 +16,7 @@ public class TestObstacle {
 
     @Test
     public void testObstacleList() throws ParserConfigurationException, IOException, SAXException {
-        Obstacle obs = new ObstacleImpl();
+        Obstacle obs = new ObstaclesFactory();
         assertTrue(obs.getDoorList().stream().allMatch(n -> n.getType() == (GameObjectType.DOOR)));
         assertTrue(obs.getFurnitureList().stream().allMatch(n -> n.getType() == (GameObjectType.FURNITURE)));
         assertTrue(obs.getWallsList().stream().allMatch(n -> n.getType() == (GameObjectType.WALL)));
