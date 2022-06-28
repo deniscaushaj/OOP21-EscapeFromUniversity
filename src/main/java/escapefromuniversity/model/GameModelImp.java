@@ -66,7 +66,7 @@ public class GameModelImp implements GameModel {
 
     @Override
     public void setShop() {
-        this.gameController.setGameState(GameState.SHOP);
+        this.gameController.setGameState(GameState.SHOP_MENU);
     }
 
     @Override

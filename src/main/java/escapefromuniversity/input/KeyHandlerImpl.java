@@ -86,11 +86,12 @@ public class KeyHandlerImpl implements KeyHandler {
                             this.playCommands(keyCode);
                             break;
                         case MENU:
-                        case SHOP:
+                        case SHOP_MENU:
                             this.menuCommands(keyCode);
                             break;
                         case PLAY:
                         case GRADUATED:
+                        case SHOP_ROOM:
                             this.playCommands(keyCode);
                             break;
                         default: {
@@ -138,7 +139,7 @@ public class KeyHandlerImpl implements KeyHandler {
         if (keyCode == KeyEvent.VK_ESCAPE) {
             if(this.gameController.getGameState().equals(GameState.MENU)) {
                 this.menuController.resume();
-            } else if(this.gameController.getGameState().equals(GameState.SHOP)) {
+            } else if(this.gameController.getGameState().equals(GameState.SHOP_MENU)) {
                 this.shopController.closeShop();
             }
         }

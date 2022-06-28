@@ -56,6 +56,7 @@ public class GameControllerImpl implements GameController {
             case PLAY:
             case FIGHT:
             case GRADUATED:
+            case SHOP_ROOM:
                 long deltaTime = currentTime - lastTime;
                 executeInput();
                 this.updateModel(deltaTime);
@@ -70,7 +71,7 @@ public class GameControllerImpl implements GameController {
                 executeInput();
                 this.menuController.startView();
                 break;
-            case SHOP:
+            case SHOP_MENU:
                 //this.gameView.addPauseBG();
                 executeInput();
                 this.shopController.startView();

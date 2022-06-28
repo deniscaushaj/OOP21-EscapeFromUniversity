@@ -26,9 +26,13 @@ public enum GameState {
      */
     GRADUATED,
     /**
-     * Identifies the shop state.
+     * Identifies the shop menu state.
      */
-    SHOP,
+    SHOP_MENU,
+    /**
+     * Identifies the shop room state.
+     */
+    SHOP_ROOM,
     /**
      * Identifies the lost state.
      */
