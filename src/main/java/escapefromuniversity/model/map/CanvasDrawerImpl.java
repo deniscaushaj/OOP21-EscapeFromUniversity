@@ -1,6 +1,5 @@
 package escapefromuniversity.model.map;
 
-import escapefromuniversity.model.basics.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
