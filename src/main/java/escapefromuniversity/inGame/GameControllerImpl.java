@@ -42,7 +42,7 @@ public class GameControllerImpl implements GameController {
     private static final long DELTA = 1000;
     private static final double MILLI_TO_SECOND = 0.001;
     private final GameModel gameModel;
-    private GameView gameView;
+    private final GameView gameView;
     private final KeyHandler keyHandler;
     private final ShopController shopController;
     private final MenuController menuController = new MenuControllerImpl(this);
