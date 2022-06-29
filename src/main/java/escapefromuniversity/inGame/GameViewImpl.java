@@ -46,19 +46,19 @@ public class GameViewImpl extends Application implements GameView {
     private static final long TIME_TO_END = 5000;
     private final GameController gameController;
     private final MapProperties map;
-    private CanvasDrawer canvasDrawer;
-    private TileDrawer tileDrawer;
+    private final CanvasDrawer canvasDrawer;
+    private final TileDrawer tileDrawer;
     private final Camera camera;
-    private double x = 30;
-    private double y = 30;
+    private final double x = 30;
+    private final double y = 30;
     private static final double RADIUS = 10;
     private final Map<Integer, SpriteAnimation> spriteAnimations = new HashMap<>();
     private final LayersControllerImpl layersController;
     //private final Player fakePlayer = new PlayerImpl(GameObjectType.PLAYER, new Point2D(x, y), 0, null, 0, null);
     
-    private Canvas gameCanvas = new Canvas(650, 650);
-    private Group group = new Group(gameCanvas);
-    private Scene scene = new Scene(group, 600, 600);
+    private final Canvas gameCanvas = new Canvas(650, 650);
+    private final Group group = new Group(gameCanvas);
+    private final Scene scene = new Scene(group, 600, 600);
 
 
     /**
@@ -127,7 +127,6 @@ public class GameViewImpl extends Application implements GameView {
 //        try {
 //            this.start(new Stage());
 //        } catch (Exception e) {
-//            // TODO Auto-generated catch block
 //            e.printStackTrace();
 //        }
         try {
@@ -198,7 +197,7 @@ public class GameViewImpl extends Application implements GameView {
         this.drawLayers();
 //        Group group = new Group(gameCanvas);
 //        Scene scene = new Scene(group, 600, 600);
-        primaryStage.setScene(scene);
+        primaryStage.setScene(this.scene);
         primaryStage.show();
     }
 
