@@ -5,6 +5,7 @@ import escapefromuniversity.model.GameModel;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.basics.Vector2D;
 import escapefromuniversity.model.gameObject.GameObjectType;
+import escapefromuniversity.model.gameObject.State;
 import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.enemy.BossFactory;
 import escapefromuniversity.model.gameObject.enemy.BossFactoryImpl;
@@ -66,6 +67,7 @@ public class MapManagerImpl implements MapManager {
         //TODO: check vector 2D
         var map = new MapImpl(this);
         Player player = new PlayerImpl(GameObjectType.PLAYER, getStartingPosition(), PLAYER_SPEED, new Vector2D(1, 0), PLAYER_SHOOT_DELAY, map);
+        player.setState(State.LEFT);
         map.addDynamicGameObject(player);
         loadObstacles(map);
         BossFactory bossFactory = new BossFactoryImpl();
