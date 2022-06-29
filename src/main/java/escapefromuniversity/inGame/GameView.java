@@ -1,6 +1,7 @@
 package escapefromuniversity.inGame;
 
 import escapefromuniversity.model.GameState;
+import escapefromuniversity.model.basics.HitBox;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
@@ -40,7 +41,7 @@ public interface GameView {
      * @param width : width of object.
      * @param position : position of object.
      */
-    void addSpriteAnimation(int id, State state, GameObjectType type, double height, double width, Point2D position);
+    void addSpriteAnimation(int id, State state, GameObjectType type, HitBox box, Point2D position);
 
     /**
      * 

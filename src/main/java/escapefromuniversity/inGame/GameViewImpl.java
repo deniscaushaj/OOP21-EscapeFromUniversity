@@ -4,6 +4,7 @@ package escapefromuniversity.inGame;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.stream.Stream;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -13,6 +14,8 @@ import org.xml.sax.SAXException;
 import escapefromuniversity.controller.map.LayersControllerImpl;
 import escapefromuniversity.launcher.LauncherView;
 import escapefromuniversity.model.GameState;
+import escapefromuniversity.model.basics.GameCollisionType;
+import escapefromuniversity.model.basics.HitBox;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
@@ -52,7 +55,7 @@ public class GameViewImpl extends Application implements GameView {
     private double x = 30;
     private double y = 30;
     private static final double RADIUS = 10;
-    private final Map<Integer, SpriteAnimation> spriteAnimations = new HashMap<>();
+    private final Map<Integer, SpriteAnimation> spriteAnimations = new ConcurrentSkipListMap<>();
     private final LayersControllerImpl layersController;
     //private final Player fakePlayer = new PlayerImpl(GameObjectType.PLAYER, new Point2D(x, y), 0, null, 0, null);
     
@@ -78,11 +81,11 @@ public class GameViewImpl extends Application implements GameView {
         this.layersController =  new LayersControllerImpl(map, this.gameController.getPlayer());
         this.canvasDrawer = new CanvasDrawerImpl(gameCanvas);
         this.tileDrawer = new TileDrawerImpl(map, this.canvasDrawer);
-        try {
-            this.start(new Stage());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            this.start(new Stage());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
     private Stream<Tile> getTilesToDraw(final Rectangle proj) throws ParserConfigurationException, IOException, SAXException {
@@ -98,11 +101,13 @@ public class GameViewImpl extends Application implements GameView {
             this.tileDrawer.drawTileByID(t.getValue(), this.calcProjectedRectangle(
                     new Rectangle(t.getPosition(), t.getPosition().sum(new Point2D(1, 1))), proj));
         });
-        this.spriteAnimations.entrySet().stream().forEach(e -> {
+        final Map<Integer, SpriteAnimation> tmpAnimations = new ConcurrentSkipListMap<>(spriteAnimations);
+        tmpAnimations.entrySet().forEach(e -> {
             final SpriteAnimation animation = e.getValue();
-            if (animation.isVisible()) {
-                this.canvasDrawer.drawImage(animation.getSprite().getFilepath(), animation.getSprite().getRectangle(), animation.getPosition());
-            }
+            this.canvasDrawer.drawImage(animation.getSprite().getFilepath(), new Rectangle(
+                    animation.getBox().getBottomLeftCorner(),
+                    animation.getBox().getUpperRightCorner()
+            ), animation.getPosition());
         });
     }
 
@@ -124,17 +129,18 @@ public class GameViewImpl extends Application implements GameView {
      * {@inheritDoc}
      */
     public void updateView() {
-//        try {
-//            this.start(new Stage());
-//        } catch (Exception e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
+        System.out.println(this.spriteAnimations);
         try {
-            this.drawLayers();
-        } catch (ParserConfigurationException | IOException | SAXException e) {
+            this.start(new Stage());
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
+//        try {
+//            this.drawLayers();
+//        } catch (ParserConfigurationException | IOException | SAXException e) {
+//            e.printStackTrace();
+//        }
     }
 
     /**
@@ -149,16 +155,23 @@ public class GameViewImpl extends Application implements GameView {
      */
     public void updateSpriteAnimation(final int id, final Point2D position, final State state) {
         this.spriteAnimations.get(id).setPosition(position);
-        this.spriteAnimations.get(id).getSprite();
+        this.spriteAnimations.get(id).getSprite().setState(state);
+        this.spriteAnimations.get(id).getSprite().setFilepath();
     }
 
     /**
      * {@inheritDoc}
      */
-    public void addSpriteAnimation(final int id, final State state, final GameObjectType type, final double height, final double width, final Point2D position) {
+    public void addSpriteAnimation(final int id, final State state, final GameObjectType type, final HitBox box, final Point2D position) {
         final Sprite sprite = new SpriteImpl(state, type);
-        final SpriteAnimation animation = new SpriteAnimation(sprite, height, width);
+        sprite.setFilepath();
+        final SpriteAnimation animation = new SpriteAnimation(sprite, box);
         animation.setPosition(position);
+        if (type.getCollisionType() == GameCollisionType.ENTITY && type != GameObjectType.PLAYER) {
+            animation.setVisible(false);
+        } else {
+            animation.setVisible(true);
+        }
         this.spriteAnimations.put(id, animation);
     }
 
