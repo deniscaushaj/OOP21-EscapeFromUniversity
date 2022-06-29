@@ -42,7 +42,7 @@ public class GameControllerImpl implements GameController {
     private static final long DELTA = 1000;
     private static final double MILLI_TO_SECOND = 0.001;
     private final GameModel gameModel;
-    private GameView gameView;
+    private final GameView gameView;
     private final KeyHandler keyHandler;
     private final ShopController shopController;
     private final MenuController menuController = new MenuControllerImpl(this);
@@ -182,7 +182,6 @@ public class GameControllerImpl implements GameController {
      */
     @Override
     public void startQuiz(final Boss boss) {
-        //QuizView.startQuizCompetition();
     	try {
 			FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/Quiz.fxml"));
 			Parent gameRoot;
@@ -191,9 +190,7 @@ public class GameControllerImpl implements GameController {
 			LauncherView.launcherWindow.setScene(quiz);
 			final QuizController quizController = new QuizController(boss, this.gameModel.getPlayer());
             loader.setController(quizController);
-           
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
