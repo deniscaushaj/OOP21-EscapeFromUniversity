@@ -92,7 +92,7 @@ public abstract class AbstractDynamicGameObject implements DynamicGameObject {
 
     @Override
     public HitBox getObjectHitBox() {
-        return new HitBoxImpl(this.position, this.position.sum(this.hitboxSize));
+        return new HitBoxImpl(this.position, this.position.sum(this.hitBoxSize));
     }
 
     public GameInit getMap() {
