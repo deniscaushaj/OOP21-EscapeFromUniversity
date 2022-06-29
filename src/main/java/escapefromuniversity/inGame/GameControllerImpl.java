@@ -57,12 +57,14 @@ public class GameControllerImpl implements GameController {
 	public GameControllerImpl() {
 		this.gameModel = new GameModelImpl(this);
 		this.gameView = new GameViewImpl(this, this.gameModel.getPlayer());
+		this.gameObjID = this.getGameObjectID();
+		this.checkSpriteAnimation();
+		this.gameView.updateView();
         this.shopController = new ShopControllerImpl(this, this.gameModel);
         this.layersController = new LayersControllerImpl(this.gameModel.getMap().getMap(), this.gameModel.getPlayer());
 		this.keyHandler = new KeyHandlerImpl(this.gameModel, this, this.shopController, this.menuController);
 		this.setGameState(GameState.PLAY);
         this.keyHandler.setAllInactive();
-        this.gameObjID = this.getGameObjectID();
 	}
 
     /**
@@ -80,7 +82,7 @@ public class GameControllerImpl implements GameController {
             case SHOP_ROOM:
                 long deltaTime = currentTime - lastTime;
                 //executeInput();
-                //this.updateModel(deltaTime);
+                this.updateModel(deltaTime);
                 this.updateView();
                 this.waitTime();
                 break;
@@ -137,7 +139,7 @@ public class GameControllerImpl implements GameController {
     private void updateView() {
         this.checkSpriteAnimation();
         this.gameObjID = this.getGameObjectID();
-        this.gameView.updateView();
+        //this.gameView.updateView();
         if (layersController.isShop()) {
             this.setGameState(GameState.SHOP_ROOM);
         }
@@ -153,8 +155,7 @@ public class GameControllerImpl implements GameController {
                 if (this.gameView.containThisID(id)) {
                     this.gameView.updateSpriteAnimation(id, this.gameModel.getPositionOfID(id), this.gameModel.getStateID(id));
                 } else {
-                    final HitBox a = this.gameModel.getHitBoxID(id);
-                    this.gameView.addSpriteAnimation(id, this.gameModel.getStateID(id), this.gameModel.getTypeID(id), a.getHeight(), a.getWidth(), this.gameModel.getPositionOfID(id));
+                    this.gameView.addSpriteAnimation(id, this.gameModel.getStateID(id), this.gameModel.getTypeID(id), this.gameModel.getHitBoxID(id), this.gameModel.getPositionOfID(id));
                 }
             }
         }

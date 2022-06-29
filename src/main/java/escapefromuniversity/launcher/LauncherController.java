@@ -43,7 +43,7 @@ public class LauncherController {
 //        GameViewImpl.startGame();
 
         GameController gameController = new GameControllerImpl();
-        gameController.gameLoop();
+        //gameController.gameLoop();
 //        LauncherView.launcherWindow.close();  //this.creditsButton.getScene().getWindow().hide();
 //        Platform.exit();
 
