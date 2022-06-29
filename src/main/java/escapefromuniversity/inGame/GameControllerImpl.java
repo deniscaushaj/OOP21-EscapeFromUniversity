@@ -74,7 +74,7 @@ public class GameControllerImpl implements GameController {
         try {
             FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/Game.fxml"));
             Parent gameRoot = loader.load();
-            loader.setController(new MapLoader(this, this.gameModel.getPlayer()));
+            loader.setController(this.gameView);
             Scene game = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
             LauncherView.launcherWindow.setScene(game);
         } catch (Exception e) {

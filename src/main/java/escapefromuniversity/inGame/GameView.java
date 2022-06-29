@@ -4,7 +4,6 @@ import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
-import escapefromuniversity.model.gameObject.player.Player;
 
 /**
  * 
@@ -37,8 +36,9 @@ public interface GameView {
      * @param id : id of object.
      * @param state : state of object.
      * @param type : type of object.
-     * @param height
-     * @param width 
+     * @param height : height of object.
+     * @param width : width of object.
+     * @param position : position of object.
      */
     void addSpriteAnimation(int id, State state, GameObjectType type, double height, double width, Point2D position);
 

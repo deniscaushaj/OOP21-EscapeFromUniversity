@@ -185,23 +185,6 @@ public class GameViewImpl implements GameView {
         LauncherView.createLauncher();
         //      System.exit(0);
     }
-    
-    public final void onKeyPressed(final KeyEvent evt) throws ParserConfigurationException, IOException, SAXException {
-        if (evt.getCode().equals(KeyCode.A)) {
-            x -= 1.66;
-        }
-        if (evt.getCode().equals(KeyCode.D)) {
-            x += 1.66;
-        }
-        if (evt.getCode().equals(KeyCode.W)) {
-            y -= 1.66;
-        }
-        if (evt.getCode().equals(KeyCode.S)) {
-            y += 1.66;
-        }
-        this.fakePlayer.setPosition(new Point2D(x, y));
-        this.drawLayers();
-    }
 
     //    TODO: !!
     //    private GameController gameController;
