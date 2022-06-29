@@ -19,7 +19,7 @@ public class ShopViewImpl extends JPanel implements ShopView {
     private final ImageIcon armorIcon = new ImageIcon(OSFixes.getLocation("hud", "armor.png"));
     private final ImageIcon damageIcon = new ImageIcon(OSFixes.getLocation("hud", "damage.png"));
     private final ImageIcon chanceIcon = new ImageIcon(OSFixes.getLocation("hud", "second_chance.png"));
-    private JTextArea itemInfo = new JTextArea("");
+    private final JTextArea itemInfo = new JTextArea("");
     private final JButton buyLife = new JButton(buyButton, buttonBackground);
     private final JButton buyArmor = new JButton(buyButton, buttonBackground);
     private final JButton buyDamage = new JButton(buyButton, buttonBackground);
@@ -30,6 +30,7 @@ public class ShopViewImpl extends JPanel implements ShopView {
     private final JLabel armorLabel = new JLabel("12", this.armorIcon, SwingConstants.CENTER);
     private final JLabel damageLabel = new JLabel("12", this.damageIcon, SwingConstants.CENTER);
     private final JLabel chanceLabel = new JLabel("18", this.chanceIcon, SwingConstants.CENTER);
+//    TODO values to be changed:
     private final Rectangle creditsCounterPos = new Rectangle((int) (60 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio));
     private final Rectangle itemInfoPos = new Rectangle((int) (10 * windowRatio), (int) (10 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio));
     private final Rectangle buyLifePos = new Rectangle((int) (60 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio));
