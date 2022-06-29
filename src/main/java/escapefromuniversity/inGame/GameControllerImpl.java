@@ -246,7 +246,7 @@ public class GameControllerImpl implements GameController {
     /* Saves the final mark and its date and time in the leaderboard text file. */
     private void saveScore(final int mark) {
         try {
-            WriteFile w = new WriteFile("score", "score.txt");
+            WriteFile w = new WriteFile("EscapeFromUniversity", "score.txt");
             DateTimeFormatter dtf4 = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
             w.writeNewLine(mark + "\t\t" + dtf4.format(LocalDateTime.now()));
             w.close();

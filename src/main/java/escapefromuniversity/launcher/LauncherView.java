@@ -25,6 +25,8 @@ public final class LauncherView extends Application{
      * @throws Exception
      */
     public void start(Stage stage) throws Exception {
+        OSFixes.createHomeFolder();
+        OSFixes.createScoreFile();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/layouts/Launcher.fxml"));
         //URL fileLocation = new File(OSFixes.getLocation("layouts","Launcher.fxml")).toURI().toURL();
         //loader.setLocation(fileLocation);

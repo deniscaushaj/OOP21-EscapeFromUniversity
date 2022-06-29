@@ -1,6 +1,8 @@
 package escapefromuniversity.utilities;
 
 import java.awt.Desktop;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -11,6 +13,7 @@ import java.net.URISyntaxException;
 public class OSFixes {
 
     public final static String FS = System.getProperty("file.separator");
+    public final static String UH = System.getProperty("user.home");
     public final static String UD = System.getProperty("user.dir");
     private final static String OS = System.getProperty("os.name").toLowerCase();
 
@@ -42,13 +45,45 @@ public class OSFixes {
     }
 
     /**
-     * Getter method to obtain a string which contains the filepath of the file to open from resources folder. 
-     * @param folderName the name of the subfolder inside resources folder to look into.
-     * @param fileName the name of the file to open.
+     * Static method to obtain a string which contains the filepath of the file to open from resources folder.
+     * @param folderName the name of the subfolder inside res folder.
+     * @param fileName the name of the file.
      * @return a string containing the filepath.
      */
     public static String getLocation(String folderName, String fileName) {
         return UD + FS + "src" + FS + "main" + FS + "resources" + FS + folderName + FS + fileName;
+    }
+
+    /**
+     * Static method to obtain a string which contains the filepath of a file to open that is located inside a subfolder of the user home.
+     * @param folderName the name of the subfolder inside the user home.
+     * @param fileName the name of the file.
+     * @return a string containing the filepath.
+     */
+    public static String getExternalLocation(String folderName, String fileName) {
+        return UH + FS + folderName + FS + fileName;
+    }
+
+    /**
+     * Static method to create the game folder inside the user home directory if not yet existent.
+     * @throws IOException
+     */
+    public static void createHomeFolder() throws IOException {
+        File folder = new File(UH + FS + "EscapeFromUniversity");
+        if (!folder.exists() && !folder.mkdirs()) {
+            throw new IOException();
+        }
+    }
+
+    /**
+     * Static method to create the scores file inside the game folder if not yet existent.
+     * @throws IOException
+     */
+    public static void createScoreFile() throws IOException {
+        File scores = new File(OSFixes.getExternalLocation("EscapeFromUniversity", "score.txt"));
+        if (!scores.exists() && !scores.createNewFile()) {
+            throw new IOException();
+        }
     }
 
 }

@@ -22,7 +22,7 @@ public class WriteFile {
 	 * @throws IOException
 	 */
 	public WriteFile(String folderName, String fileName) throws IOException {
-		this.fileName = OSFixes.getLocation(folderName, fileName);
+		this.fileName = OSFixes.getExternalLocation(folderName, fileName);
 		this.writer = new BufferedWriter(new FileWriter(this.fileName));
 	}
 
@@ -40,7 +40,7 @@ public class WriteFile {
 		}
 		this.list.add(newLine);
 		this.list.sort(Collections.reverseOrder());
-		FileWriter writer = new FileWriter(OSFixes.getLocation("score", "score.txt"));
+		FileWriter writer = new FileWriter(OSFixes.getLocation("EscapeFromUniversity", "score.txt"));
 		for(String s: this.list){
 			writer.write(s);
 			writer.write("\r\n");

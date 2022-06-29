@@ -38,7 +38,7 @@ public class LeaderboardController {
      */
     @FXML
     public void initialize() throws IOException {
-        ReadFile reader = new ReadFile("score", "score.txt");
+        ReadFile reader = new ReadFile("EscapeFromUniversity","score.txt");
         for(int i=0; i<10; i++) {
             String newLine = reader.newLine();
             if(newLine!=null) {

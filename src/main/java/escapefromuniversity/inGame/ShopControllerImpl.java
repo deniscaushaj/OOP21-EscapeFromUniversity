@@ -96,7 +96,7 @@ public class ShopControllerImpl implements ShopController, MouseListener {
      */
     @Override
     public void mouseClicked(MouseEvent e) {
-        Object source = e.getSource();
+        var source = e.getSource();
         if (this.shopView.getExit().equals(source)) {
             this.closeShop();
         } else if (this.shopView.getBuyLife().equals(source)) {
@@ -128,7 +128,7 @@ public class ShopControllerImpl implements ShopController, MouseListener {
      */
     @Override
     public void mouseEntered(MouseEvent e) {
-        Object source = e.getSource();
+        var source = e.getSource();
         if (this.shopView.getBuyLife().equals(source)) {
             this.shopView.setItemInfo(buyLifeInfo);
         } else if (this.shopView.getBuyArmor().equals(source)) {
