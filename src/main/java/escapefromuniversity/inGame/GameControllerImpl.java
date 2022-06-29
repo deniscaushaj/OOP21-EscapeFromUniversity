@@ -181,7 +181,6 @@ public class GameControllerImpl implements GameController {
      */
     @Override
     public void startQuiz(final Boss boss) {
-        //QuizView.startQuizCompetition();
     	try {
 			FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/Quiz.fxml"));
 			Parent gameRoot;
@@ -190,9 +189,7 @@ public class GameControllerImpl implements GameController {
 			LauncherView.launcherWindow.setScene(quiz);
 			final QuizController quizController = new QuizController(boss, this.gameModel.getPlayer());
             loader.setController(quizController);
-           
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
