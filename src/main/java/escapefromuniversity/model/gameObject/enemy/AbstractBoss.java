@@ -5,6 +5,7 @@ import escapefromuniversity.model.basics.Vector2D;
 import escapefromuniversity.model.gameObject.AbstractDynamicGameObject;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;
+import escapefromuniversity.model.gameObject.State;
 import escapefromuniversity.model.GameInit;
 import escapefromuniversity.model.gameObject.player.Player;
 
@@ -43,6 +44,7 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
         this.impactDamage = impactDamage;
         this.exam = exam;
         this.previousPosition = position;
+        this.setState(State.LEFT);
     }
 
     /**
