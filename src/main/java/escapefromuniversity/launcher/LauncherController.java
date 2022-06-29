@@ -2,6 +2,8 @@ package escapefromuniversity.launcher;
 
 import escapefromuniversity.inGame.GameController;
 import escapefromuniversity.inGame.GameControllerImpl;
+import escapefromuniversity.inGame.GameViewImpl;
+import escapefromuniversity.inGame.GameViewProva;
 import escapefromuniversity.menu.MenuController;
 import escapefromuniversity.menu.MenuControllerImpl;
 import escapefromuniversity.utilities.LauncherResizer;
@@ -19,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import static escapefromuniversity.utilities.LauncherResizer.sceneWidth;
 import static escapefromuniversity.utilities.LauncherResizer.sceneHeight;
@@ -44,14 +47,22 @@ public class LauncherController {
 //        LauncherView.launcherWindow.close();  //this.creditsButton.getScene().getWindow().hide();
 //        Platform.exit();
 
-		/*try {
-			FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/Game.fxml"));
-			Parent gameRoot = loader.load();
-			Scene game = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
-			LauncherView.launcherWindow.setScene(game);
-		} catch (Exception e) {
-			System.out.println(e);
-		}*/
+//        GameViewImpl prova = new GameViewImpl();
+//        try {
+//            prova.start(new Stage());
+//            prova.getGameController().gameLoop();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//		try {
+//			FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/Game.fxml"));
+//			Parent gameRoot = loader.load();
+//			Scene game = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
+//			LauncherView.launcherWindow.setScene(game);
+//		} catch (Exception e) {
+//			System.out.println(e);
+//		}
+		
     }
 
     /* Opens the leaderboard scene. */

@@ -30,15 +30,19 @@ public class MapImpl implements GameInit {
 
     @Override
     public void update(final double deltaTime) {
-        final List<DynamicGameObject> listDGObj = new LinkedList<>(List.copyOf(this.dynamicGameObjects));
-        listDGObj.iterator().forEachRemaining(obj -> { 
+        this.dynamicGameObjects.iterator().forEachRemaining(obj -> {
             obj.update(deltaTime);
         });
-        listDGObj.iterator().forEachRemaining(obj -> {
+        for (final GameObject obj : this.dynamicGameObjects) {
             for (final GameObject obj2 : this.getAllGameObject()) {
-                obj.collisionWith(obj2);
+                //System.out.println(obj + "  " + obj2);
+                if (obj.getObjectHitBox() == null || obj2.getObjectHitBox() == null || obj.equals(obj2)) {
+                    continue;
+                } else {
+                    obj.collisionWith(obj2);
+                }
             }
-        });
+        }
     }
 
     private List<GameObject> getAllGameObject() {

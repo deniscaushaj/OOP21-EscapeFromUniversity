@@ -26,6 +26,7 @@ import escapefromuniversity.model.basics.Vector2D;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.enemy.BossFactoryImpl;
+import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.quiz.QuizController;
 import escapefromuniversity.utilities.LauncherResizer;
 import escapefromuniversity.utilities.OSFixes;
@@ -38,6 +39,8 @@ import javafx.scene.Scene;
  * Implements all the methods defined in its interface {@link GameController}.
  */
 public class GameControllerImpl implements GameController {
+    private static final long DELTA = 1000;
+    private static final double MILLI_TO_SECOND = 0.001;
     private final GameModel gameModel;
     private GameView gameView;
     private final KeyHandler keyHandler;
@@ -59,27 +62,7 @@ public class GameControllerImpl implements GameController {
 		this.keyHandler = new KeyHandlerImpl(this.gameModel, this, this.shopController, this.menuController);
 		this.setGameState(GameState.PLAY);
         this.keyHandler.setAllInactive();
-//        try {
-//            //final FXMLLoader loader = new FXMLLoader(getClass().getResource("layouts/Game.fxml"));
-//            final FXMLLoader loader = new FXMLLoader();
-//            final URL fileLocation = new File(OSFixes.getLocation("layouts", "Game.fxml")).toURI().toURL();
-//            loader.setLocation(fileLocation);
-//            Parent gameRoot = loader.load();
-//            loader.setController(this.gameView);
-//            Scene game = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
-//            LauncherView.launcherWindow.setScene(game);
-//        } catch (Exception e) {
-//            System.out.println(e);
-//        }
-        try {
-            FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/Game.fxml"));
-            Parent gameRoot = loader.load();
-            loader.setController(this.gameView);
-            Scene game = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
-            LauncherView.launcherWindow.setScene(game);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        this.gameObjID = this.getGameObjectID();
 	}
 
     /**
@@ -96,13 +79,14 @@ public class GameControllerImpl implements GameController {
             case GRADUATED:
             case SHOP_ROOM:
                 long deltaTime = currentTime - lastTime;
-                executeInput();
-                this.updateModel(deltaTime);
+                //executeInput();
+                //this.updateModel(deltaTime);
                 this.updateView();
+                this.waitTime();
                 break;
             case QUIZ:
             	BossFactoryImpl fabbrica = new BossFactoryImpl();
-            	Boss bossUno = fabbrica.createBoss1(new Point2D(0, 0), new Vector2D(0,0), null);
+            	Boss bossUno = fabbrica.createBoss1(new Point2D(0, 0), new Vector2D(0, 0), null);
                 this.startQuiz(bossUno);
                 break;
             case MENU:
@@ -124,6 +108,14 @@ public class GameControllerImpl implements GameController {
         this.gameView.end(this.getGameState());
     }
 
+    private void waitTime() {
+        try {
+            Thread.sleep(DELTA);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     /* Checks if the player has won the game or if he lost and returns true if the game is not finished, false otherwise. */
     private boolean continueGame() {
         return this.getGameState() != GameState.LOST && this.getGameState() != GameState.WIN;
@@ -131,7 +123,7 @@ public class GameControllerImpl implements GameController {
 
     /* Calls the update method in the model. */
     private void updateModel(final long deltaTime) {
-        this.gameModel.updateGame((double) deltaTime);
+        this.gameModel.updateGame((double) deltaTime * MILLI_TO_SECOND);
     }
 
     /* Returns a list with all the IDs of the game objects. */
@@ -158,7 +150,7 @@ public class GameControllerImpl implements GameController {
             if (!this.gameObjID.contains(id)) {
                 this.gameView.removeSpriteAnimation(id);
             } else {
-                if (!this.gameView.containThisID(id)) {
+                if (this.gameView.containThisID(id)) {
                     this.gameView.updateSpriteAnimation(id, this.gameModel.getPositionOfID(id), this.gameModel.getStateID(id));
                 } else {
                     final HitBox a = this.gameModel.getHitBoxID(id);
@@ -261,6 +253,11 @@ public class GameControllerImpl implements GameController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public Player getPlayer() {
+        return this.gameModel.getPlayer();
     }
 
 }

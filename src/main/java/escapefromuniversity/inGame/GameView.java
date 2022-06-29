@@ -62,4 +62,5 @@ public interface GameView {
 //     */
 //    void loaderComponent(GameController gameController, Player player);
 
+    GameController getGameController();
 }

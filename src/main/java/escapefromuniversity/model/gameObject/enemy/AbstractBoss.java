@@ -42,6 +42,7 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
         this.bossState = BossState.QUIZ;
         this.impactDamage = impactDamage;
         this.exam = exam;
+        this.previousPosition = position;
     }
 
     /**

@@ -27,17 +27,21 @@ import escapefromuniversity.model.map.TileDrawer;
 import escapefromuniversity.model.map.TileDrawerImpl;
 import escapefromuniversity.view.map.canvas.CanvasDrawer;
 import escapefromuniversity.view.map.canvas.CanvasDrawerImpl;
+import javafx.application.Application;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 
 /**
  * 
  * class  of controller of game view.
  *
  */
-public class GameViewImpl implements GameView {
+public class GameViewImpl extends Application implements GameView {
 
     private static final long TIME_TO_END = 5000;
     private final GameController gameController;
@@ -50,17 +54,19 @@ public class GameViewImpl implements GameView {
     private static final double RADIUS = 10;
     private final Map<Integer, SpriteAnimation> spriteAnimations = new HashMap<>();
     private final LayersControllerImpl layersController;
-    private final Player fakePlayer = new PlayerImpl(GameObjectType.PLAYER, new Point2D(x, y), 0, null, 0, null);
+    //private final Player fakePlayer = new PlayerImpl(GameObjectType.PLAYER, new Point2D(x, y), 0, null, 0, null);
+    
+    private Canvas gameCanvas = new Canvas(650, 650);
+    private Group group = new Group(gameCanvas);
+    private Scene scene = new Scene(group, 600, 600);
 
-    @FXML
-    private Canvas gameCanvas;
 
     /**
      * 
      * @param gameController
      * @param player
      */
-    public GameViewImpl(final GameController gameController, final Player player) {
+    public GameViewImpl(GameController gameController, Player player) {
         this.gameController = gameController;
         this.camera = ratio -> {
             var playerHitBox = player.getObjectHitBox();
@@ -69,25 +75,14 @@ public class GameViewImpl implements GameView {
         };
         final var parser = new TMXMapParser("final-map.tmx");
         this.map = parser.parse();
-        this.layersController =  new LayersControllerImpl(map, player);
-    }
-    
-//    public void loaderComponent(final GameController gameController, final Player player) {
-//        this.gameController = gameController;
-//        this.camera = ratio -> {
-//            var playerHitBox = player.getObjectHitBox();
-//            var center = playerHitBox.getBottomLeftCorner().sum(playerHitBox.getUpperRightCorner()).multiplication(0.5);
-//            return new Rectangle(center.sum(new Point2D(-RADIUS, -RADIUS / ratio)), center.sum(new Point2D(RADIUS, RADIUS / ratio)));
-//        };
-//        final var parser = new TMXMapParser("final-map.tmx");
-//        this.map = parser.parse();
-//        this.layersController =  new LayersControllerImpl(map, player);
-//    }
-
-    @FXML
-    protected void initialize() {
+        this.layersController =  new LayersControllerImpl(map, this.gameController.getPlayer());
         this.canvasDrawer = new CanvasDrawerImpl(gameCanvas);
         this.tileDrawer = new TileDrawerImpl(map, this.canvasDrawer);
+        try {
+            this.start(new Stage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private Stream<Tile> getTilesToDraw(final Rectangle proj) throws ParserConfigurationException, IOException, SAXException {
@@ -129,6 +124,12 @@ public class GameViewImpl implements GameView {
      * {@inheritDoc}
      */
     public void updateView() {
+//        try {
+//            this.start(new Stage());
+//        } catch (Exception e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
         try {
             this.drawLayers();
         } catch (ParserConfigurationException | IOException | SAXException e) {
@@ -184,6 +185,21 @@ public class GameViewImpl implements GameView {
         }
         LauncherView.createLauncher();
         //      System.exit(0);
+    }
+
+    @Override
+    public GameController getGameController() {
+        return this.gameController;
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        primaryStage.setTitle("escapeFromUniversity");
+        this.drawLayers();
+//        Group group = new Group(gameCanvas);
+//        Scene scene = new Scene(group, 600, 600);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     //    TODO: !!
