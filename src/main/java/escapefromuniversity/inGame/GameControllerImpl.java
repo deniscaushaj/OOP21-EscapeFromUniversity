@@ -1,7 +1,9 @@
 package escapefromuniversity.inGame;
 
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
@@ -13,7 +15,6 @@ import escapefromuniversity.controller.map.LayersControllerImpl;
 import escapefromuniversity.input.KeyHandler;
 import escapefromuniversity.input.KeyHandlerImpl;
 import escapefromuniversity.launcher.LauncherView;
-import escapefromuniversity.launcher.LeaderboardController;
 import escapefromuniversity.menu.MenuController;
 import escapefromuniversity.menu.MenuControllerImpl;
 import escapefromuniversity.model.GameModel;
@@ -25,13 +26,12 @@ import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.enemy.BossFactoryImpl;
 import escapefromuniversity.quiz.QuizController;
-import escapefromuniversity.quiz.QuizView;
 import escapefromuniversity.utilities.LauncherResizer;
+import escapefromuniversity.utilities.OSFixes;
+import escapefromuniversity.view.map.MapLoader;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import org.xml.sax.SAXException;
-import javax.xml.parsers.ParserConfigurationException;
 
 /**
  * Implements all the methods defined in its interface {@link GameController}.
@@ -52,22 +52,33 @@ public class GameControllerImpl implements GameController {
 	 */
 	public GameControllerImpl() {
 		this.gameModel = new GameModelImpl(this);
-		//this.gameView = new GameViewImpl(this, this.gameModel.getPlayer());
+		this.gameView = new GameViewImpl(this, this.gameModel.getPlayer());
         this.shopController = new ShopControllerImpl(this, this.gameModel);
         this.layersController = new LayersControllerImpl(this.gameModel.getMap(), this.gameModel.getPlayer());
 		this.keyHandler = new KeyHandlerImpl(this.gameModel, this, this.shopController, this.menuController);
 		this.setGameState(GameState.PLAY);
         this.keyHandler.setAllInactive();
+//        try {
+//            //final FXMLLoader loader = new FXMLLoader(getClass().getResource("layouts/Game.fxml"));
+//            final FXMLLoader loader = new FXMLLoader();
+//            final URL fileLocation = new File(OSFixes.getLocation("layouts", "Game.fxml")).toURI().toURL();
+//            loader.setLocation(fileLocation);
+//            Parent gameRoot = loader.load();
+//            loader.setController(this.gameView);
+//            Scene game = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
+//            LauncherView.launcherWindow.setScene(game);
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
         try {
-            final FXMLLoader loader = new FXMLLoader(getClass().getResource("layouts/Game.fxml"));
+            FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/Game.fxml"));
             Parent gameRoot = loader.load();
-            this.gameView = loader.getController();
+            loader.setController(new MapLoader(this, this.gameModel.getPlayer()));
             Scene game = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
             LauncherView.launcherWindow.setScene(game);
         } catch (Exception e) {
             System.out.println(e);
         }
-        this.gameView.loaderComponent(this, this.gameModel.getPlayer());
 	}
 
     /**
@@ -75,7 +86,6 @@ public class GameControllerImpl implements GameController {
      */
     @Override
     public void gameLoop() {
-    	
         long lastTime = System.currentTimeMillis();
         while (continueGame()) {
             long currentTime = System.currentTimeMillis();
@@ -148,10 +158,9 @@ public class GameControllerImpl implements GameController {
                 this.gameView.removeSpriteAnimation(id);
             } else {
                 if (!this.gameView.containThisID(id)) {
-                    final Point2D position = null;
-                    this.gameView.updateSpriteAnimation(id, position, this.gameModel.getStateID(id));
+                    this.gameView.updateSpriteAnimation(id, this.gameModel.getPositionOfID(id), this.gameModel.getStateID(id));
                 } else {
-                    this.gameView.addSpriteAnimation(id, this.gameModel.getStateID(id), this.gameModel.getTypeID(id), 0, 0);
+                    this.gameView.addSpriteAnimation(id, this.gameModel.getStateID(id), this.gameModel.getTypeID(id), 0, 0, this.gameModel.getPositionOfID(id));
                 }
             }
         }

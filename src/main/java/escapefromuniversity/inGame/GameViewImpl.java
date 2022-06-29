@@ -17,6 +17,7 @@ import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
 import escapefromuniversity.model.gameObject.player.Player;
+import escapefromuniversity.model.gameObject.player.PlayerImpl;
 import escapefromuniversity.model.map.Camera;
 import escapefromuniversity.model.map.MapProperties;
 import escapefromuniversity.model.map.Rectangle;
@@ -28,6 +29,8 @@ import escapefromuniversity.view.map.canvas.CanvasDrawer;
 import escapefromuniversity.view.map.canvas.CanvasDrawerImpl;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 /**
  * 
@@ -37,25 +40,27 @@ import javafx.scene.canvas.Canvas;
 public class GameViewImpl implements GameView {
 
     private static final long TIME_TO_END = 5000;
-    private GameController gameController;
-    private MapProperties map;
+    private final GameController gameController;
+    private final MapProperties map;
     private CanvasDrawer canvasDrawer;
     private TileDrawer tileDrawer;
-    private Camera camera;
+    private final Camera camera;
+    private double x = 30;
+    private double y = 30;
     private static final double RADIUS = 10;
-    private Map<Integer, SpriteAnimation> spriteAnimations = new HashMap<>();
-    private LayersControllerImpl layersController;
+    private final Map<Integer, SpriteAnimation> spriteAnimations = new HashMap<>();
+    private final LayersControllerImpl layersController;
+    private final Player fakePlayer = new PlayerImpl(GameObjectType.PLAYER, new Point2D(x, y), 0, null, 0, null);
 
     @FXML
     private Canvas gameCanvas;
 
     /**
      * 
+     * @param gameController
+     * @param player
      */
-    public GameViewImpl() {
-    }
-    
-    public void loaderComponent(final GameController gameController, final Player player) {
+    public GameViewImpl(final GameController gameController, final Player player) {
         this.gameController = gameController;
         this.camera = ratio -> {
             var playerHitBox = player.getObjectHitBox();
@@ -66,6 +71,18 @@ public class GameViewImpl implements GameView {
         this.map = parser.parse();
         this.layersController =  new LayersControllerImpl(map, player);
     }
+    
+//    public void loaderComponent(final GameController gameController, final Player player) {
+//        this.gameController = gameController;
+//        this.camera = ratio -> {
+//            var playerHitBox = player.getObjectHitBox();
+//            var center = playerHitBox.getBottomLeftCorner().sum(playerHitBox.getUpperRightCorner()).multiplication(0.5);
+//            return new Rectangle(center.sum(new Point2D(-RADIUS, -RADIUS / ratio)), center.sum(new Point2D(RADIUS, RADIUS / ratio)));
+//        };
+//        final var parser = new TMXMapParser("final-map.tmx");
+//        this.map = parser.parse();
+//        this.layersController =  new LayersControllerImpl(map, player);
+//    }
 
     @FXML
     protected void initialize() {
@@ -137,9 +154,10 @@ public class GameViewImpl implements GameView {
     /**
      * {@inheritDoc}
      */
-    public void addSpriteAnimation(final int id, final State state, final GameObjectType type, final int height, final int width) {
+    public void addSpriteAnimation(final int id, final State state, final GameObjectType type, final int height, final int width, final Point2D position) {
         final Sprite sprite = new SpriteImpl(state, type);
         final SpriteAnimation animation = new SpriteAnimation(sprite, height, width);
+        animation.setPosition(position);
         this.spriteAnimations.put(id, animation);
     }
 
@@ -166,6 +184,23 @@ public class GameViewImpl implements GameView {
         }
         LauncherView.createLauncher();
         //      System.exit(0);
+    }
+    
+    public final void onKeyPressed(final KeyEvent evt) throws ParserConfigurationException, IOException, SAXException {
+        if (evt.getCode().equals(KeyCode.A)) {
+            x -= 1.66;
+        }
+        if (evt.getCode().equals(KeyCode.D)) {
+            x += 1.66;
+        }
+        if (evt.getCode().equals(KeyCode.W)) {
+            y -= 1.66;
+        }
+        if (evt.getCode().equals(KeyCode.S)) {
+            y += 1.66;
+        }
+        this.fakePlayer.setPosition(new Point2D(x, y));
+        this.drawLayers();
     }
 
     //    TODO: !!

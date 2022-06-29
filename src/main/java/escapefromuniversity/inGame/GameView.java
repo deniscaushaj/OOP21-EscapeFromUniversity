@@ -40,7 +40,7 @@ public interface GameView {
      * @param height
      * @param width 
      */
-    void addSpriteAnimation(int id, State state, GameObjectType type, int height, int width);
+    void addSpriteAnimation(int id, State state, GameObjectType type, int height, int width, Point2D position);
 
     /**
      * 
@@ -55,11 +55,11 @@ public interface GameView {
      */
     void end(GameState gameState);
 
-    /**
-     * 
-     * @param gameController
-     * @param player
-     */
-    void loaderComponent(GameController gameController, Player player);
+//    /**
+//     * 
+//     * @param gameController
+//     * @param player
+//     */
+//    void loaderComponent(GameController gameController, Player player);
 
 }
