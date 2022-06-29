@@ -44,6 +44,15 @@ public class LauncherController {
 //        LauncherView.launcherWindow.close();  //this.creditsButton.getScene().getWindow().hide();
 //        Platform.exit();
 
+        try {
+            FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/topo.fxml"));
+            Parent gameRoot = loader.load();
+            Scene game = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
+            LauncherView.launcherWindow.setScene(game);
+//            loader.setController(this.gameView);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 		/*try {
 			FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/Game.fxml"));
 			Parent gameRoot = loader.load();

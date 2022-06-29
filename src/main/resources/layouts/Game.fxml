@@ -8,9 +8,10 @@
 <BorderPane xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1"
             prefHeight="600"
             prefWidth="600"
-            fx:controller="escapefromuniversity.inGame.GameViewImpl">
+            fx:controller="escapefromuniversity.view.map.MapLoader">
    <center>
       <ResizableCanvas fx:id="gameCanvas"
-                       focusTraversable="true"/>
+                       focusTraversable="true"
+                        onKeyPressed="#onKeyPressed"/>
    </center>
 </BorderPane>

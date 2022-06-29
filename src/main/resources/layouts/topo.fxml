@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<?import escapefromuniversity.view.map.canvas.ResizableCanvas?>
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1"
+            prefHeight="400" prefWidth="600"
+            fx:controller="escapefromuniversity.inGame.GameViewImpl">
+   <center>
+      <ResizableCanvas fx:id="topoCanvas"
+                       focusTraversable="true"
+      />
+
+   </center>
+</BorderPane>
