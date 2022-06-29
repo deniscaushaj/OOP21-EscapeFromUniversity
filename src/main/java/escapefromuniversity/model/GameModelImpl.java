@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import escapefromuniversity.inGame.GameController;
+import escapefromuniversity.model.basics.HitBox;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.gameObject.DynamicGameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;
@@ -85,8 +86,8 @@ public class GameModelImpl implements GameModel {
     }
 
     @Override
-    public MapProperties getMap() {
-        return this.mapManager.getGameInit().getMap();
+    public GameInit getMap() {
+        return this.mapManager.getGameInit();
     }
 
     /**
@@ -117,6 +118,12 @@ public class GameModelImpl implements GameModel {
     public GameObjectType getTypeID(final int id) {
         DynamicGameObject a = this.mapManager.getGameInit().getAllDynamicGameObject().stream().filter(e -> e.getID() == id).findFirst().orElse(null);
         return a.getType();
+    }
+
+    @Override
+    public HitBox getHitBoxID(final int id) {
+        DynamicGameObject a = this.mapManager.getGameInit().getAllDynamicGameObject().stream().filter(e -> e.getID() == id).findFirst().orElse(null);
+        return a.getObjectHitBox();
     }
 
 }

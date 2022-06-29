@@ -57,7 +57,11 @@ public interface GameModel {
      */
     Player getPlayer();
 
-    MapProperties getMap();
+    /**
+     * 
+     * @return the GameInit.
+     */
+    GameInit getMap();
 
     /**
      * 
@@ -91,5 +95,12 @@ public interface GameModel {
      * @return type.
      */
     GameObjectType getTypeID(int id);
+
+    /**
+     * 
+     * @param id of object.
+     * @return HitBox 
+     */
+    HitBox getHitBoxID(int id);
 
 }

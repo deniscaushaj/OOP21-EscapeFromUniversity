@@ -64,8 +64,8 @@ public class MapManagerImpl implements MapManager {
 
     private GameInit createGameInit() {
         //TODO: check vector 2D
-        Player player = new PlayerImpl(GameObjectType.PLAYER, getStartingPosition(), PLAYER_SPEED, new Vector2D(1, 0), PLAYER_SHOOT_DELAY, this.gameInit);
         var map = new MapImpl(this);
+        Player player = new PlayerImpl(GameObjectType.PLAYER, getStartingPosition(), PLAYER_SPEED, new Vector2D(1, 0), PLAYER_SHOOT_DELAY, map);
         map.addDynamicGameObject(player);
         loadObstacles(map);
         BossFactory bossFactory = new BossFactoryImpl();
@@ -79,7 +79,7 @@ public class MapManagerImpl implements MapManager {
     }
 
     @Override
-    public void setupQuiz(Boss boss) {
+    public void setupQuiz(final Boss boss) {
         this.gameModel.setQuiz(boss);
     }
 
