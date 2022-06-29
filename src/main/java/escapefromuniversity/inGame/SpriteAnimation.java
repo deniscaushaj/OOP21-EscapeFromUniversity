@@ -1,5 +1,6 @@
 package escapefromuniversity.inGame;
 
+import escapefromuniversity.model.basics.HitBox;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.map.Rectangle;
 
@@ -10,20 +11,20 @@ public class SpriteAnimation {
 
     private final Sprite sprite;
     private Rectangle position;
-    private final double height;
-    private final double width;
     private boolean isVisible;
+    private HitBox box;
 
     /**
      *
      * @param sprite
-     * @param height
-     * @param width
+     * @param box
+     * 
      */
-    public SpriteAnimation(final Sprite sprite, final double height, final double width) {
+    public SpriteAnimation(final Sprite sprite, final HitBox box) {
         this.sprite = sprite;
-        this.height = height;
-        this.width = width;
+        this.box = box;
+//        this.height = height;
+//        this.width = width;
     }
 
     /**
@@ -39,7 +40,7 @@ public class SpriteAnimation {
      * @param position
      */
     public void setPosition(final Point2D position) {
-        Point2D size = position.sum(new Point2D(this.width, this.height));
+        Point2D size = position.sum(new Point2D(this.box.getWidth(), this.box.getHeight()));
         this.position = new Rectangle(position, size);
     }
 
@@ -49,6 +50,10 @@ public class SpriteAnimation {
      */
     public Rectangle getPosition() {
         return this.position;
+    }
+    
+    public HitBox getBox() {
+        return this.box;
     }
 
     /**
