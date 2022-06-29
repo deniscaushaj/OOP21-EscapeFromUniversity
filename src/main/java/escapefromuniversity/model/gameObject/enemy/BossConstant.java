@@ -13,7 +13,6 @@ final class BossConstant {
     }
 
     protected static final Point2D BOSS_BOX_SIZE = new Point2D(1, 1.4);
-    protected static final Point2D SECONDARY_BOSS_BOX_SIZE = new Point2D(1, 1);
 
     /**
      * constant boss life.
