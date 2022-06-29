@@ -20,6 +20,7 @@ import escapefromuniversity.menu.MenuControllerImpl;
 import escapefromuniversity.model.GameModel;
 import escapefromuniversity.model.GameModelImpl;
 import escapefromuniversity.model.GameState;
+import escapefromuniversity.model.basics.HitBox;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.basics.Vector2D;
 import escapefromuniversity.model.gameObject.GameObject;
@@ -54,7 +55,7 @@ public class GameControllerImpl implements GameController {
 		this.gameModel = new GameModelImpl(this);
 		this.gameView = new GameViewImpl(this, this.gameModel.getPlayer());
         this.shopController = new ShopControllerImpl(this, this.gameModel);
-        this.layersController = new LayersControllerImpl(this.gameModel.getMap(), this.gameModel.getPlayer());
+        this.layersController = new LayersControllerImpl(this.gameModel.getMap().getMap(), this.gameModel.getPlayer());
 		this.keyHandler = new KeyHandlerImpl(this.gameModel, this, this.shopController, this.menuController);
 		this.setGameState(GameState.PLAY);
         this.keyHandler.setAllInactive();
@@ -160,7 +161,8 @@ public class GameControllerImpl implements GameController {
                 if (!this.gameView.containThisID(id)) {
                     this.gameView.updateSpriteAnimation(id, this.gameModel.getPositionOfID(id), this.gameModel.getStateID(id));
                 } else {
-                    this.gameView.addSpriteAnimation(id, this.gameModel.getStateID(id), this.gameModel.getTypeID(id), 0, 0, this.gameModel.getPositionOfID(id));
+                    final HitBox a = this.gameModel.getHitBoxID(id);
+                    this.gameView.addSpriteAnimation(id, this.gameModel.getStateID(id), this.gameModel.getTypeID(id), a.getHeight(), a.getWidth(), this.gameModel.getPositionOfID(id));
                 }
             }
         }

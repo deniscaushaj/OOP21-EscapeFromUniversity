@@ -154,7 +154,7 @@ public class GameViewImpl implements GameView {
     /**
      * {@inheritDoc}
      */
-    public void addSpriteAnimation(final int id, final State state, final GameObjectType type, final int height, final int width, final Point2D position) {
+    public void addSpriteAnimation(final int id, final State state, final GameObjectType type, final double height, final double width, final Point2D position) {
         final Sprite sprite = new SpriteImpl(state, type);
         final SpriteAnimation animation = new SpriteAnimation(sprite, height, width);
         animation.setPosition(position);

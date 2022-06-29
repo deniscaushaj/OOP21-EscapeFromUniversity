@@ -10,8 +10,8 @@ public class SpriteAnimation {
 
     private final Sprite sprite;
     private Rectangle position;
-    private final int height;
-    private final int width;
+    private final double height;
+    private final double width;
     private boolean isVisible;
 
     /**
@@ -20,7 +20,7 @@ public class SpriteAnimation {
      * @param height
      * @param width
      */
-    public SpriteAnimation(Sprite sprite, int height, int width) {
+    public SpriteAnimation(final Sprite sprite, final double height, final double width) {
         this.sprite = sprite;
         this.height = height;
         this.width = width;
@@ -38,7 +38,7 @@ public class SpriteAnimation {
      * 
      * @param position
      */
-    public void setPosition(Point2D position) {
+    public void setPosition(final Point2D position) {
         Point2D size = position.sum(new Point2D(this.width, this.height));
         this.position = new Rectangle(position, size);
     }
@@ -55,7 +55,7 @@ public class SpriteAnimation {
      * Sets the sprite to be visible or not.
      * @param visible the boolean that determines if the sprite is currently visible in the screen or not.
      */
-    public void setVisible(boolean visible) {
+    public void setVisible(final boolean visible) {
         this.isVisible = visible;
     }
 

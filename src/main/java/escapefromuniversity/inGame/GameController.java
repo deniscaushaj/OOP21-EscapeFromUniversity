@@ -31,6 +31,7 @@ public interface GameController {
 
     /**
      * Launches the view of an exam's quiz.
+     * @param boss the boss quiz.
      */
     void startQuiz(Boss boss);
 
