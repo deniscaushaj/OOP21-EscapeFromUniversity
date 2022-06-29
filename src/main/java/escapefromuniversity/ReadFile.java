@@ -19,7 +19,7 @@ public class ReadFile {
 	 * @throws IOException
 	 */
 	public ReadFile(String folderName, String fileName) throws IOException {
-		this.fileName = OSFixes.getLocation(folderName, fileName);
+		this.fileName = OSFixes.getExternalLocation(folderName, fileName);
 		this.reader = new BufferedReader(new FileReader(this.fileName));
 	}
 
