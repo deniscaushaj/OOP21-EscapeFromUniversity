@@ -23,4 +23,6 @@ public interface CanvasDrawer {
      * @param drawPos  the position in the map of the rectangle to draw
      */
     void drawImage(String filename, Rectangle imagePos, Rectangle drawPos);
+
+    void drawImage(String filename, Rectangle drawPos);
 }

@@ -48,7 +48,6 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
      * @param direction the direction of the player.
      * @param shootDelay the shoot delay of the player.
      */
-
     public PlayerImpl(GameObjectType type, Point2D position, double speed, Vector2D direction, int shootDelay, GameInit map) {
         super(type, position, HIT_BOX_PLAYER, speed, direction, map);
         this.life = MAX_LIFE;

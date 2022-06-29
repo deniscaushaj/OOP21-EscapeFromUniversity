@@ -3,86 +3,84 @@ package escapefromuniversity.model.map;
 import escapefromuniversity.model.GameInit;
 import escapefromuniversity.model.GameModel;
 import escapefromuniversity.model.basics.Point2D;
+import escapefromuniversity.model.basics.Vector2D;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.enemy.Boss;
+import escapefromuniversity.model.gameObject.enemy.BossFactory;
+import escapefromuniversity.model.gameObject.enemy.BossFactoryImpl;
 import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.model.gameObject.player.PlayerImpl;
-import org.xml.sax.SAXException;
 
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class MapManagerImpl implements MapManager {
-    private final Map<Door,Door> doors;
     private final GameModel gameModel;
-    private GameInit map;
-    private static final Point2D STARTING_POS = new Point2D(83, 147);
+    private final GameInit gameInit;
+    private static final Point2D PLAYER_STARTING_POS = new Point2D(83, 147);
     private static final double PLAYER_SPEED = 0.25;
-    private static final int PLAYER_SHOOT_DELAY = 500 ;
+    private static final int PLAYER_SHOOT_DELAY = 500;
+    private static final Point2D BOSS1_STARTING_POS = new Point2D(33, 37);
+    private static final Point2D BOSS2_STARTING_POS = new Point2D(33, 67);
+    private static final Point2D BOSS3_STARTING_POS = new Point2D(33, 97);
+    private static final Point2D BOSS4_STARTING_POS = new Point2D(27, 129);
+    private static final Point2D BOSS5_STARTING_POS = new Point2D(148, 125);
+    private static final Point2D BOSS6_STARTING_POS = new Point2D(147, 32);
 
-    public MapManagerImpl(GameModel gameModel) throws ParserConfigurationException, IOException, SAXException {
+    public MapManagerImpl(GameModel gameModel) {
         this.gameModel = gameModel;
-        this.doors = this.createDoors();
-        this.map = this.createMap();
+        this.gameInit = this.createGameInit();
     }
 
     @Override
     public void update(final double deltaTime) {
-        this.map.update(deltaTime);
+        this.gameInit.update(deltaTime);
     }
 
     @Override
-    public GameInit getMap() {
-        return this.map;
+    public GameInit getGameInit() {
+        return this.gameInit;
     }
 
     @Override
     public Player getPlayer() {
-        return this.map.getPlayer();
+        return this.gameInit.getPlayer();
     }
 
     public Point2D getStartingPosition() {
-        return new Point2D(STARTING_POS);
+        return new Point2D(PLAYER_STARTING_POS);
     }
 
-    private void loadObject() throws ParserConfigurationException, IOException, SAXException {
-        List<ObstacleObject> furniture = new ObstacleImpl().getFurnitureList();
-        List<ObstacleObject> doors = new ObstacleImpl().getDoorList();
-        List<ObstacleObject> npc = new ObstacleImpl().getNPCList();
-        List<ObstacleObject> walls = new ObstacleImpl().getWallsList();
+    private void loadObstacles(final GameInit gameInit) {
+        var factory = new ObstaclesFactory(gameInit.getMap());
+        List<ObstacleObject> furniture = factory.getFurnitureList();
+        List<ObstacleObject> doors = factory.getDoorList();
+        List<ObstacleObject> npc = factory.getNPCList();
+        List<ObstacleObject> walls = factory.getWallsList();
         var obs = Stream.of(furniture, doors, npc, walls).flatMap(Collection::stream);
-        obs.forEach(o -> {
-            this.map.addStaticGameObject(o);
-        });
+        obs.forEach(gameInit::addStaticGameObject);
     }
 
-    private GameInit createMap() throws ParserConfigurationException, IOException, SAXException {
-        Player player = new PlayerImpl(GameObjectType.PLAYER, getStartingPosition(), PLAYER_SPEED, null, PLAYER_SHOOT_DELAY, this.map);
-        loadObject();
-        return new MapImpl(this);
-    }
-
-    private Map<Door, Door> createDoors() {
-        return null;
+    private GameInit createGameInit() {
+        //TODO: check vector 2D
+        Player player = new PlayerImpl(GameObjectType.PLAYER, getStartingPosition(), PLAYER_SPEED, new Vector2D(1, 0), PLAYER_SHOOT_DELAY, this.gameInit);
+        var map = new MapImpl(this);
+        map.addDynamicGameObject(player);
+        loadObstacles(map);
+        BossFactory bossFactory = new BossFactoryImpl();
+        map.addDynamicGameObject(bossFactory.createBoss1(BOSS1_STARTING_POS, new Vector2D(1, 0), map));
+        map.addDynamicGameObject(bossFactory.createBoss2(BOSS2_STARTING_POS, new Vector2D(1, 0), map));
+        map.addDynamicGameObject(bossFactory.createBoss3(BOSS3_STARTING_POS, new Vector2D(1, 0), map));
+        map.addDynamicGameObject(bossFactory.createBoss4(BOSS4_STARTING_POS, new Vector2D(1, 0), map));
+        map.addDynamicGameObject(bossFactory.createBoss5(BOSS5_STARTING_POS, new Vector2D(1, 0), map));
+        map.addDynamicGameObject(bossFactory.createBoss6(BOSS6_STARTING_POS, new Vector2D(1, 0), map));
+        return map;
     }
 
     @Override
     public void setupQuiz(Boss boss) {
         this.gameModel.setQuiz(boss);
-    }
-
-    @Override
-    public void setCurrentRoom(Door door) {
-        //this.map.getPlayer().setMap(door.getMap());
-        this.map = doors.get(door).getMap();
-        this.map.getPlayer().setPosition(doors.get(door).getPos());
     }
 
     @Override

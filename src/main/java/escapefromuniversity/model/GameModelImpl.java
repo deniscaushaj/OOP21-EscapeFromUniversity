@@ -1,6 +1,5 @@
 package escapefromuniversity.model;
 
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,9 +12,7 @@ import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.model.map.MapManager;
 import escapefromuniversity.model.map.MapManagerImpl;
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.ParserConfigurationException;
+import escapefromuniversity.model.map.MapProperties;
 
 /**
  * 
@@ -31,7 +28,7 @@ public class GameModelImpl implements GameModel {
      * 
      * @param gameController
      */
-    public GameModelImpl(final GameController gameController) throws ParserConfigurationException, IOException, SAXException {
+    public GameModelImpl(final GameController gameController) {
         this.gameController = gameController;
         this.mapManager = new MapManagerImpl(this);
     }
@@ -41,7 +38,7 @@ public class GameModelImpl implements GameModel {
      */
     @Override
     public List<DynamicGameObject> getAllDynamicGameObj() {
-        return new LinkedList<DynamicGameObject>(this.mapManager.getMap().getAllDynamicGameObject());
+        return new LinkedList<DynamicGameObject>(this.mapManager.getGameInit().getAllDynamicGameObject());
     }
 
     /**
@@ -49,7 +46,7 @@ public class GameModelImpl implements GameModel {
      */
     @Override
     public void updateGame(final double deltaTime) {
-        this.mapManager.getMap().update(deltaTime);
+        this.mapManager.getGameInit().update(deltaTime);
     }
 
     /**
@@ -87,11 +84,16 @@ public class GameModelImpl implements GameModel {
         return this.mapManager.getPlayer();
     }
 
+    @Override
+    public MapProperties getMap() {
+        return this.mapManager.getGameInit().getMap();
+    }
+
     /**
      * {@inheritDoc}
      */
     public Point2D getPositionOfID(final int id) {
-        DynamicGameObject a = this.mapManager.getMap().getAllDynamicGameObject().stream().filter(e -> e.getID() == id).findFirst().orElse(null);
+        DynamicGameObject a = this.mapManager.getGameInit().getAllDynamicGameObject().stream().filter(e -> e.getID() == id).findFirst().orElse(null);
         return a.getObjectPosition();
     }
 
@@ -107,13 +109,13 @@ public class GameModelImpl implements GameModel {
 
     @Override
     public State getStateID(final int id) {
-        DynamicGameObject a = this.mapManager.getMap().getAllDynamicGameObject().stream().filter(e -> e.getID() == id).findFirst().orElse(null);
+        DynamicGameObject a = this.mapManager.getGameInit().getAllDynamicGameObject().stream().filter(e -> e.getID() == id).findFirst().orElse(null);
         return a.getState();
     }
 
     @Override
     public GameObjectType getTypeID(final int id) {
-        DynamicGameObject a = this.mapManager.getMap().getAllDynamicGameObject().stream().filter(e -> e.getID() == id).findFirst().orElse(null);
+        DynamicGameObject a = this.mapManager.getGameInit().getAllDynamicGameObject().stream().filter(e -> e.getID() == id).findFirst().orElse(null);
         return a.getType();
     }
 

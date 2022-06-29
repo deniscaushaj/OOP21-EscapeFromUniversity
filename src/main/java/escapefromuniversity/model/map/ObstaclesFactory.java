@@ -12,19 +12,19 @@ import java.util.stream.Collectors;
 /**
  * An implementation of Obstacle interface.
  */
-public class ObstacleImpl implements Obstacle {
+public class ObstaclesFactory implements Obstacle {
 
     private static final int TILE_DIMENSION = 48;
     private static final String MAP_NAME = "final-map.tmx";
-    private final TMXMapParser map;
+    private final MapProperties map;
 
-    public ObstacleImpl() {
-        map = new TMXMapParser(MAP_NAME);
+    public ObstaclesFactory(final MapProperties map) {
+        this.map = map;
     }
 
-    private List<ObstacleObject> getObstacleList(final String property, final GameObjectType obsType) throws ParserConfigurationException, IOException, SAXException {
+    private List<ObstacleObject> getObstacleList(final String property, final GameObjectType obsType) {
         //var map = new TMXMapParser(MAP_NAME);
-        return map.parse().getLayers()
+        return map.getLayers()
                 .stream()
                 .filter(l -> l.getProperties().contains(property))
                 .flatMap(l -> l.getVisibleTiles().stream())
@@ -33,22 +33,22 @@ public class ObstacleImpl implements Obstacle {
     }
 
     @Override
-    public List<ObstacleObject> getWallsList() throws ParserConfigurationException, IOException, SAXException {
+    public List<ObstacleObject> getWallsList() {
         return getObstacleList("walls", GameObjectType.WALL);
     }
 
     @Override
-    public List<ObstacleObject> getNPCList() throws ParserConfigurationException, IOException, SAXException {
+    public List<ObstacleObject> getNPCList() {
         return getObstacleList("npc", GameObjectType.WALL);
     }
 
     @Override
-    public List<ObstacleObject> getDoorList() throws ParserConfigurationException, IOException, SAXException {
+    public List<ObstacleObject> getDoorList() {
         return getObstacleList("door", GameObjectType.DOOR);
     }
 
     @Override
-    public List<ObstacleObject> getFurnitureList() throws ParserConfigurationException, IOException, SAXException {
+    public List<ObstacleObject> getFurnitureList() {
         return getObstacleList("furniture", GameObjectType.FURNITURE);
     }
 
