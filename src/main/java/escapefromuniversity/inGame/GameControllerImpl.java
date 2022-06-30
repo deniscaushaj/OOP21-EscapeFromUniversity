@@ -150,8 +150,11 @@ public class GameControllerImpl implements GameController {
             gameRoot = loader.load();
             Scene quiz = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
             LauncherView.launcherWindow.setScene(quiz);
-            final QuizController quizController = new QuizController(boss, this.gameModel.getPlayer());
-            loader.setController(quizController);
+            final QuizController quizController = loader.getController();
+            quizController.setParameters(boss, this.gameModel.getPlayer());
+//            final QuizController quizController = new QuizController(/*boss, this.gameModel.getPlayer()*/);
+//            quizController.setParameters(boss, this.gameModel.getPlayer());
+//            loader.setController(quizController);
         } catch (IOException e) {
             e.printStackTrace();
         }
