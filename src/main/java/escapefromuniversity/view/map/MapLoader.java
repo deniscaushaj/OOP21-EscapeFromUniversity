@@ -47,7 +47,7 @@ public class MapLoader {
         //this.gameController.setMapLoader(this);
         this.camera = ratio -> {
             var hb = this.gameController.getPlayer().getObjectHitBox();
-            var center = hb.getBottomLeftCorner().sum(hb.getUpperRightCorner()).multiplication(0.5);
+            var center = hb.getBottomRightCorner().sum(hb.getTopLeftCorner()).multiplication(0.5);
             return new Rectangle(center.sum(new Point2D(-radius, -radius / ratio)), center.sum(new Point2D(radius, radius / ratio)));
         };
         final var parser = new TMXMapParser("final-map.tmx");
@@ -92,8 +92,8 @@ public class MapLoader {
         tmpSprites.entrySet().forEach(e -> {
             final Sprite sprite = e.getValue();
                 this.canvasDrawer.drawImage(sprite.getFilepath(), this.calcProjectedRectangle(new Rectangle(
-                        this.gameController.getHitBoxID(e.getKey()).getBottomLeftCorner(),
-                        this.gameController.getHitBoxID(e.getKey()).getUpperRightCorner()
+                        this.gameController.getHitBoxID(e.getKey()).getBottomRightCorner(),
+                        this.gameController.getHitBoxID(e.getKey()).getTopLeftCorner()
                 ), proj));
             
         });

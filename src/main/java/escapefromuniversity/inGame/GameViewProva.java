@@ -23,15 +23,11 @@ import escapefromuniversity.model.map.TileDrawerImpl;
 import escapefromuniversity.view.map.canvas.CanvasDrawer;
 import escapefromuniversity.view.map.canvas.CanvasDrawerImpl;
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class GameViewProva extends Application{
@@ -50,7 +46,7 @@ public class GameViewProva extends Application{
     public GameViewProva() {
         this.camera = ratio -> {
             var hb = fakePlayer.getObjectHitBox();
-            var center = hb.getBottomLeftCorner().sum(hb.getUpperRightCorner()).multiplication(0.5);
+            var center = hb.getBottomRightCorner().sum(hb.getTopLeftCorner()).multiplication(0.5);
             return new Rectangle(center.sum(new Point2D(-radius, -radius / ratio)), center.sum(new Point2D(radius, radius / ratio)));
         };
         final var parser = new TMXMapParser("final-map.tmx");
@@ -109,8 +105,8 @@ public class GameViewProva extends Application{
         playerSprite.setFilepath();
         this.canvasDrawer.drawImage(playerSprite.getFilepath(),
                 this.calcProjectedRectangle(new Rectangle(
-                        fakePlayer.getObjectHitBox().getBottomLeftCorner(),
-                        fakePlayer.getObjectHitBox().getUpperRightCorner()
+                        fakePlayer.getObjectHitBox().getBottomRightCorner(),
+                        fakePlayer.getObjectHitBox().getTopLeftCorner()
                 ), proj));
     }
     

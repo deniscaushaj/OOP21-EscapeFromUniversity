@@ -65,7 +65,7 @@ public class GameViewImpl extends Application implements GameView {
         this.gameController = gameController;
         this.camera = ratio -> {
             var playerHitBox = player.getObjectHitBox();
-            var center = playerHitBox.getBottomLeftCorner().sum(playerHitBox.getUpperRightCorner()).multiplication(0.5);
+            var center = playerHitBox.getBottomRightCorner().sum(playerHitBox.getTopLeftCorner()).multiplication(0.5);
             return new Rectangle(center.sum(new Point2D(-RADIUS, -RADIUS / ratio)), center.sum(new Point2D(RADIUS, RADIUS / ratio)));
         };
         final var parser = new TMXMapParser("final-map.tmx");
@@ -99,8 +99,8 @@ public class GameViewImpl extends Application implements GameView {
             if (animation.getPosition().getTopLeft().getX() > proj.getTopLeft().getX() && animation.getPosition().getTopLeft().getY() > proj.getTopLeft().getY()
                     && animation.getPosition().getTopLeft().getX() < proj.getBottomRight().getX() && animation.getPosition().getTopLeft().getX() < proj.getBottomRight().getX()) {
                 this.canvasDrawer.drawImage(animation.getSprite().getFilepath(), this.calcProjectedRectangle(new Rectangle(
-                        animation.getBox().getBottomLeftCorner(),
-                        animation.getBox().getUpperRightCorner()
+                        animation.getBox().getBottomRightCorner(),
+                        animation.getBox().getTopLeftCorner()
                 ), proj));
             }
         });

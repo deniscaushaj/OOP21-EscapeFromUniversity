@@ -15,7 +15,7 @@ public class PlayerCameraImpl implements Camera {
     @Override
     public Rectangle calcMapProjection(double ratio) {
         var hb = this.player.getObjectHitBox();
-        var center = hb.getBottomLeftCorner().sum(hb.getUpperRightCorner()).multiplication(0.5);
+        var center = hb.getBottomRightCorner().sum(hb.getTopLeftCorner()).multiplication(0.5);
 
         return new Rectangle(
                 center.sum(new Point2D(-RADIUS, -RADIUS / ratio)),

@@ -6,13 +6,13 @@ public interface HitBox {
 	 * 
 	 * @return the upper right corner of the invisible hit box surrounding the game object
 	 */
-	Point2D getUpperRightCorner();
+	Point2D getTopLeftCorner();
 	
 	/**
 	 * 
 	 * @return the bottom left corner of the invisible hit box surrounding the game object 
 	 */
-	Point2D getBottomLeftCorner();
+	Point2D getBottomRightCorner();
 	
 	/**
 	 * 
