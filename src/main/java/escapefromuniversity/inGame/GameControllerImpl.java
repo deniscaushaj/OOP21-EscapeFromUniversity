@@ -9,8 +9,6 @@ import java.util.stream.Collectors;
 
 import escapefromuniversity.WriteFile;
 import escapefromuniversity.controller.map.LayersControllerImpl;
-import escapefromuniversity.input.KeyHandler;
-import escapefromuniversity.input.KeyHandlerImpl;
 import escapefromuniversity.launcher.LauncherView;
 import escapefromuniversity.menu.MenuController;
 import escapefromuniversity.menu.MenuControllerImpl;
@@ -35,7 +33,6 @@ public class GameControllerImpl implements GameController {
     private static final double MILLI_TO_SECOND = 0.001;
     private final GameModel gameModel;
     private final MapLoader gameView;
-    private final KeyHandler keyHandler;
     private final ShopController shopController;
     private final MenuController menuController = new MenuControllerImpl(this);
     private final LayersControllerImpl layersController;
@@ -54,9 +51,7 @@ public class GameControllerImpl implements GameController {
         this.checkSpriteAnimation();
         this.shopController = new ShopControllerImpl(this, this.gameModel);
         this.layersController = new LayersControllerImpl(this.gameModel.getMap().getMap(), this.gameModel.getPlayer());
-        this.keyHandler = new KeyHandlerImpl(this.gameModel, this, this.shopController, this.menuController);
         this.setGameState(GameState.PLAY);
-        this.keyHandler.setAllInactive();
     }
 
     /**
