@@ -28,7 +28,7 @@ public abstract class AbstractDynamicGameObject implements DynamicGameObject {
 	}
 	
 	public Point2D getObjectPosition() {
-		return new Point2D(position);
+		return new Point2D(this.position);
 	}
 
     @Override
