@@ -57,7 +57,6 @@ public class KeyHandlerImpl implements KeyHandler {
         this.keyList.add(new Command<>(KeyEvent.VK_DOWN, false, Optional.of(Direction.DOWN)));
         this.keyList.add(new Command<>(KeyEvent.VK_RIGHT, false, Optional.of(Direction.RIGHT)));
         this.keyList.add(new Command<>(KeyEvent.VK_SPACE, false, Optional.empty()));
-        this.keyList.add(new Command<>(KeyEvent.VK_ENTER, false, Optional.empty()));
         this.keyList.add(new Command<>(KeyEvent.VK_ESCAPE, false, Optional.empty()));
     }
 
