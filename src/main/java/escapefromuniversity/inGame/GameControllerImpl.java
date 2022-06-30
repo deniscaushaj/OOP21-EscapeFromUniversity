@@ -15,6 +15,7 @@ import escapefromuniversity.menu.MenuControllerImpl;
 import escapefromuniversity.model.GameModel;
 import escapefromuniversity.model.GameModelImpl;
 import escapefromuniversity.model.GameState;
+import escapefromuniversity.model.basics.HitBox;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.player.Player;
@@ -67,7 +68,7 @@ public class GameControllerImpl implements GameController {
             case GRADUATED:
             case SHOP_ROOM:
                 long deltaTime = currentTime - lastTime;
-                this.updateModel(deltaTime);
+                this.updateModel(200);
                 this.checkSpriteAnimation();
                 break;
             case QUIZ:
@@ -106,16 +107,6 @@ public class GameControllerImpl implements GameController {
                 .collect(Collectors.toList());
     }
 
-    /* Updates the view. */
-    private void updateView() {
-        //        this.checkSpriteAnimation();
-        //        this.gameObjID = this.getGameObjectID();
-        //        this.gameView.updateView();
-        //        if (layersController.isShop()) {
-        //            this.setGameState(GameState.SHOP_ROOM);
-        //        }
-    }
-
     /*  */
     private void checkSpriteAnimation() {
         final List<Integer> ids = this.getGameObjectID();
@@ -124,9 +115,9 @@ public class GameControllerImpl implements GameController {
                 this.gameView.removeSpriteAnimation(id);
             } else {
                 if (this.gameView.containThisID(id)) {
-                    this.gameView.updateSpriteAnimation(id, this.gameModel.getPositionOfID(id), this.gameModel.getStateID(id));
+                    this.gameView.updateSpriteAnimation(id, this.gameModel.getStateID(id));
                 } else {
-                    this.gameView.addSpriteAnimation(id, this.gameModel.getStateID(id), this.gameModel.getTypeID(id), this.gameModel.getHitBoxID(id), this.gameModel.getPositionOfID(id));
+                    this.gameView.addSpriteAnimation(id, this.gameModel.getStateID(id), this.gameModel.getTypeID(id));
                 }
             }
         }
@@ -216,6 +207,11 @@ public class GameControllerImpl implements GameController {
     @Override
     public ShopController getShopController() {
         return this.shopController;
+    }
+
+    @Override
+    public HitBox getHitBoxID(int id) {
+        return this.gameModel.getHitBoxID(id);
     }
 
 }

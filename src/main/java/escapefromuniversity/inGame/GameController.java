@@ -2,6 +2,7 @@ package escapefromuniversity.inGame;
 
 import escapefromuniversity.menu.MenuController;
 import escapefromuniversity.model.GameState;
+import escapefromuniversity.model.basics.HitBox;
 import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.player.Player;
 
@@ -62,4 +63,6 @@ public interface GameController {
     MenuController getMenuController();
 
     ShopController getShopController();
+    
+    HitBox getHitBoxID(int id);
 }
