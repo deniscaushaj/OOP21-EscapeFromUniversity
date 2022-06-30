@@ -37,7 +37,7 @@ public class MapLoader {
     private final Camera camera;
     private double radius = 10;
     private final LayersControllerImpl layersController;
-    private final Map<Integer, SpriteAnimation> spriteAnimations = new ConcurrentSkipListMap<>();
+    private final Map<Integer, Sprite> sprites = new ConcurrentSkipListMap<>();
 
 
     @FXML
@@ -88,39 +88,34 @@ public class MapLoader {
             this.tileDrawer.drawTileByID(t.getValue(), this.calcProjectedRectangle(
                     new Rectangle(t.getPosition(), t.getPosition().sum(new Point2D(1, 1))), proj));
         });
-        final Map<Integer, SpriteAnimation> tmpAnimations = new ConcurrentSkipListMap<>(spriteAnimations);
-        tmpAnimations.entrySet().forEach(e -> {
-            final SpriteAnimation animation = e.getValue();
-            if (animation.getPosition().getTopLeft().getX() > proj.getTopLeft().getX() && animation.getPosition().getTopLeft().getY() > proj.getTopLeft().getY()
-                    && animation.getPosition().getTopLeft().getX() < proj.getBottomRight().getX() && animation.getPosition().getTopLeft().getX() < proj.getBottomRight().getX()) {
-                this.canvasDrawer.drawImage(animation.getSprite().getFilepath(), this.calcProjectedRectangle(new Rectangle(
-                        animation.getBox().getBottomLeftCorner(),
-                        animation.getBox().getUpperRightCorner()
+        final Map<Integer, Sprite> tmpSprites = new ConcurrentSkipListMap<>(sprites);
+        tmpSprites.entrySet().forEach(e -> {
+            final Sprite sprite = e.getValue();
+                this.canvasDrawer.drawImage(sprite.getFilepath(), this.calcProjectedRectangle(new Rectangle(
+                        this.gameController.getHitBoxID(e.getKey()).getBottomLeftCorner(),
+                        this.gameController.getHitBoxID(e.getKey()).getUpperRightCorner()
                 ), proj));
-            }
+            
         });
     }
     
     public boolean containThisID(final int id) {
-        return this.spriteAnimations.containsKey(id);
+        return this.sprites.containsKey(id);
     }
     
-    public void addSpriteAnimation(final int id, final State state, final GameObjectType type, final HitBox box, final Point2D position) {
+    public void addSpriteAnimation(final int id, final State state, final GameObjectType type) {
         final Sprite sprite = new SpriteImpl(state, type);
         sprite.setFilepath();
-        final SpriteAnimation animation = new SpriteAnimation(sprite, box);
-        animation.setPosition(position);
-        this.spriteAnimations.put(id, animation);
+        this.sprites.put(id, sprite);
     }
     
-    public void updateSpriteAnimation(final int id, final Point2D position, final State state) {
-        this.spriteAnimations.get(id).setPosition(position);
-        this.spriteAnimations.get(id).getSprite().setState(state);
-        this.spriteAnimations.get(id).getSprite().setFilepath();
+    public void updateSpriteAnimation(final int id, final State state) {
+        this.sprites.get(id).setState(state);
+        this.sprites.get(id).setFilepath();
     }
     
     public void removeSpriteAnimation(final int id) {
-        this.spriteAnimations.remove(id);
+        this.sprites.remove(id);
     }
 
     @FXML
@@ -132,6 +127,7 @@ public class MapLoader {
                         || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
                     this.gameController.getPlayer().setDirection(new Vector2D(0, -1));
 //                this.gameController.getPlayer().setLastDirection(Direction.UP);
+                    this.gameController.gameLoop();
                 }
                 break;
             case A:
@@ -139,6 +135,7 @@ public class MapLoader {
                 if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
                         || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
                     this.gameController.getPlayer().setDirection(new Vector2D(-1, 0));
+                    this.gameController.gameLoop();
                 }
                 break;
             case S:
@@ -153,6 +150,7 @@ public class MapLoader {
                 if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
                         || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
                     this.gameController.getPlayer().setDirection(new Vector2D(1, 0));
+                    this.gameController.gameLoop();
                 }
                 break;
             case Q:
@@ -174,6 +172,7 @@ public class MapLoader {
             case SPACE:
                 if (this.gameController.getGameState().equals(GameState.FIGHT)) {
                     this.gameController.getPlayer().setShoot(true, this.gameController.getPlayer().getLastDirection());
+                    this.gameController.gameLoop();
                 }
                 break;
             case ESCAPE:
@@ -185,6 +184,7 @@ public class MapLoader {
                 } else if (this.gameController.getGameState().equals(GameState.SHOP_MENU)) {
                     this.gameController.getShopController().closeShop();
                 }
+                this.gameController.gameLoop();
                 break;
             default: {}
         }
