@@ -5,6 +5,7 @@ import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.basics.HitBox;
 import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.player.Player;
+import escapefromuniversity.view.map.MapLoader;
 
 import java.awt.event.KeyEvent;
 
@@ -65,4 +66,6 @@ public interface GameController {
     ShopController getShopController();
     
     HitBox getHitBoxID(int id);
+    
+    void setMapLoader(MapLoader mapLoader);
 }

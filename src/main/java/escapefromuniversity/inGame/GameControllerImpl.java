@@ -33,7 +33,7 @@ public class GameControllerImpl implements GameController {
     private static final long DELTA = 1000;
     private static final double MILLI_TO_SECOND = 0.001;
     private final GameModel gameModel;
-    private final MapLoader gameView;
+    private MapLoader gameView;
     private final ShopController shopController;
     private final MenuController menuController = new MenuControllerImpl(this);
     private final LayersControllerImpl layersController;
@@ -45,9 +45,8 @@ public class GameControllerImpl implements GameController {
     /**
      * Instantiates a new GameController and initializes the corresponding GameModel and GameView and KeyHandler making the game start.
      */
-    public GameControllerImpl(final MapLoader gameView) {
+    public GameControllerImpl() {
         this.gameModel = new GameModelImpl(this);
-        this.gameView = gameView;
         this.gameObjID = this.getGameObjectID();
         this.checkSpriteAnimation();
         this.shopController = new ShopControllerImpl(this, this.gameModel);
@@ -212,6 +211,12 @@ public class GameControllerImpl implements GameController {
     @Override
     public HitBox getHitBoxID(int id) {
         return this.gameModel.getHitBoxID(id);
+    }
+
+    @Override
+    public void setMapLoader(MapLoader mapLoader) {
+        this.gameView = mapLoader;
+        
     }
 
 }
