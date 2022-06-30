@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
  */
 public class ObstaclesFactory implements Obstacle {
 
-    private static final int TILE_DIMENSION = 1;
     private static final String MAP_NAME = "final-map.tmx";
     private final MapProperties map;
 
