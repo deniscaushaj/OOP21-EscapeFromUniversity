@@ -36,18 +36,7 @@ public class QuizController {
 	/**
 	 * Constructor.
 	 */
-	public QuizController(/*final Boss boss, Player player*/) {
-//		try {
-//			this.exam = new ExamImporter(boss.getBossExam()).importExam();
-//			if (this.exam.hasNextQuiz()) {
-//				currentQuiz = this.exam.getNextQuiz();
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-	}
-
-	public void setParameters(final Boss boss, final Player player) {
+	public QuizController(final Boss boss, Player player) {
 		try {
 			this.exam = new ExamImporter(boss.getBossExam()).importExam();
 			if (this.exam.hasNextQuiz()) {
@@ -57,6 +46,17 @@ public class QuizController {
 			e.printStackTrace();
 		}
 	}
+
+//	public void setParameters(final Boss boss, final Player player) {
+//		try {
+//			this.exam = new ExamImporter(boss.getBossExam()).importExam();
+//			if (this.exam.hasNextQuiz()) {
+//				currentQuiz = this.exam.getNextQuiz();
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 	
 	@FXML
 	void initialize() {

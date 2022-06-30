@@ -11,6 +11,8 @@ import escapefromuniversity.model.basics.Vector2D;
 import escapefromuniversity.model.gameObject.Direction;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
+import escapefromuniversity.model.gameObject.enemy.Boss;
+import escapefromuniversity.model.gameObject.enemy.BossFactoryImpl;
 import escapefromuniversity.model.map.*;
 import escapefromuniversity.view.map.canvas.CanvasDrawer;
 import escapefromuniversity.view.map.canvas.CanvasDrawerImpl;
@@ -161,6 +163,11 @@ public class MapLoader {
                         this.radius += 1;
                     }
                 }
+                break;
+            case O:
+                BossFactoryImpl fabbricaBoss = new BossFactoryImpl();
+                Boss bossProva = fabbricaBoss.createBoss1(new Point2D(0,0), new Vector2D(0,0),null);
+                this.gameController.startQuiz(bossProva);
                 break;
             case E:
                 if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
