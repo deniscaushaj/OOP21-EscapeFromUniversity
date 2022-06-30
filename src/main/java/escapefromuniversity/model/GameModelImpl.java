@@ -75,6 +75,7 @@ public class GameModelImpl implements GameModel {
     public void setQuiz(final Boss boss) {
         this.currentBoss = boss;
         this.gameController.setGameState(GameState.QUIZ);
+        this.gameController.gameLoop();
     }
 
     /**
