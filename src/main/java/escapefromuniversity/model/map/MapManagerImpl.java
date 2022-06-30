@@ -20,7 +20,7 @@ public class MapManagerImpl implements MapManager {
     private final GameModel gameModel;
     private final GameInit gameInit;
     private static final Point2D PLAYER_STARTING_POS = new Point2D(83, 147);
-    private static final double PLAYER_SPEED = 0.25;
+    private static final double PLAYER_SPEED = 0.90;
     private static final int PLAYER_SHOOT_DELAY = 500;
     private static final Point2D BOSS1_STARTING_POS = new Point2D(33, 37);
     private static final Point2D BOSS2_STARTING_POS = new Point2D(33, 67);
