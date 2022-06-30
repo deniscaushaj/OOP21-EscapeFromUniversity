@@ -2,7 +2,7 @@ package escapefromuniversity.model.basics;
 
 import escapefromuniversity.model.map.Rectangle;
 
-public class HitBoxImpl extends Rectangle implements HitBox{
+public class HitBoxImpl extends Rectangle implements HitBox {
 
 	//bottomLeft = topLeft
 	//upperRight = bottomRight
@@ -16,14 +16,12 @@ public class HitBoxImpl extends Rectangle implements HitBox{
 		this.topLeft = new Point2D(topLeft);
 		//cornerTest(topLeft, bottomLeft);
 	}
-
 	/*
 	public HitBoxImpl(final HitBox box){
 		cornerTest(box.getBottomLeftCorner(), box.getUpperRightCorner());
 		this.bottomLeft = new Point2D(box.getUpperRightCorner());
 		this.topLeft = new Point2D(box.getBottomLeftCorner());
-	}*/
-	/*
+	}
 	private void cornerTest(final Point2D topLeft, final Point2D bottomLeft) throws IllegalArgumentException{
 		switch(Double.compare(bottomLeft.getX(), topLeft.getX())) {
 		  case 0:
@@ -31,7 +29,6 @@ public class HitBoxImpl extends Rectangle implements HitBox{
 		  case -1:
 			throw new IllegalArgumentException("The HitBox is illegal, its right corner is on the left!");
 		}
-		
 		switch(Double.compare(bottomLeft.getY(), topLeft.getY())) {
 		  case 0:
 			throw new IllegalArgumentException("The HitBox is inconsistent, its height is 0!");
@@ -40,6 +37,7 @@ public class HitBoxImpl extends Rectangle implements HitBox{
 		}
 	}
 	*/
+
 	@Override
 	public Point2D getTopLeftCorner() {
 		return new Point2D(bottomRight);
