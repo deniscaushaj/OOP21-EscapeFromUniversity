@@ -111,19 +111,19 @@ public class GameModelImpl implements GameModel {
 
     @Override
     public State getStateID(final int id) {
-        DynamicGameObject a = this.mapManager.getGameInit().getAllDynamicGameObject().stream().filter(e -> e.getID() == id).findFirst().orElse(null);
+        DynamicGameObject a = this.mapManager.getGameInit().getAllDynamicGameObject().stream().filter(e -> e.getID() == id).findFirst().get();
         return a.getState();
     }
 
     @Override
     public GameObjectType getTypeID(final int id) {
-        DynamicGameObject a = this.mapManager.getGameInit().getAllDynamicGameObject().stream().filter(e -> e.getID() == id).findFirst().orElse(null);
+        DynamicGameObject a = this.mapManager.getGameInit().getAllDynamicGameObject().stream().filter(e -> e.getID() == id).findFirst().get();
         return a.getType();
     }
 
     @Override
     public HitBox getHitBoxID(final int id) {
-        DynamicGameObject a = this.mapManager.getGameInit().getAllDynamicGameObject().stream().filter(e -> e.getID() == id).findFirst().orElse(null);
+        DynamicGameObject a = this.mapManager.getGameInit().getAllDynamicGameObject().stream().filter(e -> e.getID() == id).findFirst().get();
         return a.getObjectHitBox();
     }
 
