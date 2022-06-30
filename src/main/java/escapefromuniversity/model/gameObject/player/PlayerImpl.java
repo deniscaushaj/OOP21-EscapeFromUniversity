@@ -61,6 +61,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
         this.bonusQuiz = false;
         this.lastShot = System.currentTimeMillis();
         this.bulletFactory = new BulletFactoryImpl();
+        this.prevPosition = position;
     }
 
     /**

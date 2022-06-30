@@ -53,7 +53,7 @@ public class ObstaclesFactory implements Obstacle {
     }
 
     private Rectangle calcTilePosInPixel(final int x, final int y) {
-        return new Rectangle(new Point2D(x * TILE_DIMENSION, y * TILE_DIMENSION),
-                new Point2D((x + 1) * TILE_DIMENSION, (y + 1) * TILE_DIMENSION));
+        return new Rectangle(new Point2D(x, y),
+                new Point2D(x + 1, y + 1));
     }
 }
