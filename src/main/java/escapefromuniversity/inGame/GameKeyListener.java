@@ -48,11 +48,4 @@ public class GameKeyListener implements KeyListener {
         }
     }
 
-    /**
-     * Sets the game state to the menu state.
-     */
-    public void openMenu() {
-        this.gameController.setGameState(GameState.MENU);
-    } // TODO move from here
-
 }

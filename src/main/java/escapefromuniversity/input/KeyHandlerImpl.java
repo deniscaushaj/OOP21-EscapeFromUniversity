@@ -57,7 +57,6 @@ public class KeyHandlerImpl implements KeyHandler {
         this.keyList.add(new Command<>(KeyEvent.VK_DOWN, false, Optional.of(Direction.DOWN)));
         this.keyList.add(new Command<>(KeyEvent.VK_RIGHT, false, Optional.of(Direction.RIGHT)));
         this.keyList.add(new Command<>(KeyEvent.VK_SPACE, false, Optional.empty()));
-        this.keyList.add(new Command<>(KeyEvent.VK_ENTER, false, Optional.empty()));
         this.keyList.add(new Command<>(KeyEvent.VK_ESCAPE, false, Optional.empty()));
     }
 
@@ -111,7 +110,7 @@ public class KeyHandlerImpl implements KeyHandler {
     /* Handles all the possible keyboard commands while playing. */
     private void playCommands(int keyCode) {
         if (keyCode == KeyEvent.VK_ESCAPE) {
-            this.gameKeyListener.openMenu();
+            this.gameController.setGameState(GameState.MENU);
         } else if (keyCode == KeyEvent.VK_A || keyCode == KeyEvent.VK_LEFT) {
             this.playerMovement.move(Direction.LEFT);
             this.player.setLastDirection(Direction.LEFT);

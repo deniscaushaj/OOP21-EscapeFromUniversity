@@ -67,12 +67,40 @@ public class GameControllerImpl implements GameController {
      */
     @Override
     public void gameLoop() {
-        int i = 0;
-        while (i < 6) {
-            this.gameModel.getPlayer().setPosition(this.gameModel.getPlayer().getObjectPosition().sum(new Point2D(1, 0)));
-            i++;
-            this.waitTime();
-            System.out.println(this.gameModel.getPlayer().getObjectPosition());
+        long lastTime = System.currentTimeMillis();
+        while (continueGame()) {
+            long currentTime = System.currentTimeMillis();
+            switch (this.getGameState()) {
+            case PLAY:
+            case FIGHT:
+            case GRADUATED:
+            case SHOP_ROOM:
+                long deltaTime = currentTime - lastTime;
+                executeInput();
+                this.updateModel(deltaTime);
+                this.updateView();
+                this.waitTime();
+                break;
+            case QUIZ:
+            	BossFactoryImpl fabbrica = new BossFactoryImpl();
+            	Boss bossUno = fabbrica.createBoss1(new Point2D(0, 0), new Vector2D(0, 0), null);
+                this.startQuiz(bossUno);
+                break;
+            case MENU:
+                executeInput();
+                this.menuController.startView();
+                break;
+            case SHOP_MENU:
+                executeInput();
+                this.shopController.startView();
+                break;
+            default:
+                break;
+            }
+            lastTime = currentTime;
+        }
+        if (this.getGameState() == GameState.WIN) {
+            this.saveScore(this.gameModel.getPlayerFinalMark());
         }
 //        long lastTime = System.currentTimeMillis();
 //        while (continueGame()) {
