@@ -42,7 +42,7 @@ public class LauncherController {
     	//menu.startView();
 //        GameViewImpl.startGame();
 
-        GameController gameController = new GameControllerImpl();
+        //GameController gameController = new GameControllerImpl();
         //gameController.gameLoop();
 //        LauncherView.launcherWindow.close();  //this.creditsButton.getScene().getWindow().hide();
 //        Platform.exit();
@@ -54,14 +54,14 @@ public class LauncherController {
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
-//		try {
-//			FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/Game.fxml"));
-//			Parent gameRoot = loader.load();
-//			Scene game = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
-//			LauncherView.launcherWindow.setScene(game);
-//		} catch (Exception e) {
-//			System.out.println(e);
-//		}
+		try {
+			FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/Game.fxml"));
+			Parent gameRoot = loader.load();
+			Scene game = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
+			LauncherView.launcherWindow.setScene(game);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 		
     }
 

@@ -73,11 +73,11 @@ public class GameViewImpl extends Application implements GameView {
         this.layersController =  new LayersControllerImpl(map, this.gameController.getPlayer());
         this.canvasDrawer = new CanvasDrawerImpl(gameCanvas);
         this.tileDrawer = new TileDrawerImpl(map, this.canvasDrawer);
-//        try {
-//            this.start(new Stage());
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        try {
+            this.start(new Stage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private Stream<Tile> getTilesToDraw(final Rectangle proj) throws ParserConfigurationException, IOException, SAXException {
@@ -125,16 +125,16 @@ public class GameViewImpl extends Application implements GameView {
      */
     public void updateView() {
         System.out.println(this.spriteAnimations);
-        try {
-            this.start(new Stage());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 //        try {
-//            this.drawLayers();
-//        } catch (ParserConfigurationException | IOException | SAXException e) {
+//            this.start(new Stage());
+//        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
+        try {
+            this.drawLayers();
+        } catch (ParserConfigurationException | IOException | SAXException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -197,9 +197,6 @@ public class GameViewImpl extends Application implements GameView {
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("escapeFromUniversity");
-        this.drawLayers();
-//        Group group = new Group(gameCanvas);
-//        Scene scene = new Scene(group, 600, 600);
         primaryStage.setScene(this.scene);
         primaryStage.show();
     }

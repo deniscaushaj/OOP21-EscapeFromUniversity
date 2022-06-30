@@ -67,40 +67,47 @@ public class GameControllerImpl implements GameController {
      */
     @Override
     public void gameLoop() {
-        long lastTime = System.currentTimeMillis();
-        while (continueGame()) {
-            long currentTime = System.currentTimeMillis();
-            switch (this.getGameState()) {
-            case PLAY:
-            case FIGHT:
-            case GRADUATED:
-            case SHOP_ROOM:
-                long deltaTime = currentTime - lastTime;
-                //executeInput();
-                this.updateModel(deltaTime);
-                this.updateView();
-                this.waitTime();
-                break;
-            case QUIZ:
-                this.startQuiz(this.gameModel.getCurrentBoss());
-                break;
-            case MENU:
-                executeInput();
-                this.menuController.startView();
-                break;
-            case SHOP_MENU:
-                executeInput();
-                this.shopController.startView();
-                break;
-            default:
-                break;
-            }
-            lastTime = currentTime;
+        int i = 0;
+        while (i < 6) {
+            this.gameModel.getPlayer().setPosition(this.gameModel.getPlayer().getObjectPosition().sum(new Point2D(1, 0)));
+            i++;
+            this.waitTime();
+            System.out.println(this.gameModel.getPlayer().getObjectPosition());
         }
-        if (this.getGameState() == GameState.WIN) {
-            this.saveScore(this.gameModel.getPlayerFinalMark());
-        }
-        this.gameView.end(this.getGameState());
+//        long lastTime = System.currentTimeMillis();
+//        while (continueGame()) {
+//            long currentTime = System.currentTimeMillis();
+//            switch (this.getGameState()) {
+//            case PLAY:
+//            case FIGHT:
+//            case GRADUATED:
+//            case SHOP_ROOM:
+//                long deltaTime = currentTime - lastTime;
+//                executeInput();
+//                this.updateModel(deltaTime);
+//                this.updateView();
+//                this.waitTime();
+//                break;
+//            case QUIZ:
+//                this.startQuiz(this.gameModel.getCurrentBoss());
+//                break;
+//            case MENU:
+//                executeInput();
+//                this.menuController.startView();
+//                break;
+//            case SHOP_MENU:
+//                executeInput();
+//                this.shopController.startView();
+//                break;
+//            default:
+//                break;
+//            }
+//            lastTime = currentTime;
+//        }
+//        if (this.getGameState() == GameState.WIN) {
+//            this.saveScore(this.gameModel.getPlayerFinalMark());
+//        }
+//        this.gameView.end(this.getGameState());
     }
 
     private void waitTime() {
@@ -130,12 +137,12 @@ public class GameControllerImpl implements GameController {
 
     /* Updates the view. */
     private void updateView() {
-        this.checkSpriteAnimation();
-        this.gameObjID = this.getGameObjectID();
-        this.gameView.updateView();
-        if (layersController.isShop()) {
-            this.setGameState(GameState.SHOP_ROOM);
-        }
+//        this.checkSpriteAnimation();
+//        this.gameObjID = this.getGameObjectID();
+//        this.gameView.updateView();
+//        if (layersController.isShop()) {
+//            this.setGameState(GameState.SHOP_ROOM);
+//        }
     }
 
     /*  */
