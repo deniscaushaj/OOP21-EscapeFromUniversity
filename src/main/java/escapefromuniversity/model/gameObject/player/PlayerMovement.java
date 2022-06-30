@@ -10,6 +10,26 @@ import java.awt.Image;
 public interface PlayerMovement {
 
     /**
+     * Sets player's direction to move it up.
+     */
+    void moveUp();
+
+    /**
+     * Sets player's direction to move it down.
+     */
+    void moveDown();
+
+    /**
+     * Sets player's direction to move it right.
+     */
+    void moveRight();
+
+    /**
+     * Sets player's direction to move it left.
+     */
+    void moveLeft();
+
+    /**
      * Stops the player's movement in vertical direction.
      */
     void stopVertical();
@@ -23,6 +43,6 @@ public interface PlayerMovement {
      * Calls the respective methods to move the player in each direction.
      * @param direction the direction that defines the movement method to call.
      */
-    void move(Direction direction);
+//    void move(Direction direction);
 
 }
