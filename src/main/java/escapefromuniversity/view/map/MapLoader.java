@@ -2,9 +2,12 @@ package escapefromuniversity.view.map;
 
 import escapefromuniversity.inGame.GameController;
 import escapefromuniversity.inGame.GameControllerImpl;
+import escapefromuniversity.inGame.Sprite;
+import escapefromuniversity.inGame.SpriteAnimation;
 import escapefromuniversity.inGame.SpriteImpl;
 import escapefromuniversity.controller.map.LayersControllerImpl;
 import escapefromuniversity.model.GameState;
+import escapefromuniversity.model.basics.HitBox;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.basics.Vector2D;
 import escapefromuniversity.model.gameObject.Direction;
@@ -25,6 +28,8 @@ import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.util.Map;
+import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.stream.Stream;
 
 public class MapLoader {
@@ -37,22 +42,23 @@ public class MapLoader {
     private final Player fakePlayer = new PlayerImpl(GameObjectType.PLAYER, new Point2D(30, 30), 1.66, new Vector2D(0,0), 0, null);
     private final PlayerMovement playerMovement = new PlayerMovementImpl(this.fakePlayer);
     private final LayersControllerImpl layersController;
-//    private final GameController gameController;
+    private final GameController gameController;
+    private final Map<Integer, SpriteAnimation> spriteAnimations = new ConcurrentSkipListMap<>();
 
 
     @FXML
     private Canvas gameCanvas;
 
     public MapLoader() {
+        this.gameController = new GameControllerImpl(this);
         this.camera = ratio -> {
-            var hb = fakePlayer.getObjectHitBox();
+            var hb = this.gameController.getPlayer().getObjectHitBox();
             var center = hb.getBottomLeftCorner().sum(hb.getUpperRightCorner()).multiplication(0.5);
             return new Rectangle(center.sum(new Point2D(-radius, -radius / ratio)), center.sum(new Point2D(radius, radius / ratio)));
         };
         final var parser = new TMXMapParser("final-map.tmx");
         this.map = parser.parse();
         this.layersController =  new LayersControllerImpl(map, fakePlayer);
-//        this.gameController = new GameControllerImpl(this);
     }
 
     @FXML
@@ -96,7 +102,43 @@ public class MapLoader {
                         fakePlayer.getObjectHitBox().getBottomLeftCorner(),
                         fakePlayer.getObjectHitBox().getUpperRightCorner()
                 ), proj));
+        
+        final Map<Integer, SpriteAnimation> tmpAnimations = new ConcurrentSkipListMap<>(spriteAnimations);
+        tmpAnimations.entrySet().forEach(e -> {
+            final SpriteAnimation animation = e.getValue();
+            if (animation.getPosition().getTopLeft().getX() > proj.getTopLeft().getX() && animation.getPosition().getTopLeft().getY() > proj.getTopLeft().getY()
+                    && animation.getPosition().getTopLeft().getX() < proj.getBottomRight().getX() && animation.getPosition().getTopLeft().getX() < proj.getBottomRight().getX()) {
+                this.canvasDrawer.drawImage(animation.getSprite().getFilepath(), this.calcProjectedRectangle(new Rectangle(
+                        animation.getBox().getBottomLeftCorner(),
+                        animation.getBox().getUpperRightCorner()
+                ), proj));
+            }
+        });
     }
+    
+    public boolean containThisID(final int id) {
+        return this.spriteAnimations.containsKey(id);
+    }
+    
+    public void addSpriteAnimation(final int id, final State state, final GameObjectType type, final HitBox box, final Point2D position) {
+        final Sprite sprite = new SpriteImpl(state, type);
+        sprite.setFilepath();
+        final SpriteAnimation animation = new SpriteAnimation(sprite, box);
+        animation.setPosition(position);
+        this.spriteAnimations.put(id, animation);
+    }
+    
+    public void updateSpriteAnimation(final int id, final Point2D position, final State state) {
+        this.spriteAnimations.get(id).setPosition(position);
+        this.spriteAnimations.get(id).getSprite().setState(state);
+        this.spriteAnimations.get(id).getSprite().setFilepath();
+    }
+    
+    public void removeSpriteAnimation(final int id) {
+        this.spriteAnimations.remove(id);
+    }
+    
+    
 
     @FXML
     public final void onKeyPressed(final KeyEvent keyEvent) throws ParserConfigurationException, IOException, SAXException {
@@ -131,10 +173,11 @@ public class MapLoader {
             }
         }
         if (keyEvent.getCode().equals(KeyCode.ESCAPE)) {
-//            this.gameController.setGameState(GameState.MENU);
+            this.gameController.setGameState(GameState.MENU);
+            this.gameController.gameLoop();
         }
         if (keyEvent.getCode().equals(KeyCode.SPACE)) {
-//            this.fakePlayer.setShoot(true, this.fakePlayer.getLastDirection());
+            //this.fakePlayer.setShoot(true, this.fakePlayer.getLastDirection());
         }
         this.drawLayers();
     }
