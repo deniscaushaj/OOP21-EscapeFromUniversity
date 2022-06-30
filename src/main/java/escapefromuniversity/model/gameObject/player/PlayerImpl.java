@@ -69,8 +69,8 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
     @Override
     public void collisionWith(GameObject gObj2) {
         if (this.collisionWithCheck(gObj2)) {
-            if (gObj2.getType().getCollisionType() == GameCollisionType.ENTITY
-                    || gObj2.getType().getCollisionType() == GameCollisionType.OBSTACLE) {
+            if (/*gObj2.getType().getCollisionType() == GameCollisionType.ENTITY
+                    || */gObj2.getType().getCollisionType() == GameCollisionType.OBSTACLE) {
                 this.setPosition(this.prevPosition);
             }
         }

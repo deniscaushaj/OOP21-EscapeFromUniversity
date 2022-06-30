@@ -145,13 +145,13 @@ public class GameControllerImpl implements GameController {
     @Override
     public void startQuiz(final Boss boss) {
         try {
-            FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/Quiz.fxml"));
+        	FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/Quiz.fxml"));
             Parent gameRoot;
+            final QuizController quizController = new QuizController(boss, this.gameModel.getPlayer());
+            loader.setController(quizController);
             gameRoot = loader.load();
             Scene quiz = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
             LauncherView.launcherWindow.setScene(quiz);
-            final QuizController quizController = new QuizController(boss, this.gameModel.getPlayer());
-            loader.setController(quizController);
         } catch (IOException e) {
             e.printStackTrace();
         }
