@@ -40,7 +40,7 @@ public class SpriteAnimation {
      * @param position
      */
     public void setPosition(final Point2D position) {
-        Point2D size = position.sum(new Point2D(this.box.getWidth(), this.box.getHeight()));
+        Point2D size = position.sum(new Point2D(50, 57));
         this.position = new Rectangle(position, size);
     }
 
