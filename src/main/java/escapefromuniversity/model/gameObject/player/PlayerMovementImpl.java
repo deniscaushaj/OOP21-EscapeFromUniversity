@@ -18,23 +18,35 @@ public class PlayerMovementImpl implements PlayerMovement {
         this.player = player;
     }
 
-    /* Sets player's direction to move it up. */
-    private void moveUp() {
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void moveUp() {
         this.player.setDirection(new Vector2D(this.player.getDirection().getX(), -1));
     }
 
-    /* Sets player's direction to move it down. */
-    private void moveDown() {
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void moveDown() {
         this.player.setDirection(new Vector2D(this.player.getDirection().getX(), 1));
     }
 
-    /* Sets player's direction to move it right. */
-    private void moveRight() {
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void moveRight() {
         this.player.setDirection(new Vector2D(1, this.player.getDirection().getY()));
     }
 
-    /* Sets player's direction to move it left. */
-    private void moveLeft() {
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void moveLeft() {
         this.player.setDirection(new Vector2D(-1, this.player.getDirection().getY()));
     }
 
@@ -54,27 +66,27 @@ public class PlayerMovementImpl implements PlayerMovement {
         this.player.setDirection(new Vector2D(0, this.player.getDirection().getY()));
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void move(final Direction direction) {
-        switch (direction) {
-            case UP:
-                this.moveUp();
-                break;
-            case DOWN:
-                this.moveDown();
-                break;
-            case RIGHT:
-                this.moveRight();
-                break;
-            case LEFT:
-                this.moveLeft();
-                break;
-            default: {
-            }
-        }
-    }
+//    /**
+//     * {@inheritDoc}
+//     */
+//    @Override
+//    public void move(final Direction direction) {
+//        switch (direction) {
+//            case UP:
+//                this.moveUp();
+//                break;
+//            case DOWN:
+//                this.moveDown();
+//                break;
+//            case RIGHT:
+//                this.moveRight();
+//                break;
+//            case LEFT:
+//                this.moveLeft();
+//                break;
+//            default: {
+//            }
+//        }
+//    }
 
 }
