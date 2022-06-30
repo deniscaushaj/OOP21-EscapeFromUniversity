@@ -6,25 +6,29 @@ import escapefromuniversity.model.basics.HitBox;
 import escapefromuniversity.model.basics.HitBoxImpl;
 import escapefromuniversity.model.basics.Point2D;
 
+import java.awt.*;
+
 public abstract class AbstractStaticGameObject implements StaticGameObject{
 	
 	private int id;
 	private final GameObjectType type;
-	private final Point2D position;
-	private final HitBoxImpl box;
+	private final Point2D bottomRightCorner;
+	private final Point2D topLeftCorner;
+	//private final HitBoxImpl box;
 	private GameInit map;
 	private Rectangle rectangle;
 	
-	public AbstractStaticGameObject(GameObjectType type, Point2D position, Point2D upperCorner, GameInit map) {
+	public AbstractStaticGameObject(GameObjectType type, Point2D topLeftCorner, Point2D bottomRightCorner, GameInit map) {
 		this.type = type;
-		this.position = position;
-		this.box = new HitBoxImpl(position, upperCorner);
+		this.topLeftCorner = topLeftCorner;
+		this.bottomRightCorner = bottomRightCorner;
+		this.rectangle = new HitBoxImpl(topLeftCorner, bottomRightCorner);
 		this.map = map;
 	}
 	
 	@Override
 	public Point2D getObjectPosition() {
-		return new Point2D(position);
+		return new Point2D(topLeftCorner);
 	}
 
 	@Override
@@ -53,9 +57,9 @@ public abstract class AbstractStaticGameObject implements StaticGameObject{
 	
 	@Override
 	public HitBox getObjectHitBox() {
-		return new HitBoxImpl(this.box);
+		return new HitBoxImpl(this.topLeftCorner, this.bottomRightCorner);
 	}
-	
+
 	@Override
 	public GameInit getMap() {
 		return this.map;
