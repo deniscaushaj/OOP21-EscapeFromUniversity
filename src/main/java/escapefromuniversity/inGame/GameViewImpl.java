@@ -13,7 +13,6 @@ import org.xml.sax.SAXException;
 import escapefromuniversity.controller.map.LayersControllerImpl;
 import escapefromuniversity.launcher.LauncherView;
 import escapefromuniversity.model.GameState;
-import escapefromuniversity.model.basics.GameCollisionType;
 import escapefromuniversity.model.basics.HitBox;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.gameObject.GameObjectType;
@@ -52,8 +51,6 @@ public class GameViewImpl extends Application implements GameView {
     private static final double RADIUS = 10;
     private final Map<Integer, SpriteAnimation> spriteAnimations = new ConcurrentSkipListMap<>();
     private final LayersControllerImpl layersController;
-    //private final Player fakePlayer = new PlayerImpl(GameObjectType.PLAYER, new Point2D(x, y), 0, null, 0, null);
-    
     private final Canvas gameCanvas = new Canvas(650, 650);
     private final Group group = new Group(gameCanvas);
     private final Scene scene = new Scene(group, 600, 600);
@@ -99,10 +96,13 @@ public class GameViewImpl extends Application implements GameView {
         final Map<Integer, SpriteAnimation> tmpAnimations = new ConcurrentSkipListMap<>(spriteAnimations);
         tmpAnimations.entrySet().forEach(e -> {
             final SpriteAnimation animation = e.getValue();
-            this.canvasDrawer.drawImage(animation.getSprite().getFilepath(), new Rectangle(
-                    animation.getBox().getBottomLeftCorner(),
-                    animation.getBox().getUpperRightCorner()
-            ), animation.getPosition());
+            if (animation.getPosition().getTopLeft().getX() > proj.getTopLeft().getX() && animation.getPosition().getTopLeft().getY() > proj.getTopLeft().getY()
+                    && animation.getPosition().getTopLeft().getX() < proj.getBottomRight().getX() && animation.getPosition().getTopLeft().getX() < proj.getBottomRight().getX()) {
+                this.canvasDrawer.drawImage(animation.getSprite().getFilepath(), this.calcProjectedRectangle(new Rectangle(
+                        animation.getBox().getBottomLeftCorner(),
+                        animation.getBox().getUpperRightCorner()
+                ), proj));
+            }
         });
     }
 
@@ -161,11 +161,6 @@ public class GameViewImpl extends Application implements GameView {
         sprite.setFilepath();
         final SpriteAnimation animation = new SpriteAnimation(sprite, box);
         animation.setPosition(position);
-        if (type.getCollisionType() == GameCollisionType.ENTITY && type != GameObjectType.PLAYER) {
-            animation.setVisible(false);
-        } else {
-            animation.setVisible(true);
-        }
         this.spriteAnimations.put(id, animation);
     }
 
