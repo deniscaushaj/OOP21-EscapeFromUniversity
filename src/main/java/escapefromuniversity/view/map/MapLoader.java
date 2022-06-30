@@ -8,6 +8,7 @@ import escapefromuniversity.controller.map.LayersControllerImpl;
 import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.basics.Vector2D;
+import escapefromuniversity.model.gameObject.Direction;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
 import escapefromuniversity.model.map.*;
@@ -122,7 +123,7 @@ public class MapLoader {
                 if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
                         || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
                     this.gameController.getPlayer().setDirection(new Vector2D(0, -1));
-//                this.gameController.getPlayer().setLastDirection(Direction.UP);
+                    this.gameController.getPlayer().setLastDirection(Direction.UP);
                     this.gameController.gameLoop();
                 }
                 break;
@@ -131,6 +132,7 @@ public class MapLoader {
                 if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
                         || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
                     this.gameController.getPlayer().setDirection(new Vector2D(-1, 0));
+                    this.gameController.getPlayer().setLastDirection(Direction.LEFT);
                     this.gameController.gameLoop();
                 }
                 break;
@@ -139,6 +141,8 @@ public class MapLoader {
                 if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
                         || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
                     this.gameController.getPlayer().setDirection(new Vector2D(0, 1));
+                    this.gameController.getPlayer().setLastDirection(Direction.DOWN);
+                    this.gameController.gameLoop();
                 }
                 break;
             case D:
@@ -146,23 +150,26 @@ public class MapLoader {
                 if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
                         || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
                     this.gameController.getPlayer().setDirection(new Vector2D(1, 0));
+                    this.gameController.getPlayer().setLastDirection(Direction.RIGHT);
                     this.gameController.gameLoop();
                 }
                 break;
             case Q:
                 if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
                         || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
-                    if (this.radius <= 15) {
+                    if (this.radius <= 13) {
                         this.radius += 1;
                     }
+                    this.gameController.gameLoop();
                 }
                 break;
             case E:
                 if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
                         || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
-                    if (this.radius >= 5) {
+                    if (this.radius >= 7) {
                         this.radius -= 1;
                     }
+                    this.gameController.gameLoop();
                 }
                 break;
             case SPACE:
