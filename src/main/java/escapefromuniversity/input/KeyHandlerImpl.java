@@ -111,7 +111,7 @@ public class KeyHandlerImpl implements KeyHandler {
     /* Handles all the possible keyboard commands while playing. */
     private void playCommands(int keyCode) {
         if (keyCode == KeyEvent.VK_ESCAPE) {
-            this.gameKeyListener.openMenu();
+            this.gameController.setGameState(GameState.MENU);
         } else if (keyCode == KeyEvent.VK_A || keyCode == KeyEvent.VK_LEFT) {
             this.playerMovement.move(Direction.LEFT);
             this.player.setLastDirection(Direction.LEFT);

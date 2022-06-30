@@ -81,7 +81,7 @@ public class GameControllerImpl implements GameController {
             case GRADUATED:
             case SHOP_ROOM:
                 long deltaTime = currentTime - lastTime;
-                //executeInput();
+                executeInput();
                 this.updateModel(deltaTime);
                 this.updateView();
                 this.waitTime();
