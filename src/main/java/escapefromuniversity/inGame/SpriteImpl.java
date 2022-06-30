@@ -18,8 +18,8 @@ public class SpriteImpl implements Sprite {
     private String filename;
     private int tileCount;
     private int lastUpdate;
-    private final Rectangle characterRectangle = new Rectangle(new Point2D(0, 0), new Point2D(1, 1.4));
-    private final Rectangle bulletRectangle = new Rectangle(new Point2D(0, 0), new Point2D(0.3, 0.3));
+    private final Rectangle characterRectangle = new Rectangle(new Point2D(0, 0), new Point2D(50, 70));
+    private final Rectangle bulletRectangle = new Rectangle(new Point2D(0, 0), new Point2D(15, 15));
 
     /**
      * Instantiates the sprite.

@@ -37,15 +37,14 @@ public class MapLoader {
     private final Player fakePlayer = new PlayerImpl(GameObjectType.PLAYER, new Point2D(x, y), 1.66, null, 0, null);
     private final PlayerMovement playerMovement = new PlayerMovementImpl(this.fakePlayer);
     private final LayersControllerImpl layersController;
-    private final GameController gameController;
+
 
     @FXML
     private Canvas gameCanvas;
 
-    public MapLoader(final GameController gameController, final Player player) {
-        this.gameController = gameController;
+    public MapLoader() {
         this.camera = ratio -> {
-            var hb = player.getObjectHitBox();
+            var hb = fakePlayer.getObjectHitBox();
             var center = hb.getBottomLeftCorner().sum(hb.getUpperRightCorner()).multiplication(0.5);
             return new Rectangle(center.sum(new Point2D(-radius, -radius / ratio)), center.sum(new Point2D(radius, radius / ratio)));
         };

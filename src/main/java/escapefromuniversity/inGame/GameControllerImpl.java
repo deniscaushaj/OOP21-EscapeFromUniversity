@@ -1,9 +1,7 @@
 package escapefromuniversity.inGame;
 
 import java.awt.event.KeyEvent;
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
@@ -20,7 +18,6 @@ import escapefromuniversity.menu.MenuControllerImpl;
 import escapefromuniversity.model.GameModel;
 import escapefromuniversity.model.GameModelImpl;
 import escapefromuniversity.model.GameState;
-import escapefromuniversity.model.basics.HitBox;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.basics.Vector2D;
 import escapefromuniversity.model.gameObject.GameObject;
@@ -29,8 +26,6 @@ import escapefromuniversity.model.gameObject.enemy.BossFactoryImpl;
 import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.quiz.QuizController;
 import escapefromuniversity.utilities.LauncherResizer;
-import escapefromuniversity.utilities.OSFixes;
-import escapefromuniversity.view.map.MapLoader;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -51,21 +46,21 @@ public class GameControllerImpl implements GameController {
     private GameState prevGameState;
     private List<Integer> gameObjID = new LinkedList<>();
 
-	/**
-	 * Instantiates a new GameController and initializes the corresponding GameModel and GameView and KeyHandler making the game start.
-	 */
-	public GameControllerImpl() {
-		this.gameModel = new GameModelImpl(this);
-		this.gameView = new GameViewImpl(this, this.gameModel.getPlayer());
-		this.gameObjID = this.getGameObjectID();
-		this.checkSpriteAnimation();
-		this.gameView.updateView();
+    /**
+     * Instantiates a new GameController and initializes the corresponding GameModel and GameView and KeyHandler making the game start.
+     */
+    public GameControllerImpl() {
+        this.gameModel = new GameModelImpl(this);
+        this.gameView = new GameViewImpl(this, this.gameModel.getPlayer());
+        this.gameObjID = this.getGameObjectID();
+        this.checkSpriteAnimation();
+        this.gameView.updateView();
         this.shopController = new ShopControllerImpl(this, this.gameModel);
         this.layersController = new LayersControllerImpl(this.gameModel.getMap().getMap(), this.gameModel.getPlayer());
-		this.keyHandler = new KeyHandlerImpl(this.gameModel, this, this.shopController, this.menuController);
-		this.setGameState(GameState.PLAY);
+        this.keyHandler = new KeyHandlerImpl(this.gameModel, this, this.shopController, this.menuController);
+        this.setGameState(GameState.PLAY);
         this.keyHandler.setAllInactive();
-	}
+    }
 
     /**
      * {@inheritDoc}
@@ -107,7 +102,40 @@ public class GameControllerImpl implements GameController {
         if (this.getGameState() == GameState.WIN) {
             this.saveScore(this.gameModel.getPlayerFinalMark());
         }
-        this.gameView.end(this.getGameState());
+//        long lastTime = System.currentTimeMillis();
+//        while (continueGame()) {
+//            long currentTime = System.currentTimeMillis();
+//            switch (this.getGameState()) {
+//            case PLAY:
+//            case FIGHT:
+//            case GRADUATED:
+//            case SHOP_ROOM:
+//                long deltaTime = currentTime - lastTime;
+//                executeInput();
+//                this.updateModel(deltaTime);
+//                this.updateView();
+//                this.waitTime();
+//                break;
+//            case QUIZ:
+//                this.startQuiz(this.gameModel.getCurrentBoss());
+//                break;
+//            case MENU:
+//                executeInput();
+//                this.menuController.startView();
+//                break;
+//            case SHOP_MENU:
+//                executeInput();
+//                this.shopController.startView();
+//                break;
+//            default:
+//                break;
+//            }
+//            lastTime = currentTime;
+//        }
+//        if (this.getGameState() == GameState.WIN) {
+//            this.saveScore(this.gameModel.getPlayerFinalMark());
+//        }
+//        this.gameView.end(this.getGameState());
     }
 
     private void waitTime() {
@@ -137,12 +165,12 @@ public class GameControllerImpl implements GameController {
 
     /* Updates the view. */
     private void updateView() {
-        this.checkSpriteAnimation();
-        this.gameObjID = this.getGameObjectID();
-        //this.gameView.updateView();
-        if (layersController.isShop()) {
-            this.setGameState(GameState.SHOP_ROOM);
-        }
+//        this.checkSpriteAnimation();
+//        this.gameObjID = this.getGameObjectID();
+//        this.gameView.updateView();
+//        if (layersController.isShop()) {
+//            this.setGameState(GameState.SHOP_ROOM);
+//        }
     }
 
     /*  */
@@ -182,17 +210,17 @@ public class GameControllerImpl implements GameController {
      */
     @Override
     public void startQuiz(final Boss boss) {
-    	try {
-			FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/Quiz.fxml"));
-			Parent gameRoot;
-			gameRoot = loader.load();
-			Scene quiz = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
-			LauncherView.launcherWindow.setScene(quiz);
-			final QuizController quizController = new QuizController(boss, this.gameModel.getPlayer());
+        try {
+            FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/Quiz.fxml"));
+            Parent gameRoot;
+            gameRoot = loader.load();
+            Scene quiz = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
+            LauncherView.launcherWindow.setScene(quiz);
+            final QuizController quizController = new QuizController(boss, this.gameModel.getPlayer());
             loader.setController(quizController);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
