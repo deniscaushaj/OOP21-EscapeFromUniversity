@@ -91,7 +91,7 @@
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="67.0" prefWidth="600.0">
+            <HBox fx:id="answerBox1" alignment="CENTER" prefHeight="67.0" prefWidth="600.0">
                <children>
                   <Button id="answer1" fx:id="uno" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#answer" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" stylesheets="@../Style.css" text="Risposta 1" textAlignment="CENTER">
                      <font>
@@ -113,7 +113,7 @@
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="600.0">
+            <HBox fx:id="answerBox2" alignment="CENTER" prefHeight="65.0" prefWidth="600.0">
                <children>
                   <Button id="answer3" fx:id="tre" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#answer" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="Risposta 3" textAlignment="CENTER">
                      <font>
@@ -134,6 +134,25 @@
                      <font>
                         <Font size="20.0" />
                      </font>
+                     <styleClass>
+                        <String fx:value="launcherItem" />
+                        <String fx:value="bt" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox fx:id="backGameBox" alignment="CENTER" layoutX="10.0" layoutY="200.0" prefHeight="65.0" prefWidth="600.0" visible="false">
+               <children>
+                  <Button id="answer3" fx:id="backToGame" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#backToGame" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="&lt;&lt; Torna al gioco" textAlignment="CENTER">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
                      <styleClass>
                         <String fx:value="launcherItem" />
                         <String fx:value="bt" />

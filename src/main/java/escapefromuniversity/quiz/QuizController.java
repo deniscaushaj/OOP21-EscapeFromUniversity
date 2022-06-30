@@ -1,19 +1,27 @@
 package escapefromuniversity.quiz;
 
 import javafx.fxml.FXML;
-
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+
+import java.io.IOException;
+
 import escapefromuniversity.inGame.GameController;
+import escapefromuniversity.launcher.LauncherView;
 import escapefromuniversity.model.quiz.Exam;
 import escapefromuniversity.model.quiz.ExamImporter;
 import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.enemy.Boss.BossState;
 import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.model.quiz.Quiz;
+import escapefromuniversity.utilities.LauncherResizer;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
 /**
@@ -27,6 +35,8 @@ public class QuizController {
 	private ProgressBar progressBar;
 	@FXML
 	private Button questionButton, nextButton, uno, due, tre, quattro;
+	@FXML
+	private HBox answerBox1, answerBox2, backGameBox;
 	
 	private Exam exam;
 	private Quiz currentQuiz;
@@ -86,8 +96,11 @@ public class QuizController {
 			this.initialize();
 		} else {
 			nextButton.setDisable(true);
-			this.boss.setQuizResult(this.exam.getGrade());
-			this.boss.setQuizCredit(this.exam.getCredits());
+			answerBox1.setVisible(false);
+			answerBox2.setVisible(false);
+			backGameBox.setVisible(true);
+			//this.boss.setQuizResult(this.exam.getGrade());
+			//this.boss.setQuizCredit(this.exam.getCredits());
 			if (this.exam.hasPassed()) {
 				questionButton.setText("Complimenti, sei stato PROMOSSO!");
 				questionButton.setTextFill(Color.DARKGREEN);
@@ -99,6 +112,7 @@ public class QuizController {
 				questionButton.setStyle("-fx-background-image:url('questionWrong.png');");
 				this.boss.setBossState(BossState.FIGHT);
 			}
+			
 		}
 	}
 	
@@ -123,6 +137,14 @@ public class QuizController {
     	} catch (Exception e) {
     		System.out.println(e);
     	}
+	}
+	
+	@FXML
+	public void backToGame(final ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/Game.fxml"));
+		Parent gameRoot = loader.load();
+		Scene game = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
+		LauncherView.launcherWindow.setScene(game);
 	}
 	
 	private void answerUpdate(final int choice) {
