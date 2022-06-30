@@ -1,10 +1,12 @@
 package escapefromuniversity.view.map;
 
 import escapefromuniversity.inGame.GameController;
+import escapefromuniversity.inGame.GameControllerImpl;
 import escapefromuniversity.inGame.SpriteImpl;
 import escapefromuniversity.controller.map.LayersControllerImpl;
 import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.basics.Point2D;
+import escapefromuniversity.model.basics.Vector2D;
 import escapefromuniversity.model.gameObject.Direction;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
@@ -31,12 +33,11 @@ public class MapLoader {
     private CanvasDrawer canvasDrawer;
     private TileDrawer tileDrawer;
     private final Camera camera;
-    private double x = 30;
-    private double y = 30;
     private double radius = 10;
-    private final Player fakePlayer = new PlayerImpl(GameObjectType.PLAYER, new Point2D(x, y), 1.66, null, 0, null);
+    private final Player fakePlayer = new PlayerImpl(GameObjectType.PLAYER, new Point2D(30, 30), 1.66, new Vector2D(0,0), 0, null);
     private final PlayerMovement playerMovement = new PlayerMovementImpl(this.fakePlayer);
     private final LayersControllerImpl layersController;
+//    private final GameController gameController;
 
 
     @FXML
@@ -51,6 +52,7 @@ public class MapLoader {
         final var parser = new TMXMapParser("final-map.tmx");
         this.map = parser.parse();
         this.layersController =  new LayersControllerImpl(map, fakePlayer);
+//        this.gameController = new GameControllerImpl(this);
     }
 
     @FXML
@@ -99,21 +101,24 @@ public class MapLoader {
     @FXML
     public final void onKeyPressed(final KeyEvent keyEvent) throws ParserConfigurationException, IOException, SAXException {
         if (keyEvent.getCode().equals(KeyCode.W)) {
-            this.playerMovement.move(Direction.UP);
-
-//            this.y -= 1.66;
+            this.fakePlayer.setDirection(new Vector2D(0, -1));
+            this.fakePlayer.setLastDirection(Direction.UP);
+            this.fakePlayer.update(0.25);
         }
         if (keyEvent.getCode().equals(KeyCode.A)) {
-            this.playerMovement.move(Direction.RIGHT);
-//            this.x -= 1.66;
+            this.fakePlayer.setDirection(new Vector2D(-1, 0));
+            this.fakePlayer.setLastDirection(Direction.LEFT);
+            this.fakePlayer.update(0.25);
         }
         if (keyEvent.getCode().equals(KeyCode.S)) {
-            this.playerMovement.move(Direction.DOWN);
-//            this.y += 1.66;
+            this.fakePlayer.setDirection(new Vector2D(0, 1));
+            this.fakePlayer.setLastDirection(Direction.DOWN);
+            this.fakePlayer.update(0.25);
         }
         if (keyEvent.getCode().equals(KeyCode.D)) {
-            this.playerMovement.move(Direction.DOWN);
-//            this.x += 1.66;
+            this.fakePlayer.setDirection(new Vector2D(1, 0));
+            this.fakePlayer.setLastDirection(Direction.RIGHT);
+            this.fakePlayer.update(0.25);
         }
         if (keyEvent.getCode().equals(KeyCode.Q)) {
             if (this.radius <= 15) {
@@ -126,12 +131,11 @@ public class MapLoader {
             }
         }
         if (keyEvent.getCode().equals(KeyCode.ESCAPE)) {
-            this.gameController.setGameState(GameState.MENU);
+//            this.gameController.setGameState(GameState.MENU);
         }
         if (keyEvent.getCode().equals(KeyCode.SPACE)) {
-            this.fakePlayer.setShoot(true, this.fakePlayer.getLastDirection());
+//            this.fakePlayer.setShoot(true, this.fakePlayer.getLastDirection());
         }
-        this.fakePlayer.setPosition(new Point2D(this.x, this.y));
         this.drawLayers();
     }
 }
