@@ -26,6 +26,7 @@ import escapefromuniversity.model.gameObject.enemy.BossFactoryImpl;
 import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.quiz.QuizController;
 import escapefromuniversity.utilities.LauncherResizer;
+import escapefromuniversity.view.map.MapLoader;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -37,7 +38,7 @@ public class GameControllerImpl implements GameController {
     private static final long DELTA = 1000;
     private static final double MILLI_TO_SECOND = 0.001;
     private final GameModel gameModel;
-    private final GameView gameView;
+    private final MapLoader gameView;
     private final KeyHandler keyHandler;
     private final ShopController shopController;
     private final MenuController menuController = new MenuControllerImpl(this);
@@ -45,16 +46,16 @@ public class GameControllerImpl implements GameController {
     private GameState gameState;
     private GameState prevGameState;
     private List<Integer> gameObjID = new LinkedList<>();
+    private long lastTime = System.currentTimeMillis();
 
     /**
      * Instantiates a new GameController and initializes the corresponding GameModel and GameView and KeyHandler making the game start.
      */
-    public GameControllerImpl() {
+    public GameControllerImpl(final MapLoader gameView) {
         this.gameModel = new GameModelImpl(this);
-        this.gameView = new GameViewImpl(this, this.gameModel.getPlayer());
+        this.gameView = gameView;
         this.gameObjID = this.getGameObjectID();
         this.checkSpriteAnimation();
-        this.gameView.updateView();
         this.shopController = new ShopControllerImpl(this, this.gameModel);
         this.layersController = new LayersControllerImpl(this.gameModel.getMap().getMap(), this.gameModel.getPlayer());
         this.keyHandler = new KeyHandlerImpl(this.gameModel, this, this.shopController, this.menuController);
@@ -67,8 +68,7 @@ public class GameControllerImpl implements GameController {
      */
     @Override
     public void gameLoop() {
-        long lastTime = System.currentTimeMillis();
-        while (continueGame()) {
+        if (this.continueGame()) {
             long currentTime = System.currentTimeMillis();
             switch (this.getGameState()) {
             case PLAY:
@@ -76,22 +76,16 @@ public class GameControllerImpl implements GameController {
             case GRADUATED:
             case SHOP_ROOM:
                 long deltaTime = currentTime - lastTime;
-                executeInput();
                 this.updateModel(deltaTime);
-                this.updateView();
-                this.waitTime();
+                this.checkSpriteAnimation();
                 break;
             case QUIZ:
-            	BossFactoryImpl fabbrica = new BossFactoryImpl();
-            	Boss bossUno = fabbrica.createBoss1(new Point2D(0, 0), new Vector2D(0, 0), null);
-                this.startQuiz(bossUno);
+                this.startQuiz(this.gameModel.getCurrentBoss());
                 break;
             case MENU:
-                executeInput();
                 this.menuController.startView();
                 break;
             case SHOP_MENU:
-                executeInput();
                 this.shopController.startView();
                 break;
             default:
@@ -101,48 +95,6 @@ public class GameControllerImpl implements GameController {
         }
         if (this.getGameState() == GameState.WIN) {
             this.saveScore(this.gameModel.getPlayerFinalMark());
-        }
-//        long lastTime = System.currentTimeMillis();
-//        while (continueGame()) {
-//            long currentTime = System.currentTimeMillis();
-//            switch (this.getGameState()) {
-//            case PLAY:
-//            case FIGHT:
-//            case GRADUATED:
-//            case SHOP_ROOM:
-//                long deltaTime = currentTime - lastTime;
-//                executeInput();
-//                this.updateModel(deltaTime);
-//                this.updateView();
-//                this.waitTime();
-//                break;
-//            case QUIZ:
-//                this.startQuiz(this.gameModel.getCurrentBoss());
-//                break;
-//            case MENU:
-//                executeInput();
-//                this.menuController.startView();
-//                break;
-//            case SHOP_MENU:
-//                executeInput();
-//                this.shopController.startView();
-//                break;
-//            default:
-//                break;
-//            }
-//            lastTime = currentTime;
-//        }
-//        if (this.getGameState() == GameState.WIN) {
-//            this.saveScore(this.gameModel.getPlayerFinalMark());
-//        }
-//        this.gameView.end(this.getGameState());
-    }
-
-    private void waitTime() {
-        try {
-            Thread.sleep(DELTA);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
     }
 
@@ -165,12 +117,12 @@ public class GameControllerImpl implements GameController {
 
     /* Updates the view. */
     private void updateView() {
-//        this.checkSpriteAnimation();
-//        this.gameObjID = this.getGameObjectID();
-//        this.gameView.updateView();
-//        if (layersController.isShop()) {
-//            this.setGameState(GameState.SHOP_ROOM);
-//        }
+        //        this.checkSpriteAnimation();
+        //        this.gameObjID = this.getGameObjectID();
+        //        this.gameView.updateView();
+        //        if (layersController.isShop()) {
+        //            this.setGameState(GameState.SHOP_ROOM);
+        //        }
     }
 
     /*  */
@@ -246,27 +198,6 @@ public class GameControllerImpl implements GameController {
     @Override
     public GameState getPrevGameState() {
         return prevGameState;
-    }
-
-    /* Calls the key handler to execute a command. */
-    private void executeInput() {
-        this.keyHandler.executeCommand();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void pressKey(final KeyEvent key) {
-        this.keyHandler.setKey(key.getKeyCode(), true);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void releaseKey(final KeyEvent key) {
-        this.keyHandler.setKey(key.getKeyCode(), false);
     }
 
     /* Saves the final mark and its date and time in the leaderboard text file. */

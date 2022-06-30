@@ -54,17 +54,6 @@ public interface GameController {
      */
     GameState getPrevGameState();
 
-    /**
-     * Makes the key handler manage the key pressed.
-     * @param key the keyboard button pressed.
-     */
-    void pressKey(KeyEvent key);
-
-    /**
-     * Makes the key handler manage the key released.
-     * @param key the keyboard button released.
-     */
-    void releaseKey(KeyEvent key);
     
     Player getPlayer();
 
