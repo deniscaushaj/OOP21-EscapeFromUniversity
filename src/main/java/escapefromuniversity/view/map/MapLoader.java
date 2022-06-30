@@ -40,7 +40,6 @@ public class MapLoader {
     private final Camera camera;
     private double radius = 10;
     private final Player fakePlayer = new PlayerImpl(GameObjectType.PLAYER, new Point2D(30, 30), 1.66, new Vector2D(0,0), 0, null);
-    private final PlayerMovement playerMovement = new PlayerMovementImpl(this.fakePlayer);
     private final LayersControllerImpl layersController;
     private final GameController gameController;
     private final Map<Integer, SpriteAnimation> spriteAnimations = new ConcurrentSkipListMap<>();
@@ -58,7 +57,7 @@ public class MapLoader {
         };
         final var parser = new TMXMapParser("final-map.tmx");
         this.map = parser.parse();
-        this.layersController =  new LayersControllerImpl(map, fakePlayer);
+        this.layersController =  new LayersControllerImpl(map, this.gameController.getPlayer());
     }
 
     @FXML
@@ -94,15 +93,6 @@ public class MapLoader {
             this.tileDrawer.drawTileByID(t.getValue(), this.calcProjectedRectangle(
                     new Rectangle(t.getPosition(), t.getPosition().sum(new Point2D(1, 1))), proj));
         });
-
-        var playerSprite = new SpriteImpl(State.LEFT, fakePlayer.getType());
-        playerSprite.setFilepath();
-        this.canvasDrawer.drawImage(playerSprite.getFilepath(),
-                this.calcProjectedRectangle(new Rectangle(
-                        fakePlayer.getObjectHitBox().getBottomLeftCorner(),
-                        fakePlayer.getObjectHitBox().getUpperRightCorner()
-                ), proj));
-        
         final Map<Integer, SpriteAnimation> tmpAnimations = new ConcurrentSkipListMap<>(spriteAnimations);
         tmpAnimations.entrySet().forEach(e -> {
             final SpriteAnimation animation = e.getValue();
@@ -143,24 +133,32 @@ public class MapLoader {
     @FXML
     public final void onKeyPressed(final KeyEvent keyEvent) throws ParserConfigurationException, IOException, SAXException {
         if (keyEvent.getCode().equals(KeyCode.W)) {
-            this.fakePlayer.setDirection(new Vector2D(0, -1));
-            this.fakePlayer.setLastDirection(Direction.UP);
-            this.fakePlayer.update(0.25);
+//            this.fakePlayer.setDirection(new Vector2D(0, -1));
+//            this.fakePlayer.setLastDirection(Direction.UP);
+//            this.fakePlayer.update(0.25);
+            this.gameController.getPlayer().setDirection(new Vector2D(0, -1));
+            this.gameController.gameLoop();
         }
         if (keyEvent.getCode().equals(KeyCode.A)) {
-            this.fakePlayer.setDirection(new Vector2D(-1, 0));
-            this.fakePlayer.setLastDirection(Direction.LEFT);
-            this.fakePlayer.update(0.25);
+//            this.fakePlayer.setDirection(new Vector2D(-1, 0));
+//            this.fakePlayer.setLastDirection(Direction.LEFT);
+//            this.fakePlayer.update(0.25);
+            this.gameController.getPlayer().setDirection(new Vector2D(-1, 0));
+            this.gameController.gameLoop();
         }
         if (keyEvent.getCode().equals(KeyCode.S)) {
-            this.fakePlayer.setDirection(new Vector2D(0, 1));
-            this.fakePlayer.setLastDirection(Direction.DOWN);
-            this.fakePlayer.update(0.25);
+//            this.fakePlayer.setDirection(new Vector2D(0, 1));
+//            this.fakePlayer.setLastDirection(Direction.DOWN);
+//            this.fakePlayer.update(0.25);
+            this.gameController.getPlayer().setDirection(new Vector2D(0, 1));
+            this.gameController.gameLoop();
         }
         if (keyEvent.getCode().equals(KeyCode.D)) {
-            this.fakePlayer.setDirection(new Vector2D(1, 0));
-            this.fakePlayer.setLastDirection(Direction.RIGHT);
-            this.fakePlayer.update(0.25);
+//            this.fakePlayer.setDirection(new Vector2D(1, 0));
+//            this.fakePlayer.setLastDirection(Direction.RIGHT);
+//            this.fakePlayer.update(0.25);
+            this.gameController.getPlayer().setDirection(new Vector2D(1, 0));
+            this.gameController.gameLoop();
         }
         if (keyEvent.getCode().equals(KeyCode.Q)) {
             if (this.radius <= 15) {
