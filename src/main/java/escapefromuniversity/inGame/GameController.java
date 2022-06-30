@@ -1,5 +1,6 @@
 package escapefromuniversity.inGame;
 
+import escapefromuniversity.menu.MenuController;
 import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.player.Player;
@@ -58,4 +59,7 @@ public interface GameController {
     Player getPlayer();
 
 
+    MenuController getMenuController();
+
+    ShopController getShopController();
 }

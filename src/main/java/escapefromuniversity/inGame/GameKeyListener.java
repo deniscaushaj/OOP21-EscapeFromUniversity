@@ -34,7 +34,7 @@ public class GameKeyListener implements KeyListener {
     @Override
     public void keyPressed(KeyEvent key) {
         if(this.gameController != null) {
-            this.gameController.pressKey(key);
+//            this.gameController.pressKey(key);
         }
     }
 
@@ -44,7 +44,7 @@ public class GameKeyListener implements KeyListener {
     @Override
     public void keyReleased(KeyEvent key) {
         if(this.gameController != null) {
-            this.gameController.releaseKey(key);
+//            this.gameController.releaseKey(key);
         }
     }
 

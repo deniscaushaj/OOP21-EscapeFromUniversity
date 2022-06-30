@@ -1,6 +1,5 @@
 package escapefromuniversity.inGame;
 
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -18,11 +17,8 @@ import escapefromuniversity.menu.MenuControllerImpl;
 import escapefromuniversity.model.GameModel;
 import escapefromuniversity.model.GameModelImpl;
 import escapefromuniversity.model.GameState;
-import escapefromuniversity.model.basics.Point2D;
-import escapefromuniversity.model.basics.Vector2D;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.enemy.Boss;
-import escapefromuniversity.model.gameObject.enemy.BossFactoryImpl;
 import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.quiz.QuizController;
 import escapefromuniversity.utilities.LauncherResizer;
@@ -215,6 +211,16 @@ public class GameControllerImpl implements GameController {
     @Override
     public Player getPlayer() {
         return this.gameModel.getPlayer();
+    }
+
+    @Override
+    public MenuController getMenuController() {
+        return this.menuController;
+    }
+
+    @Override
+    public ShopController getShopController() {
+        return this.shopController;
     }
 
 }
