@@ -160,7 +160,6 @@ public class MapLoader {
                     if (this.radius <= 13) {
                         this.radius += 1;
                     }
-                    this.gameController.gameLoop();
                 }
                 break;
             case E:
@@ -169,7 +168,6 @@ public class MapLoader {
                     if (this.radius >= 7) {
                         this.radius -= 1;
                     }
-                    this.gameController.gameLoop();
                 }
                 break;
             case SPACE:
@@ -189,9 +187,9 @@ public class MapLoader {
                 }
                 this.gameController.gameLoop();
                 break;
-            default: {}
+            default: {
+            }
         }
-        this.gameController.gameLoop();
         this.drawLayers();
     }
 }
