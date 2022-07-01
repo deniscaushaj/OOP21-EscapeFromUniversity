@@ -58,9 +58,7 @@ public interface GameController {
      */
     GameState getPrevGameState();
 
-    
     Player getPlayer();
-
 
     MenuController getMenuController();
 
@@ -75,4 +73,8 @@ public interface GameController {
     GameView getGameView();
     
     boolean isPresentID(int id);
+
+    boolean isGraduated(GameState gameState);
+
+    boolean isOver(GameState gameState);
 }

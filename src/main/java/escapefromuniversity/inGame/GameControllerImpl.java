@@ -21,7 +21,6 @@ import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.quiz.QuizController;
 import escapefromuniversity.utilities.LauncherResizer;
-import escapefromuniversity.view.map.MapLoader;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -34,7 +33,7 @@ public class GameControllerImpl implements GameController {
     private static final double MILLI_TO_SECOND = 0.001;
     private final GameModel gameModel;
     private GameView gameView;
-    private ShopController shopController;
+    private final ShopController shopController;
     private final MenuController menuController = new MenuControllerImpl(this);
     private final LayersControllerImpl layersController;
     private GameState gameState;
@@ -47,7 +46,7 @@ public class GameControllerImpl implements GameController {
     public GameControllerImpl() {
         this.gameModel = new GameModelImpl(this);
         this.gameObjID = this.getGameObjectID();
-        this.layersController = new LayersControllerImpl(this.gameModel.getMap().getMap(), this.gameModel.getPlayer());
+        this.layersController = new LayersControllerImpl(this.gameModel.getGameInit().getMap(), this.gameModel.getPlayer());
         this.shopController = new ShopControllerImpl(this, this.gameModel);
         this.setGameState(GameState.PLAY);
     }
@@ -250,4 +249,13 @@ public class GameControllerImpl implements GameController {
         return gameObjID.contains(id);
     }
 
+    @Override
+    public boolean isGraduated(final GameState gameState) {
+        return gameState == GameState.GRADUATED;
+    }
+
+    @Override
+    public boolean isOver(final GameState gameState) {
+        return gameState == GameState.LOST;
+    }
 }
