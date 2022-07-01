@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
  * iterator for ID.
  *
  */
-public class IteretorOfID implements Iterator<Integer> {
+public class IteratorOfID implements Iterator<Integer> {
 
     private int actualID;
 

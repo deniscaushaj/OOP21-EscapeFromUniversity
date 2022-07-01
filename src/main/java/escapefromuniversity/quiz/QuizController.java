@@ -15,7 +15,6 @@ import escapefromuniversity.model.quiz.ExamImporter;
 import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.enemy.Boss.BossState;
-import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.model.quiz.Quiz;
 import escapefromuniversity.utilities.LauncherResizer;
 import escapefromuniversity.view.map.MapLoader;
@@ -104,7 +103,7 @@ public class QuizController {
 			answerBox2.setVisible(false);
 			backGameBox.setVisible(true);
 			if (this.exam.hasPassed()) {
-				this.gc.getPlayer().addCredits(this.exam.getCredits());
+				this.gc.getPlayer().increaseCredits(this.exam.getCredits());
 				this.gc.getPlayer().setFinalMark(this.exam.getGrade());
 				questionButton.setText("Complimenti, sei stato PROMOSSO!");
 				questionButton.setTextFill(Color.DARKGREEN);
