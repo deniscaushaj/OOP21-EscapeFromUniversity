@@ -18,6 +18,7 @@ import escapefromuniversity.model.gameObject.enemy.Boss.BossState;
 import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.model.quiz.Quiz;
 import escapefromuniversity.utilities.LauncherResizer;
+import escapefromuniversity.view.map.MapLoader;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;

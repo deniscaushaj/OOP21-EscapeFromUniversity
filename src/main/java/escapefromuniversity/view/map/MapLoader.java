@@ -32,7 +32,7 @@ import java.util.stream.Stream;
  */
 public class MapLoader {
 
-    private final GameController gameController;
+    private GameController gameController;
     private final MapProperties map;
     private CanvasDrawer canvasDrawer;
     private TileDrawer tileDrawer;
@@ -56,6 +56,10 @@ public class MapLoader {
         final var parser = new TMXMapParser("final-map.tmx");
         this.map = parser.parse();
         this.layersController =  new LayersControllerImpl(map, this.gameController.getPlayer());
+    }
+    
+    public void setGameController(GameController gc) {
+    	this.gameController = gc;
     }
 
     @FXML
