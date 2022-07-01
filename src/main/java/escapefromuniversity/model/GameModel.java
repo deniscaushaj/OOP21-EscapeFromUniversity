@@ -61,7 +61,7 @@ public interface GameModel {
      * 
      * @return the GameInit.
      */
-    GameInit getMap();
+    GameInit getGameInit();
 
     /**
      * 

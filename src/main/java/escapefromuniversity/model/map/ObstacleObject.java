@@ -14,9 +14,10 @@ public class ObstacleObject extends AbstractStaticGameObject {
      * A constructor for an ObstacleObject.
      * @param type the type of GameObject
      * @param position the upper-left corner
+     * @param gameInit the game initialization
      */
-    public ObstacleObject(final GameObjectType type, final Rectangle position, final GameInit map) {
-        super(type, position.getTopLeft(), position.getBottomRight(), map);
+    public ObstacleObject(final GameObjectType type, final Rectangle position, final GameInit gameInit) {
+        super(type, position.getTopLeft(), position.getBottomRight(), gameInit);
     }
 
     @Override

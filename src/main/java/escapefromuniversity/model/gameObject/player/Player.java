@@ -128,7 +128,7 @@ public interface Player extends DynamicGameObject {
      * Checks if the player can shoot (if its shoot delay time has already elapsed).
      * @return {@code true} if the player can shoot, {@code false} otherwise.
      */
-    boolean canShoot();
+    boolean canShoot(double deltaTime);
 
     /**
      * Sets a shot with its direction.

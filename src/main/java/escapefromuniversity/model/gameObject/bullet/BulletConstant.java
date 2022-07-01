@@ -12,7 +12,7 @@ final class BulletConstant {
     private BulletConstant() {
     }
 
-    protected static final Point2D BULLET_BOX_SIZE = new Point2D(15, 15);
+    protected static final Point2D BULLET_BOX_SIZE = new Point2D(0.3, 0.3);
 
     /**
      * Constant of bullets speed.

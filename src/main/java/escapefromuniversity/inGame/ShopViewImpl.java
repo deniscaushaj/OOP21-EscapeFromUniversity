@@ -94,10 +94,6 @@ public class ShopViewImpl implements ShopView {
         this.exit.addActionListener(e -> this.shopController.closeShop());
         this.itemInfo.setText("HP Restore:" + buyLifeInfo + "\n" + "Armor Buff:" + buyArmorInfo + "\n" + "Damage Buff:" + buyDamageInfo + "\n" + "Second Chance:" + buyChanceInfo);
         this.setCreditsCounter();
-    }
-
-    @Override
-    public void startView() {
         this.window.setTitle("Escape From University");
         this.window.setSize((int) (SCREENWIDTH * this.windowRatio), (int) (SCREENHEIGHT * this.windowRatio));
         this.window.setResizable(false);
@@ -107,6 +103,10 @@ public class ShopViewImpl implements ShopView {
         this.shopPanel.setOpaque(false);
         this.window.getContentPane().add(this.shopPanel);
         this.window.setBackground(this.color);
+    }
+
+    @Override
+    public void startView() {
         this.window.setVisible(true);
         this.initializeShop();
     }

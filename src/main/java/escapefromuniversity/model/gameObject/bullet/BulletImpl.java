@@ -9,6 +9,7 @@ import escapefromuniversity.model.gameObject.AbstractDynamicGameObject;
 import escapefromuniversity.model.gameObject.DynamicGameObject;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;
+import escapefromuniversity.model.gameObject.State;
 import escapefromuniversity.model.GameInit;
 
 /**
@@ -30,8 +31,9 @@ public class BulletImpl extends AbstractDynamicGameObject implements Bullet {
      * @param map
      */
     public BulletImpl(final GameObjectType type, final Point2D position, final double speed, final Vector2D direction, final int damage, final GameInit map) {
-        super(type, position, position.sum(BulletConstant.BULLET_BOX_SIZE), speed, direction, map);
+        super(type, position, BulletConstant.BULLET_BOX_SIZE, speed, direction, map);
         this.damage = damage;
+        this.setState(State.IDLE);
     }
 
     /**
@@ -55,11 +57,12 @@ public class BulletImpl extends AbstractDynamicGameObject implements Bullet {
      */
     @Override
     public void collisionWith(final GameObject gObj2) {
-        if (this.collisionWithCheck(gObj2)) {
+        if (!this.collisionWithCheck(gObj2)) {
             return;
         }
         switch (gObj2.getType().getCollisionType()) {
         case OBSTACLE:
+            System.out.println(gObj2 + "  " + this.getObjectPosition());
             this.getMap().deleteGameObject(this);
             break;
         case BULLET:
@@ -71,19 +74,23 @@ public class BulletImpl extends AbstractDynamicGameObject implements Bullet {
             if (gObj2.getType().equals(GameObjectType.PLAYER) && !this.getType().equals(GameObjectType.BULLET_PLAYER)) {
                 final Player player = (Player) gObj2;
                 player.takeDamage(this.getDamage());
+                System.out.println(gObj2 + "  " + this.getObjectPosition());
                 this.getMap().deleteGameObject(this);
             } else if (!gObj2.getType().equals(GameObjectType.PLAYER)
                       && this.getType().equals(GameObjectType.BULLET_PLAYER)) {
                 final Enemy enemy = (Enemy) gObj2;
                 enemy.takeDamage(this.getDamage());
+                System.out.println(gObj2 + "  " + this.getObjectPosition());
                 this.getMap().deleteGameObject(this);
             }
             break;
         case IMMUNE_ENTITY:
             if (gObj2.getType().equals(GameObjectType.PLAYER) && !this.getType().equals(GameObjectType.BULLET_PLAYER)) {
+                System.out.println(gObj2);
                 this.getMap().deleteGameObject(this);
             } else if (!gObj2.getType().equals(GameObjectType.PLAYER)
                     && this.getType().equals(GameObjectType.BULLET_PLAYER)) {
+                System.out.println(gObj2);
                 this.getMap().deleteGameObject(this);
             }
             break;

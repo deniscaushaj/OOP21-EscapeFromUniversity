@@ -74,6 +74,14 @@ public class MenuViewImpl implements MenuView {
         this.btBack.setBounds(this.retBtBack);
         this.btBack.setFont(WindowSet.FONT);
         this.btBack.addActionListener(e -> this.controller.back());
+        this.window.setTitle("Escape From University");
+        this.window.setResizable(false);
+        this.window.setUndecorated(true);
+        this.window.setSize((int) (SCREENWIDTH * windowRatio), (int) (SCREENHEIGHT * windowRatio));
+        this.menuPanel = new JLayeredPane();
+        this.menuPanel.setOpaque(false);
+        this.window.getContentPane().add(menuPanel);
+        this.window.setLocationRelativeTo(null);
     }
 
     @Override
@@ -105,14 +113,6 @@ public class MenuViewImpl implements MenuView {
 
     @Override
     public void startView() {
-        this.window.setTitle("Escape From University");
-        this.window.setResizable(false);
-        this.window.setUndecorated(true);
-        this.window.setSize((int) (SCREENWIDTH * windowRatio), (int) (SCREENHEIGHT * windowRatio));
-        this.menuPanel = new JLayeredPane();
-        this.menuPanel.setOpaque(false);
-        this.window.getContentPane().add(menuPanel);
-        this.window.setLocationRelativeTo(null);
         this.window.setVisible(true);
         this.startMenu();
     }

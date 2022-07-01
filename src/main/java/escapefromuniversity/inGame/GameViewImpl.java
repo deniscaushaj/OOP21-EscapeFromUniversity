@@ -8,34 +8,21 @@ import java.util.stream.Stream;
 
 import javax.xml.parsers.ParserConfigurationException;
 
+import escapefromuniversity.model.map.*;
 import org.xml.sax.SAXException;
 
 import escapefromuniversity.controller.map.LayersControllerImpl;
-import escapefromuniversity.launcher.LauncherView;
 import escapefromuniversity.model.GameState;
-import escapefromuniversity.model.basics.HitBox;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.basics.Vector2D;
 import escapefromuniversity.model.gameObject.Direction;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
-import escapefromuniversity.model.gameObject.player.Player;
-import escapefromuniversity.model.map.Camera;
-import escapefromuniversity.model.map.MapProperties;
-import escapefromuniversity.model.map.Rectangle;
-import escapefromuniversity.model.map.TMXMapParser;
-import escapefromuniversity.model.map.Tile;
-import escapefromuniversity.model.map.TileDrawer;
-import escapefromuniversity.model.map.TileDrawerImpl;
 import escapefromuniversity.view.map.canvas.CanvasDrawer;
 import escapefromuniversity.view.map.canvas.CanvasDrawerImpl;
-import javafx.application.Application;
 import javafx.fxml.FXML;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Stage;
 
 /**
  * 
@@ -104,7 +91,7 @@ public class GameViewImpl implements GameView {
                 this.calcProjectedPosition(rect.getBottomRight(), proj));
     }
 
-    public void drawLayers(){
+    public void drawLayers() {
         var proj = this.camera.calcMapProjection(this.canvasDrawer.getScreenRatio());
         this.canvasDrawer.clear();
         try {
@@ -210,7 +197,7 @@ public class GameViewImpl implements GameView {
             if (this.gameController.getGameState().equals(GameState.FIGHT)) {
                 this.gameController.getPlayer().setShoot(true, this.gameController.getPlayer().getLastDirection());
                 this.gameController.getPlayer().shoot();
-                //                    this.gameController.gameLoop();
+                this.gameController.gameLoop();
             }
             break;
         case ESCAPE:
@@ -241,8 +228,12 @@ public class GameViewImpl implements GameView {
     }
 
     @Override
-    public void end(GameState gameState) {
-        // TODO Auto-generated method stub
+    public void end(final GameState gameState) {
+        var victoryDoors = new ObstaclesFactory(gameController.getModel().getGameInit().getMap()).getVictoryDoorList(gameController.getModel().getGameInit());
+        if (gameController.isOver(gameState)) {
+            System.out.println();
+        } else if (gameController.isGraduated(gameState) && victoryDoors.contains(gameController.getPlayer().getObjectPosition())) {
+            System.out.println();
+        }
     }
-
 }
