@@ -42,6 +42,7 @@ public interface ShopView {
      * @param itemInfo the info string to put into the item info label.
      */
     void setItemInfo(String itemInfo);
+    void setCreditsCounter();
 
     /**
      * Sets a button to not be clickable.
