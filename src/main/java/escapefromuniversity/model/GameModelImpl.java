@@ -95,7 +95,7 @@ public class GameModelImpl implements GameModel {
      * {@inheritDoc}
      */
     public Point2D getPositionOfID(final int id) {
-        DynamicGameObject a = this.mapManager.getGameInit().getAllDynamicGameObject().stream().filter(e -> e.getID() == id).findFirst().orElse(null);
+        DynamicGameObject a = this.mapManager.getGameInit().getAllDynamicGameObject().stream().filter(e -> e.getID() == id).findFirst().get();
         return a.getObjectPosition();
     }
 
