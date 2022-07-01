@@ -35,7 +35,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player {
     private long lastShot;
     private boolean shooting;
     private boolean bonusQuiz;
-    private Point2D prevPosition;
+    public Point2D prevPosition;
     private Vector2D shotDirection;
     private Direction direction;
     private final BulletFactory bulletFactory;

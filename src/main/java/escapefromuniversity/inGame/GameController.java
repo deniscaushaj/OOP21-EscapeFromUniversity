@@ -73,4 +73,6 @@ public interface GameController {
     GameModel getModel();
     
     MapLoader getMapLoader();
+    
+    boolean isPresentID(int id);
 }

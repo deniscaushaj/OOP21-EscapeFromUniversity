@@ -8,6 +8,7 @@ import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
 import escapefromuniversity.model.GameInit;
 import escapefromuniversity.model.gameObject.player.Player;
+import escapefromuniversity.model.gameObject.player.PlayerImpl;
 
 /**
  * 
@@ -17,7 +18,7 @@ import escapefromuniversity.model.gameObject.player.Player;
 public abstract class AbstractBoss extends AbstractDynamicGameObject implements Boss {
 
     private int life;
-    private final long shootDelay;
+    private final double shootDelay;
     private long shootLastTime;
     private BossState bossState;
     private Point2D previousPosition;
@@ -37,7 +38,7 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
      * @param exam
      * @param map
      */
-    public AbstractBoss(final double speed, final Point2D position, final Point2D upperCorner, final Vector2D direction, final GameObjectType type, final int life, final long shootDelay, final int impactDamage, final String exam, final GameInit map) {
+    public AbstractBoss(final double speed, final Point2D position, final Point2D upperCorner, final Vector2D direction, final GameObjectType type, final int life, final double shootDelay, final int impactDamage, final String exam, final GameInit map) {
         super(type, position, upperCorner, speed, direction, map);
         this.life = life;
         this.shootDelay = shootDelay;
@@ -53,15 +54,15 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
      * {@inheritDoc}
      */
     @Override
-    public void maybeShoot() {
-        if (this.canShoot()) {
+    public void maybeShoot(double deltaTime) {
+        if (this.canShoot(deltaTime)) {
             this.shoot();
         }
     }
 
-    private boolean canShoot() {
-        if (System.currentTimeMillis() - this.shootLastTime > this.shootDelay) {
-            this.shootLastTime = System.currentTimeMillis();
+    private boolean canShoot(double deltaTime) {
+        if (deltaTime + shootLastTime > this.shootDelay) {
+            this.shootLastTime = 0;
             return true;
         }
         return false;
@@ -97,10 +98,10 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
     @Override
     public void update(final double deltaTime) {
         if (this.bossState == BossState.FIGHT) {
-            this.maybeShoot();
+            this.maybeShoot(deltaTime);
             this.setPreviousPosition(this.getObjectPosition());
             this.move(deltaTime);
-            this.setDirection(this.newDirection());
+            this.setDirection(new Vector2D(1, 0));
         }
     }
 
@@ -120,7 +121,8 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
                     if (this.bossState.equals(BossState.QUIZ)) {
                         this.getMap().goQuiz(this);
                     } else {
-                        final Player player = (Player) gObj2;
+                        final PlayerImpl player = (PlayerImpl) gObj2;
+                        player.setPosition(player.prevPosition);
                         player.takeDamage(this.getImpactDamage());
                     }
                 }

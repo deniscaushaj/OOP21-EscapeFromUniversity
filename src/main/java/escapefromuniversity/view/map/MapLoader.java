@@ -183,12 +183,6 @@ public class MapLoader {
                 }
             }
             break;
-            //                TODO togliere O
-        case O:
-            BossFactoryImpl fabbricaBoss = new BossFactoryImpl();
-            Boss bossProva = fabbricaBoss.createBoss1(new Point2D(0,0), new Vector2D(0,0), null);
-            this.gameController.startQuiz(bossProva);
-            break;
         case E:
             if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
                     || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
@@ -219,5 +213,15 @@ public class MapLoader {
             break;
         }
         this.drawLayers();
+    }
+
+    public void checkID() {
+    	var iterator = sprites.entrySet().iterator();
+    	while (iterator.hasNext()) {
+            var entry = iterator.next();
+            if(!this.gameController.isPresentID(entry.getKey())) {
+            	this.sprites.remove(entry.getKey());
+            }
+        }
     }
 }

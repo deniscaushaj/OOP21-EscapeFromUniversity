@@ -13,7 +13,7 @@ public interface Enemy extends DynamicGameObject {
     /**
      * if possible, shoot.
      */
-    void maybeShoot();
+    void maybeShoot(double deltaTime);
 
     /**
      * 

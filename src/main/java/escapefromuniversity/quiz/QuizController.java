@@ -109,7 +109,8 @@ public class QuizController {
 				questionButton.setText("Complimenti, sei stato PROMOSSO!");
 				questionButton.setTextFill(Color.DARKGREEN);
 				questionButton.setStyle("-fx-background-image:url('questionRight.png');");
-				this.boss.kill();
+				this.gc.getModel().getCurrentBoss().kill();
+				this.gc.getMapLoader().checkID();
 				this.gc.setGameState(GameState.PLAY);
 			} else {
 				questionButton.setText("Noo, sei stato BOCCIATO!");

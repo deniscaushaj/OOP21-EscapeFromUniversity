@@ -224,5 +224,9 @@ public class GameControllerImpl implements GameController {
     public GameModel getModel() {
     	return this.gameModel;
     }
+    
+    public boolean isPresentID(int id) {
+    	return gameObjID.contains(id);
+    }
 
 }
