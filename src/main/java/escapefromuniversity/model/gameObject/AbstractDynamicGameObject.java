@@ -7,29 +7,44 @@ import escapefromuniversity.model.basics.Vector2D;
 
 import escapefromuniversity.model.GameInit;
 
+/**
+ * 
+ * abstract class implement dynamic object.
+ *
+ */
 public abstract class AbstractDynamicGameObject implements DynamicGameObject {
-	
-	private int id;
-	private final GameObjectType type;
-	private final double speed;
-	private Vector2D direction;
-	private Point2D position;
+
+    private int id;
+    private final GameObjectType type;
+    private final double speed;
+    private Vector2D direction;
+    private Point2D position;
     private final Point2D hitBoxSize;
     protected GameInit map;
     private State state;
 
-	public AbstractDynamicGameObject(final GameObjectType type, final Point2D position, Point2D hitBoxSize, final double speed, final Vector2D direction, GameInit map) {
-		this.type = type;
-		this.position = position;
-		this.speed = speed;
-		this.direction = direction;
-		this.map = map;
-		this.hitBoxSize = hitBoxSize;
-	}
-	
-	public Point2D getObjectPosition() {
-		return new Point2D(this.position);
-	}
+    /**
+     * 
+     * @param type
+     * @param position
+     * @param hitBoxSize
+     * @param speed
+     * @param direction
+     * @param map
+     */
+    public AbstractDynamicGameObject(final GameObjectType type, final Point2D position, final Point2D hitBoxSize, final double speed, final Vector2D direction, final GameInit map) {
+        this.type = type;
+        this.position = position;
+        this.speed = speed;
+        this.direction = direction;
+        this.map = map;
+        this.hitBoxSize = hitBoxSize;
+    }
+
+    @Override
+    public Point2D getObjectPosition() {
+        return new Point2D(this.position);
+    }
 
     @Override
     public int getID() {
@@ -77,33 +92,40 @@ public abstract class AbstractDynamicGameObject implements DynamicGameObject {
         this.position = newPosition;
     }
 
+    @Override
     public abstract void update(double deltaTime);
 
+    /**
+     * 
+     * @param deltaTime
+     */
     public void move(final double deltaTime) {
         this.setPosition(this.getObjectPosition().sum(getDirection().multiplication(this.speed).multiplication(deltaTime)));
     }
 
+    @Override
     public boolean collisionWithCheck(final GameObject gObj2) {
         return this.getObjectHitBox().isColliding(gObj2.getObjectHitBox());
     }
 
     @Override
-    public abstract void collisionWith(final GameObject gObj2);
+    public abstract void collisionWith(GameObject gObj2);
 
     @Override
     public HitBox getObjectHitBox() {
         return new HitBoxImpl(this.position, this.position.sum(this.hitBoxSize));
     }
 
+    @Override
     public GameInit getMap() {
         return this.map;
     }
 
     @Override
-    public void setState(State state) {
+    public void setState(final State state) {
         this.state = state;
     }
-    
+
     @Override
     public State getState() {
         return this.state;

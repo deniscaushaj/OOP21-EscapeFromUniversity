@@ -1,5 +1,10 @@
 package escapefromuniversity.model.gameObject;
 
-public interface StaticGameObject extends GameObject{
+/**
+ * 
+ * interface of static object.
+ *
+ */
+public interface StaticGameObject extends GameObject {
 
 }

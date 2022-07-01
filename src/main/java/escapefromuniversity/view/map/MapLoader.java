@@ -184,6 +184,7 @@ public class MapLoader {
             case SPACE:
                 if (this.gameController.getGameState().equals(GameState.FIGHT)) {
                     this.gameController.getPlayer().setShoot(true, this.gameController.getPlayer().getLastDirection());
+                    this.gameController.getPlayer().shoot();
                     this.gameController.gameLoop();
                 }
                 break;

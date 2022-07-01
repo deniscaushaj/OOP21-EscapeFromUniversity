@@ -34,6 +34,7 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
      * @param life
      * @param shootDelay
      * @param impactDamage
+     * @param exam
      * @param map
      */
     public AbstractBoss(final double speed, final Point2D position, final Point2D upperCorner, final Vector2D direction, final GameObjectType type, final int life, final long shootDelay, final int impactDamage, final String exam, final GameInit map) {
@@ -44,7 +45,7 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
         this.impactDamage = impactDamage;
         this.exam = exam;
         this.previousPosition = position;
-        this.setState(State.LEFT);
+        this.setState(State.IDLE);
     }
 
     /**
@@ -204,6 +205,6 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
      */
     @Override
     public String getBossExam() {
-    	return this.exam;
+        return this.exam;
     }
 }

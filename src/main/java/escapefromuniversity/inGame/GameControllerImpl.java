@@ -30,7 +30,7 @@ import javafx.scene.Scene;
  * Implements all the methods defined in its interface {@link GameController}.
  */
 public class GameControllerImpl implements GameController {
-    private static final long DELTA = 1000;
+    private static final long DELTA = 200;
     private static final double MILLI_TO_SECOND = 0.001;
     private final GameModel gameModel;
     private MapLoader gameView;
@@ -40,7 +40,6 @@ public class GameControllerImpl implements GameController {
     private GameState gameState;
     private GameState prevGameState;
     private List<Integer> gameObjID = new LinkedList<>();
-    private long lastTime = System.currentTimeMillis();
 
     /**
      * Instantiates a new GameController and initializes the corresponding GameModel and GameView and KeyHandler making the game start.
@@ -52,7 +51,7 @@ public class GameControllerImpl implements GameController {
         //this.checkSpriteAnimation();
         this.shopController = new ShopControllerImpl(this, this.gameModel);
         this.layersController = new LayersControllerImpl(this.gameModel.getMap().getMap(), this.gameModel.getPlayer());
-        this.setGameState(GameState.PLAY);
+        this.setGameState(GameState.FIGHT);
     }
 
     /**
@@ -61,14 +60,12 @@ public class GameControllerImpl implements GameController {
     @Override
     public void gameLoop() {
         if (this.continueGame()) {
-            long currentTime = System.currentTimeMillis();
             switch (this.getGameState()) {
             case PLAY:
             case FIGHT:
             case GRADUATED:
             case SHOP_ROOM:
-                long deltaTime = currentTime - lastTime;
-                this.updateModel(200);
+                this.updateModel(DELTA);
                 this.checkSpriteAnimation();
                 break;
             case QUIZ:
@@ -83,7 +80,6 @@ public class GameControllerImpl implements GameController {
             default:
                 break;
             }
-            lastTime = currentTime;
         }
         if (this.getGameState() == GameState.WIN) {
             this.saveScore(this.gameModel.getPlayerFinalMark());

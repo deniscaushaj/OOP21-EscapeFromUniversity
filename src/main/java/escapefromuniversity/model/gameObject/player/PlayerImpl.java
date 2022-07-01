@@ -15,7 +15,7 @@ import escapefromuniversity.model.GameInit;
 /**
  * The implementation of the {@link Player} interface. It also extends {@link AbstractDynamicGameObject}
  */
-public class PlayerImpl extends AbstractDynamicGameObject implements Player{
+public class PlayerImpl extends AbstractDynamicGameObject implements Player {
 
     private static final int MAX_LIFE = 100;
     private static final int MAX_DAMAGE = 30;
@@ -48,7 +48,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
      * @param direction the direction of the player.
      * @param shootDelay the shoot delay of the player.
      */
-    public PlayerImpl(GameObjectType type, Point2D position, double speed, Vector2D direction, int shootDelay, GameInit map) {
+    public PlayerImpl(final GameObjectType type, final Point2D position, final double speed, final Vector2D direction, final int shootDelay, final GameInit map) {
         super(type, position, HIT_BOX_PLAYER, speed, direction, map);
         this.life = MAX_LIFE;
         this.credits = START_CREDITS;
@@ -68,7 +68,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
      * {@inheritDoc}
      */
     @Override
-    public void collisionWith(GameObject gObj2) {
+    public void collisionWith(final GameObject gObj2) {
         if (this.collisionWithCheck(gObj2)) {
             if (/*gObj2.getType().getCollisionType() == GameCollisionType.ENTITY
                     || */gObj2.getType().getCollisionType() == GameCollisionType.OBSTACLE) {
@@ -81,7 +81,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
      * {@inheritDoc}
      */
     @Override
-    public void update(double deltaTime) {
+    public void update(final double deltaTime) {
         if (this.shooting) {
             this.shoot();
         }
@@ -234,7 +234,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
      * {@inheritDoc}
      */
     @Override
-    public void setMap(GameInit map) {
+    public void setMap(final GameInit map) {
         this.map = map;
     }
 
@@ -284,7 +284,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
      * {@inheritDoc}
      */
     @Override
-    public void setLastDirection(Direction direction) {
+    public void setLastDirection(final Direction direction) {
         this.direction = direction;
     }
 
@@ -301,7 +301,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player{
      */
     @Override
     public void passedExam() {
-        this.passed ++;
+        this.passed++;
     }
 
     /**
