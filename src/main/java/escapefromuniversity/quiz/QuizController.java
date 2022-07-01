@@ -117,8 +117,6 @@ public class QuizController {
 				this.boss.setBossState(BossState.FIGHT);
 				this.gc.setGameState(GameState.FIGHT);
 			}
-			this.gc.gameLoop();
-			
 		}
 	}
 	
