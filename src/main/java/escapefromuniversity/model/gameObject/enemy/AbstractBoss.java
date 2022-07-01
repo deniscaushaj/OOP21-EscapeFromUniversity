@@ -101,8 +101,9 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
         if (this.bossState == BossState.FIGHT) {
             this.maybeShoot(deltaTime);
             this.setPreviousPosition(this.getObjectPosition());
-            //this.move(deltaTime);
-            //this.setDirection(this.newDirection());
+            this.move(deltaTime);
+            this.setDirection(this.newDirection());
+            this.setState(State.DOWN);
         }
     }
 
@@ -149,7 +150,7 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
     protected Vector2D newDirection() {
         Point2D playerPos = this.getMap().getPlayer().getObjectPosition();
         return new Vector2D(this.getObjectPosition().getX() - playerPos.getX(),
-                this.getObjectPosition().getY() - playerPos.getY()).normal();
+                this.getObjectPosition().getY() - playerPos.getY());
     }
 
     /**
