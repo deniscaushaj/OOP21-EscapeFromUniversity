@@ -33,7 +33,7 @@ public class GameControllerImpl implements GameController {
     private static final long DELTA = 200;
     private static final double MILLI_TO_SECOND = 0.001;
     private final GameModel gameModel;
-    private MapLoader gameView;
+    private GameView gameView;
     private ShopController shopController;
     private final MenuController menuController = new MenuControllerImpl(this);
     private final LayersControllerImpl layersController;
@@ -45,10 +45,8 @@ public class GameControllerImpl implements GameController {
      * Instantiates a new GameController and initializes the corresponding GameModel and GameView and KeyHandler making the game start.
      */
     public GameControllerImpl() {
-        //this.gameView = gameView;
         this.gameModel = new GameModelImpl(this);
         this.gameObjID = this.getGameObjectID();
-        //this.checkSpriteAnimation();
         this.layersController = new LayersControllerImpl(this.gameModel.getMap().getMap(), this.gameModel.getPlayer());
         this.shopController = new ShopControllerImpl(this, this.gameModel);
         this.setGameState(GameState.PLAY);
@@ -107,15 +105,13 @@ public class GameControllerImpl implements GameController {
     private void checkSpriteAnimation() {
         final List<Integer> ids = this.getGameObjectID();
         for (final Integer id : ids) {
-            if (!this.gameObjID.contains(id)) {
-                this.gameView.removeSpriteAnimation(id);
+            this.gameView.checkID();
+            if (this.gameView.containThisID(id)) {
+                this.gameView.updateSpriteAnimation(id, this.gameModel.getStateID(id));
             } else {
-                if (this.gameView.containThisID(id)) {
-                    this.gameView.updateSpriteAnimation(id, this.gameModel.getStateID(id));
-                } else {
-                    this.gameView.addSpriteAnimation(id, this.gameModel.getStateID(id), this.gameModel.getTypeID(id));
-                }
+                this.gameView.addSpriteAnimation(id, this.gameModel.getStateID(id), this.gameModel.getTypeID(id));
             }
+
         }
     }
 
@@ -141,7 +137,7 @@ public class GameControllerImpl implements GameController {
     @Override
     public void startQuiz(final Boss boss) {
         try {
-        	FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/Quiz.fxml"));
+            FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/Quiz.fxml"));
             Parent gameRoot;
             final QuizController quizController = new QuizController(this);
             loader.setController(quizController);
@@ -190,43 +186,68 @@ public class GameControllerImpl implements GameController {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Player getPlayer() {
         return this.gameModel.getPlayer();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public MenuController getMenuController() {
         return this.menuController;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public ShopController getShopController() {
         return this.shopController;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public HitBox getHitBoxID(final int id) {
         return this.gameModel.getHitBoxID(id);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public void setMapLoader(final MapLoader mapLoader) {
-        this.gameView = mapLoader;
+    public void setGameView(final GameView gameView) {
+        this.gameView = gameView;
     }
-    
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public MapLoader getMapLoader() {
-        return this.gameView;        
+    public GameView getGameView() {
+        return this.gameView;
     }
-    
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public GameModel getModel() {
-    	return this.gameModel;
+        return this.gameModel;
     }
-    
-    public boolean isPresentID(int id) {
-    	return gameObjID.contains(id);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean isPresentID(final int id) {
+        return gameObjID.contains(id);
     }
 
 }

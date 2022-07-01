@@ -11,7 +11,12 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-public final class LauncherView extends Application{
+/**
+ * 
+ * 
+ *
+ */
+public final class LauncherView extends Application {
 
     public static Stage launcherWindow;
     static Scene launcher;
@@ -24,7 +29,7 @@ public final class LauncherView extends Application{
      *              primary stages.
      * @throws Exception
      */
-    public void start(Stage stage) throws Exception {
+    public void start(final Stage stage) throws Exception {
         OSFixes.createHomeFolder();
         OSFixes.createScoreFile();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/layouts/Launcher.fxml"));

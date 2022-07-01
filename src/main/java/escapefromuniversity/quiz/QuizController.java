@@ -109,7 +109,7 @@ public class QuizController {
 				questionButton.setTextFill(Color.DARKGREEN);
 				questionButton.setStyle("-fx-background-image:url('questionRight.png');");
 				this.gc.getModel().getCurrentBoss().kill();
-				this.gc.getMapLoader().checkID();
+				this.gc.getGameView().checkID();
 				this.gc.setGameState(GameState.PLAY);
 			} else {
 				questionButton.setText("Noo, sei stato BOCCIATO!");
@@ -147,7 +147,7 @@ public class QuizController {
 	@FXML
 	public void backToGame(final ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/Game.fxml"));
-		loader.setController(this.gc.getMapLoader());
+		loader.setController(this.gc.getGameView());
 		Parent gameRoot = loader.load();
 		Scene game = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
 		LauncherView.launcherWindow.setScene(game);

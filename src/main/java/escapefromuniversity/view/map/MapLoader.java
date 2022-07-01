@@ -57,10 +57,10 @@ public class MapLoader {
         this.map = parser.parse();
         this.layersController =  new LayersControllerImpl(map, this.gameController.getPlayer());
     }
-    
+
     public void setGameController(GameController gc) {
-    	this.gameController = gc;
-    	this.gameController.gameLoop();
+        this.gameController = gc;
+        this.gameController.gameLoop();
     }
 
     @FXML
@@ -216,11 +216,11 @@ public class MapLoader {
     }
 
     public void checkID() {
-    	var iterator = sprites.entrySet().iterator();
-    	while (iterator.hasNext()) {
+        var iterator = sprites.entrySet().iterator();
+        while (iterator.hasNext()) {
             var entry = iterator.next();
             if(!this.gameController.isPresentID(entry.getKey())) {
-            	this.sprites.remove(entry.getKey());
+                this.sprites.remove(entry.getKey());
             }
         }
     }

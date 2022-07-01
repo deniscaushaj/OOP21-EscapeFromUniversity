@@ -15,11 +15,6 @@ public interface GameView {
 
     /**
      * 
-     */
-    void updateView();
-
-    /**
-     * 
      * @param id : id of object.
      */
     void removeSpriteAnimation(int id);
@@ -27,21 +22,17 @@ public interface GameView {
     /**
      * 
      * @param id : id of object.
-     * @param position : new position.
      * @param state
      */
-    void updateSpriteAnimation(int id, Point2D position, State state);
+    void updateSpriteAnimation(int id, State state);
 
     /**
      * 
      * @param id : id of object.
      * @param state : state of object.
      * @param type : type of object.
-     * @param height : height of object.
-     * @param width : width of object.
-     * @param position : position of object.
      */
-    void addSpriteAnimation(int id, State state, GameObjectType type, HitBox box, Point2D position);
+    void addSpriteAnimation(int id, State state, GameObjectType type);
 
     /**
      * 
@@ -56,12 +47,7 @@ public interface GameView {
      */
     void end(GameState gameState);
 
-//    /**
-//     * 
-//     * @param gameController
-//     * @param player
-//     */
-//    void loaderComponent(GameController gameController, Player player);
-
-    GameController getGameController();
+    void setGameController(GameController gc);
+    
+    void checkID();
 }

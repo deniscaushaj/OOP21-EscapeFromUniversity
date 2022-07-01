@@ -15,6 +15,8 @@ import escapefromuniversity.launcher.LauncherView;
 import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.basics.HitBox;
 import escapefromuniversity.model.basics.Point2D;
+import escapefromuniversity.model.basics.Vector2D;
+import escapefromuniversity.model.gameObject.Direction;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
 import escapefromuniversity.model.gameObject.player.Player;
@@ -28,9 +30,11 @@ import escapefromuniversity.model.map.TileDrawerImpl;
 import escapefromuniversity.view.map.canvas.CanvasDrawer;
 import escapefromuniversity.view.map.canvas.CanvasDrawerImpl;
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 /**
@@ -38,78 +42,52 @@ import javafx.stage.Stage;
  * class  of controller of game view.
  *
  */
-public class GameViewImpl extends Application implements GameView {
+public class GameViewImpl implements GameView {
 
-    private static final long TIME_TO_END = 5000;
-    private final GameController gameController;
+    private GameController gameController;
     private final MapProperties map;
-    private final CanvasDrawer canvasDrawer;
-    private final TileDrawer tileDrawer;
+    private CanvasDrawer canvasDrawer;
+    private TileDrawer tileDrawer;
     private final Camera camera;
-    private final double x = 30;
-    private final double y = 30;
-    private static final double RADIUS = 10;
-    private final Map<Integer, SpriteAnimation> spriteAnimations = new ConcurrentSkipListMap<>();
+    private double radius = 10;
     private final LayersControllerImpl layersController;
-    private final Canvas gameCanvas = new Canvas(650, 650);
-    private final Group group = new Group(gameCanvas);
-    private final Scene scene = new Scene(group, 600, 600);
+    private final Map<Integer, Sprite> sprites = new ConcurrentSkipListMap<>();
 
+
+    @FXML
+    private Canvas gameCanvas;
 
     /**
      * 
-     * @param gameController
-     * @param player
      */
-    public GameViewImpl(GameController gameController, Player player) {
-        this.gameController = gameController;
+    public GameViewImpl() {
+        this.gameController = new GameControllerImpl();
+        this.gameController.setGameView(this);
         this.camera = ratio -> {
-            var playerHitBox = player.getObjectHitBox();
-            var center = playerHitBox.getBottomRightCorner().sum(playerHitBox.getTopLeftCorner()).multiplication(0.5);
-            return new Rectangle(center.sum(new Point2D(-RADIUS, -RADIUS / ratio)), center.sum(new Point2D(RADIUS, RADIUS / ratio)));
+            var hb = this.gameController.getPlayer().getObjectHitBox();
+            var center = hb.getBottomRightCorner().sum(hb.getTopLeftCorner()).multiplication(0.5);
+            return new Rectangle(center.sum(new Point2D(-radius, -radius / ratio)), center.sum(new Point2D(radius, radius / ratio)));
         };
         final var parser = new TMXMapParser("final-map.tmx");
         this.map = parser.parse();
         this.layersController =  new LayersControllerImpl(map, this.gameController.getPlayer());
+    }
+
+    public void setGameController(GameController gc) {
+        this.gameController = gc;
+        this.gameController.gameLoop();
+    }
+
+    @FXML
+    protected void initialize() {
         this.canvasDrawer = new CanvasDrawerImpl(gameCanvas);
         this.tileDrawer = new TileDrawerImpl(map, this.canvasDrawer);
-        try {
-            this.start(new Stage());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     private Stream<Tile> getTilesToDraw(final Rectangle proj) throws ParserConfigurationException, IOException, SAXException {
         return this.layersController.getVisibleLayers().flatMap(l -> l.getVisibleTiles().stream())
                 .filter(t -> t.getX() - proj.getMinX() > -1 && t.getX() - proj.getMaxX() < 1 &&
                         t.getY() - proj.getMinY() > -1 && t.getY() - proj.getMaxY() < 1);
-    }
-
-    private void drawLayers() throws ParserConfigurationException, IOException, SAXException {
-        var proj = this.camera.calcMapProjection(this.canvasDrawer.getScreenRatio());
-        this.canvasDrawer.clear();
-        getTilesToDraw(proj).forEach(t -> {
-            this.tileDrawer.drawTileByID(t.getValue(), this.calcProjectedRectangle(
-                    new Rectangle(t.getPosition(), t.getPosition().sum(new Point2D(1, 1))), proj));
-        });
-        final Map<Integer, SpriteAnimation> tmpAnimations = new ConcurrentSkipListMap<>(spriteAnimations);
-        tmpAnimations.entrySet().forEach(e -> {
-            final SpriteAnimation animation = e.getValue();
-            if (animation.getPosition().getTopLeft().getX() > proj.getTopLeft().getX() && animation.getPosition().getTopLeft().getY() > proj.getTopLeft().getY()
-                    && animation.getPosition().getTopLeft().getX() < proj.getBottomRight().getX() && animation.getPosition().getTopLeft().getX() < proj.getBottomRight().getX()) {
-                this.canvasDrawer.drawImage(animation.getSprite().getFilepath(), this.calcProjectedRectangle(new Rectangle(
-                        animation.getBox().getBottomRightCorner(),
-                        animation.getBox().getTopLeftCorner()
-                ), proj));
-            }
-        });
-    }
-
-    private Rectangle calcProjectedRectangle(final Rectangle rect, final Rectangle proj) {
-        return new Rectangle(
-                this.calcProjectedPosition(rect.getTopLeft(), proj),
-                this.calcProjectedPosition(rect.getBottomRight(), proj));
     }
 
     private Point2D calcProjectedPosition(final Point2D pos, final Rectangle proj) {
@@ -120,125 +98,151 @@ public class GameViewImpl extends Application implements GameView {
         return point.multiplication(projZoom);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public void updateView() {
-        System.out.println(this.spriteAnimations);
-//        try {
-//            this.start(new Stage());
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+    private Rectangle calcProjectedRectangle(final Rectangle rect, final Rectangle proj) {
+        return new Rectangle(
+                this.calcProjectedPosition(rect.getTopLeft(), proj),
+                this.calcProjectedPosition(rect.getBottomRight(), proj));
+    }
+
+    public void drawLayers(){
+        var proj = this.camera.calcMapProjection(this.canvasDrawer.getScreenRatio());
+        this.canvasDrawer.clear();
         try {
-            this.drawLayers();
+            getTilesToDraw(proj).forEach(t -> {
+                this.tileDrawer.drawTileByID(t.getValue(), this.calcProjectedRectangle(
+                        new Rectangle(t.getPosition(), t.getPosition().sum(new Point2D(1, 1))), proj));
+            });
         } catch (ParserConfigurationException | IOException | SAXException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
+        final Map<Integer, Sprite> tmpSprites = new ConcurrentSkipListMap<>(sprites);
+        tmpSprites.entrySet().forEach(e -> {
+            if(this.gameController.getHitBoxID(e.getKey()).getTopLeftCorner().getX() > proj.getTopLeft().getX()
+                    && this.gameController.getHitBoxID(e.getKey()).getTopLeftCorner().getY() > proj.getTopLeft().getY()
+                    && this.gameController.getHitBoxID(e.getKey()).getBottomRightCorner().getX() < proj.getBottomRight().getX()
+                    && this.gameController.getHitBoxID(e.getKey()).getBottomRightCorner().getY() < proj.getBottomRight().getY()) {
+                final Sprite sprite = e.getValue();
+                this.canvasDrawer.drawImage(sprite.getFilepath(), this.calcProjectedRectangle(new Rectangle(
+                        this.gameController.getHitBoxID(e.getKey()).getBottomRightCorner(),
+                        this.gameController.getHitBoxID(e.getKey()).getTopLeftCorner()
+                        ), proj));
+
+            }
+        });
+
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public void removeSpriteAnimation(final int id) {
-        this.spriteAnimations.remove(id);
+    public boolean containThisID(final int id) {
+        return this.sprites.containsKey(id);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public void updateSpriteAnimation(final int id, final Point2D position, final State state) {
-        this.spriteAnimations.get(id).setPosition(position);
-        this.spriteAnimations.get(id).getSprite().setState(state);
-        this.spriteAnimations.get(id).getSprite().setFilepath();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public void addSpriteAnimation(final int id, final State state, final GameObjectType type, final HitBox box, final Point2D position) {
+    public void addSpriteAnimation(final int id, final State state, final GameObjectType type) {
         final Sprite sprite = new SpriteImpl(state, type);
         sprite.setFilepath();
-        final SpriteAnimation animation = new SpriteAnimation(sprite, box);
-        animation.setPosition(position);
-        this.spriteAnimations.put(id, animation);
+        this.sprites.put(id, sprite);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public boolean containThisID(final int id) {
-        return this.spriteAnimations.containsKey(id);
+    public void updateSpriteAnimation(final int id, final State state) {
+        this.sprites.get(id).setState(state);
+        this.sprites.get(id).setFilepath();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public void end(final GameState gameState) {
-        if (gameState == GameState.WIN){
-            //aggiorna con immagine vittoria
-        } else if (gameState == GameState.LOST){
-            //aggiorna con immagine sconfitta
+    public void removeSpriteAnimation(final int id) {
+        this.sprites.remove(id);
+    }
+
+    @FXML
+    public final void onKeyPressed(final KeyEvent keyEvent) {
+        switch (keyEvent.getCode()) {
+        case W:
+        case UP:
+            if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
+                    || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
+                this.gameController.getPlayer().setDirection(new Vector2D(0, -1));
+                this.gameController.getPlayer().setLastDirection(Direction.UP);
+                this.gameController.gameLoop();
+            }
+            break;
+        case A:
+        case LEFT:
+            if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
+                    || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
+                this.gameController.getPlayer().setDirection(new Vector2D(-1, 0));
+                this.gameController.getPlayer().setLastDirection(Direction.LEFT);
+                this.gameController.gameLoop();
+            }
+            break;
+        case S:
+        case DOWN:
+            if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
+                    || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
+                this.gameController.getPlayer().setDirection(new Vector2D(0, 1));
+                this.gameController.getPlayer().setLastDirection(Direction.DOWN);
+                this.gameController.gameLoop();
+            }
+            break;
+        case D:
+        case RIGHT:
+            if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
+                    || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
+                this.gameController.getPlayer().setDirection(new Vector2D(1, 0));
+                this.gameController.getPlayer().setLastDirection(Direction.RIGHT);
+                this.gameController.gameLoop();
+            }
+            break;
+        case Q:
+            if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
+                    || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
+                if (this.radius <= 13) {
+                    this.radius += 1;
+                }
+            }
+            break;
+        case E:
+            if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
+                    || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
+                if (this.radius >= 7) {
+                    this.radius -= 1;
+                }
+            }
+            break;
+        case SPACE:
+            if (this.gameController.getGameState().equals(GameState.FIGHT)) {
+                this.gameController.getPlayer().setShoot(true, this.gameController.getPlayer().getLastDirection());
+                this.gameController.getPlayer().shoot();
+                //                    this.gameController.gameLoop();
+            }
+            break;
+        case ESCAPE:
+            if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
+                    || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
+                this.gameController.setGameState(GameState.MENU);
+            } else if (this.gameController.getGameState().equals(GameState.MENU)) {
+                this.gameController.getMenuController().resume();
+            } else if (this.gameController.getGameState().equals(GameState.SHOP_MENU)) {
+                this.gameController.getShopController().closeShop();
+            }
+            this.gameController.gameLoop();
+            break;
+        default:
+            break;
         }
-        try {
-            Thread.sleep(TIME_TO_END);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        this.drawLayers();
+    }
+
+    public void checkID() {
+        var iterator = sprites.entrySet().iterator();
+        while (iterator.hasNext()) {
+            var entry = iterator.next();
+            if(!this.gameController.isPresentID(entry.getKey())) {
+                this.sprites.remove(entry.getKey());
+            }
         }
-        LauncherView.createLauncher();
-        //      System.exit(0);
     }
 
     @Override
-    public GameController getGameController() {
-        return this.gameController;
+    public void end(GameState gameState) {
+        // TODO Auto-generated method stub
     }
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("escapeFromUniversity");
-        primaryStage.setScene(this.scene);
-        primaryStage.show();
-    }
-
-    //    TODO: !!
-    //    private GameController gameController;
-    //    private GameKeyListener gameKeyListener;
-    //    private final JFrame window;
-    //    private JPanel pause;
-    //    private final GameHUDPanel gameHUD = new GameHUDPanel(WindowSet.getWindowRatio());
-    //    private static final long DELAY_CLOSE = 5000;
-    //
-    //    public GameViewImpl(GameController gameController) {
-    //        this.gameController = gameController;
-    //        this.gameKeyListener = new GameKeyListener(this.gameController);
-    //        this.window = new JFrame();
-    //        this.window.setDefaultCloseOperation(EXIT_ON_CLOSE);
-    //        this.window.setUndecorated(true);
-    //        this.window.setSize(screenWidth, screenHeight);
-    //        this.window.setResizable(false);
-    //        this.window.setTitle("Escape From University");
-    //        String logo = OSFixes.getLocation("images", "logo.png"); // TODO change icon
-    //        this.window.setIconImage(Toolkit.getDefaultToolkit().getImage(logo));
-    //        this.window.setVisible(true);
-    //        //	private final JPanel gamePanel;
-    //
-    //        this.window.addKeyListener(this.gameKeyListener);
-    //
-    //        this.pause = new JPanel();
-    //
-    //    }
-    //
-    //
-    //    @Override
-    //    public void addPauseBG() {
-    //        Color color = new Color(0,0,0,205);
-    //        this.pause.setBackground(color);
-    //        this.window.add(this.pause);
-    //    }
-    //
-    //    @Override
-    //    public void removePauseBG() {
-    //        this.window.remove(this.pause);
-    //    }
 }

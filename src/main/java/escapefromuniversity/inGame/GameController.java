@@ -68,11 +68,11 @@ public interface GameController {
     
     HitBox getHitBoxID(int id);
     
-    void setMapLoader(MapLoader mapLoader);
+    void setGameView(GameView gameView);
     
     GameModel getModel();
     
-    MapLoader getMapLoader();
+    GameView getGameView();
     
     boolean isPresentID(int id);
 }
