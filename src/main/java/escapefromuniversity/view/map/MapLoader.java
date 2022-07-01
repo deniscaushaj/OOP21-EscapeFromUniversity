@@ -97,30 +97,36 @@ public class MapLoader {
         }
         final Map<Integer, Sprite> tmpSprites = new ConcurrentSkipListMap<>(sprites);
         tmpSprites.entrySet().forEach(e -> {
-            final Sprite sprite = e.getValue();
+            if(this.gameController.getHitBoxID(e.getKey()).getTopLeftCorner().getX() > proj.getTopLeft().getX()
+                    && this.gameController.getHitBoxID(e.getKey()).getTopLeftCorner().getY() > proj.getTopLeft().getY()
+                    && this.gameController.getHitBoxID(e.getKey()).getBottomRightCorner().getX() < proj.getBottomRight().getX()
+                    && this.gameController.getHitBoxID(e.getKey()).getBottomRightCorner().getY() < proj.getBottomRight().getY()) {
+                final Sprite sprite = e.getValue();
                 this.canvasDrawer.drawImage(sprite.getFilepath(), this.calcProjectedRectangle(new Rectangle(
                         this.gameController.getHitBoxID(e.getKey()).getBottomRightCorner(),
                         this.gameController.getHitBoxID(e.getKey()).getTopLeftCorner()
-                ), proj));
+                        ), proj));
 
+            }
         });
+
     }
-    
+
     public boolean containThisID(final int id) {
         return this.sprites.containsKey(id);
     }
-    
+
     public void addSpriteAnimation(final int id, final State state, final GameObjectType type) {
         final Sprite sprite = new SpriteImpl(state, type);
         sprite.setFilepath();
         this.sprites.put(id, sprite);
     }
-    
+
     public void updateSpriteAnimation(final int id, final State state) {
         this.sprites.get(id).setState(state);
         this.sprites.get(id).setFilepath();
     }
-    
+
     public void removeSpriteAnimation(final int id) {
         this.sprites.remove(id);
     }
@@ -128,84 +134,84 @@ public class MapLoader {
     @FXML
     public final void onKeyPressed(final KeyEvent keyEvent) {
         switch (keyEvent.getCode()) {
-            case W:
-            case UP:
-                if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
-                        || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
-                    this.gameController.getPlayer().setDirection(new Vector2D(0, -1));
-                    this.gameController.getPlayer().setLastDirection(Direction.UP);
-                    this.gameController.gameLoop();
-                }
-                break;
-            case A:
-            case LEFT:
-                if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
-                        || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
-                    this.gameController.getPlayer().setDirection(new Vector2D(-1, 0));
-                    this.gameController.getPlayer().setLastDirection(Direction.LEFT);
-                    this.gameController.gameLoop();
-                }
-                break;
-            case S:
-            case DOWN:
-                if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
-                        || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
-                    this.gameController.getPlayer().setDirection(new Vector2D(0, 1));
-                    this.gameController.getPlayer().setLastDirection(Direction.DOWN);
-                    this.gameController.gameLoop();
-                }
-                break;
-            case D:
-            case RIGHT:
-                if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
-                        || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
-                    this.gameController.getPlayer().setDirection(new Vector2D(1, 0));
-                    this.gameController.getPlayer().setLastDirection(Direction.RIGHT);
-                    this.gameController.gameLoop();
-                }
-                break;
-            case Q:
-                if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
-                        || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
-                    if (this.radius <= 13) {
-                        this.radius += 1;
-                    }
-                }
-                break;
-//                TODO togliere O
-            case O:
-                BossFactoryImpl fabbricaBoss = new BossFactoryImpl();
-                Boss bossProva = fabbricaBoss.createBoss1(new Point2D(0,0), new Vector2D(0,0), null);
-                this.gameController.startQuiz(bossProva);
-                break;
-            case E:
-                if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
-                        || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
-                    if (this.radius >= 7) {
-                        this.radius -= 1;
-                    }
-                }
-                break;
-            case SPACE:
-                if (this.gameController.getGameState().equals(GameState.FIGHT)) {
-                    this.gameController.getPlayer().setShoot(true, this.gameController.getPlayer().getLastDirection());
-                    this.gameController.getPlayer().shoot();
-//                    this.gameController.gameLoop();
-                }
-                break;
-            case ESCAPE:
-                if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
-                        || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
-                    this.gameController.setGameState(GameState.MENU);
-                } else if (this.gameController.getGameState().equals(GameState.MENU)) {
-                    this.gameController.getMenuController().resume();
-                } else if (this.gameController.getGameState().equals(GameState.SHOP_MENU)) {
-                    this.gameController.getShopController().closeShop();
-                }
+        case W:
+        case UP:
+            if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
+                    || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
+                this.gameController.getPlayer().setDirection(new Vector2D(0, -1));
+                this.gameController.getPlayer().setLastDirection(Direction.UP);
                 this.gameController.gameLoop();
-                break;
-            default:
-                break;
+            }
+            break;
+        case A:
+        case LEFT:
+            if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
+                    || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
+                this.gameController.getPlayer().setDirection(new Vector2D(-1, 0));
+                this.gameController.getPlayer().setLastDirection(Direction.LEFT);
+                this.gameController.gameLoop();
+            }
+            break;
+        case S:
+        case DOWN:
+            if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
+                    || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
+                this.gameController.getPlayer().setDirection(new Vector2D(0, 1));
+                this.gameController.getPlayer().setLastDirection(Direction.DOWN);
+                this.gameController.gameLoop();
+            }
+            break;
+        case D:
+        case RIGHT:
+            if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
+                    || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
+                this.gameController.getPlayer().setDirection(new Vector2D(1, 0));
+                this.gameController.getPlayer().setLastDirection(Direction.RIGHT);
+                this.gameController.gameLoop();
+            }
+            break;
+        case Q:
+            if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
+                    || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
+                if (this.radius <= 13) {
+                    this.radius += 1;
+                }
+            }
+            break;
+            //                TODO togliere O
+        case O:
+            BossFactoryImpl fabbricaBoss = new BossFactoryImpl();
+            Boss bossProva = fabbricaBoss.createBoss1(new Point2D(0,0), new Vector2D(0,0), null);
+            this.gameController.startQuiz(bossProva);
+            break;
+        case E:
+            if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
+                    || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
+                if (this.radius >= 7) {
+                    this.radius -= 1;
+                }
+            }
+            break;
+        case SPACE:
+            if (this.gameController.getGameState().equals(GameState.FIGHT)) {
+                this.gameController.getPlayer().setShoot(true, this.gameController.getPlayer().getLastDirection());
+                this.gameController.getPlayer().shoot();
+                //                    this.gameController.gameLoop();
+            }
+            break;
+        case ESCAPE:
+            if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
+                    || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
+                this.gameController.setGameState(GameState.MENU);
+            } else if (this.gameController.getGameState().equals(GameState.MENU)) {
+                this.gameController.getMenuController().resume();
+            } else if (this.gameController.getGameState().equals(GameState.SHOP_MENU)) {
+                this.gameController.getShopController().closeShop();
+            }
+            this.gameController.gameLoop();
+            break;
+        default:
+            break;
         }
         this.drawLayers();
     }
