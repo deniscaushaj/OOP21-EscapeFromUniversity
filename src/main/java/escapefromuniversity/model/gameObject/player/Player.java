@@ -67,7 +67,9 @@ public interface Player extends DynamicGameObject {
      * Add some credits to the player.
      * @param credits to add to the Player.
      */
-    void addCredits(int credits);
+    void increaseCredits(int credits);
+
+    void decreaseCredits(int credits);
 
     /**
      * Sets the damage of the player.

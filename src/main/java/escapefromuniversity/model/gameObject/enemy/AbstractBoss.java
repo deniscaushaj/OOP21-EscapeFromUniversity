@@ -197,7 +197,7 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
      */
     @Override
     public void setQuizCredit(final int credits) {
-        this.getMap().getPlayer().setCredits(this.getMap().getPlayer().getCredits() + credits);
+        this.getMap().getPlayer().increaseCredits(credits);
     }
 
     /**

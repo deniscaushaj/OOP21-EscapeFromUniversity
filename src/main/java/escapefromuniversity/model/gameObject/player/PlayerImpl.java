@@ -161,8 +161,13 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player {
      * {@inheritDoc}
      */
     @Override
-    public void addCredits(final int credits) {
+    public void increaseCredits(final int credits) {
         this.credits += credits;
+    }
+
+    @Override
+    public void decreaseCredits(final int credits) {
+        this.credits -= credits;
     }
 
     /**
