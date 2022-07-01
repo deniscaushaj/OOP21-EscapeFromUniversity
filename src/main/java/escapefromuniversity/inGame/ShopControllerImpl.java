@@ -17,17 +17,17 @@ public class ShopControllerImpl implements ShopController {
     private final Items items;
     private final Player player;
     private boolean isActive;
-    private static final int resetHealthCost = 6;
-    private static final int increaseArmorCost = 12;
-    private static final int increaseDamageCost = 12;
-    private static final int doubleChanceCost = 18;
+    private static final int RESET_HEALTH_COST = 6;
+    private static final int INCREASE_ARMOR_COST = 12;
+    private static final int INCREASE_DAMAGE_COST = 12;
+    private static final int DOUBLE_CHANCE_COST = 18;
 
     /**
      * Instantiates the controller of the shop and initializes its buttons.
      * @param gameController the game controller to link to the shop controller.
      * @param gameModel      the game model.
      */
-    public ShopControllerImpl(GameController gameController, GameModel gameModel) {
+    public ShopControllerImpl(final GameController gameController, final GameModel gameModel) {
         this.gameController = gameController;
         this.player = gameModel.getPlayer();
         this.isActive = false;
@@ -40,7 +40,7 @@ public class ShopControllerImpl implements ShopController {
      */
     @Override
     public void startView() {
-        if(!this.isActive) {
+        if (!this.isActive) {
             this.isActive = true;
             this.shopView.startView();
             this.checkButtonsAvailability();
@@ -58,20 +58,20 @@ public class ShopControllerImpl implements ShopController {
     }
 
     @Override
-    public void buyItem(ActionEvent e) {
+    public void buyItem(final ActionEvent e) {
         var source = e.getSource();
         if (this.shopView.getBuyLife().equals(source)) {
             this.items.resetHealth(this.player);
-            this.player.decreaseCredits(resetHealthCost);
+            this.player.decreaseCredits(RESET_HEALTH_COST);
         } else if (this.shopView.getBuyArmor().equals(source)) {
             this.items.increaseArmor(this.player);
-            this.player.decreaseCredits(increaseArmorCost);
+            this.player.decreaseCredits(INCREASE_ARMOR_COST);
         } else if (this.shopView.getBuyDamage().equals(source)) {
             this.items.increaseDamage(this.player);
-            this.player.decreaseCredits(increaseDamageCost);
+            this.player.decreaseCredits(INCREASE_DAMAGE_COST);
         } else if (this.shopView.getBuyChance().equals(source)) {
             this.items.doubleChance(this.player);
-            this.player.decreaseCredits(doubleChanceCost);
+            this.player.decreaseCredits(DOUBLE_CHANCE_COST);
         }
         this.checkButtonsAvailability();
         this.shopView.setCreditsCounter();
@@ -79,16 +79,16 @@ public class ShopControllerImpl implements ShopController {
 
     /* Checks if the items can be bought and sets them not clickable in case they cannot. */
     private void checkButtonsAvailability() {
-        if(!this.items.increaseDamage(this.player) || this.player.getCredits() < increaseDamageCost) {
+        if (!this.items.increaseDamage(this.player) || this.player.getCredits() < INCREASE_DAMAGE_COST) {
             this.shopView.setButtonNotClickable(this.shopView.getBuyDamage());
         }
-        if(!this.items.increaseArmor(this.player) || this.player.getCredits() < increaseArmorCost) {
+        if (!this.items.increaseArmor(this.player) || this.player.getCredits() < INCREASE_ARMOR_COST) {
             this.shopView.setButtonNotClickable(this.shopView.getBuyArmor());
         }
-        if(!this.items.resetHealth(this.player) || this.player.getCredits() < resetHealthCost) {
+        if (!this.items.resetHealth(this.player) || this.player.getCredits() < RESET_HEALTH_COST) {
             this.shopView.setButtonNotClickable(this.shopView.getBuyLife());
         }
-        if(this.player.hasBonusQuiz() || this.player.getCredits() < doubleChanceCost) {
+        if (this.player.hasBonusQuiz() || this.player.getCredits() < DOUBLE_CHANCE_COST) {
             this.shopView.setButtonNotClickable(this.shopView.getBuyChance());
         }
     }

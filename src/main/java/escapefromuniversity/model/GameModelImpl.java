@@ -74,6 +74,7 @@ public class GameModelImpl implements GameModel {
 
     @Override
     public void setQuiz(final Boss boss) {
+
         this.currentBoss = boss;
         this.gameController.setGameState(GameState.QUIZ);
         this.gameController.gameLoop();
@@ -88,7 +89,7 @@ public class GameModelImpl implements GameModel {
     }
 
     @Override
-    public GameInit getMap() {
+    public GameInit getGameInit() {
         return this.mapManager.getGameInit();
     }
 
