@@ -34,7 +34,7 @@ public class GameControllerImpl implements GameController {
     private static final double MILLI_TO_SECOND = 0.001;
     private final GameModel gameModel;
     private MapLoader gameView;
-    private final ShopController shopController;
+    private ShopController shopController;
     private final MenuController menuController = new MenuControllerImpl(this);
     private final LayersControllerImpl layersController;
     private GameState gameState;
@@ -49,9 +49,9 @@ public class GameControllerImpl implements GameController {
         this.gameModel = new GameModelImpl(this);
         this.gameObjID = this.getGameObjectID();
         //this.checkSpriteAnimation();
-        this.shopController = new ShopControllerImpl(this, this.gameModel);
         this.layersController = new LayersControllerImpl(this.gameModel.getMap().getMap(), this.gameModel.getPlayer());
-        this.setGameState(GameState.FIGHT);
+        this.shopController = new ShopControllerImpl(this, this.gameModel);
+        this.setGameState(GameState.PLAY);
     }
 
     /**

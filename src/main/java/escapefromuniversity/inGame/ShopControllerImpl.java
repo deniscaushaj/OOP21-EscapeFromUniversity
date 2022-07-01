@@ -32,6 +32,8 @@ public class ShopControllerImpl implements ShopController, MouseListener {
     public ShopControllerImpl(GameController gameController, GameModel gameModel) {
         this.gameController = gameController;
         this.player = gameModel.getPlayer();
+        this.isActive = false;
+        this.shopView = new ShopViewImpl(this);
     }
 
     /**
@@ -40,10 +42,12 @@ public class ShopControllerImpl implements ShopController, MouseListener {
     @Override
     public void startView() {
         if(!this.isActive) {
-            this.shopView = new ShopViewImpl(this);
+            //this.shopView = new ShopViewImpl(this);
             this.isActive = true;
+            this.shopView.startView();
             this.initializeButtons();
             this.checkButtonsAvailability();
+            //this.shopView.startView();
         }
     }
 

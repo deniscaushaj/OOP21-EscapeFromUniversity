@@ -55,7 +55,7 @@ public class ShopViewImpl extends JPanel implements ShopView {
     public ShopViewImpl(final ShopController shopController) {
         this.shopController = shopController;
         this.setFont(WindowSet.FONT);
-        this.initializeShop();
+        //this.initializeShop();
     }
 
     /* Initializes and sets up all the shop screen components. */
@@ -148,6 +148,12 @@ public class ShopViewImpl extends JPanel implements ShopView {
     @Override
     public void close() {
         this.setVisible(false);
+    }
+
+    @Override
+    public void startView() {
+        this.initializeShop();
+        
     }
 
 }

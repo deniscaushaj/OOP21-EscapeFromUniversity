@@ -53,4 +53,6 @@ public interface ShopView {
      * Closes the shop.
      */
     void close();
+    
+    void startView();
 }

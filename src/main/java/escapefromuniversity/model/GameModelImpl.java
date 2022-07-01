@@ -69,6 +69,7 @@ public class GameModelImpl implements GameModel {
     @Override
     public void setShop() {
         this.gameController.setGameState(GameState.SHOP_MENU);
+        this.gameController.gameLoop();
     }
 
     @Override
