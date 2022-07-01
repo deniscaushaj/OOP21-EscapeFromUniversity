@@ -2446,6 +2446,7 @@
  </layer>
  <layer id="33" name="Shop-RobaSopra" width="180" height="180">
   <properties>
+   <property name="room" type="bool" value="true"/>
    <property name="shop" type="bool" value="true"/>
   </properties>
   <data encoding="csv">
