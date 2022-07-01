@@ -26,7 +26,9 @@ public enum GameCollisionType {
     /**
      * Identifies an immune bullet.
      */
-    IMMUNE_BULLET;
+    IMMUNE_BULLET,
+
+    NADA;
 
 
 }
