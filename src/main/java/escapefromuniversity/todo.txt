@@ -16,6 +16,8 @@ togliere i commenti sparsi e le classi o metodi non usati
 
 controllare indentazione, todo, javadoc, intellij warnings.
 
+CONTROLLARE CHE TUTTO VADA DAL JAR
+
 
 
 Roba trovata su internet:
