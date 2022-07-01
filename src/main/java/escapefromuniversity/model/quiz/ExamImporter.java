@@ -36,13 +36,13 @@ public class ExamImporter {
 		final ExamBuilder examBuilder = new ExamImpl.Builder();
 		final JSONParser parser = new JSONParser();
 		
-		//Runnarlo da eclipse
-		//final Object obj = parser.parse(new FileReader(path));
+		//Rum from eclipse
+		final Object obj = parser.parse(new FileReader(OSFixes.getLocation("quiz", path)));
 		
-		//Runnarlo dal jar
-		InputStream in = getClass().getResourceAsStream("/quiz/"+path);
-	    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-	    final Object obj = parser.parse(reader);
+		//Run from jar
+//		InputStream in = getClass().getResourceAsStream("/quiz/"+path);
+//	    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+//	    final Object obj = parser.parse(reader);
 		
         final JSONObject jsonObject = (JSONObject) obj;
 
