@@ -35,9 +35,9 @@ public class MenuControllerImpl implements MenuController {
 
     @Override
     public void resume() {
+        this.gameController.setGameState(this.gameController.getPrevGameState());
         this.activeMenu = false;
         this.view.close();
-        this.gameController.setGameState(this.gameController.getPrevGameState());
     }
 
     @Override
