@@ -1,6 +1,7 @@
 package escapefromuniversity.inGame;
 
 import escapefromuniversity.menu.MenuController;
+import escapefromuniversity.model.GameModel;
 import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.basics.HitBox;
 import escapefromuniversity.model.gameObject.enemy.Boss;
@@ -68,4 +69,8 @@ public interface GameController {
     HitBox getHitBoxID(int id);
     
     void setMapLoader(MapLoader mapLoader);
+    
+    GameModel getModel();
+    
+    MapLoader getMapLoader();
 }

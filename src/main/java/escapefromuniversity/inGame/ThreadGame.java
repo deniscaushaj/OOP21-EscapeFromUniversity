@@ -1,6 +1,6 @@
 package escapefromuniversity.inGame;
 
-public class TreadGame extends Thread {
+public class ThreadGame extends Thread {
     
     @Override
     public void run() {

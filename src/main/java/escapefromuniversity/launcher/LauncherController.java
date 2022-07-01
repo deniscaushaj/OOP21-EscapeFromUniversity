@@ -9,6 +9,7 @@ import escapefromuniversity.menu.MenuControllerImpl;
 import escapefromuniversity.utilities.LauncherResizer;
 
 import escapefromuniversity.utilities.OSFixes;
+import escapefromuniversity.view.map.MapLoader;
 
 import java.io.File;
 import java.net.URL;
@@ -56,6 +57,7 @@ public class LauncherController {
 //        }
 		try {
 			FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/Game.fxml"));
+			loader.setController(new MapLoader());
 			Parent gameRoot = loader.load();
 			Scene game = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
 			LauncherView.launcherWindow.setScene(game);

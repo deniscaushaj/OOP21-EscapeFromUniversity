@@ -33,7 +33,7 @@ public class ExamImporter {
 		final ExamBuilder examBuilder = new ExamImpl.Builder();
 	
 		final JSONParser parser = new JSONParser();
-		final Object obj = parser.parse(new FileReader(OSFixes.getLocation("quiz", path)));
+		final Object obj = parser.parse(new FileReader(path));
         final JSONObject jsonObject = (JSONObject) obj;
 
 		examBuilder.setTeacher(jsonObject.get("teacher").toString());

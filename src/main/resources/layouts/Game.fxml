@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.canvas.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import escapefromuniversity.view.map.canvas.ResizableCanvas?>
 
 <BorderPane xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1"
             prefHeight="600"
             prefWidth="600"
-            fx:controller="escapefromuniversity.view.map.MapLoader">
+            >
    <center>
       <ResizableCanvas fx:id="gameCanvas"
                        focusTraversable="true"

@@ -12,6 +12,7 @@ import escapefromuniversity.inGame.GameController;
 import escapefromuniversity.launcher.LauncherView;
 import escapefromuniversity.model.quiz.Exam;
 import escapefromuniversity.model.quiz.ExamImporter;
+import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.enemy.Boss.BossState;
 import escapefromuniversity.model.gameObject.player.Player;
@@ -46,7 +47,9 @@ public class QuizController {
 	/**
 	 * Constructor.
 	 */
-	public QuizController(final Boss boss, Player player) {
+	public QuizController(final GameController gc) {
+		this.gc = gc;
+		this.boss = gc.getModel().getCurrentBoss();
 		try {
 			this.exam = new ExamImporter(boss.getBossExam()).importExam();
 			if (this.exam.hasNextQuiz()) {
@@ -106,12 +109,15 @@ public class QuizController {
 				questionButton.setTextFill(Color.DARKGREEN);
 				questionButton.setStyle("-fx-background-image:url('questionRight.png');");
 				this.boss.kill();
+				this.gc.setGameState(GameState.PLAY);
 			} else {
 				questionButton.setText("Noo, sei stato BOCCIATO!");
 				questionButton.setTextFill(Color.DARKRED);
 				questionButton.setStyle("-fx-background-image:url('questionWrong.png');");
 				this.boss.setBossState(BossState.FIGHT);
+				this.gc.setGameState(GameState.FIGHT);
 			}
+			this.gc.gameLoop();
 			
 		}
 	}
@@ -142,6 +148,7 @@ public class QuizController {
 	@FXML
 	public void backToGame(final ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/Game.fxml"));
+		loader.setController(this.gc.getMapLoader());
 		Parent gameRoot = loader.load();
 		Scene game = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
 		LauncherView.launcherWindow.setScene(game);

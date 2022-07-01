@@ -168,6 +168,7 @@ public class MapLoader {
                     }
                 }
                 break;
+//                TODO togliere O
             case O:
                 BossFactoryImpl fabbricaBoss = new BossFactoryImpl();
                 Boss bossProva = fabbricaBoss.createBoss1(new Point2D(0,0), new Vector2D(0,0), null);
@@ -185,7 +186,7 @@ public class MapLoader {
                 if (this.gameController.getGameState().equals(GameState.FIGHT)) {
                     this.gameController.getPlayer().setShoot(true, this.gameController.getPlayer().getLastDirection());
                     this.gameController.getPlayer().shoot();
-                    this.gameController.gameLoop();
+//                    this.gameController.gameLoop();
                 }
                 break;
             case ESCAPE:
