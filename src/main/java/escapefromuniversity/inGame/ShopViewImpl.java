@@ -6,47 +6,53 @@ import escapefromuniversity.utilities.OSFixes;
 import javax.swing.*;
 import java.awt.*;
 
+import static escapefromuniversity.utilities.LauncherResizer.SCREENHEIGHT;
+import static escapefromuniversity.utilities.LauncherResizer.SCREENWIDTH;
+import static escapefromuniversity.utilities.WindowSet.FONT;
+
 /**
  * The implementation of {@link ShopView} that extends also {@link JPanel} to add all the shop components to the screen.
  */
-public class ShopViewImpl extends JPanel implements ShopView {
+public class ShopViewImpl implements ShopView {
 
     private final ShopController shopController;
     private final double windowRatio = WindowSet.getWindowRatio();
+    private final JFrame window = new JFrame();
+    private JPanel shopPanel;
     private final ImageIcon buttonBackground = new ImageIcon(OSFixes.getLocation("images", "back.png"));
     private final ImageIcon creditsIcon = new ImageIcon(OSFixes.getLocation("hud", "credits.png"));
     private final ImageIcon lifeIcon = new ImageIcon(OSFixes.getLocation("hud", "life.png"));
     private final ImageIcon armorIcon = new ImageIcon(OSFixes.getLocation("hud", "armor.png"));
     private final ImageIcon damageIcon = new ImageIcon(OSFixes.getLocation("hud", "damage.png"));
     private final ImageIcon chanceIcon = new ImageIcon(OSFixes.getLocation("hud", "second_chance.png"));
-    private final JTextArea itemInfo = new JTextArea("");
+    private final JLabel itemInfo = new JLabel("", this.creditsIcon, SwingConstants.CENTER);
     private final JButton buyLife = new JButton(buyButton, buttonBackground);
     private final JButton buyArmor = new JButton(buyButton, buttonBackground);
     private final JButton buyDamage = new JButton(buyButton, buttonBackground);
     private final JButton buyChance = new JButton(buyButton, buttonBackground);
-    private final JButton exit = new JButton("Exit");
-    private final JLabel creditsCounter = new JLabel("Credits", (Icon) this.creditsIcon, SwingConstants.CENTER);
-    private final JLabel lifeLabel = new JLabel("6", this.lifeIcon, SwingConstants.CENTER);
-    private final JLabel armorLabel = new JLabel("12", this.armorIcon, SwingConstants.CENTER);
-    private final JLabel damageLabel = new JLabel("12", this.damageIcon, SwingConstants.CENTER);
-    private final JLabel chanceLabel = new JLabel("18", this.chanceIcon, SwingConstants.CENTER);
-//    TODO values to be changed:
-    private final Rectangle creditsCounterPos = new Rectangle((int) (60 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio));
-    private final Rectangle itemInfoPos = new Rectangle((int) (10 * windowRatio), (int) (10 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio));
-    private final Rectangle buyLifePos = new Rectangle((int) (60 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio));
-    private final Rectangle buyArmorPos = new Rectangle((int) (60 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio));
-    private final Rectangle buyDamagePos = new Rectangle((int) (60 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio));
-    private final Rectangle buyChancePos = new Rectangle((int) (60 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio));
-    private final Rectangle exitPos = new Rectangle((int) (60 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio));
-    private final Rectangle lifeLabelPos = new Rectangle((int) (60 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio));
-    private final Rectangle armorLabelPos = new Rectangle((int) (60 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio));
-    private final Rectangle damageLabelPos = new Rectangle((int) (60 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio));
-    private final Rectangle chanceLabelPos = new Rectangle((int) (60 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio), (int) (50 * windowRatio));
+    private final JButton exit = new JButton("Exit", buttonBackground);
+    private final JLabel creditsCounter = new JLabel();
+    private final JLabel lifeLabel = new JLabel("6 Credits", this.lifeIcon, SwingConstants.CENTER);
+    private final JLabel armorLabel = new JLabel("12 Credits", this.armorIcon, SwingConstants.CENTER);
+    private final JLabel damageLabel = new JLabel("12 Credits", this.damageIcon, SwingConstants.CENTER);
+    private final JLabel chanceLabel = new JLabel("18 Credits", this.chanceIcon, SwingConstants.CENTER);
+    private final Rectangle creditsCounterPos = new Rectangle((int) (20 * windowRatio), (int) (5 * windowRatio), (int) (150 * windowRatio), (int) ((creditsIcon.getIconHeight() + 20) * windowRatio));
+    private final Rectangle itemInfoPos = new Rectangle((int) (40 * windowRatio), (int) ((SCREENHEIGHT + 20) * windowRatio), (int) (300 * windowRatio), (int) (200 * windowRatio));
+    private final Rectangle buyLifePos = new Rectangle((int) (SCREENWIDTH / 2.5 * windowRatio), (int) (250 * windowRatio), (buttonBackground.getIconWidth()), (buttonBackground.getIconHeight()));
+    private final Rectangle buyArmorPos = new Rectangle((int) (SCREENWIDTH / 2.5 * windowRatio), (int) (350 * windowRatio), (buttonBackground.getIconWidth()), (buttonBackground.getIconHeight()));
+    private final Rectangle buyDamagePos = new Rectangle((int) (SCREENWIDTH / 2.5 * windowRatio), (int) (450 * windowRatio), (buttonBackground.getIconWidth()), (buttonBackground.getIconHeight()));
+    private final Rectangle buyChancePos = new Rectangle((int) (SCREENWIDTH / 2.5 * windowRatio), (int) (550 * windowRatio), (buttonBackground.getIconWidth()), (buttonBackground.getIconHeight()));
+    private final Rectangle exitPos = new Rectangle((int) ((SCREENWIDTH - buttonBackground.getIconWidth() - 40) * windowRatio), (int) ((SCREENHEIGHT - buttonBackground.getIconHeight() - 20) * windowRatio), (buttonBackground.getIconWidth()), (buttonBackground.getIconHeight()));
+    private final Rectangle lifeLabelPos = new Rectangle((int) (SCREENWIDTH / 2.5 * windowRatio), (int) (200 * windowRatio), (lifeIcon.getIconWidth() + 150), (lifeIcon.getIconHeight() + 20));
+    private final Rectangle armorLabelPos = new Rectangle((int) (SCREENWIDTH / 2.5 * windowRatio), (int) (300 * windowRatio), (armorIcon.getIconWidth() + 150), (armorIcon.getIconHeight() + 20));
+    private final Rectangle damageLabelPos = new Rectangle((int) (SCREENWIDTH / 2.5 * windowRatio), (int) (400 * windowRatio), (damageIcon.getIconWidth() + 150), (damageIcon.getIconHeight() + 20));
+    private final Rectangle chanceLabelPos = new Rectangle((int) (SCREENWIDTH / 2.5 * windowRatio), (int) (500 * windowRatio), (chanceIcon.getIconWidth() + 150), (chanceIcon.getIconHeight() + 20));
+    private final Color color = new Color(255, 241, 179);
     public static final String buyButton = "Buy";
     public static final String buyLifeInfo = "Restores your HP to max.";
     public static final String buyArmorInfo = "Increases your armor.";
     public static final String buyDamageInfo = "Increases your damage.";
-    public static final String buyChanceInfo = "Gives you a second chance when attending an exam quiz.";
+    public static final String buyChanceInfo = "Gives you one more chance to answer a new question when attending an exam quiz.";
 
     /**
      * Instantiates the view of the shop and initializes its window.
@@ -54,35 +60,71 @@ public class ShopViewImpl extends JPanel implements ShopView {
      */
     public ShopViewImpl(final ShopController shopController) {
         this.shopController = shopController;
-        this.setFont(WindowSet.FONT);
-        //this.initializeShop();
+        this.creditsCounter.setBounds(this.creditsCounterPos);
+        this.creditsCounter.setFont(FONT);
+        this.itemInfo.setBounds(this.itemInfoPos);
+        this.itemInfo.setFont(FONT);
+        this.buyLife.setBounds(this.buyLifePos);
+        this.buyLife.setFont(FONT);
+        this.buyLife.setHorizontalTextPosition(SwingConstants.CENTER);
+        this.buyLife.addActionListener(this.shopController::buyItem);
+        this.lifeLabel.setBounds(this.lifeLabelPos);
+        this.lifeLabel.setFont(FONT);
+        this.buyArmor.setBounds(this.buyArmorPos);
+        this.buyArmor.setFont(FONT);
+        this.buyArmor.setHorizontalTextPosition(SwingConstants.CENTER);
+        this.buyArmor.addActionListener(this.shopController::buyItem);
+        this.armorLabel.setBounds(this.armorLabelPos);
+        this.armorLabel.setFont(FONT);
+        this.buyDamage.setBounds(this.buyDamagePos);
+        this.buyDamage.setFont(FONT);
+        this.buyDamage.setHorizontalTextPosition(SwingConstants.CENTER);
+        this.buyDamage.addActionListener(this.shopController::buyItem);
+        this.damageLabel.setBounds(this.damageLabelPos);
+        this.damageLabel.setFont(FONT);
+        this.buyChance.setBounds(this.buyChancePos);
+        this.buyChance.setFont(FONT);
+        this.buyChance.setHorizontalTextPosition(SwingConstants.CENTER);
+        this.buyChance.addActionListener(this.shopController::buyItem);
+        this.chanceLabel.setBounds(this.chanceLabelPos);
+        this.chanceLabel.setFont(FONT);
+        this.exit.setBounds(this.exitPos);
+        this.exit.setFont(FONT);
+        this.exit.setHorizontalTextPosition(SwingConstants.CENTER);
+        this.exit.addActionListener(e -> this.shopController.closeShop());
+        this.itemInfo.setText("HP Restore:" + buyLifeInfo + "\n" + "Armor Buff:" + buyArmorInfo + "\n" + "Damage Buff:" + buyDamageInfo + "\n" + "Second Chance:" + buyChanceInfo);
+        this.setCreditsCounter();
     }
 
-    /* Initializes and sets up all the shop screen components. */
+    @Override
+    public void startView() {
+        this.window.setTitle("Escape From University");
+        this.window.setSize((int) (SCREENWIDTH * this.windowRatio), (int) (SCREENHEIGHT * this.windowRatio));
+        this.window.setResizable(false);
+        this.window.setUndecorated(true);
+        this.window.setLocationRelativeTo(null);
+        this.shopPanel = new JPanel();
+        this.shopPanel.setOpaque(false);
+        this.window.getContentPane().add(this.shopPanel);
+        this.window.setBackground(this.color);
+        this.window.setVisible(true);
+        this.initializeShop();
+    }
+
+    /* Adds all the components to the panel. */
     private void initializeShop() {
-        this.creditsCounter.setBounds(this.creditsCounterPos);
-        this.itemInfo.setBounds(this.itemInfoPos);
-        this.buyLife.setBounds(this.buyLifePos);
-        this.buyArmor.setBounds(this.buyArmorPos);
-        this.buyDamage.setBounds(this.buyDamagePos);
-        this.buyChance.setBounds(this.buyChancePos);
-        this.exit.setBounds(this.exitPos);
-        this.lifeLabel.setBounds(this.lifeLabelPos);
-        this.armorLabel.setBounds(this.armorLabelPos);
-        this.damageLabel.setBounds(this.damageLabelPos);
-        this.chanceLabel.setBounds(this.chanceLabelPos);
-
-
-//      TODO altri settings
-//      TODO aggiungere this alla view del gioco
-        this.add(this.creditsCounter);
-        this.add(this.itemInfo);
-        this.add(this.buyLife);
-        this.add(this.buyArmor);
-        this.add(this.buyDamage);
-        this.add(this.buyChance);
-        this.add(this.exit);
-        this.setVisible(true);
+        this.shopPanel.setBackground(this.color);
+        this.shopPanel.add(this.creditsCounter);
+        this.shopPanel.add(this.itemInfo);
+        this.shopPanel.add(this.buyLife);
+        this.shopPanel.add(this.buyArmor);
+        this.shopPanel.add(this.buyDamage);
+        this.shopPanel.add(this.buyChance);
+        this.shopPanel.add(this.exit);
+        this.shopPanel.add(this.lifeLabel);
+        this.shopPanel.add(this.armorLabel);
+        this.shopPanel.add(this.damageLabel);
+        this.shopPanel.add(this.chanceLabel);
     }
 
     /**
@@ -117,20 +159,9 @@ public class ShopViewImpl extends JPanel implements ShopView {
         return this.buyChance;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    public JButton getExit() {
-        return this.exit;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void setItemInfo(final String itemInfo) {
-        this.itemInfo.setText(itemInfo);
+    public void setCreditsCounter() {
+        this.creditsCounter.setText(this.shopController.getPlayer().getCredits() + "Credits");
     }
 
     /**
@@ -147,13 +178,7 @@ public class ShopViewImpl extends JPanel implements ShopView {
      */
     @Override
     public void close() {
-        this.setVisible(false);
-    }
-
-    @Override
-    public void startView() {
-        this.initializeShop();
-        
+        this.window.setVisible(false);
     }
 
 }
