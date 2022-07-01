@@ -29,8 +29,10 @@ model.basics.HitBox
 model.basics.Point2D
 model.gameObject.GameObjectType
 model.map.MapManagerImpl
-model.gameModelImpl
+model.GameModelImpl
+inGame.GameController*
+inGame.GameViewImpl
+inGame.ShopControllerImpl
 
 Roba che non ho fatto io della mappa:
-MapImpl
 MapManager
