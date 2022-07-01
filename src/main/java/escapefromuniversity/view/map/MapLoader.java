@@ -60,6 +60,7 @@ public class MapLoader {
     
     public void setGameController(GameController gc) {
     	this.gameController = gc;
+    	this.gameController.gameLoop();
     }
 
     @FXML
