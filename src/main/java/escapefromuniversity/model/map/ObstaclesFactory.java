@@ -38,7 +38,7 @@ public class ObstaclesFactory implements Obstacle {
 
     @Override
     public List<ObstacleObject> getNPCList() {
-        return getObstacleList("npc", GameObjectType.WALL);
+        return getObstacleList("npc", GameObjectType.NPC);
     }
 
     @Override
