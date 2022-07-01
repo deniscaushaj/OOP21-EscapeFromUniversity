@@ -31,7 +31,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player {
     private int armor;
     private int passed;
     private int finalMark;
-    private final long shootDelay;
+    private final double shootDelay;
     private long lastShot;
     private boolean shooting;
     private boolean bonusQuiz;
@@ -48,7 +48,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player {
      * @param direction the direction of the player.
      * @param shootDelay the shoot delay of the player.
      */
-    public PlayerImpl(final GameObjectType type, final Point2D position, final double speed, final Vector2D direction, final int shootDelay, final GameInit map) {
+    public PlayerImpl(final GameObjectType type, final Point2D position, final double speed, final Vector2D direction, final double shootDelay, final GameInit map) {
         super(type, position, HIT_BOX_PLAYER, speed, direction, map);
         this.life = MAX_LIFE;
         this.credits = START_CREDITS;
@@ -257,10 +257,9 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player {
      * {@inheritDoc}
      */
     @Override
-    public boolean canShoot() {
-        final long currentTime = System.currentTimeMillis();
-        if (currentTime - this.lastShot >= this.shootDelay) {
-            this.lastShot = currentTime;
+    public boolean canShoot(final double deltaTime) {
+        if (deltaTime + this.lastShot >= this.shootDelay) {
+            this.lastShot = 0;
             return true;
         }
         return false;
@@ -271,7 +270,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player {
      */
     @Override
     public void setShoot(final boolean shooting, final Direction direction) {
-        if (this.canShoot()) {
+        if (this.canShoot(0.2)) {
             this.shooting = shooting;
             this.shotDirection = direction.getDirection();
         }
@@ -282,9 +281,11 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player {
      */
     @Override
     public void shoot() {
-        final Bullet bullet = bulletFactory.createPlayerBullet(this.getObjectPosition(), this.shotDirection, this.damage, this.map);
-        this.getMap().addDynamicGameObject(bullet);
-        this.shooting = false;
+        if (this.shooting) {
+            final Bullet bullet = bulletFactory.createPlayerBullet(this.getObjectPosition(), this.shotDirection, this.damage, this.map);
+            this.getMap().addDynamicGameObject(bullet);
+            this.shooting = false;
+        }
     }
 
     /**

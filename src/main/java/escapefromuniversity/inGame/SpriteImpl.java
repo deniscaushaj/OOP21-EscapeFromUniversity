@@ -107,10 +107,10 @@ public class SpriteImpl implements Sprite {
         } else if(this.objType.equals(GameObjectType.BULLET_BOSS_1) || this.objType.equals(GameObjectType.BULLET_BOSS_2)
                 || this.objType.equals(GameObjectType.BULLET_BOSS_3) || this.objType.equals(GameObjectType.BULLET_BOSS_4)
                 || this.objType.equals(GameObjectType.BULLET_BOSS_5) || this.objType.equals(GameObjectType.BULLET_BOSS_6)) {
-            this.folder = "bullet";
+            this.folder = "bullets";
             this.filename = "boss_bullet.png";
         } else if(this.objType.equals(GameObjectType.BULLET_PLAYER)) {
-            this.folder = "bullet";
+            this.folder = "bullets";
             this.filename = "player_bullet.png";
         }
         this.filepath = this.folder + "/" + this.filename;
