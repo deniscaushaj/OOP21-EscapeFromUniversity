@@ -9,3 +9,9 @@ input check ogni tot sec
 check get location solo folder+fs+file
 
 controllare indentazione, todo, javadoc, intellij warnings.
+
+rendere le finestre camminabili
+
+rimbicciolire l'hitbox del bimbo
+
+togliere molti banchi
