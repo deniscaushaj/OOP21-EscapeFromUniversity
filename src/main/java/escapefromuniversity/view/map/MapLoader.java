@@ -27,6 +27,9 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.stream.Stream;
 
+/**
+ * .
+ */
 public class MapLoader {
 
     private final GameController gameController;
@@ -167,7 +170,7 @@ public class MapLoader {
                 break;
             case O:
                 BossFactoryImpl fabbricaBoss = new BossFactoryImpl();
-                Boss bossProva = fabbricaBoss.createBoss1(new Point2D(0,0), new Vector2D(0,0),null);
+                Boss bossProva = fabbricaBoss.createBoss1(new Point2D(0,0), new Vector2D(0,0), null);
                 this.gameController.startQuiz(bossProva);
                 break;
             case E:
@@ -195,8 +198,8 @@ public class MapLoader {
                 }
                 this.gameController.gameLoop();
                 break;
-            default: {
-            }
+            default:
+                break;
         }
         this.drawLayers();
     }
