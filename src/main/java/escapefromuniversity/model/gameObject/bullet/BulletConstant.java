@@ -17,13 +17,13 @@ final class BulletConstant {
     /**
      * Constant of bullets speed.
      */
-    protected static final double PLAYER_BULLET_SPEED = 0.30;
-    protected static final double BOSS_1_BULLET_SPEED = 0.30;
-    protected static final double BOSS_2_BULLET_SPEED = 0.25;
-    protected static final double BOSS_3_BULLET_SPEED = 0.25;
-    protected static final double BOSS_4_BULLET_SPEED = 0.30;
-    protected static final double BOSS_5_BULLET_SPEED = 0.35;
-    protected static final double BOSS_6_BULLET_SPEED = 0.40;
+    protected static final double PLAYER_BULLET_SPEED = 3;
+    protected static final double BOSS_1_BULLET_SPEED = 3;
+    protected static final double BOSS_2_BULLET_SPEED = 2.5;
+    protected static final double BOSS_3_BULLET_SPEED = 2.5;
+    protected static final double BOSS_4_BULLET_SPEED = 3;
+    protected static final double BOSS_5_BULLET_SPEED = 3.5;
+    protected static final double BOSS_6_BULLET_SPEED = 4;
 
 
     /**
