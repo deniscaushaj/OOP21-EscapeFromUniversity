@@ -16,9 +16,10 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+ * A class which implements MapManager.
+ */
 public class MapManagerImpl implements MapManager {
-    private final GameModel gameModel;
-    private final GameInit gameInit;
     private static final Point2D PLAYER_STARTING_POS = new Point2D(83, 147);
     private static final double PLAYER_SPEED = 1;
     private static final int PLAYER_SHOOT_DELAY = 500;
@@ -28,8 +29,14 @@ public class MapManagerImpl implements MapManager {
     private static final Point2D BOSS4_STARTING_POS = new Point2D(27, 129);
     private static final Point2D BOSS5_STARTING_POS = new Point2D(148, 125);
     private static final Point2D BOSS6_STARTING_POS = new Point2D(147, 32);
+    private final GameModel gameModel;
+    private final GameInit gameInit;
 
-    public MapManagerImpl(GameModel gameModel) {
+    /**
+     * A constructor for MapManagerImpl.
+     * @param gameModel the game model
+     */
+    public MapManagerImpl(final GameModel gameModel) {
         this.gameModel = gameModel;
         this.gameInit = this.createGameInit();
     }
@@ -49,10 +56,18 @@ public class MapManagerImpl implements MapManager {
         return this.gameInit.getPlayer();
     }
 
+    /**
+     * Returns the starting position of the player.
+     * @return the starting position of the player
+     */
     public Point2D getStartingPosition() {
         return new Point2D(PLAYER_STARTING_POS);
     }
 
+    /**
+     * Loads the obstacles in the map.
+     * @param gameInit the game initialization
+     */
     private void loadObstacles(final GameInit gameInit) {
         var factory = new ObstaclesFactory(gameInit.getMap());
         List<ObstacleObject> furniture = factory.getFurnitureList();
@@ -63,6 +78,10 @@ public class MapManagerImpl implements MapManager {
         obs.forEach(gameInit::addStaticGameObject);
     }
 
+    /**
+     * Initialize the game.
+     * @return the game initialization
+     */
     private GameInit createGameInit() {
         //TODO: check vector 2D
         var map = new MapImpl(this);

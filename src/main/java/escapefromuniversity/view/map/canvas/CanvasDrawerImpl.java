@@ -1,7 +1,6 @@
 package escapefromuniversity.view.map.canvas;
 
 import escapefromuniversity.model.map.Rectangle;
-import escapefromuniversity.view.map.canvas.CanvasDrawer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -35,19 +34,19 @@ public class CanvasDrawerImpl implements CanvasDrawer {
         }
         return imagesCache.get(filename);
     }
-
+    @Override
     public void clear() {
         this.gc.clearRect(0, 0, this.getWidth(), this.getHeight());
     }
-
+    @Override
     public double getWidth() {
         return this.canvas.getWidth();
     }
-
+    @Override
     public double getHeight() {
         return this.canvas.getHeight();
     }
-
+    @Override
     public double getScreenRatio() {
         return this.getWidth() / this.getHeight();
     }

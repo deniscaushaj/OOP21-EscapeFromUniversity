@@ -17,6 +17,10 @@ public class ObstaclesFactory implements Obstacle {
     private static final String MAP_NAME = "final-map.tmx";
     private final MapProperties map;
 
+    /**
+     * A constructor for ObstaclesFactory.
+     * @param map the map
+     */
     public ObstaclesFactory(final MapProperties map) {
         this.map = map;
     }

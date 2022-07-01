@@ -18,7 +18,7 @@ public class Tileset {
      * @param columns the number of columns in the tileset
      * @param firstTileId the ID of the first tile
      */
-    public Tileset(final String fileName, int tilesCount, int columns, int firstTileId) {
+    public Tileset(final String fileName, final int tilesCount, final int columns, final int firstTileId) {
         this.fileName = fileName;
         this.tilesCount = tilesCount;
         this.columns = columns;

@@ -2,6 +2,9 @@ package escapefromuniversity.model.basics;
 
 import escapefromuniversity.model.map.Rectangle;
 
+/**
+ * A class which extends Rectangle and implements HitBox.
+ */
 public class HitBoxImpl extends Rectangle implements HitBox {
 
 	//bottomLeft = topLeft
@@ -10,7 +13,12 @@ public class HitBoxImpl extends Rectangle implements HitBox {
 	private final Point2D bottomRight;
 
 
-	public HitBoxImpl(final Point2D topLeft, final Point2D bottomRight){
+	/**
+	 * A constructor for HitBoxImpl.
+	 * @param topLeft the top-left corner
+	 * @param bottomRight the bottom-right corner
+	 */
+	public HitBoxImpl(final Point2D topLeft, final Point2D bottomRight) {
 		super(topLeft, bottomRight);
 		this.bottomRight = new Point2D(bottomRight);
 		this.topLeft = new Point2D(topLeft);
@@ -65,13 +73,7 @@ public class HitBoxImpl extends Rectangle implements HitBox {
 				|| this.topLeft.getY() > box.getTopLeftCorner().getY()) {
 			return false;
 		}
-		if (this.getTopLeftCorner().getX() < box.getBottomRightCorner().getX()
-				|| this.topLeft.getX() > box.getTopLeftCorner().getX()) {
-			return false;
-		}
-		return true;
+		return !(this.getTopLeftCorner().getX() < box.getBottomRightCorner().getX())
+				&& !(this.topLeft.getX() > box.getTopLeftCorner().getX());
 	}
-	
-	
-
 }

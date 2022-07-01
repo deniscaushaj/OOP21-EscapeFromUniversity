@@ -19,7 +19,7 @@ public class MapImpl implements GameInit {
     private final MapProperties mapProperties;
     private IteretorOfID iterator = new IteretorOfID();
 
-    private final static String TMX_MAP_PATH = "final-map.tmx";
+    private static final String TMX_MAP_PATH = "final-map.tmx";
 
 
     public MapImpl(final MapManager mapManager) {

@@ -72,10 +72,20 @@ public class Layer {
         return this.height;
     }
 
-    public Tile getTileFromPosition(int x, int y) {
+    /**
+     * Returns the position of a tile in the map.
+     * @param x the row in the map
+     * @param y the column in the map
+     * @return the position of a tile in the map
+     */
+    public Tile getTileFromPosition(final int x, final int y) {
         return new Tile(x, y, this.data.get(y).get(x));
     }
 
+    /**
+     * Returns the list of the current visible tiles.
+     * @return the list of the current visible tiles
+     */
     public List<Tile> getVisibleTiles() {
         return IntStream.range(0, this.getHeight())
                 .mapToObj(y -> IntStream.range(0, this.getWidth())

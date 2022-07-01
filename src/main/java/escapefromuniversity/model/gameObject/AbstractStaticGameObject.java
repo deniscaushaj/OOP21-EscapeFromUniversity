@@ -65,6 +65,10 @@ public abstract class AbstractStaticGameObject implements StaticGameObject{
 		return this.map;
 	}
 
+	/**
+	 * Returns the rectangle of the static game object.
+	 * @return the rectangle of the static game object
+	 */
 	public Rectangle getRectangle() {
 		return this.rectangle;
 	}

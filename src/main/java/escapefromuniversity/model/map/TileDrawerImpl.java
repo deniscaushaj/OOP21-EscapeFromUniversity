@@ -5,6 +5,9 @@ import java.util.Comparator;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.view.map.canvas.CanvasDrawer;
 
+/**
+ * A class which implements TileDrawer.
+ */
 public class TileDrawerImpl implements TileDrawer {
 
     private final MapProperties map;
@@ -36,12 +39,6 @@ public class TileDrawerImpl implements TileDrawer {
                 pos);
     }
 
-    /**
-     * A method to calculate the position of a tile in the tileset.
-     * @param id the ID of the tile wanted
-     * @param ts the tileset containing the tile
-     * @return the position of the tile
-     */
     private Point2D calcTPos(final int id, final Tileset ts) {
         var cols = ts.getColumns();
         var idOffset = id - ts.getFirstTileId();

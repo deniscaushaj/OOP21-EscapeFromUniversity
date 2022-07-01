@@ -17,12 +17,20 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class LayersControllerImpl {
+/**
+ * A class which implements LayersController.
+ */
+public class LayersControllerImpl implements LayersController {
 
     private final MapProperties map;
     private final Player player;
 
-    public LayersControllerImpl(MapProperties map, Player player) {
+    /**
+     * A constructor for LayersControllerImpl.
+     * @param map the map properties.
+     * @param player the player.
+     */
+    public LayersControllerImpl(final MapProperties map, final Player player) {
         this.map = map;
         this.player = player;
     }
@@ -35,23 +43,24 @@ public class LayersControllerImpl {
         return this.getProperties(player.getObjectPosition()).contains("corridor");
     }
 
+    /**
+     * Returns true if the player is standing over a tile of the shop, false otherwise.
+     * @return true if the player is standing over a tile of the shop, false otherwise.
+     */
     public boolean isShop() {
         return this.getProperties(player.getObjectPosition()).contains("shop");
     }
 
-    private Set<String> getProperties(Point2D position) {
+    private Set<String> getProperties(final Point2D position) {
         return this.map.getLayers().stream()
-                .filter(l -> l.getTileFromPosition((int)position.getX(), (int)position.getY()).isVisible())
+                .filter(l -> l.getTileFromPosition((int) position.getX(), (int) position.getY()).isVisible())
                 .reduce((first, second) -> second)
                 .map(Layer::getProperties)
                 .orElse(Set.of());
     }
 
-    public void update() {
-
-    }
-
-    public Stream<Layer> getVisibleLayers() throws ParserConfigurationException, IOException, SAXException {
+    @Override
+    public Stream<Layer> getVisibleLayers() {
         final List<String> allowed = new ArrayList<>();
         if (isCorridor()) {
             allowed.add("corridor");

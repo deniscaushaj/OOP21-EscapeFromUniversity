@@ -2,6 +2,9 @@ package escapefromuniversity.view.map.canvas;
 
 import javafx.scene.canvas.Canvas;
 
+/**
+ * A class which implements Canvas to resize the canvas
+ */
 public class ResizableCanvas extends Canvas {
 
     @Override
@@ -10,27 +13,27 @@ public class ResizableCanvas extends Canvas {
     }
 
     @Override
-    public double maxHeight(double width) {
+    public double maxHeight(final double width) {
         return Double.POSITIVE_INFINITY;
     }
 
     @Override
-    public double maxWidth(double height) {
+    public double maxWidth(final double height) {
         return Double.POSITIVE_INFINITY;
     }
 
     @Override
-    public double minWidth(double height) {
-        return 1;
+    public double minWidth(final double height) {
+        return 1.0;
     }
 
     @Override
-    public double minHeight(double width) {
-        return 1;
+    public double minHeight(final double width) {
+        return 1.0;
     }
 
     @Override
-    public void resize(double width, double height) {
+    public void resize(final double width, final double height) {
         this.setWidth(width);
         this.setHeight(height);
     }

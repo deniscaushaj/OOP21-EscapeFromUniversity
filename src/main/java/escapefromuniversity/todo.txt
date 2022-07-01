@@ -15,3 +15,20 @@ rendere le finestre camminabili
 rimbicciolire l'hitbox del bimbo
 
 togliere molti banchi
+
+MapController si può eliminare?
+
+Roba trovata su internet:
+isColliding https://www.baeldung.com/java-check-if-two-rectangles-overlap#:~:text=Java%20Implementation&text=Our%20isOverlapping()%20method%20in,we%20compare%20their%20y%2Dcoordinates.
+ResizableCanvas
+
+Roba fatta insieme:
+model.basics.HitBox
+model.basics.Point2D
+model.gameObject.GameObjectType
+model.map.MapManagerImpl
+model.gameModelImpl
+
+Roba che non ho fatto io della mappa:
+MapImpl
+MapManager

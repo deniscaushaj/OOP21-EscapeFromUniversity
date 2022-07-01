@@ -79,8 +79,8 @@ public class Point2D {
 
     /**
      * 
-     * @param point
-     * @return new Pioint2D.
+     * @param point the point to sum from.
+     * @return the result of the sum.
      */
     public Point2D sum(final Point2D point) {
         return new Point2D(this.x + point.getX(), this.y + point.getY());
@@ -106,9 +106,9 @@ public class Point2D {
 
     @Override
     public String toString() {
-        return "Point2D{" +
-                "x=" + x +
-                ", y=" + y +
-                '}';
+        return "Point2D{"
+                + "x=" + x
+                + ", y=" + y
+                + '}';
     }
 }

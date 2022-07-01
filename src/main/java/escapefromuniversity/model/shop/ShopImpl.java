@@ -7,12 +7,12 @@ import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.GameInit;
 
 /**
- * Implementation of Shop interface.
+ * A class which extenst AbstractStaticGameObject and implements Shop.
  */
 public class ShopImpl extends AbstractStaticGameObject implements Shop {
-	
+
 	/**
-	 * Constructor of a ShopImpl
+	 * A constructor for ShopImpl.
 	 * @param type The type of the game object.
 	 * @param position The position of the game object represented with a Point2Dthe position of the game object represented with a Point2D.
 	 * @param upperCorner

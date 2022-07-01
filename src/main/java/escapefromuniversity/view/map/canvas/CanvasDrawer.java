@@ -7,22 +7,41 @@ import escapefromuniversity.model.map.Rectangle;
  */
 public interface CanvasDrawer {
 
-    public void clear();
+    /**
+     * Clears the canvas.
+     */
+    void clear();
 
-    public double getWidth();
+    /**
+     * Returns the width of the canvas.
+     * @return the width of the canvas
+     */
+    double getWidth();
 
-    public double getHeight();
+    /**
+     * Returns the height of the canvas.
+     * @return the height of the canvas
+     */
+    double getHeight();
 
-    public double getScreenRatio();
+    /**
+     * Returns the screen ratio.
+     * @return the screen ratio
+     */
+    double getScreenRatio();
 
     /**
      * Draws a tile.
-     *
      * @param filename the filename
      * @param imagePos the position in the file of the rectangle to draw
      * @param drawPos  the position in the map of the rectangle to draw
      */
     void drawImage(String filename, Rectangle imagePos, Rectangle drawPos);
 
+    /**
+     * Draws a tile.
+     * @param filename the filename
+     * @param drawPos the position in the map of the rectangle to draw
+     */
     void drawImage(String filename, Rectangle drawPos);
 }

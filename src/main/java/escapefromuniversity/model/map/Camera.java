@@ -6,7 +6,8 @@ package escapefromuniversity.model.map;
 public interface Camera {
 
     /**
-     * .
+     * Returns the projected rectangle.
+     * @param ratio the ratio of the screen
      * @return the projected rectangle
      */
     Rectangle calcMapProjection(double ratio);
