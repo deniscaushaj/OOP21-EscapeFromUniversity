@@ -74,7 +74,8 @@ public class MapManagerImpl implements MapManager {
         List<ObstacleObject> doors = factory.getDoorList();
         List<ObstacleObject> npc = factory.getNPCList();
         List<ObstacleObject> walls = factory.getWallsList();
-        var obs = Stream.of(furniture, doors, npc, walls).flatMap(Collection::stream);
+        List<ObstacleObject> shop = factory.getShopList();
+        var obs = Stream.of(furniture, doors, npc, walls, shop).flatMap(Collection::stream);
         obs.forEach(gameInit::addStaticGameObject);
     }
 
