@@ -129,7 +129,6 @@ public class MapLoader {
     public final void onKeyPressed(final KeyEvent keyEvent) {
         switch (keyEvent.getCode()) {
             case W:
-            case UP:
                 if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
                         || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
                     this.gameController.getPlayer().setDirection(new Vector2D(0, -1));
@@ -138,7 +137,6 @@ public class MapLoader {
                 }
                 break;
             case A:
-            case LEFT:
                 if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
                         || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
                     this.gameController.getPlayer().setDirection(new Vector2D(-1, 0));
@@ -147,7 +145,6 @@ public class MapLoader {
                 }
                 break;
             case S:
-            case DOWN:
                 if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
                         || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
                     this.gameController.getPlayer().setDirection(new Vector2D(0, 1));
@@ -156,7 +153,6 @@ public class MapLoader {
                 }
                 break;
             case D:
-            case RIGHT:
                 if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
                         || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
                     this.gameController.getPlayer().setDirection(new Vector2D(1, 0));
@@ -171,12 +167,6 @@ public class MapLoader {
                         this.radius += 1;
                     }
                 }
-                break;
-//                TODO togliere O
-            case O:
-                BossFactoryImpl fabbricaBoss = new BossFactoryImpl();
-                Boss bossProva = fabbricaBoss.createBoss1(new Point2D(0,0), new Vector2D(0,0), null);
-                this.gameController.startQuiz(bossProva);
                 break;
             case E:
                 if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
