@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="180" height="180" tilewidth="48" tileheight="48" infinite="0" nextlayerid="33" nextobjectid="1">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="180" height="180" tilewidth="48" tileheight="48" infinite="0" nextlayerid="33" nextobjectid="1">
  <tileset firstgid="1" source="tilesets/Room_Builder_free_48x48.tsx"/>
  <tileset firstgid="392" source="tilesets/Interiors_free_48x48.tsx"/>
  <tileset firstgid="1816" source="tilesets/Characters_MV.tsx"/>
