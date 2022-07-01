@@ -84,13 +84,17 @@ public class MapLoader {
                 this.calcProjectedPosition(rect.getBottomRight(), proj));
     }
 
-    public void drawLayers() throws ParserConfigurationException, IOException, SAXException {
+    public void drawLayers(){
         var proj = this.camera.calcMapProjection(this.canvasDrawer.getScreenRatio());
         this.canvasDrawer.clear();
-        getTilesToDraw(proj).forEach(t -> {
-            this.tileDrawer.drawTileByID(t.getValue(), this.calcProjectedRectangle(
-                    new Rectangle(t.getPosition(), t.getPosition().sum(new Point2D(1, 1))), proj));
-        });
+        try {
+            getTilesToDraw(proj).forEach(t -> {
+                this.tileDrawer.drawTileByID(t.getValue(), this.calcProjectedRectangle(
+                        new Rectangle(t.getPosition(), t.getPosition().sum(new Point2D(1, 1))), proj));
+            });
+        } catch (ParserConfigurationException | IOException | SAXException e) {
+            throw new RuntimeException(e);
+        }
         final Map<Integer, Sprite> tmpSprites = new ConcurrentSkipListMap<>(sprites);
         tmpSprites.entrySet().forEach(e -> {
             final Sprite sprite = e.getValue();
@@ -98,7 +102,7 @@ public class MapLoader {
                         this.gameController.getHitBoxID(e.getKey()).getBottomRightCorner(),
                         this.gameController.getHitBoxID(e.getKey()).getTopLeftCorner()
                 ), proj));
-            
+
         });
     }
     
@@ -122,7 +126,7 @@ public class MapLoader {
     }
 
     @FXML
-    public final void onKeyPressed(final KeyEvent keyEvent) throws ParserConfigurationException, IOException, SAXException {
+    public final void onKeyPressed(final KeyEvent keyEvent) {
         switch (keyEvent.getCode()) {
             case W:
             case UP:
