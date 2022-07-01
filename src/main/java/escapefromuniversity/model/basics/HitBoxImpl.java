@@ -61,11 +61,15 @@ public class HitBoxImpl extends Rectangle implements HitBox {
 
 	@Override
 	public boolean isColliding(final HitBox box) {
-			if (box == null) {
-				return false;
-			}
-			return !(this.getTopLeftCorner().getX() >= box.getBottomRightCorner().getX() || box.getTopLeftCorner().getX() >= this.getBottomRightCorner().getX()
-					|| this.getTopLeftCorner().getY() >= box.getBottomRightCorner().getY() || box.getTopLeftCorner().getY() >= this.getBottomRightCorner().getY());
+		if (this.bottomRight.getY() < box.getBottomRightCorner().getY()
+				|| this.topLeft.getY() > box.getTopLeftCorner().getY()) {
+			return false;
+		}
+		if (this.getTopLeftCorner().getX() < box.getBottomRightCorner().getX()
+				|| this.topLeft.getX() > box.getTopLeftCorner().getX()) {
+			return false;
+		}
+		return true;
 	}
 	
 	
