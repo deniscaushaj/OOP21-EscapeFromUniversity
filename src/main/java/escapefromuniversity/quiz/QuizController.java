@@ -17,6 +17,7 @@ import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.enemy.Boss.BossState;
 import escapefromuniversity.model.quiz.Quiz;
 import escapefromuniversity.utilities.LauncherResizer;
+import escapefromuniversity.view.map.MapLoader;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;
@@ -116,8 +117,6 @@ public class QuizController {
 				this.boss.setBossState(BossState.FIGHT);
 				this.gc.setGameState(GameState.FIGHT);
 			}
-			this.gc.gameLoop();
-			
 		}
 	}
 	

@@ -13,11 +13,12 @@ import escapefromuniversity.quiz.QuizView;
  * 
  *
  */
-public class TestQuiz {
+public class TestExam {
+	
 
 	@Test
-	public void testImport() throws Exception {
-	    QuizView.startQuizCompetition();
+	public void testQuizBuilder(){
+	    
 	}
 
 }

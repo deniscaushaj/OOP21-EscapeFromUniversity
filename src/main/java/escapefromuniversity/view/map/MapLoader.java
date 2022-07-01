@@ -32,7 +32,7 @@ import java.util.stream.Stream;
  */
 public class MapLoader {
 
-    private final GameController gameController;
+    private GameController gameController;
     private final MapProperties map;
     private CanvasDrawer canvasDrawer;
     private TileDrawer tileDrawer;
@@ -56,6 +56,11 @@ public class MapLoader {
         final var parser = new TMXMapParser("final-map.tmx");
         this.map = parser.parse();
         this.layersController =  new LayersControllerImpl(map, this.gameController.getPlayer());
+    }
+
+    public void setGameController(GameController gc) {
+        this.gameController = gc;
+        this.gameController.gameLoop();
     }
 
     @FXML
@@ -97,30 +102,36 @@ public class MapLoader {
         }
         final Map<Integer, Sprite> tmpSprites = new ConcurrentSkipListMap<>(sprites);
         tmpSprites.entrySet().forEach(e -> {
-            final Sprite sprite = e.getValue();
+            if(this.gameController.getHitBoxID(e.getKey()).getTopLeftCorner().getX() > proj.getTopLeft().getX()
+                    && this.gameController.getHitBoxID(e.getKey()).getTopLeftCorner().getY() > proj.getTopLeft().getY()
+                    && this.gameController.getHitBoxID(e.getKey()).getBottomRightCorner().getX() < proj.getBottomRight().getX()
+                    && this.gameController.getHitBoxID(e.getKey()).getBottomRightCorner().getY() < proj.getBottomRight().getY()) {
+                final Sprite sprite = e.getValue();
                 this.canvasDrawer.drawImage(sprite.getFilepath(), this.calcProjectedRectangle(new Rectangle(
                         this.gameController.getHitBoxID(e.getKey()).getBottomRightCorner(),
                         this.gameController.getHitBoxID(e.getKey()).getTopLeftCorner()
                 ), proj));
 
+            }
         });
+
     }
-    
+
     public boolean containThisID(final int id) {
         return this.sprites.containsKey(id);
     }
-    
+
     public void addSpriteAnimation(final int id, final State state, final GameObjectType type) {
         final Sprite sprite = new SpriteImpl(state, type);
         sprite.setFilepath();
         this.sprites.put(id, sprite);
     }
-    
+
     public void updateSpriteAnimation(final int id, final State state) {
         this.sprites.get(id).setState(state);
         this.sprites.get(id).setFilepath();
     }
-    
+
     public void removeSpriteAnimation(final int id) {
         this.sprites.remove(id);
     }

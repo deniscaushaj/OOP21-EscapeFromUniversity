@@ -70,11 +70,11 @@ public class MapManagerImpl implements MapManager {
      */
     private void loadObstacles(final GameInit gameInit) {
         var factory = new ObstaclesFactory(gameInit.getMap());
-        List<ObstacleObject> furniture = factory.getFurnitureList();
-        List<ObstacleObject> doors = factory.getDoorList();
-        List<ObstacleObject> npc = factory.getNPCList();
-        List<ObstacleObject> walls = factory.getWallsList();
-        List<ObstacleObject> shop = factory.getShopList();
+        List<ObstacleObject> furniture = factory.getFurnitureList(gameInit);
+        List<ObstacleObject> doors = factory.getDoorList(gameInit);
+        List<ObstacleObject> npc = factory.getNPCList(gameInit);
+        List<ObstacleObject> walls = factory.getWallsList(gameInit);
+        List<ObstacleObject> shop = factory.getShopList(gameInit);
         var obs = Stream.of(furniture, doors, npc, walls, shop).flatMap(Collection::stream);
         obs.forEach(gameInit::addStaticGameObject);
     }

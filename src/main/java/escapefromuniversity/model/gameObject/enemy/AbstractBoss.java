@@ -45,7 +45,8 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
         this.impactDamage = impactDamage;
         this.exam = exam;
         this.previousPosition = position;
-        this.setState(State.IDLE);
+        //this.setDirection(direction);
+        this.setState(State.LEFT);
     }
 
     /**
@@ -95,7 +96,7 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
      */
     @Override
     public void update(final double deltaTime) {
-        if (this.bossState.equals(BossState.FIGHT)) {
+        if (this.bossState == BossState.FIGHT) {
             this.maybeShoot();
             this.setPreviousPosition(this.getObjectPosition());
             this.move(deltaTime);
