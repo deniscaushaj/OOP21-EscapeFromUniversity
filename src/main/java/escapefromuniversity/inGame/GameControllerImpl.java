@@ -104,7 +104,6 @@ public class GameControllerImpl implements GameController {
     private void checkSpriteAnimation() {
         final List<Integer> ids = this.getGameObjectID();
         for (final Integer id : ids) {
-            this.gameView.checkID();
             if (this.gameView.containThisID(id)) {
                 this.gameView.updateSpriteAnimation(id, this.gameModel.getStateID(id));
             } else {

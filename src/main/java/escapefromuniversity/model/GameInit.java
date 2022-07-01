@@ -14,7 +14,7 @@ public interface GameInit {
 
     void update(double deltaTime);
 
-    void deleteGameObject(GameObject gameObject);
+    void deleteGameObject(DynamicGameObject gameObject);
 
     void addDynamicGameObject(DynamicGameObject dGObj);
 
