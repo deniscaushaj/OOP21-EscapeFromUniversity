@@ -12,49 +12,54 @@ import java.util.stream.Collectors;
 public class ObstaclesFactory implements Obstacle {
 
     private static final String MAP_NAME = "final-map.tmx";
-    private final MapProperties mapp;
+    private final MapProperties map;
 
     /**
      * A constructor for ObstaclesFactory.
      * @param map the map
      */
-    public ObstaclesFactory(final MapProperties mapp) {
-        this.mapp = mapp;
+    public ObstaclesFactory(final MapProperties map) {
+        this.map = map;
     }
 
-    private List<ObstacleObject> getObstacleList(final String property, final GameObjectType obsType, final GameInit map) {
+    private List<ObstacleObject> getObstacleList(final String property, final GameObjectType obsType, final GameInit gameInit) {
         //var map = new TMXMapParser(MAP_NAME);
-        return mapp.getLayers()
+        return map.getLayers()
                 .stream()
                 .filter(l -> l.getProperties().contains(property))
                 .flatMap(l -> l.getVisibleTiles().stream())
-                .map(t -> new ObstacleObject(obsType, this.calcTilePosInPixel(t.getX(), t.getY()), map))
+                .map(t -> new ObstacleObject(obsType, this.calcTilePosInPixel(t.getX(), t.getY()), gameInit))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<ObstacleObject> getWallsList(GameInit map) {
-        return getObstacleList("walls", GameObjectType.WALL, map);
+    public List<ObstacleObject> getWallsList(final GameInit gameInit) {
+        return getObstacleList("walls", GameObjectType.WALL, gameInit);
     }
 
     @Override
-    public List<ObstacleObject> getNPCList(GameInit map) {
-        return getObstacleList("npc", GameObjectType.NPC, map);
+    public List<ObstacleObject> getNPCList(final GameInit gameInit) {
+        return getObstacleList("npc", GameObjectType.NPC, gameInit);
     }
 
     @Override
-    public List<ObstacleObject> getDoorList(GameInit map) {
-        return getObstacleList("door", GameObjectType.DOOR, map);
+    public List<ObstacleObject> getDoorList(final GameInit gameInit) {
+        return getObstacleList("door", GameObjectType.DOOR, gameInit);
     }
 
     @Override
-    public List<ObstacleObject> getFurnitureList(GameInit map) {
-        return getObstacleList("furniture", GameObjectType.FURNITURE, map);
+    public List<ObstacleObject> getVictoryDoorList(final GameInit gameInit) {
+        return getObstacleList("victory-door", GameObjectType.DOOR, gameInit);
     }
 
     @Override
-    public List<ObstacleObject> getShopList(GameInit map) {
-        return getObstacleList("shop", GameObjectType.SHOP, map);
+    public List<ObstacleObject> getFurnitureList(final GameInit gameInit) {
+        return getObstacleList("furniture", GameObjectType.FURNITURE, gameInit);
+    }
+
+    @Override
+    public List<ObstacleObject> getShopList(final GameInit gameInit) {
+        return getObstacleList("shop", GameObjectType.SHOP, gameInit);
     }
 
     private Rectangle calcTilePosInPixel(final int x, final int y) {
