@@ -34,4 +34,10 @@ public interface Obstacle {
      * @return a list of ObstacleObject
      */
     List<ObstacleObject> getFurnitureList();
+
+    /**
+     * Returns the list of the tiles of the shop.
+     * @return the list of the tiles of the shop
+     */
+    List<ObstacleObject> getShopList();
 }

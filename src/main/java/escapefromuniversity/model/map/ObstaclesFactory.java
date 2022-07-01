@@ -51,6 +51,11 @@ public class ObstaclesFactory implements Obstacle {
         return getObstacleList("furniture", GameObjectType.FURNITURE);
     }
 
+    @Override
+    public List<ObstacleObject> getShopList() {
+        return getObstacleList("shop", GameObjectType.SHOP);
+    }
+
     private Rectangle calcTilePosInPixel(final int x, final int y) {
         return new Rectangle(new Point2D(x, y),
                 new Point2D(x + 1, y + 1));
