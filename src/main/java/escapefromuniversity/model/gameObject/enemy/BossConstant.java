@@ -17,12 +17,12 @@ final class BossConstant {
     /**
      * constant boss life.
      */
-    protected static final int BOSS_1_LIFE = 200;
-    protected static final int BOSS_2_LIFE = 150;
-    protected static final int BOSS_3_LIFE = 190;
-    protected static final int BOSS_4_LIFE = 100;
-    protected static final int BOSS_5_LIFE = 180;
-    protected static final int BOSS_6_LIFE = 300;
+    protected static final int BOSS_1_LIFE = 100;
+    protected static final int BOSS_2_LIFE = 75;
+    protected static final int BOSS_3_LIFE = 95;
+    protected static final int BOSS_4_LIFE = 700;
+    protected static final int BOSS_5_LIFE = 10;
+    protected static final int BOSS_6_LIFE = 150;
 
     /**
      * constant boss impact damage.
