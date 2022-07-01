@@ -7,8 +7,6 @@ import escapefromuniversity.model.map.Rectangle;
  */
 public class HitBoxImpl extends Rectangle implements HitBox {
 
-	//bottomLeft = topLeft
-	//upperRight = bottomRight
 	private final Point2D topLeft;
 	private final Point2D bottomRight;
 
