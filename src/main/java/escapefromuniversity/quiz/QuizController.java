@@ -47,6 +47,7 @@ public class QuizController {
 	 * Constructor.
 	 */
 	public QuizController(final Boss boss, Player player) {
+		this.boss = boss;
 		try {
 			this.exam = new ExamImporter(boss.getBossExam()).importExam();
 			if (this.exam.hasNextQuiz()) {

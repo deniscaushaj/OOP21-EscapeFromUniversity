@@ -1,0 +1,32 @@
+{
+    "teacher": "BOSS5",
+    "subject": "Basi di dati",
+    "cfu": 6,
+    "quiz": [
+      {
+        "question": "Quale tipo di progettazione non esiste?",
+        "answers": ["Logica", "Fisica", "Concettuale", "Mentale"],
+        "correct": 4
+      },
+       {
+        "question": "Quale tra queste è la forma normale di livello più alto?",
+        "answers": ["2NF", "BCNF", "1NF", "3NF"],
+        "correct": 2
+      },
+      {
+        "question": "Quale JOIN non esiste?",
+        "answers": ["FULL JOIN", "LEFT JOIN", "RIGHT JOIN", "MIDDLER JOIN"],
+        "correct": 4
+      },
+      {
+        "question": "Quale copertura è fittizia?",
+        "answers": ["Totale esclusiva:", "Parziale esclusiva", "Spostata", "Sovrapposta"],
+        "correct": 3
+      },
+      {
+        "question": "Dalla progettazione concettuale si produce:",
+        "answers": ["Diagramma E/R", "Codice SQL", "Tabelle fisiche", "Algebra relazionale"],
+        "correct": 1
+      }
+    ]
+  }
