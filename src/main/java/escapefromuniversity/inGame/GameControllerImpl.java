@@ -143,7 +143,7 @@ public class GameControllerImpl implements GameController {
         try {
         	FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/Quiz.fxml"));
             Parent gameRoot;
-            final QuizController quizController = new QuizController(boss, this.gameModel.getPlayer());
+            final QuizController quizController = new QuizController(this);
             loader.setController(quizController);
             gameRoot = loader.load();
             Scene quiz = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
@@ -214,6 +214,16 @@ public class GameControllerImpl implements GameController {
     public void setMapLoader(MapLoader mapLoader) {
         this.gameView = mapLoader;
         
+    }
+    
+    @Override
+    public MapLoader getMapLoader() {
+        return this.gameView;        
+    }
+    
+    @Override
+    public GameModel getModel() {
+    	return this.gameModel;
     }
 
 }

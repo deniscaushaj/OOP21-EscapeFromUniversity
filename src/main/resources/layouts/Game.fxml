@@ -6,7 +6,7 @@
 <BorderPane xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1"
             prefHeight="600"
             prefWidth="600"
-            fx:controller="escapefromuniversity.view.map.MapLoader">
+            >
    <center>
       <ResizableCanvas fx:id="gameCanvas"
                        focusTraversable="true"
