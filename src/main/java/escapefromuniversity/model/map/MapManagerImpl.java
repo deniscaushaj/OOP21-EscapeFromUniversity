@@ -2,6 +2,7 @@ package escapefromuniversity.model.map;
 
 import escapefromuniversity.model.GameInit;
 import escapefromuniversity.model.GameModel;
+import escapefromuniversity.model.GameInitImpl;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.basics.Vector2D;
 import escapefromuniversity.model.gameObject.GameObjectType;
@@ -75,7 +76,8 @@ public class MapManagerImpl implements MapManager {
         List<ObstacleObject> npc = factory.getNPCList(gameInit);
         List<ObstacleObject> walls = factory.getWallsList(gameInit);
         List<ObstacleObject> shop = factory.getShopList(gameInit);
-        var obs = Stream.of(furniture, doors, npc, walls, shop).flatMap(Collection::stream);
+        List<ObstacleObject> victoryDoors = factory.getVictoryDoorList(gameInit);
+        var obs = Stream.of(furniture, doors, npc, walls, shop, victoryDoors).flatMap(Collection::stream);
         obs.forEach(gameInit::addStaticGameObject);
     }
 
@@ -85,7 +87,7 @@ public class MapManagerImpl implements MapManager {
      */
     private GameInit createGameInit() {
         //TODO: check vector 2D
-        var map = new MapImpl(this);
+        var map = new GameInitImpl(this);
         Player player = new PlayerImpl(GameObjectType.PLAYER, getStartingPosition(), PLAYER_SPEED, new Vector2D(1, 0), PLAYER_SHOOT_DELAY, map);
         player.setState(State.LEFT);
         map.addDynamicGameObject(player);
