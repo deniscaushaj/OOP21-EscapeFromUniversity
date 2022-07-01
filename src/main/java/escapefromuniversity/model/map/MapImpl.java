@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import escapefromuniversity.model.GameInit;
-import escapefromuniversity.model.IteretorOfID;
+import escapefromuniversity.model.IteratorOfID;
 import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.DynamicGameObject;
 import escapefromuniversity.model.gameObject.GameObject;
@@ -17,7 +17,7 @@ public class MapImpl implements GameInit {
     private final List<DynamicGameObject> dynamicGameObjects = new LinkedList<>();
     private final MapManager mapManager;
     private final MapProperties mapProperties;
-    private IteretorOfID iterator = new IteretorOfID();
+    private IteratorOfID iterator = new IteratorOfID();
 
     private static final String TMX_MAP_PATH = "final-map.tmx";
 
