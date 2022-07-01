@@ -38,7 +38,7 @@ public class MenuViewImpl implements MenuView {
     private final JButton btCommand = new JButton("COMMAND");
     private final JButton btBack = new JButton("BACK");
 
-    private final JLabel command1 = new JLabel("<html>W / ↑ : move up<br> A / ← : move left<br> S / ↓ : move down<br> D / → : move right</html>");
+    private final JLabel command1 = new JLabel("A/W/S/D for move");
     private final JLabel command2 = new JLabel("Spacebar : shoot");
     private final JLabel command3 = new JLabel("Esc : open menu");
 
