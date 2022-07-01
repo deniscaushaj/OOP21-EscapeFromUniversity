@@ -206,14 +206,13 @@ public class GameControllerImpl implements GameController {
     }
 
     @Override
-    public HitBox getHitBoxID(int id) {
+    public HitBox getHitBoxID(final int id) {
         return this.gameModel.getHitBoxID(id);
     }
 
     @Override
-    public void setMapLoader(MapLoader mapLoader) {
+    public void setMapLoader(final MapLoader mapLoader) {
         this.gameView = mapLoader;
-        
     }
 
 }

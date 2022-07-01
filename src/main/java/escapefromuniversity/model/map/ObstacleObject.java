@@ -1,5 +1,6 @@
 package escapefromuniversity.model.map;
 
+import escapefromuniversity.model.GameInit;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.gameObject.AbstractStaticGameObject;
 import escapefromuniversity.model.gameObject.GameObject;
@@ -14,8 +15,8 @@ public class ObstacleObject extends AbstractStaticGameObject {
      * @param type the type of GameObject
      * @param position the upper-left corner
      */
-    public ObstacleObject(final GameObjectType type, final Rectangle position) {
-        super(type, position.getTopLeft(), position.getBottomRight(), null);
+    public ObstacleObject(final GameObjectType type, final Rectangle position, final GameInit map) {
+        super(type, position.getTopLeft(), position.getBottomRight(), map);
     }
 
     @Override
