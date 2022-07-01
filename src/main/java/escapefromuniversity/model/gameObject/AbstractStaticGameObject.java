@@ -82,4 +82,12 @@ public abstract class AbstractStaticGameObject implements StaticGameObject {
         return this.rectangle;
     }
 
+	@Override
+	public String toString() {
+		return "AbstractStaticGameObject{" +
+				"id=" + id +
+				", type=" + type +
+				", topLeftCorner=" + topLeftCorner +
+				'}';
+	}
 }
