@@ -52,7 +52,7 @@ public enum GameObjectType {
      */
     NPC(GameCollisionType.OBSTACLE),
     /**
-     * This type of game object represents shop.
+     * This type of game object represents the shop.
      */
     SHOP(GameCollisionType.OBSTACLE),
     /**
