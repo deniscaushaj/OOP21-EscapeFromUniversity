@@ -1,10 +1,21 @@
 input check ogni tot sec
 
+testare fight e gioco fino alla fine
+
+sistemare il 'game loop' (in generale e il fatto che nei menu il tasto ESC non funziona)
+
+controllare che lo shop funzioni
+
+aggiungere schermata o qualcosa di vittoria
+
 lettura dei file da jar
 
 correggere le eccezioni
 
+togliere i commenti sparsi e le classi o metodi non usati
+
 controllare indentazione, todo, javadoc, intellij warnings.
+
 
 
 Roba trovata su internet:
