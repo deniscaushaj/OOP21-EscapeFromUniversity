@@ -214,14 +214,4 @@ public class MapLoader {
         }
         this.drawLayers();
     }
-
-    public void checkID() {
-        var iterator = sprites.entrySet().iterator();
-        while (iterator.hasNext()) {
-            var entry = iterator.next();
-            if(!this.gameController.isPresentID(entry.getKey())) {
-                this.sprites.remove(entry.getKey());
-            }
-        }
-    }
 }

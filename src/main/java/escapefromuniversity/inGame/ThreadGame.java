@@ -1,5 +1,9 @@
 package escapefromuniversity.inGame;
 
+/**
+ * Thread.
+ *
+ */
 public class ThreadGame extends Thread {
     
     @Override

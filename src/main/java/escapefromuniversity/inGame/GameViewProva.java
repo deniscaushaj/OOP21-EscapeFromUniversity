@@ -30,6 +30,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
+/**
+ * Game view of test.
+ *
+ */
 public class GameViewProva extends Application{
     private final MapProperties map;
     private CanvasDrawer canvasDrawer;
