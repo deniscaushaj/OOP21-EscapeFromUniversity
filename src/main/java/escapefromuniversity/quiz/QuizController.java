@@ -102,9 +102,9 @@ public class QuizController {
 			answerBox1.setVisible(false);
 			answerBox2.setVisible(false);
 			backGameBox.setVisible(true);
-			//this.boss.setQuizResult(this.exam.getGrade());
-			//this.boss.setQuizCredit(this.exam.getCredits());
 			if (this.exam.hasPassed()) {
+				this.gc.getPlayer().addCredits(this.exam.getCredits());
+				this.gc.getPlayer().setFinalMark(this.exam.getGrade());
 				questionButton.setText("Complimenti, sei stato PROMOSSO!");
 				questionButton.setTextFill(Color.DARKGREEN);
 				questionButton.setStyle("-fx-background-image:url('questionRight.png');");

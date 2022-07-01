@@ -64,10 +64,10 @@ public interface Player extends DynamicGameObject {
     void setLife(int life);
 
     /**
-     * Sets the credits of the player.
-     * @param credits to set for the Player.
+     * Add some credits to the player.
+     * @param credits to add to the Player.
      */
-    void setCredits(int credits);
+    void addCredits(int credits);
 
     /**
      * Sets the damage of the player.

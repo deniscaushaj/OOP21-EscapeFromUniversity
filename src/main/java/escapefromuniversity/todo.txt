@@ -1,16 +1,11 @@
-grafica shop
-
-collision with door, game state graduated
-
-hitbox
-
 input check ogni tot sec
 
-check get location solo folder+fs+file
+lettura dei file da jar
+
+correggere le eccezioni
 
 controllare indentazione, todo, javadoc, intellij warnings.
 
-MapController si può eliminare?
 
 Roba trovata su internet:
 isColliding https://www.baeldung.com/java-check-if-two-rectangles-overlap#:~:text=Java%20Implementation&text=Our%20isOverlapping()%20method%20in,we%20compare%20their%20y%2Dcoordinates.
