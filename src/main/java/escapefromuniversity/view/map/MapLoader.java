@@ -46,8 +46,8 @@ public class MapLoader {
     private Canvas gameCanvas;
 
     public MapLoader() {
-        this.gameController = new GameControllerImpl(this);
-        //this.gameController.setMapLoader(this);
+        this.gameController = new GameControllerImpl();
+        this.gameController.setMapLoader(this);
         this.camera = ratio -> {
             var hb = this.gameController.getPlayer().getObjectHitBox();
             var center = hb.getBottomRightCorner().sum(hb.getTopLeftCorner()).multiplication(0.5);

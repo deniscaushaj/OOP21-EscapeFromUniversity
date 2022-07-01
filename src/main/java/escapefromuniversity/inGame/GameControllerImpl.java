@@ -45,11 +45,11 @@ public class GameControllerImpl implements GameController {
     /**
      * Instantiates a new GameController and initializes the corresponding GameModel and GameView and KeyHandler making the game start.
      */
-    public GameControllerImpl(MapLoader gameView) {
-        this.gameView = gameView;
+    public GameControllerImpl() {
+        //this.gameView = gameView;
         this.gameModel = new GameModelImpl(this);
         this.gameObjID = this.getGameObjectID();
-        this.checkSpriteAnimation();
+        //this.checkSpriteAnimation();
         this.shopController = new ShopControllerImpl(this, this.gameModel);
         this.layersController = new LayersControllerImpl(this.gameModel.getMap().getMap(), this.gameModel.getPlayer());
         this.setGameState(GameState.PLAY);
