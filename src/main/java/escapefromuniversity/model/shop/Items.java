@@ -5,12 +5,7 @@ import escapefromuniversity.model.gameObject.player.Player;
 /**
  * An enumeration for all the existing items.
  */
-public enum Items {
-
-    /**
-     * Available items in the shop.
-     */
-    INCREASE_DAMAGE, INCREASE_ARMOR, RESET_HEALTH, DOUBLE_CHANCE;
+public class Items {
 
     private static final int DAMAGE_BUFF = 5;
     private static final int ARMOR_BUFF = 5;
