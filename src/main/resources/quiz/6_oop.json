@@ -1,0 +1,32 @@
+{
+    "teacher": "BOSS6",
+    "subject": "OOP",
+    "cfu": 12,
+    "quiz": [
+      {
+        "question": "La superclasse alla radice delle classi in Java è:",
+        "answers": ["Object", "Class", "Main", "Super"],
+        "correct": 1
+      },
+       {
+        "question": "Il file Client.java rappresenta la classe:",
+        "answers": ["client", "Client", "Object", "Class"],
+        "correct": 2
+      },
+      {
+        "question": "Per gestire le eccezioni si usa:",
+        "answers": ["equals e hash", "switch e break", "try e catch", "new e exit"],
+        "correct": 3
+      },
+      {
+        "question": "I metodi di una interfaccia in Java sono sempre:",
+        "answers": ["Protected", "Public", "Private", "Final"],
+        "correct": 2
+      },
+      {
+        "question": "Per implementare un interfaccia si usa:",
+        "answers": ["extends", "implement", "implements", "throw"],
+        "correct": 3
+      }
+    ]
+  }
