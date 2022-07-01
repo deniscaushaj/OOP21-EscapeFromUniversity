@@ -1,6 +1,9 @@
 package escapefromuniversity.model.quiz;
 
+import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import org.json.simple.*;
 import org.json.simple.parser.*;
@@ -31,9 +34,16 @@ public class ExamImporter {
 	public Exam importExam() throws Exception {
 
 		final ExamBuilder examBuilder = new ExamImpl.Builder();
-	
 		final JSONParser parser = new JSONParser();
-		final Object obj = parser.parse(new FileReader(path));
+		
+		//Runnarlo da eclipse
+		//final Object obj = parser.parse(new FileReader(path));
+		
+		//Runnarlo dal jar
+		InputStream in = getClass().getResourceAsStream("/quiz/"+path);
+	    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+	    final Object obj = parser.parse(reader);
+		
         final JSONObject jsonObject = (JSONObject) obj;
 
 		examBuilder.setTeacher(jsonObject.get("teacher").toString());
