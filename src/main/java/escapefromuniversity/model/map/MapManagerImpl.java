@@ -115,8 +115,8 @@ public class MapManagerImpl implements MapManager {
     }
 
     @Override
-    public void remuveID(final int id) {
-        this.gameModel.remuveID(id);
+    public void removeID(final int id) {
+        this.gameModel.removeID(id);
     }
 
 }

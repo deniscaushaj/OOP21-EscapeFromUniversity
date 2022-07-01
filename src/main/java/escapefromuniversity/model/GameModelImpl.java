@@ -130,7 +130,7 @@ public class GameModelImpl implements GameModel {
     }
 
     @Override
-    public void remuveID(int id) {
+    public void removeID(int id) {
         this.gameController.getGameView().removeSpriteAnimation(id);
     }
 

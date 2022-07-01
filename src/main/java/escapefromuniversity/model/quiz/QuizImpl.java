@@ -81,6 +81,9 @@ public class QuizImpl implements Quiz {
 			if (this.question == null) {
 				throw new IllegalStateException("This quiz does not have a correctly set question");
 			}
+			if(this.anwsers.values().stream().filter(ans -> ans.isCorrect()).count() != 1) {
+				throw new IllegalStateException("In each quiz there must be one and only one correct answer");
+			}
 			if (this.anwsers.size() != 4) {
 				throw new IllegalStateException("This quiz does not have exactly 4 answers");
 			}

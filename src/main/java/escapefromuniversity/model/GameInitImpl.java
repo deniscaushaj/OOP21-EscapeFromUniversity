@@ -53,7 +53,7 @@ public class GameInitImpl implements GameInit {
     @Override
     public void deleteGameObject(final DynamicGameObject gameObject) {
         //staticGameObjects.remove(gameObject);
-        this.getMapManager().remuveID(gameObject.getID());
+        this.getMapManager().removeID(gameObject.getID());
         dynamicGameObjects.remove(gameObject);
     }
 

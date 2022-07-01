@@ -1,0 +1,32 @@
+{
+    "teacher": "BOSS4",
+    "subject": "Programmazione C",
+    "cfu": 9,
+    "quiz": [
+      {
+        "question": "Quanti bit nececessitano in c per rappresnetare un int?",
+        "answers": ["8", "16", "32", "64"],
+        "correct": 2
+      },
+       {
+        "question": "Come si dichiara un array?",
+        "answers": ["int arr[2]", "int arr(2)", "int(2) arr", "[2]int arr"],
+        "correct": 1
+      },
+      {
+        "question": "Come si dichiara una matrice?",
+        "answers": ["int arr(4,5)", "int(3-8) arr", "[2;2]int arr", "int arr[2][0]"],
+        "correct": 4
+      },
+      {
+        "question": "Uno struttura può contenere tipi di dati:",
+        "answers": ["Omogeni", "Eterogenei", "Identici", "Similari"],
+        "correct": 2
+      },
+      {
+        "question": "Lo standard C89 viene introdotto in che anno?",
+        "answers": ["1988", "1999", "1989", "1975"],
+        "correct": 2
+      }
+    ]
+  }

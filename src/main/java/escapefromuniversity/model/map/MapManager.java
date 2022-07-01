@@ -23,6 +23,6 @@ public interface MapManager {
 
     void setupShop();
 
-    void remuveID(int id);
+    void removeID(int id);
 
 }

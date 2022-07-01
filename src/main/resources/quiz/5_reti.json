@@ -1,0 +1,32 @@
+{
+    "teacher": "BOSS5",
+    "subject": "Reti",
+    "cfu": 6,
+    "quiz": [
+      {
+        "question": "In www.studenti.unibo.it qual è il domino di 1 livello?",
+        "answers": ["unibo", "it", "studenti", "www"],
+        "correct": 2
+      },
+       {
+        "question": "Nella pila TCP/IP al livello più baso abbiamo:",
+        "answers": ["Rete", "Trasporto", "Fisico", "Applicazione"],
+        "correct": 3
+      },
+      {
+        "question": "La porta 25 viene solitamente usata dal:",
+        "answers": ["SMTP", "HTTP", "DNS", "FTP"],
+        "correct": 1
+      },
+      {
+        "question": "Quale di qeusti è un IPv4?",
+        "answers": ["125.65.21", "24ff:fe77:4997", "985.25.1.3", "125.1.1.2"],
+        "correct": 4
+      },
+      {
+        "question": "Il protocollo UDP a differenze del TCP è:",
+        "answers": ["Inaffidabile", "Affidabile", "Uguale", "Indifferente"],
+        "correct": 1
+      }
+    ]
+  }
