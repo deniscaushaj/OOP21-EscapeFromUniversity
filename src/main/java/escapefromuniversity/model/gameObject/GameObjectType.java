@@ -52,6 +52,10 @@ public enum GameObjectType {
      */
     NPC(GameCollisionType.OBSTACLE),
     /**
+     * This type of game object represents shop.
+     */
+    SHOP(GameCollisionType.OBSTACLE),
+    /**
      * This type of game object represents a bullet, specifically that of the player.
      */
     BULLET_PLAYER(GameCollisionType.BULLET),
