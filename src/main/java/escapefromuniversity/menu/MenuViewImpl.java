@@ -38,12 +38,12 @@ public class MenuViewImpl implements MenuView {
     private final JButton btCommand = new JButton("COMMAND");
     private final JButton btBack = new JButton("BACK");
 
-    private final JLabel command1 = new JLabel("A/W/S/D for move");
+    private final JLabel command1 = new JLabel("A/W/S/D : move");
     private final JLabel command2 = new JLabel("Spacebar : shoot");
     private final JLabel command3 = new JLabel("Esc : open menu");
 
     private final Color colorButton = new Color(232, 198, 42);
-    private final Color colorBackground = new Color(255, 254, 145);
+    private final Color colorBackground = new Color(255, 241, 179);
     private final Font font = new Font("Everson Mono", Font.PLAIN, 20);
 
     /**
@@ -81,7 +81,7 @@ public class MenuViewImpl implements MenuView {
         this.menuPanel.removeAll();
         this.menuPanel.revalidate();
         this.menuPanel.repaint();
-        this.menuPanel.setForeground(colorBackground);
+        this.menuPanel.setBackground(this.colorBackground);
         this.menuPanel.add(this.btExit);
         this.menuPanel.add(this.btResume);
         this.menuPanel.add(this.btCommand);
@@ -97,6 +97,7 @@ public class MenuViewImpl implements MenuView {
         this.menuPanel.removeAll();
         this.menuPanel.revalidate();
         this.menuPanel.repaint();
+//        this.menuPanel.setBackground(this.colorBackground);
         this.menuPanel.add(this.command1);
         this.menuPanel.add(this.command2);
         this.menuPanel.add(this.command3);
@@ -105,14 +106,14 @@ public class MenuViewImpl implements MenuView {
 
     @Override
     public void startView() {
-        this.window.setTitle("EscapeFromUniversity");
+        this.window.setTitle("Escape From University");
         this.window.setResizable(false);
-        this.window.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.window.setUndecorated(true);
         this.window.setSize((int) (SCREENWIDTH * windowRatio), (int) (SCREENHEIGHT * windowRatio));
         this.menuPanel = new JLayeredPane();
         this.menuPanel.setOpaque(false);
-        this.menuPanel.setForeground(colorBackground);
         this.window.getContentPane().add(menuPanel);
+        this.window.setLocationRelativeTo(null);
         this.window.setVisible(true);
         this.startMenu();
     }
