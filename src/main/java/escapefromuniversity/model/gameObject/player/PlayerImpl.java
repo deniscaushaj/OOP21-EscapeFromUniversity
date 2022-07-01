@@ -32,7 +32,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player {
     private int passed;
     private int finalMark;
     private final double shootDelay;
-    private long lastShot;
+    private double lastShot;
     private boolean shooting;
     private boolean bonusQuiz;
     public Point2D prevPosition;
@@ -262,6 +262,7 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player {
             this.lastShot = 0;
             return true;
         }
+        this.lastShot = this.lastShot + deltaTime;
         return false;
     }
 
@@ -281,11 +282,9 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player {
      */
     @Override
     public void shoot() {
-        if (this.shooting) {
-            final Bullet bullet = bulletFactory.createPlayerBullet(this.getObjectPosition(), this.shotDirection, this.damage, this.map);
-            this.getMap().addDynamicGameObject(bullet);
-            this.shooting = false;
-        }
+        final Bullet bullet = bulletFactory.createPlayerBullet(this.getObjectPosition(), this.getDirection(), this.damage, this.map);
+        this.getMap().addDynamicGameObject(bullet);
+        this.shooting = false;
     }
 
     /**
