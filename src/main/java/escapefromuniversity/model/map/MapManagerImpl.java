@@ -110,4 +110,10 @@ public class MapManagerImpl implements MapManager {
         this.gameModel.setShop();
     }
 
+    @Override
+    public void remuveID(int id) {
+        this.gameModel.remuveID(id);
+        
+    }
+
 }

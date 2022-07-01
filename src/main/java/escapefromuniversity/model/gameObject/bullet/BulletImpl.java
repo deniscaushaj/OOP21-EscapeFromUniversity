@@ -6,6 +6,7 @@ import escapefromuniversity.model.basics.Vector2D;
 import escapefromuniversity.model.gameObject.enemy.Enemy;
 import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.model.gameObject.AbstractDynamicGameObject;
+import escapefromuniversity.model.gameObject.DynamicGameObject;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.GameInit;
@@ -63,7 +64,7 @@ public class BulletImpl extends AbstractDynamicGameObject implements Bullet {
             break;
         case BULLET:
             if (this.getType().getCollisionType().equals(GameCollisionType.IMMUNE_BULLET)) {
-                this.getMap().deleteGameObject(gObj2);
+                this.getMap().deleteGameObject((DynamicGameObject) gObj2);
             }
             break;
         case ENTITY:

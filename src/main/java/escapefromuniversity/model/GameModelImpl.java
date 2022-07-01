@@ -128,4 +128,9 @@ public class GameModelImpl implements GameModel {
         return a.getObjectHitBox();
     }
 
+    @Override
+    public void remuveID(int id) {
+        this.gameController.getGameView().removeSpriteAnimation(id);
+    }
+
 }

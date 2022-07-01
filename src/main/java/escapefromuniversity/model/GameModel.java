@@ -103,4 +103,6 @@ public interface GameModel {
      */
     HitBox getHitBoxID(int id);
 
+    void remuveID(int id);
+
 }
