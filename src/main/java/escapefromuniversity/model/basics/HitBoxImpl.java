@@ -23,11 +23,6 @@ public class HitBoxImpl extends Rectangle implements HitBox {
 		//cornerTest(topLeft, bottomLeft);
 	}
 	/*
-	public HitBoxImpl(final HitBox box){
-		cornerTest(box.getBottomLeftCorner(), box.getUpperRightCorner());
-		this.bottomLeft = new Point2D(box.getUpperRightCorner());
-		this.topLeft = new Point2D(box.getBottomLeftCorner());
-	}
 	private void cornerTest(final Point2D topLeft, final Point2D bottomLeft) throws IllegalArgumentException{
 		switch(Double.compare(bottomLeft.getX(), topLeft.getX())) {
 		  case 0:
