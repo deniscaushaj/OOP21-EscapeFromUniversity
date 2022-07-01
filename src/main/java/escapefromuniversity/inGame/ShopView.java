@@ -31,17 +31,6 @@ public interface ShopView {
      */
     JButton getBuyChance();
 
-    /**
-     * Returns the button to buy the second chance.
-     * @return the exit button.
-     */
-    JButton getExit();
-
-    /**
-     * Shows into the label any respective item info.
-     * @param itemInfo the info string to put into the item info label.
-     */
-    void setItemInfo(String itemInfo);
     void setCreditsCounter();
 
     /**
