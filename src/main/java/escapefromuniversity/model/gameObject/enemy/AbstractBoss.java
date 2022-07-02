@@ -19,7 +19,7 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
 
     private int life;
     private final double shootDelay;
-    private long shootLastTime;
+    private double shootLastTime;
     private BossState bossState;
     private Point2D previousPosition;
     private final int impactDamage;
@@ -65,6 +65,7 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
             this.shootLastTime = 0;
             return true;
         }
+        shootLastTime = shootLastTime + deltaTime;
         return false;
     }
 
@@ -101,7 +102,8 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
             this.maybeShoot(deltaTime);
             this.setPreviousPosition(this.getObjectPosition());
             this.move(deltaTime);
-            this.setDirection(new Vector2D(1, 0));
+            this.setDirection(this.newDirection());
+            this.setState(State.DOWN);
         }
     }
 
@@ -148,7 +150,7 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
     protected Vector2D newDirection() {
         Point2D playerPos = this.getMap().getPlayer().getObjectPosition();
         return new Vector2D(this.getObjectPosition().getX() - playerPos.getX(),
-                this.getObjectPosition().getY() - playerPos.getY()).normal();
+                this.getObjectPosition().getY() - playerPos.getY());
     }
 
     /**

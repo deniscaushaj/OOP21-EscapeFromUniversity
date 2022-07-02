@@ -1,0 +1,37 @@
+{
+    "teacher": "BOSS3",
+    "subject": "Architetture",
+    "cfu": 12,
+    "quiz": [
+      {
+        "question": "Quante configurazioni abbiamo con 16 bit?",
+        "answers": ["2", "256", "65536", "65536"],
+        "correct": 3
+      },
+       {
+        "question": "Quale tra queste è la memoria più veloce?",
+        "answers": ["Cache", "Registro", "Disco ottico", "Nastro"],
+        "correct": 2
+      },
+      {
+        "question": "Le SSD sono normalmente basate su:",
+        "answers": ["AND", "NOR", "NAND", "XOR"],
+        "correct": 3
+      },
+      {
+        "question": "In assembly per sommare si usa il comando:",
+        "answers": ["ADD", "DIV", "MUL", "SUB"],
+        "correct": 1
+      },
+      {
+        "question": "Quale memoria NON eiste?",
+        "answers": ["PROM", "EPROM", "EEPROM", "ZZDPROM"],
+        "correct": 4
+      },
+      {
+        "question": "L'identity law per un porta AND che cosa dice?",
+        "answers": ["1A=A", "0A=0", "AA=A", "AB=BA"],
+        "correct": 1
+      }
+    ]
+  }

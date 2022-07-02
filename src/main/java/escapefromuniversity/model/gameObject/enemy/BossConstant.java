@@ -17,12 +17,12 @@ final class BossConstant {
     /**
      * constant boss life.
      */
-    protected static final int BOSS_1_LIFE = 200;
-    protected static final int BOSS_2_LIFE = 150;
-    protected static final int BOSS_3_LIFE = 190;
-    protected static final int BOSS_4_LIFE = 100;
-    protected static final int BOSS_5_LIFE = 180;
-    protected static final int BOSS_6_LIFE = 300;
+    protected static final int BOSS_1_LIFE = 100;
+    protected static final int BOSS_2_LIFE = 75;
+    protected static final int BOSS_3_LIFE = 95;
+    protected static final int BOSS_4_LIFE = 700;
+    protected static final int BOSS_5_LIFE = 10;
+    protected static final int BOSS_6_LIFE = 150;
 
     /**
      * constant boss impact damage.
@@ -59,9 +59,9 @@ final class BossConstant {
      */
     protected static final String BOSS_1_EXAM = "1_sistemioperativi.json";
     protected static final String BOSS_2_EXAM = "2_basididati.json";
-    protected static final String BOSS_3_EXAM = "boss3.json";
-    protected static final String BOSS_4_EXAM = "boss4.json";
-    protected static final String BOSS_5_EXAM = "boss5.json";
-    protected static final String BOSS_6_EXAM = "boss6.json";
+    protected static final String BOSS_3_EXAM = "3_architetture.json";
+    protected static final String BOSS_4_EXAM = "4_programmazione.json";
+    protected static final String BOSS_5_EXAM = "5_reti.json";
+    protected static final String BOSS_6_EXAM = "6_oop.json";
 
 }
