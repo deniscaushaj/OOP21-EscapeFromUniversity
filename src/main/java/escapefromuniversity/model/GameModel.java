@@ -104,4 +104,6 @@ public interface GameModel {
 
     void removeID(int id);
 
+    void setStatePlay();
+
 }

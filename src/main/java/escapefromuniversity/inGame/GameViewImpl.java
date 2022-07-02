@@ -200,8 +200,10 @@ public class GameViewImpl implements GameView {
             break;
         case SPACE:
             if (this.gameController.getGameState().equals(GameState.FIGHT)) {
-                this.gameController.getPlayer().setShoot(true, this.gameController.getPlayer().getLastDirection());
-                this.gameController.getPlayer().shoot();
+                if(this.gameController.getPlayer().canShoot(0.2)) {
+                    this.gameController.getPlayer().setShoot(true, this.gameController.getPlayer().getLastDirection());
+                    this.gameController.getPlayer().shoot();
+                }
                 this.gameController.gameLoop();
             }
             break;

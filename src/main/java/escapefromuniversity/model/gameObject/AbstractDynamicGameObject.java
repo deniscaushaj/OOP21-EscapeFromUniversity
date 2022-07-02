@@ -81,9 +81,7 @@ public abstract class AbstractDynamicGameObject implements DynamicGameObject {
             this.setState(State.DOWN);
         } else if (Direction.RIGHT.getDirection().equals(newDirection)) {
             this.setState(State.RIGHT);
-        } else {
-            this.setState(State.IDLE);
-        }
+        } 
         this.direction = newDirection;
     }
 
@@ -100,7 +98,7 @@ public abstract class AbstractDynamicGameObject implements DynamicGameObject {
      * @param deltaTime
      */
     public void move(final double deltaTime) {
-        this.setPosition(this.getObjectPosition().sum(getDirection().multiplication(this.speed).multiplication(deltaTime)));
+        this.setPosition(this.getObjectPosition().sum(getDirection().multiplication(this.speed * deltaTime)));
     }
 
     @Override

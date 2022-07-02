@@ -251,6 +251,9 @@ public class PlayerImpl extends AbstractDynamicGameObject implements Player {
     @Override
     public void takeDamage(final int damage) {
         this.setLife(this.getLife() + this.getArmor() - damage);
+        if (this.life <= 0) {
+            this.getMap().getMapManager().lost();
+        }
     }
 
     /**

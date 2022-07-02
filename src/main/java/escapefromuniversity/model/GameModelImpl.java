@@ -13,7 +13,6 @@ import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.model.map.MapManager;
 import escapefromuniversity.model.map.MapManagerImpl;
-import escapefromuniversity.model.map.MapProperties;
 
 /**
  * 
@@ -56,6 +55,7 @@ public class GameModelImpl implements GameModel {
     @Override
     public void setWin() {
         this.gameController.setGameState(GameState.WIN);
+        this.gameController.gameLoop();
     }
 
     /**
@@ -64,6 +64,7 @@ public class GameModelImpl implements GameModel {
     @Override
     public void setLost() {
         this.gameController.setGameState(GameState.LOST);
+        this.gameController.gameLoop();
     }
 
     @Override
@@ -130,8 +131,13 @@ public class GameModelImpl implements GameModel {
     }
 
     @Override
-    public void removeID(int id) {
+    public void removeID(final int id) {
         this.gameController.getGameView().removeSpriteAnimation(id);
+    }
+
+    @Override
+    public void setStatePlay() {
+        this.gameController.setGameState(GameState.PLAY);
     }
 
 }

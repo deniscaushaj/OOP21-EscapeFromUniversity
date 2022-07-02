@@ -39,7 +39,8 @@ public class GameInitImpl implements GameInit {
 
     @Override
     public void update(final double deltaTime) {
-        this.dynamicGameObjects.iterator().forEachRemaining(obj -> {
+        List<DynamicGameObject> copyListDGO = new LinkedList<>(List.copyOf(this.dynamicGameObjects));
+        copyListDGO.iterator().forEachRemaining(obj -> {
             obj.update(deltaTime);
         });
         for (final GameObject obj : this.dynamicGameObjects) {

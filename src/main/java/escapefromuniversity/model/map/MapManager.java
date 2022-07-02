@@ -24,5 +24,9 @@ public interface MapManager {
     void setupShop();
 
     void removeID(int id);
+    
+    void lost();
+    
+    void setStatePlay();
 
 }

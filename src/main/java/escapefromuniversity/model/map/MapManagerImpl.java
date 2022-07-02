@@ -24,7 +24,7 @@ import java.util.stream.Stream;
  */
 public class MapManagerImpl implements MapManager {
     private static final Point2D PLAYER_STARTING_POS = new Point2D(83, 147);
-    private static final double PLAYER_SPEED = 1;
+    private static final double PLAYER_SPEED = 1.8;
     private static final double PLAYER_SHOOT_DELAY = 0.5;
     private static final Point2D BOSS1_STARTING_POS = new Point2D(80, 145);
     private static final Point2D BOSS2_STARTING_POS = new Point2D(33, 67);
@@ -117,6 +117,17 @@ public class MapManagerImpl implements MapManager {
     @Override
     public void removeID(final int id) {
         this.gameModel.removeID(id);
+    }
+
+    @Override
+    public void lost() {
+        this.gameModel.setLost();
+    }
+
+    @Override
+    public void setStatePlay() {
+        this.gameModel.setStatePlay();
+        
     }
 
 }
