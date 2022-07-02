@@ -4,7 +4,7 @@ import escapefromuniversity.model.basics.GameCollisionType;
 import escapefromuniversity.model.basics.Point2D;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
-import escapefromuniversity.model.map.Rectangle;
+import escapefromuniversity.model.basics.Rectangle;
 
 /**
  * Implements the interface {@link Sprite}.

@@ -51,6 +51,15 @@ public class LayersControllerImpl implements LayersController {
         return this.getProperties(player.getObjectPosition()).contains("shop");
     }
 
+    /**
+     * Returns true if the player is standing over a victory door, false otherwise.
+     * @return true if the player is standing over a victory door, false otherwise
+     */
+
+    public boolean isWin() {
+        return this.getProperties(player.getObjectPosition()).contains("victory-doors");
+    }
+
     private Set<String> getProperties(final Point2D position) {
         return this.map.getLayers().stream()
                 .filter(l -> l.getTileFromPosition((int) position.getX(), (int) position.getY()).isVisible())

@@ -1,4 +1,6 @@
-package escapefromuniversity.model.map;
+package escapefromuniversity.view.map.drawer;
+
+import escapefromuniversity.model.basics.Rectangle;
 
 /**
  * An interface which draws a tile.
@@ -11,11 +13,4 @@ public interface TileDrawer {
      * @param pos the rectangle where the tile has to be drawn
      */
     void drawTileByID(int id, Rectangle pos);
-
-    /**
-     * Search the tileset containing the tile with the specified id.
-     * @param id the id of the tile
-     * @return the tileset containing the tile with the specified id
-     */
-    Tileset searchTileset(int id);
 }

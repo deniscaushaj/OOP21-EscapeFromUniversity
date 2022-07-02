@@ -1,9 +1,10 @@
-package escapefromuniversity.model.map;
-
-import java.util.Comparator;
+package escapefromuniversity.view.map.drawer;
 
 import escapefromuniversity.model.basics.Point2D;
-import escapefromuniversity.view.map.canvas.CanvasDrawer;
+import escapefromuniversity.model.basics.Rectangle;
+import escapefromuniversity.model.map.MapProperties;
+import escapefromuniversity.model.map.TileSearcher;
+import escapefromuniversity.model.map.TileSearcherImpl;
 
 /**
  * A class which implements TileDrawer.
@@ -12,6 +13,7 @@ public class TileDrawerImpl implements TileDrawer {
 
     private final MapProperties map;
     private final CanvasDrawer canvasDrawer;
+    private final TileSearcher tileSearcher;
 
     /**
      * Constructor of TileDrawerImpl.
@@ -21,6 +23,7 @@ public class TileDrawerImpl implements TileDrawer {
     public TileDrawerImpl(final MapProperties map, final CanvasDrawer canvasDrawer) {
         this.map = map;
         this.canvasDrawer = canvasDrawer;
+        this.tileSearcher  = new TileSearcherImpl(this.map);
     }
 
     @Override
@@ -28,8 +31,8 @@ public class TileDrawerImpl implements TileDrawer {
         if (id == 0) {
             return;
         }
-        var ts = this.searchTileset(id);
-        var tPos = calcTPos(id, ts);
+        var ts = tileSearcher.searchTileset(id);
+        var tPos = tileSearcher.calcTPos(id, ts);
         var tileHeight = this.map.getTileHeight();
         var tileWidth = this.map.getTileWidth();
         this.canvasDrawer.drawImage(ts.getFileName(),
@@ -37,21 +40,5 @@ public class TileDrawerImpl implements TileDrawer {
                     new Point2D(tPos.getX() * tileWidth, tPos.getY() * tileHeight),
                     new Point2D((tPos.getX() + 1) * tileWidth, (tPos.getY() + 1) * tileHeight)),
                 pos);
-    }
-
-    private Point2D calcTPos(final int id, final Tileset ts) {
-        var cols = ts.getColumns();
-        var idOffset = id - ts.getFirstTileId();
-        var x = idOffset % cols;
-        var y = idOffset / cols;
-        return new Point2D(x, y);
-    }
-
-    @Override
-    public Tileset searchTileset(final int id) {
-        return map.getTilesets().stream()
-                .filter(t -> t.getFirstTileId() <= id)
-                .max(Comparator.comparingInt(Tileset::getFirstTileId))
-                .get();
     }
 }

@@ -1,5 +1,7 @@
 package escapefromuniversity.model.map;
 
+import escapefromuniversity.model.basics.Rectangle;
+
 /**
  * An interface for the camera of the game.
  */

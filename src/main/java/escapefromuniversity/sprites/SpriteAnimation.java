@@ -2,7 +2,7 @@ package escapefromuniversity.sprites;
 
 import escapefromuniversity.model.basics.HitBox;
 import escapefromuniversity.model.basics.Point2D;
-import escapefromuniversity.model.map.Rectangle;
+import escapefromuniversity.model.basics.Rectangle;
 
 /**
  *

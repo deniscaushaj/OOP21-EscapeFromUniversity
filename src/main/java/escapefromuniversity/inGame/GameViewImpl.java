@@ -8,7 +8,10 @@ import java.util.stream.Stream;
 
 import javax.xml.parsers.ParserConfigurationException;
 
+import escapefromuniversity.model.basics.Rectangle;
 import escapefromuniversity.model.map.*;
+import escapefromuniversity.view.map.drawer.TileDrawer;
+import escapefromuniversity.view.map.drawer.TileDrawerImpl;
 import escapefromuniversity.sprites.Sprite;
 import escapefromuniversity.sprites.SpriteImpl;
 import org.xml.sax.SAXException;
@@ -20,8 +23,8 @@ import escapefromuniversity.model.basics.Vector2D;
 import escapefromuniversity.model.gameObject.Direction;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import escapefromuniversity.model.gameObject.State;
-import escapefromuniversity.view.map.canvas.CanvasDrawer;
-import escapefromuniversity.view.map.canvas.CanvasDrawerImpl;
+import escapefromuniversity.view.map.drawer.CanvasDrawer;
+import escapefromuniversity.view.map.drawer.CanvasDrawerImpl;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyEvent;
@@ -234,10 +237,9 @@ public class GameViewImpl implements GameView {
 
     @Override
     public void end(final GameState gameState) {
-        var victoryDoors = new ObstaclesFactory(gameController.getModel().getGameInit().getMap()).getVictoryDoorList(gameController.getModel().getGameInit());
         if (gameController.isOver(gameState)) {
             System.out.println();
-        } else if (gameController.isGraduated(gameState) && victoryDoors.contains(gameController.getPlayer().getObjectPosition())) {
+        } else if (gameController.isGraduated(gameState) && layersController.isWin()) {
             System.out.println();
         }
     }

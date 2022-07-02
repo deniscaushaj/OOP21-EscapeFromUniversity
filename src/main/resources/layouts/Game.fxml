@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.*?>
-<?import escapefromuniversity.view.map.canvas.ResizableCanvas?>
+<?import escapefromuniversity.view.map.drawer.ResizableCanvas?>
 
 <BorderPane xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1"
             prefHeight="600"

@@ -1,6 +1,7 @@
 package escapefromuniversity.model.map;
 
 import escapefromuniversity.model.basics.Point2D;
+import escapefromuniversity.model.basics.Rectangle;
 import escapefromuniversity.model.gameObject.player.Player;
 
 /**
