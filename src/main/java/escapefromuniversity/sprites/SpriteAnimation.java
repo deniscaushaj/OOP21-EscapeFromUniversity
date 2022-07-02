@@ -1,4 +1,4 @@
-package escapefromuniversity.inGame;
+package escapefromuniversity.sprites;
 
 import escapefromuniversity.model.basics.HitBox;
 import escapefromuniversity.model.basics.Point2D;

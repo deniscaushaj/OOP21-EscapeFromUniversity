@@ -5,6 +5,7 @@ import java.util.stream.Stream;
 
 import javax.xml.parsers.ParserConfigurationException;
 
+import escapefromuniversity.sprites.SpriteImpl;
 import org.xml.sax.SAXException;
 
 import escapefromuniversity.controller.map.LayersControllerImpl;

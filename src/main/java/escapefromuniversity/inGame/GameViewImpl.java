@@ -9,6 +9,8 @@ import java.util.stream.Stream;
 import javax.xml.parsers.ParserConfigurationException;
 
 import escapefromuniversity.model.map.*;
+import escapefromuniversity.sprites.Sprite;
+import escapefromuniversity.sprites.SpriteImpl;
 import org.xml.sax.SAXException;
 
 import escapefromuniversity.controller.map.LayersControllerImpl;
