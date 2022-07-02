@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import escapefromuniversity.WriteFile;
 import escapefromuniversity.controller.map.LayersControllerImpl;
+import escapefromuniversity.inGame.end.EndController;
 import escapefromuniversity.launcher.LauncherView;
 import escapefromuniversity.menu.MenuController;
 import escapefromuniversity.menu.MenuControllerImpl;
@@ -257,5 +258,15 @@ public class GameControllerImpl implements GameController {
     @Override
     public boolean isOver(final GameState gameState) {
         return gameState == GameState.LOST;
+    }
+    
+    private void showEnd(final Player player) throws IOException {
+    	FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/End.fxml"));
+        Parent gameRoot;
+        final EndController endController = new EndController(this.getPlayer());
+        loader.setController(endController);
+        gameRoot = loader.load();
+        Scene end = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
+        LauncherView.launcherWindow.setScene(end);
     }
 }

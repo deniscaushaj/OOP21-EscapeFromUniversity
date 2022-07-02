@@ -39,4 +39,5 @@ public class HitBoxImpl extends Rectangle implements HitBox {
 		return !(this.getTopLeftCorner().getX() < box.getBottomRightCorner().getX())
 				&& !(this.topLeft.getX() > box.getTopLeftCorner().getX());
 	}
+
 }
