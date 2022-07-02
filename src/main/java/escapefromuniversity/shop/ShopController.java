@@ -1,4 +1,4 @@
-package escapefromuniversity.inGame;
+package escapefromuniversity.shop;
 
 import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.model.shop.Items;

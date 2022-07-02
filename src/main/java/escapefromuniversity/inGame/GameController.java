@@ -6,9 +6,7 @@ import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.basics.HitBox;
 import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.player.Player;
-import escapefromuniversity.view.map.MapLoader;
-
-import java.awt.event.KeyEvent;
+import escapefromuniversity.shop.ShopController;
 
 /**
  * 

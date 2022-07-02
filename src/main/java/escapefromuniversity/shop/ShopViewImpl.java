@@ -1,4 +1,4 @@
-package escapefromuniversity.inGame;
+package escapefromuniversity.shop;
 
 import escapefromuniversity.utilities.WindowSet;
 import escapefromuniversity.utilities.OSFixes;
