@@ -63,7 +63,6 @@ public class GameControllerImpl implements GameController {
             case PLAY:
             case FIGHT:
             case GRADUATED:
-            case SHOP_ROOM:
                 this.updateModel(DELTA);
                 this.checkSpriteAnimation();
                 break;
