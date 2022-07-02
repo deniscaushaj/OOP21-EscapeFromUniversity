@@ -1,8 +1,6 @@
 package escapefromuniversity;
 
 import escapefromuniversity.model.map.*;
-import escapefromuniversity.view.map.canvas.CanvasDrawerImpl;
-import javafx.scene.canvas.Canvas;
 import org.junit.jupiter.api.Test;
 import org.xml.sax.SAXException;
 
@@ -35,9 +33,9 @@ public class TestTileset {
 
     @Test
     public void testSearchTileset() {
-        TileDrawer td = new TileDrawerImpl(mapProp, new CanvasDrawerImpl(new Canvas()));
-        assertEquals("tilesets/Room_Builder_free_48x48.png", td.searchTileset(1).getFileName());
-        assertEquals("tilesets/Characters_MV.png", td.searchTileset(2007).getFileName());
-        assertNotEquals("tilesets/Characters_MV.png", td.searchTileset(2008).getFileName());
+        TileSearcher ts = new TileSearcherImpl(mapProp);
+        assertEquals("tilesets/Room_Builder_free_48x48.png", ts.searchTileset(1).getFileName());
+        assertEquals("tilesets/Characters_MV.png", ts.searchTileset(2007).getFileName());
+        assertNotEquals("tilesets/Characters_MV.png", ts.searchTileset(2008).getFileName());
     }
 }
