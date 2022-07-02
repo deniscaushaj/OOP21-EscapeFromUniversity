@@ -47,12 +47,7 @@ final class BossConstant {
     /**
      * constant boss speed.
      */
-    protected static final double BOSS_1_SPEED = 0.5;
-    protected static final double BOSS_2_SPEED = 1.50;
-    protected static final double BOSS_3_SPEED = 1.125;
-    protected static final double BOSS_4_SPEED = 1.25;
-    protected static final double BOSS_5_SPEED = 1.25;
-    protected static final double BOSS_6_SPEED = 1.125;
+    protected static final double BOSS_SPEED = 0;
 
     /**
      * constant boss exam.
