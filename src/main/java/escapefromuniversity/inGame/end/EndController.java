@@ -42,7 +42,7 @@ public class EndController {
 
     /* Closes the game. */
     @FXML
-    void exit(MouseEvent event) {
+    void exit(ActionEvent event) {
         Platform.exit();
     }
 

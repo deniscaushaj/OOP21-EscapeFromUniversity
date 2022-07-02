@@ -64,7 +64,7 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button id="answer3" fx:id="exit" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" disable="true" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#exit" opacity="0.99" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="Exit" textAlignment="CENTER">
+                  <Button id="answer3" fx:id="exit" alignment="CENTER" cacheHint="SCALE" contentDisplay="TEXT_ONLY" maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#exit" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center;" text="Exit" textAlignment="CENTER">
                      <font>
                         <Font size="20.0" />
                      </font>
