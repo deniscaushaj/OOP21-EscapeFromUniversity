@@ -1,7 +1,7 @@
 package escapefromuniversity.inGame;
 
 import escapefromuniversity.model.gameObject.State;
-import escapefromuniversity.model.map.Rectangle;
+import escapefromuniversity.model.basics.Rectangle;
 
 /**
  * The interface of the dynamic game objects sprites.

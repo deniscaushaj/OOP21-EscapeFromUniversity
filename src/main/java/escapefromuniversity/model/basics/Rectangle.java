@@ -1,6 +1,4 @@
-package escapefromuniversity.model.map;
-
-import escapefromuniversity.model.basics.Point2D;
+package escapefromuniversity.model.basics;
 
 /**
  * A class which models a rectangle.

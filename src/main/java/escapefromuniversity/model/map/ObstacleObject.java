@@ -1,7 +1,7 @@
 package escapefromuniversity.model.map;
 
 import escapefromuniversity.model.GameInit;
-import escapefromuniversity.model.basics.Point2D;
+import escapefromuniversity.model.basics.Rectangle;
 import escapefromuniversity.model.gameObject.AbstractStaticGameObject;
 import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.GameObjectType;

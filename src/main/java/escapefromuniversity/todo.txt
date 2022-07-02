@@ -17,22 +17,3 @@ togliere i commenti sparsi e le classi o metodi non usati
 controllare indentazione, todo, javadoc, intellij warnings.
 
 CONTROLLARE CHE TUTTO VADA DAL JAR
-
-
-
-Roba trovata su internet:
-isColliding https://www.baeldung.com/java-check-if-two-rectangles-overlap#:~:text=Java%20Implementation&text=Our%20isOverlapping()%20method%20in,we%20compare%20their%20y%2Dcoordinates.
-ResizableCanvas
-
-Roba fatta insieme:
-model.basics.HitBox
-model.basics.Point2D
-model.gameObject.GameObjectType
-model.map.MapManagerImpl
-model.GameModelImpl
-inGame.GameController*
-inGame.GameViewImpl
-inGame.ShopControllerImpl
-
-Roba che non ho fatto io della mappa:
-MapManager

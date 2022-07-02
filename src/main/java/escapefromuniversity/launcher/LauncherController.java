@@ -64,7 +64,6 @@ public class LauncherController {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		
     }
 
     /* Opens the leaderboard scene. */

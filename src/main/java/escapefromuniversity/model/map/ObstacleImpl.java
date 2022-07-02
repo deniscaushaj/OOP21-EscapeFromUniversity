@@ -2,6 +2,7 @@ package escapefromuniversity.model.map;
 
 import escapefromuniversity.model.GameInit;
 import escapefromuniversity.model.basics.Point2D;
+import escapefromuniversity.model.basics.Rectangle;
 import escapefromuniversity.model.gameObject.GameObjectType;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,7 +10,7 @@ import java.util.stream.Collectors;
 /**
  * An implementation of Obstacle interface.
  */
-public class ObstaclesFactory implements Obstacle {
+public class ObstacleImpl implements Obstacle {
 
     private static final String MAP_NAME = "final-map.tmx";
     private final MapProperties map;
@@ -18,12 +19,11 @@ public class ObstaclesFactory implements Obstacle {
      * A constructor for ObstaclesFactory.
      * @param map the map
      */
-    public ObstaclesFactory(final MapProperties map) {
+    public ObstacleImpl(final MapProperties map) {
         this.map = map;
     }
 
     private List<ObstacleObject> getObstacleList(final String property, final GameObjectType obsType, final GameInit gameInit) {
-        //var map = new TMXMapParser(MAP_NAME);
         return map.getLayers()
                 .stream()
                 .filter(l -> l.getProperties().contains(property))

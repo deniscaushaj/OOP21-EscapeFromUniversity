@@ -72,7 +72,7 @@ public class MapManagerImpl implements MapManager {
      * @param gameInit the game initialization
      */
     private void loadObstacles(final GameInit gameInit) {
-        var factory = new ObstaclesFactory(gameInit.getMap());
+        var factory = new ObstacleImpl(gameInit.getMap());
         List<ObstacleObject> furniture = factory.getFurnitureList(gameInit);
         List<ObstacleObject> doors = factory.getDoorList(gameInit);
         List<ObstacleObject> npc = factory.getNPCList(gameInit);
@@ -88,20 +88,20 @@ public class MapManagerImpl implements MapManager {
      * @return the game initialization
      */
     private GameInit createGameInit() {
-        var map = new GameInitImpl(this);
-        Player player = new PlayerImpl(GameObjectType.PLAYER, getStartingPosition(), PLAYER_SPEED, new Vector2D(1, 0), PLAYER_SHOOT_DELAY, map);
+        var gameInit = new GameInitImpl(this);
+        Player player = new PlayerImpl(GameObjectType.PLAYER, getStartingPosition(), PLAYER_SPEED, new Vector2D(1, 0), PLAYER_SHOOT_DELAY, gameInit);
         player.setState(State.LEFT);
-        map.addDynamicGameObject(player);
-        loadObstacles(map);
+        gameInit.addDynamicGameObject(player);
+        loadObstacles(gameInit);
         BossFactory bossFactory = new BossFactoryImpl();
-        map.addDynamicGameObject(bossFactory.createBoss1(BOSS1_STARTING_POS, new Vector2D(1, 0), map));
-        map.addDynamicGameObject(bossFactory.createBoss2(BOSS2_STARTING_POS, new Vector2D(1, 0), map));
-        map.addDynamicGameObject(bossFactory.createBoss3(BOSS3_STARTING_POS, new Vector2D(1, 0), map));
-        map.addDynamicGameObject(bossFactory.createBoss4(BOSS4_STARTING_POS, new Vector2D(1, 0), map));
-        map.addDynamicGameObject(bossFactory.createBoss5(BOSS5_STARTING_POS, new Vector2D(1, 0), map));
-        map.addDynamicGameObject(bossFactory.createBoss6(BOSS6_STARTING_POS, new Vector2D(1, 0), map));
+        gameInit.addDynamicGameObject(bossFactory.createBoss1(BOSS1_STARTING_POS, new Vector2D(1, 0), gameInit));
+        gameInit.addDynamicGameObject(bossFactory.createBoss2(BOSS2_STARTING_POS, new Vector2D(1, 0), gameInit));
+        gameInit.addDynamicGameObject(bossFactory.createBoss3(BOSS3_STARTING_POS, new Vector2D(1, 0), gameInit));
+        gameInit.addDynamicGameObject(bossFactory.createBoss4(BOSS4_STARTING_POS, new Vector2D(1, 0), gameInit));
+        gameInit.addDynamicGameObject(bossFactory.createBoss5(BOSS5_STARTING_POS, new Vector2D(1, 0), gameInit));
+        gameInit.addDynamicGameObject(bossFactory.createBoss6(BOSS6_STARTING_POS, new Vector2D(1, 0), gameInit));
         BulletFactory bullets = new BulletFactoryImpl();
-        return map;
+        return gameInit;
     }
 
     @Override

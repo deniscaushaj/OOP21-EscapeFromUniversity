@@ -1,7 +1,5 @@
 package escapefromuniversity.model.basics;
 
-import escapefromuniversity.model.map.Rectangle;
-
 /**
  * A class which extends Rectangle and implements HitBox.
  */

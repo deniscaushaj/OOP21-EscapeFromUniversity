@@ -1,6 +1,6 @@
 package escapefromuniversity.model.gameObject;
 
-import escapefromuniversity.model.map.Rectangle;
+import escapefromuniversity.model.basics.Rectangle;
 import escapefromuniversity.model.GameInit;
 import escapefromuniversity.model.basics.HitBox;
 import escapefromuniversity.model.basics.HitBoxImpl;
