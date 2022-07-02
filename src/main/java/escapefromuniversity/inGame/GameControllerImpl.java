@@ -20,6 +20,8 @@ import escapefromuniversity.model.gameObject.GameObject;
 import escapefromuniversity.model.gameObject.enemy.Boss;
 import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.quiz.QuizController;
+import escapefromuniversity.shop.ShopController;
+import escapefromuniversity.shop.ShopControllerImpl;
 import escapefromuniversity.utilities.LauncherResizer;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -61,7 +63,6 @@ public class GameControllerImpl implements GameController {
             case PLAY:
             case FIGHT:
             case GRADUATED:
-            case SHOP_ROOM:
                 this.updateModel(DELTA);
                 this.checkSpriteAnimation();
                 break;

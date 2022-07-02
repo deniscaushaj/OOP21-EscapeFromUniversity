@@ -2,8 +2,8 @@ package escapefromuniversity.view.map;
 
 import escapefromuniversity.inGame.GameController;
 import escapefromuniversity.inGame.GameControllerImpl;
-import escapefromuniversity.inGame.Sprite;
-import escapefromuniversity.inGame.SpriteImpl;
+import escapefromuniversity.sprites.Sprite;
+import escapefromuniversity.sprites.SpriteImpl;
 import escapefromuniversity.controller.map.LayersControllerImpl;
 import escapefromuniversity.model.GameState;
 import escapefromuniversity.model.basics.Point2D;

@@ -1,4 +1,4 @@
-package escapefromuniversity.inGame;
+package escapefromuniversity.sprites;
 
 import escapefromuniversity.model.gameObject.State;
 import escapefromuniversity.model.basics.Rectangle;

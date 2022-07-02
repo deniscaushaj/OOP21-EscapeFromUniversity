@@ -160,11 +160,13 @@ public interface Player extends DynamicGameObject {
     void passedExam();
 
     /**
+     * Returns {@code true} if the player is dead.
      * @return {@code true} if the player is dead.
      */
     boolean isDead();
 
     /**
+     * Returns {@code true} if the player is graduated.
      * @return {@code true} if the player is graduated.
      */
     boolean isGraduated();

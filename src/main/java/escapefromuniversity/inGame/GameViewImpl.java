@@ -12,6 +12,8 @@ import escapefromuniversity.model.basics.Rectangle;
 import escapefromuniversity.model.map.*;
 import escapefromuniversity.view.map.drawer.TileDrawer;
 import escapefromuniversity.view.map.drawer.TileDrawerImpl;
+import escapefromuniversity.sprites.Sprite;
+import escapefromuniversity.sprites.SpriteImpl;
 import org.xml.sax.SAXException;
 
 import escapefromuniversity.controller.map.LayersControllerImpl;
@@ -147,7 +149,7 @@ public class GameViewImpl implements GameView {
         case W:
         case UP:
             if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
-                    || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
+                    || this.gameController.getGameState().equals(GameState.GRADUATED)) {
                 this.gameController.getPlayer().setDirection(new Vector2D(0, -1));
                 this.gameController.getPlayer().setLastDirection(Direction.UP);
                 this.gameController.gameLoop();
@@ -156,7 +158,7 @@ public class GameViewImpl implements GameView {
         case A:
         case LEFT:
             if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
-                    || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
+                    || this.gameController.getGameState().equals(GameState.GRADUATED)) {
                 this.gameController.getPlayer().setDirection(new Vector2D(-1, 0));
                 this.gameController.getPlayer().setLastDirection(Direction.LEFT);
                 this.gameController.gameLoop();
@@ -165,7 +167,7 @@ public class GameViewImpl implements GameView {
         case S:
         case DOWN:
             if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
-                    || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
+                    || this.gameController.getGameState().equals(GameState.GRADUATED)) {
                 this.gameController.getPlayer().setDirection(new Vector2D(0, 1));
                 this.gameController.getPlayer().setLastDirection(Direction.DOWN);
                 this.gameController.gameLoop();
@@ -174,7 +176,7 @@ public class GameViewImpl implements GameView {
         case D:
         case RIGHT:
             if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
-                    || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
+                    || this.gameController.getGameState().equals(GameState.GRADUATED)) {
                 this.gameController.getPlayer().setDirection(new Vector2D(1, 0));
                 this.gameController.getPlayer().setLastDirection(Direction.RIGHT);
                 this.gameController.gameLoop();
@@ -182,7 +184,7 @@ public class GameViewImpl implements GameView {
             break;
         case Q:
             if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
-                    || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
+                    || this.gameController.getGameState().equals(GameState.GRADUATED)) {
                 if (this.radius <= 13) {
                     this.radius += 1;
                 }
@@ -190,7 +192,7 @@ public class GameViewImpl implements GameView {
             break;
         case E:
             if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
-                    || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
+                    || this.gameController.getGameState().equals(GameState.GRADUATED)) {
                 if (this.radius >= 7) {
                     this.radius -= 1;
                 }
@@ -205,7 +207,7 @@ public class GameViewImpl implements GameView {
             break;
         case ESCAPE:
             if (this.gameController.getGameState().equals(GameState.PLAY) || this.gameController.getGameState().equals(GameState.FIGHT)
-                    || this.gameController.getGameState().equals(GameState.GRADUATED) || this.gameController.getGameState().equals(GameState.SHOP_ROOM)) {
+                    || this.gameController.getGameState().equals(GameState.GRADUATED)) {
                 this.gameController.setGameState(GameState.MENU);
             } else if (this.gameController.getGameState().equals(GameState.MENU)) {
                 this.gameController.getMenuController().resume();

@@ -1,5 +1,6 @@
-package escapefromuniversity.inGame;
+package escapefromuniversity.shop;
 
+import escapefromuniversity.inGame.GameController;
 import escapefromuniversity.model.GameModel;
 import escapefromuniversity.model.gameObject.player.Player;
 import escapefromuniversity.model.shop.Items;
