@@ -13,6 +13,11 @@ import escapefromuniversity.model.map.MapManager;
 import escapefromuniversity.model.map.MapProperties;
 import escapefromuniversity.model.map.TMXMapParser;
 
+/**
+ * 
+ * class implement gameInit.
+ *
+ */
 public class GameInitImpl implements GameInit {
     private final List<StaticGameObject> staticGameObjects = new LinkedList<>();
     private final List<DynamicGameObject> dynamicGameObjects = new LinkedList<>();
@@ -23,6 +28,10 @@ public class GameInitImpl implements GameInit {
     private static final String TMX_MAP_PATH = "final-map.tmx";
 
 
+    /**
+     * 
+     * @param mapManager
+     */
     public GameInitImpl(final MapManager mapManager) {
         this.mapManager = mapManager;
         this.mapProperties = new TMXMapParser(TMX_MAP_PATH).parse();
