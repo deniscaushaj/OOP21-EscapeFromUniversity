@@ -34,7 +34,7 @@ public class BossFactoryImpl implements BossFactory {
             @Override
             void shoot() {
                 final Point2D startPosition = new Point2D(this.getObjectPosition().getX(), this.getObjectPosition().getY() + this.getObjectHitBox().getHeight());
-                final Bullet bullet = bulletCreate.createBoss1Bullet(startPosition, this.getDirection(), map);
+                final Bullet bullet = bulletCreate.createBoss1Bullet(startPosition, this.newDirection(), map);
                 this.getMap().addDynamicGameObject(bullet);
             }
         };
@@ -50,9 +50,9 @@ public class BossFactoryImpl implements BossFactory {
             void shoot() {
                 final List<Bullet> bullets = new LinkedList<>();
                 final Point2D startPosition = new Point2D(this.getObjectPosition().getX(), this.getObjectPosition().getY() + this.getObjectHitBox().getHeight());
-                bullets.add(bulletCreate.createBoss2Bullet(this.getObjectPosition(), this.getDirection(), map));
-                bullets.add(bulletCreate.createBoss2Bullet(startPosition.sum(VECTOR1), this.getDirection(), map));
-                bullets.add(bulletCreate.createBoss2Bullet(startPosition.sum(VECTOR2), this.getDirection(), map));
+                bullets.add(bulletCreate.createBoss2Bullet(this.getObjectPosition(), this.newDirection(), map));
+                bullets.add(bulletCreate.createBoss2Bullet(startPosition.sum(VECTOR1), this.newDirection(), map));
+                bullets.add(bulletCreate.createBoss2Bullet(startPosition.sum(VECTOR2), this.newDirection(), map));
                 bullets.forEach(bul -> {
                     this.getMap().addDynamicGameObject(bul);
                 });
@@ -94,7 +94,7 @@ public class BossFactoryImpl implements BossFactory {
             @Override
             void shoot() {
                 final Point2D startPosition = new Point2D(this.getObjectPosition().getX(), this.getObjectPosition().getY() + this.getObjectHitBox().getHeight());
-                final Bullet bullet = bulletCreate.createBoss4Bullet(startPosition, this.getDirection(), map);
+                final Bullet bullet = bulletCreate.createBoss4Bullet(startPosition, this.newDirection(), map);
                 this.getMap().addDynamicGameObject(bullet);
             }
         };
@@ -109,7 +109,7 @@ public class BossFactoryImpl implements BossFactory {
             @Override
             void shoot() {
                 final Point2D startPosition = new Point2D(this.getObjectPosition().getX(), this.getObjectPosition().getY() + this.getObjectHitBox().getHeight());
-                final Bullet bullet = bulletCreate.createBoss5Bullet(startPosition, this.getDirection(), map);
+                final Bullet bullet = bulletCreate.createBoss5Bullet(startPosition, this.newDirection(), map);
                 this.getMap().addDynamicGameObject(bullet);
             }
         };
@@ -124,7 +124,7 @@ public class BossFactoryImpl implements BossFactory {
             @Override
             void shoot() {
                 final Point2D startPosition = new Point2D(this.getObjectPosition().getX(), this.getObjectPosition().getY() + this.getObjectHitBox().getHeight());
-                final Bullet bullet = bulletCreate.createBoss6Bullet(startPosition, this.getDirection(), map);
+                final Bullet bullet = bulletCreate.createBoss6Bullet(startPosition, this.newDirection(), map);
                 this.getMap().addDynamicGameObject(bullet);
             }
         };

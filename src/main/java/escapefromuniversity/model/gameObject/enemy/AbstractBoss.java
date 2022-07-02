@@ -54,13 +54,13 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
      * {@inheritDoc}
      */
     @Override
-    public void maybeShoot(double deltaTime) {
+    public void maybeShoot(final double deltaTime) {
         if (this.canShoot(deltaTime)) {
             this.shoot();
         }
     }
 
-    private boolean canShoot(double deltaTime) {
+    private boolean canShoot(final double deltaTime) {
         if (deltaTime + shootLastTime > this.shootDelay) {
             this.shootLastTime = 0;
             return true;
@@ -101,9 +101,6 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
         if (this.bossState == BossState.FIGHT) {
             this.maybeShoot(deltaTime);
             this.setPreviousPosition(this.getObjectPosition());
-            this.move(deltaTime);
-            this.setDirection(this.newDirection());
-            this.setState(State.DOWN);
         }
     }
 
@@ -133,6 +130,7 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
             default:
                 break;
             }
+            this.setDirection(getDirection().multiplication(-1));
         }
     }
 
@@ -149,8 +147,8 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
      */
     protected Vector2D newDirection() {
         Point2D playerPos = this.getMap().getPlayer().getObjectPosition();
-        return new Vector2D(this.getObjectPosition().getX() - playerPos.getX(),
-                this.getObjectPosition().getY() - playerPos.getY());
+        return new Vector2D(-(this.getObjectPosition().getX() - playerPos.getX()),
+                -(this.getObjectPosition().getY() - playerPos.getY()));
     }
 
     /**
@@ -186,6 +184,7 @@ public abstract class AbstractBoss extends AbstractDynamicGameObject implements 
      */
     @Override
     public void kill() {
+        this.getMap().getMapManager().setStatePlay();
         this.getMap().deleteGameObject(this);
     }
 

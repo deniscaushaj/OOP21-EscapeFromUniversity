@@ -100,7 +100,8 @@ public class SpriteImpl implements Sprite {
                 || this.objType.equals(GameObjectType.BOSS3) || this.objType.equals(GameObjectType.BOSS4)
                 || this.objType.equals(GameObjectType.BOSS5) || this.objType.equals(GameObjectType.BOSS6)) {
             this.folder = "boss";
-            this.setupSpriteFilepath();
+            this.filename = "boss_front_2.png";
+            //this.setupSpriteFilepath();
         } else if(this.objType.equals(GameObjectType.PLAYER)) {
             this.folder = "player";
             this.setupSpriteFilepath();
