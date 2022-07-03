@@ -2,10 +2,6 @@ package escapefromuniversity;
 
 import escapefromuniversity.model.map.*;
 import org.junit.jupiter.api.Test;
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,7 +12,7 @@ public class TestTileset {
 
     MapProperties mapProp;
 
-    public TestTileset() throws ParserConfigurationException, IOException, SAXException {
+    public TestTileset() {
         this.mapProp = new TMXMapParser("final-map.tmx").parse();
     }
 
