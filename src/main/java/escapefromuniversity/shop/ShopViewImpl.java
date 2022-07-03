@@ -19,12 +19,12 @@ public class ShopViewImpl implements ShopView {
     private final double windowRatio = WindowSet.getWindowRatio();
     private final JFrame window = new JFrame();
     private JPanel shopPanel;
-    private final ImageIcon buttonBackground = new ImageIcon(OSFixes.getLocation("images", "back.png"));
-    private final ImageIcon creditsIcon = new ImageIcon(OSFixes.getLocation("hud", "credits.png"));
-    private final ImageIcon lifeIcon = new ImageIcon(OSFixes.getLocation("hud", "life.png"));
-    private final ImageIcon armorIcon = new ImageIcon(OSFixes.getLocation("hud", "armor.png"));
-    private final ImageIcon damageIcon = new ImageIcon(OSFixes.getLocation("hud", "damage.png"));
-    private final ImageIcon chanceIcon = new ImageIcon(OSFixes.getLocation("hud", "second_chance.png"));
+    private final ImageIcon buttonBackground = new ImageIcon(getClass().getResource("/images/back.png"));
+    private final ImageIcon creditsIcon = new ImageIcon(getClass().getResource("/hud/credits.png"));
+    private final ImageIcon lifeIcon = new ImageIcon(getClass().getResource("/hud/life.png"));
+    private final ImageIcon armorIcon = new ImageIcon(getClass().getResource("/hud/armor.png"));
+    private final ImageIcon damageIcon = new ImageIcon(getClass().getResource("/hud/damage.png"));
+    private final ImageIcon chanceIcon = new ImageIcon(getClass().getResource("/hud/second_chance.png"));
     private final JLabel itemInfo = new JLabel("", this.creditsIcon, SwingConstants.CENTER);
     private final JButton buyLife = new JButton(buyButton, buttonBackground);
     private final JButton buyArmor = new JButton(buyButton, buttonBackground);
