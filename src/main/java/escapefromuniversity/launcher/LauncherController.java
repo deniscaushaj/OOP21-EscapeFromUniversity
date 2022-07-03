@@ -3,6 +3,7 @@ package escapefromuniversity.launcher;
 import static escapefromuniversity.utilities.LauncherResizer.sceneHeight;
 import static escapefromuniversity.utilities.LauncherResizer.sceneWidth;
 
+import escapefromuniversity.inGame.GameControllerImpl;
 import escapefromuniversity.inGame.GameViewImpl;
 import escapefromuniversity.utilities.LauncherResizer;
 import javafx.application.Platform;
@@ -28,10 +29,12 @@ public class LauncherController {
 
 		try {
 			FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("layouts/Game.fxml"));
-			loader.setController(new GameViewImpl());
+            var x = new GameViewImpl();
+			loader.setController(x);
 			Parent gameRoot = loader.load();
 			Scene game = new Scene(gameRoot, LauncherResizer.sceneWidth, LauncherResizer.sceneHeight);
 			LauncherView.launcherWindow.setScene(game);
+            x.drawLayers();
 		} catch (Exception e) {
 			System.out.println(e);
 		}
