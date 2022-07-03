@@ -35,17 +35,10 @@ public class ExamImporter {
 
 		final ExamBuilder examBuilder = new ExamImpl.Builder();
 		final JSONParser parser = new JSONParser();
-		
-		//Rum from eclipse
-		final Object obj = parser.parse(new FileReader(OSFixes.getLocation("quiz", path)));
-		
-		//Run from jar
-//		InputStream in = getClass().getResourceAsStream("/quiz/"+path);
-//	    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-//	    final Object obj = parser.parse(reader);
-		
+		InputStream in = getClass().getResourceAsStream("/quiz/"+path);
+	    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+	    final Object obj = parser.parse(reader);
         final JSONObject jsonObject = (JSONObject) obj;
-
 		examBuilder.setTeacher(jsonObject.get("teacher").toString());
 		examBuilder.setSubject(jsonObject.get("subject").toString());
 		examBuilder.setCredits((int) (long) jsonObject.get("cfu"));
