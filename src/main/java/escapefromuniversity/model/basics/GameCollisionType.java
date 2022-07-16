@@ -30,7 +30,7 @@ public enum GameCollisionType {
     /**
      * Identifies a walcable object.
      */
-    NADA;
+    GENERIC;
 
 
 }

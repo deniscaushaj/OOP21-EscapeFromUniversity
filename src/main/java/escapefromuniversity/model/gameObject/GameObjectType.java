@@ -42,7 +42,7 @@ public enum GameObjectType {
     /**
      * This type of game object represents a door.
      */
-    DOOR(GameCollisionType.NADA),
+    DOOR(GameCollisionType.GENERIC),
     /**
      * This type of game object represents a generic furniture.
      */
